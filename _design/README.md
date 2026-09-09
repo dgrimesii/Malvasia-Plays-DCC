@@ -8,3 +8,4 @@ Planning documents for tooling built *on top of* this repo — not campaign cont
 2. **[[Interface-User-Stories]]** — what each user needs to be able to do, from their perspective.
 3. **[[Information-Architecture]]** — the graph model: nodes, edges, quests vs. arcs, investment.
 4. **[[Arcs]]** — how arcs behave over a campaign: co-authorship, projection, merging, density.
+5. **[[Canon]]** — how the party's story relates to the written one: proximity, fidelity, divergence.
