@@ -93,7 +93,7 @@ Enough to see divergence shape, not so much it becomes an unread archive.
 
 ---
 
-## 6. Correctness and deletion
+## 6. Correctness, deletion, and rollback
 
 AI-assisted authoring produces incorrect data, and errors are often discovered long after they're introduced and have propagated. Deletion is therefore a requirement, not an edge case.
 
@@ -106,22 +106,42 @@ This resolves an apparent conflict with the "discard unused material" rule in [[
 
 The test is not "was it used" but **"is it true."** Unused material is history and debrief fodder. Incorrect material is pollution, and its cost compounds — every projection resting on a false premise is quietly wrong.
 
-**[blocking] What happens to dependents when something is deleted?**
-Late discovery means bad data has already propagated: edges reference it, arcs cite it as evidence, projections rest on it as a premise. Silent removal creates dangling references and, worse, leaves conclusions standing that were only supported by the deleted thing.
+### Rollback operates on batches, not edits
 
-The premise-decay mechanism already designed for [[Arcs]] is exactly the machinery needed here — **deletion should flag dependents for review rather than cascade silently or orphan them.** The requirement is that the GM sees what else is now suspect.
+**A bounded rollback window is required** — not permanent version history, but enough depth that a body of work built on a hallucination or a bad input can be cleanly undone.
+
+The unit matters more than the depth. Errors don't arrive as single facts; they arrive as **a batch of work sharing a root cause**: one integration pass, one flawed source document, one session's write-up. Undoing forty-seven individual changes is not a recovery path anyone actually uses. The requirement is *"undo that integration,"* as one action.
+
+Natural batch boundaries already exist in the workflow: an intake promotion, a session write-up, an accepted proposal set. Whatever the unit, it must be **addressable and reversible as a whole**.
+
+**[blocking] What happens to work built on top of a rolled-back batch?**
+This is the hard case. Bad data lands Monday; good work Tuesday references it; rolling back Monday breaks Tuesday. Three possible behaviors, and the choice is a requirement:
+
+- **Block** the rollback until dependents are dealt with
+- **Cascade** — remove dependents too, which risks discarding good work
+- **Flag** — roll back the batch, mark dependents as resting on removed material, leave the GM to repair
+
+The premise-decay mechanism in [[Arcs]] already implies the third, and it's likely right — but it needs deciding rather than defaulting.
+
+**How deep is the window?**
+By count (last N batches) or by time (last N weeks)? Given errors surface late, a window measured in a handful of sessions is probably the floor.
+
+**Is partial rollback needed?**
+An integration that produced eight good facts and two hallucinations — undo all ten, or extract the good ones first? All-or-nothing is far simpler and may be sufficient if re-integration is cheap.
+
+### Supporting requirements
 
 **Does content carry provenance?**
-If GM-authored, AI-proposed-and-accepted, and AI-generated content are distinguishable, errors become auditable — "show me everything the system generated during that integration" is a viable cleanup path. Without provenance, finding the blast radius of a bad batch means checking everything.
+If GM-authored, AI-proposed-and-accepted, and AI-generated content are distinguishable — and tagged with the batch that produced them — errors become auditable and rollback becomes addressable. Without provenance, finding the blast radius of a bad batch means checking everything.
 
-**Is deletion recoverable?**
-Deleting the wrong thing while cleaning up bad data is its own failure mode. Whether removal is reversible, and for how long, is a requirement.
+**Is deletion outside the rollback window still possible?**
+Rollback handles recent, batch-shaped errors. A single wrong fact discovered a year later needs ordinary deletion, with dependent-flagging.
 
-**Can deletion be done in bulk?**
-A bad integration pass may create dozens of wrong facts at once. Removing them one at a time is how cleanup doesn't get done.
+**Can deletion be done in bulk outside a batch boundary?**
+Errors don't always align with how work was committed.
 
-**Is there a review step before AI-generated content becomes canonical?**
-Nothing is applied without approval — but approval under time pressure isn't the same as verification. Whether newly integrated content sits in a probationary state before being trusted as premise material is worth deciding.
+**Is there a probationary state before AI-generated content becomes premise material?**
+Nothing is applied without approval — but approval under time pressure isn't verification. Whether newly integrated content can be *used as a premise* before being confirmed is worth deciding, since premises are where a wrong fact does the most quiet damage.
 
 ---
 
