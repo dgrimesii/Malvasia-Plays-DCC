@@ -32,17 +32,22 @@ tags: []
 
 ## Interaction facts
 
-Short factual lines. No judgment of significance — just what happened. Omit freely; this is a sample, not a log.
+Factual lines plus a phrase on manner where there's something to say. Describe *how* it was played; don't rate how much it mattered. Omit freely — this is a sample, not a log.
 
 **In-fiction** — what the characters did
-| Character | Entity | What happened |
-|---|---|---|
-| | | |
+| Character | Entity | What happened | How |
+|---|---|---|---|
+| | | | |
 
 **Table-level** — what the players did, out of character. Stronger signal.
-| Player | Entity | What happened |
-|---|---|---|
-| | | |
+| Player | Entity | What happened | How |
+|---|---|---|---|
+| | | | |
+
+**Roleplaying behavior** — how it was played. Register shifts, emotional tone, unusual care, choices that broke pattern.
+| Player / character | What was notable |
+|---|---|
+| | |
 
 
 ## NPCs involved
