@@ -11,6 +11,48 @@ Companion to [[Information-Architecture]]. That document covers the graph model 
 
 ---
 
+## Two trees
+
+There are two separate structures, and conflating them is the mistake to avoid.
+
+| | **The planning tree** | **The arc tree** |
+|---|---|---|
+| Question it answers | What must I be ready to run? | What carries weight? |
+| Nature | Physical | Emotional |
+| Horizon | The next session or two | The whole campaign |
+| Rooted in | Where the party is now | What the players are invested in |
+| Coverage | Complete — every live branch needs *something* | Selective — only what earns it |
+| Built by | The GM, in advance | The GM and players together, in retrospect |
+| Nodes | Encounters, hazards, locations, mobs | Stakes, choices, consequences, meaning |
+
+The planning tree is about **preparedness**: if the party goes left instead of right, is there something there? It branches on player choice and needs enough coverage that no direction leaves the GM stranded.
+
+The arc tree is about **significance**: which of the things that happened will still matter in ten sessions, and why. It branches on investment and consequence.
+
+They intersect at events, but neither contains the other. An event can sit in both trees, or in the planning tree alone.
+
+### Most events belong to no arc, and that's correct
+
+A corridor fight is a corridor fight. If every encounter were made meaningful, meaning would stop meaning anything — the arc tree would just be a second copy of the planning tree with more adjectives.
+
+Sparseness is a feature. An arc earns its place by resting on something the players actually care about; the rest of play is texture, pacing, and mechanics, and it's supposed to be.
+
+This is a real failure mode worth designing against: a tool that makes it easy to attach things to arcs will encourage attaching everything to arcs.
+
+### Why this matters for Dungeon Crawler Carl specifically
+
+The source material runs on choice, ambiguity, and hard realities — situations with no clean answer where something is lost either way. That only works if the players have something to lose.
+
+The planning tree can produce a difficult *tactical* situation on its own. It cannot produce a hard *choice*. What makes a choice hard is investment, and investment is what the arc tree tracks. **The arc tree is the machinery that turns a tactical problem into a moral one.**
+
+### Design implication
+
+The tool needs both views and shouldn't try to flatten them into a single hierarchy. They have different shapes, different time horizons, and different authors.
+
+The ticket mechanism (see [[Information-Architecture]]) is the bridge: it fires while the GM is working in the planning tree and points at something in the arc tree — *this encounter you're building touches a thread that carries weight; consider raising the stakes.*
+
+---
+
 ## Arcs are co-authored
 
 An arc is not written by the GM and delivered to the players, nor assembled by the players out of nothing. Both sides contribute different things:
@@ -57,7 +99,7 @@ speculative  →  potential  →  used
  not written)    not run)
 ```
 
-A speculative event is a *possibility the GM is holding*, not content. Promoting it to `potential` is the act of actually writing it. This keeps projections cheap — the GM can hold six speculative branches without writing six encounters.
+A speculative event is a *possibility the GM is holding*, not content. Promoting it to `potential` is the act of actually writing it — and is where something crosses from the arc tree into the planning tree. This keeps projections cheap: the GM can hold six speculative branches without writing six encounters.
 
 ### Premises decay
 
@@ -149,7 +191,8 @@ The `Stages / Milestones` table in the current `Template-Arc.md` should be repla
 1. **How much projection history is worth keeping?** Enough to see the shape of divergence, not so much that it becomes an archive nobody reads.
 2. **Should the system propose projections,** or only react to the GM's? Proposing where tension could rise is genuinely useful; proposing a climax may overstep into authoring the story.
 3. **Should the system propose *branches* on an existing projection?** Narrower than proposing a whole projection — "you haven't considered that she might do nothing" — and possibly the more useful version.
-4. **Can an arc resolve unsatisfyingly and stay resolved?** Not every thread earns a climax, and forcing one is its own failure mode.
-5. **Do players ever see that an arc exists** — not its contents, but the fact that something they did became a thread? There's a real argument both ways.
-6. **What happens to a projection when an arc goes dormant?** Frozen as-is, or explicitly marked stale so it isn't trusted on revival?
-7. **Do speculative events that never happen get deleted or kept?** Kept, they're a library of unused ideas; deleted, the projection stays readable.
+4. **Should the system ever resist arc attachment?** If sparseness is a feature, something has to push back on over-attribution — or the GM has to hold that line unaided.
+5. **Can an arc resolve unsatisfyingly and stay resolved?** Not every thread earns a climax, and forcing one is its own failure mode.
+6. **Do players ever see that an arc exists** — not its contents, but the fact that something they did became a thread? There's a real argument both ways.
+7. **What happens to a projection when an arc goes dormant?** Frozen as-is, or explicitly marked stale so it isn't trusted on revival?
+8. **Do speculative events that never happen get deleted or kept?** Kept, they're a library of unused ideas; deleted, the projection stays readable.
