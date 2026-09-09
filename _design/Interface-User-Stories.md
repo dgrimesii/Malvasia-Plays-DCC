@@ -18,13 +18,13 @@ These are settled and shape everything below:
 - **The repo is the database.** The markdown and YAML files are storage, not an interface. Whether that storage format changes is a design-phase decision and has no bearing on these stories.
 - **The interface handles all display.** Neither user group interacts with files, folders, or version control directly. Players never see raw markdown; rendered markdown is a perfectly good display format for them.
 - **Players never touch the repo.** Their access is entirely through the interface.
-- **The GM's synthesis happens elsewhere.** Source PDFs are referenced in Gemini, which produces markdown. The tool picks up once that markdown exists — it is not where broad research or first-draft ideation happens.
+- **Synthesis happens upstream; authoring happens in the tool.** Source PDFs are referenced in Gemini, which produces markdown. That markdown is the *baseline* — once it lands, the tool is where the GM writes, connects, revises, and adds. Broad research and first-draft ideation stay in Gemini; everything after is here.
 
 ---
 
 ## The Users
 
-**The GM (David)** — runs the campaign. Comfortable with markdown, files, and technical tooling. Brings in synthesized planning content from outside and needs to turn it into connected, runnable material. Moves constantly between long-range story thinking and "what do I run in twenty minutes."
+**The GM (David)** — runs the campaign. Comfortable with markdown, files, and technical tooling. Brings in synthesized planning content from outside and turns it into connected, runnable material. Moves constantly between long-range story thinking and "what do I run in twenty minutes."
 
 **The Players (Julia, Amy, Sam)** — play the game. One is comfortable with technical tooling; two are not. They read rendered content and type plain text; neither group ever encounters syntax, files, or structure. They interact a few hours a week, mostly around session time, and should feel like they're consulting a record of their own adventure — not browsing a database.
 
@@ -49,6 +49,15 @@ These are settled and shape everything below:
 - As the GM, I want to find everything connected to a given NPC, faction, zone, or item in one place, regardless of where it's stored.
 - As the GM, I want to see what's still sitting unintegrated, so drafts don't get stranded half-promoted.
 
+### Authoring
+
+- As the GM, I want to capture a note the moment an insight surfaces — while reviewing a connection, mid-integration, or mid-prep — without leaving what I'm doing or deciding where it belongs first.
+- As the GM, I want to write about the *intersection* of two or more things, and have that note reachable from all of them rather than filed under just one.
+- As the GM, I want to make a spot edit to any asset — a line of NPC dialogue, a stake, a disposition — without opening an editing mode or navigating away.
+- As the GM, I want to create a new asset from scratch when something emerges at the table that no synthesis anticipated.
+- As the GM, I want a rough note I wrote earlier to be easy to find and promote into real content later, so quick capture doesn't become a graveyard.
+- As the GM, I want to revise something after it's been made visible to players, and understand what they've already seen.
+
 ### Synthesizing
 
 - As the GM, I want suggested story beats, social interactions, and complications drawn from connections between things already recorded, so the campaign feels interconnected rather than episodic.
@@ -56,7 +65,7 @@ These are settled and shape everything below:
 - As the GM, I want to see what a given player's dossier answers make available as hooks, so backstory gets used rather than filed away.
 - As the GM, I want to ask open questions about the campaign in plain language — "what does the party still not know about the Warrens?" — and get answers grounded in what's recorded.
 
-### Creating
+### Preparing to run
 
 - As the GM, I want to build an encounter by answering prompts for the parts that matter (type, stakes, resolution, branches), so I don't start from a blank page.
 - As the GM, I want to be told when an encounter isn't ready to run — missing stakes, undefined resolution, no failure consequence — before I'm at the table discovering it.
@@ -96,6 +105,7 @@ These are settled and shape everything below:
 - Players see content the GM has explicitly made visible, plus everything they created themselves.
 - A player's own notes are always visible to that player, whatever else changes.
 - Visibility is a deliberate GM action, never a default or a side effect.
+- Anything authored in the tool defaults to GM-only until deliberately revealed.
 - Making something visible is not retroactive to a player's memory — but it should be evident to a player when new material has been revealed since they last looked.
 
 ---
@@ -104,9 +114,10 @@ These are settled and shape everything below:
 
 These need answers before this becomes a build, but not before it becomes a shared understanding.
 
-1. **What happens when a player's note references something they shouldn't know?** A player writing "I think the Warden works for Godpapa John" may be right, and the system shouldn't confirm or deny it.
-2. **Is there a shared party-visible layer** — notes players deliberately publish to each other — or only private notes and GM-revealed content?
-3. **Does the GM see player notes?** Arguments both ways: they're a rich signal about what the table finds interesting, but players may write more freely believing they're unobserved.
-4. **How do players reach this?** Phone at the table, laptop between sessions, or both, changes what the experience should feel like.
-5. **Revealing in bulk.** After a session, several things become known at once. Is that one action or many?
-6. **Does the GM ever author in the tool from scratch,** or does everything originate as synthesized markdown brought in from outside?
+1. **Where does a note about an intersection live?** A GM insight connecting an NPC to a faction to a past session belongs to all three and none of them. Attaching it to one and cross-referencing loses something; duplicating it is worse.
+2. **What happens when a player's note references something they shouldn't know?** A player writing "I think the Warden works for Godpapa John" may be right, and the system shouldn't confirm or deny it.
+3. **Is there a shared party-visible layer** — notes players deliberately publish to each other — or only private notes and GM-revealed content?
+4. **Does the GM see player notes?** Arguments both ways: they're a rich signal about what the table finds interesting, but players may write more freely believing they're unobserved.
+5. **How do players reach this?** Phone at the table, laptop between sessions, or both, changes what the experience should feel like.
+6. **Revealing in bulk.** After a session, several things become known at once. Is that one action or many?
+7. **Does revising revealed content need to be visible to players as a change,** or does the record simply become what it now says?
