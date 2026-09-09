@@ -5,7 +5,8 @@ Planning documents for tooling built *on top of* this repo — not campaign cont
 ## Read in this order
 
 1. **[[North-Star]]** — what the whole thing is for. Decide against this when anything else is unclear.
-2. **[[Interface-User-Stories]]** — what each user needs to be able to do, from their perspective.
-3. **[[Information-Architecture]]** — the graph model: nodes, edges, quests vs. arcs, investment.
-4. **[[Arcs]]** — how arcs behave over a campaign: co-authorship, projection, merging, density.
-5. **[[Canon]]** — how the party's story relates to the written one: proximity, fidelity, divergence.
+2. **[[GM-Considerations]]** — the recurring judgment calls the tool should support but never make.
+3. **[[Interface-User-Stories]]** — what each user needs to be able to do, from their perspective.
+4. **[[Information-Architecture]]** — the graph model: nodes, edges, quests vs. arcs, investment.
+5. **[[Arcs]]** — how arcs behave over a campaign: co-authorship, projection, merging, density.
+6. **[[Canon]]** — how the party's story relates to the written one: proximity, fidelity, divergence.
