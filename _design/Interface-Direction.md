@@ -13,17 +13,17 @@ Settled direction for the GM-facing surface. Companion to [[GM-Considerations]] 
 
 ## Text primary, visualization on demand
 
-The GM interface is **text-first**. Visualizations are generated when asked for, not standing furniture.
+The GM interface is **text-first** for authoring and record. Visualizations are generated when asked for, not standing furniture — with one exception, the table view, described below.
 
-This follows from how the GM works. The mental model is propositional — facts about objects and concepts, addressable directly, without a rendering step. A graph is itself propositional: node–edge–node is subject–predicate–object. `Warden serves Godpapa John` is a fact about an object, needing no picture to be held or reasoned about.
+This follows from how the GM works. The mental model is propositional — facts about objects and concepts, addressable directly, without a rendering step. A graph is itself propositional: node–edge–node is subject–predicate–object.
 
-The current storage format is therefore close to isomorphic with the native representation already. An entity file plus structured facts about it *is* the model, not a serialization of it.
+The current storage format is therefore close to isomorphic with the native representation. An entity file plus structured facts about it *is* the model, not a serialization of it.
 
-But text-primary is about **authority and default**, not about visualization being secondary in value.
+Text-primary is about **authority and default**, not about visualization being secondary in value.
 
 ---
 
-## Visualization has three jobs
+## Visualization has four jobs
 
 Only one of them is display.
 
@@ -33,55 +33,79 @@ A high-bandwidth route into the mental model. A large volume of data enters from
 
 ### 2. Discovery
 
-Structure that would take many sentences to state, and might never be noticed at all, arrives at once. This is where visualization earns the most: the answer to *"what's here that I haven't seen?"*
+Structure that would take many sentences to state, and might never be noticed at all, arrives at once. The answer to *"what's here that I haven't seen?"*
 
 ### 3. Validation
 
-**Human memory is flawed, including good memory.** Detailed internal data drifts, and drift is invisible from the inside.
+**Human memory is flawed, including good memory.** Detailed internal data drifts, and drift is invisible from the inside. A rendered view is a fast comparison surface: bump the internal model against the external record, and mismatches surface immediately.
 
-A rendered view is a fast comparison surface: bump the internal model against the external record, and mismatches surface immediately. That makes correction cheap and quick, instead of a wrong line of thinking running for weeks before something contradicts it.
+### 4. Access key
 
-This is the job with a hard requirement attached.
+This is the one that matters most at the table.
 
-#### Validation requires faithful rendering
+An **imperfect but essentially accurate** visualization works as an index into memory. It doesn't need to contain the information — it needs to reliably *point* at it. Seeing the local structure locates the memory address, and from there relationships are traversed internally at speed.
 
-If a visualization is smoothed, idealized, or helpfully cleaned up, validation breaks — and breaks *silently*. Correct memory gets "corrected" against a prettified picture, which is worse than no check at all.
+The requirement here is different from validation's. An access key needs to be **legible and fast**, not complete. A cluttered but faithful diagram is a good audit and a bad key.
 
-So rendered views must not editorialize:
+---
 
-- **No inferred or suggested edges drawn as established ones.** If the tool proposes a connection, it must be visually distinct from a recorded one — dashed, tinted, labeled. Never blended in.
-- **No hiding weak, sparse, or awkward data.** An auto-layout that drops low-weight edges to reduce clutter is destroying exactly the signal being checked.
-- **Missing data shown as missing.** A gap must look like a gap, not like a tidy diagram.
-- **Uncertainty preserved.** `suspected` edges, `emerging` arcs, and `speculative` events must be visibly distinct from established ones — the same distinction the data model already makes.
-- **Layout may change; content may not.** Rearranging for readability is fine. Omitting for readability is not.
+## The tension: audit versus key
 
-#### A mismatch has two possible causes
+These two jobs pull in opposite directions and cannot be served well by one view.
 
-When the picture and the memory disagree, the memory is not automatically the thing that's wrong. Either:
+| | Audit view | Reference view |
+|---|---|---|
+| Optimizes for | Completeness, fidelity | Legibility, speed |
+| Shows | Everything, including weak and uncertain edges | The strong local structure |
+| Omission | Never — omission destroys the check | Expected — that's what makes it readable |
+| Used | Between sessions, deliberately | At the table, glanced at |
+| Failure if wrong | Silent false correction | Missed hook |
+
+**Both are needed, and they should be distinct modes rather than a compromise.** A single "balanced" view would be a mediocre key and a dangerous audit.
+
+Audit mode keeps every constraint from the validation section: no inferred edges drawn as established, no hiding sparse data, gaps shown as gaps, uncertainty visibly distinct, layout may change but content may not.
+
+Reference mode may simplify freely — as long as it's *labeled* as simplified, so it's never mistaken for the audit.
+
+---
+
+## The table view
+
+The one visualization that stands open rather than being requested.
+
+**Purpose:** when an interaction or event happens, provide an immediate map of nearby hooks worth pulling into play.
+
+**Shape:**
+
+- **Centered on current context** — the zone, scene, or NPC in play right now.
+- **One to two hops out.** Beyond that is noise under time pressure.
+- **Hooks marked distinctly** — unused threads, live arcs, player investments, information not yet revealed, dangling questions. These are the reason the view exists; they should be the most visible thing on it.
+- **Re-centers fast** as the scene moves. A view that takes ten seconds to update is unusable mid-session.
+- **Useful without interaction.** A glance should pay off. Clicking is a bonus, not the mechanism.
+- **Text detail one step away** — the map locates, the record supplies the specifics.
+
+**This is the one place a visualization may be primary rather than on-demand**, because its job is to be glanced at repeatedly during a session where reading isn't possible.
+
+---
+
+### A mismatch has two possible causes
+
+When a view and memory disagree, the memory is not automatically wrong. Either:
 
 - **Memory drifted** — correct the memory.
-- **The record is wrong or stale** — a session that never got written up, an integration that missed something, an edge that was never added.
+- **The record is wrong or stale** — a session never written up, an integration that missed something, an edge never added.
 
-Both are common and the second is easy to overlook. The tool should make acting on either equally easy: correcting the record from the view should be as fast as noticing the discrepancy. A validation surface that can only be read, not corrected, sends the GM off to find the file — and the correction doesn't happen.
+Both are common and the second is easy to overlook. Correcting the record from the view should be as fast as noticing the discrepancy; a read-only validation surface leaks errors back into the record.
 
 ### Two encodings, different profiles
 
 | | Text | Visualization |
 |---|---|---|
 | Bandwidth | Sequential, precise | High-volume, parallel |
-| Best for | Authoring, editing, exact attributes, addressability | Discovery, topology, clustering, gaps, validation |
-| Role | Canonical record | Route in, source of fact, and error-detection surface |
+| Best for | Authoring, editing, exact attributes | Discovery, topology, validation, memory access |
+| Role | Canonical record | Route in, fact source, error detection, index |
 
 Neither is a lossy version of the other. Same propositions, different encodings.
-
-### What follows
-
-- **Text is canonical for authoring and record.**
-- **Visualization is a first-class epistemic tool** — how non-obvious structure gets found and how drift gets caught.
-- **Multiple layouts of the same data are worth building.** Force-directed, hierarchical, timeline, and clustered views reveal different things — the 2D equivalent of rotating a 3D structure, not redundancy.
-- **Rendered on request, at a chosen scope.**
-- **Corrections can be made from the view**, not only from the file.
-- **Never a required intermediary.** Nothing reachable *only* by clicking a node.
 
 ---
 
@@ -89,11 +113,11 @@ Neither is a lossy version of the other. Same propositions, different encodings.
 
 An earlier draft of [[GM-Considerations]] treated sensory description as translation work outside the GM's native mode. That was wrong.
 
-This GM describes worlds in words natively — and describes them *precisely*: where things sit relative to one another, what colors and shapes are present, how a space is composed. Seeing an image yields a detailed set of data points about it. That is description, and a strong form of it: relational and concrete rather than impressionistic.
+This GM describes worlds in words natively — and describes them *precisely*: where things sit relative to one another, what colors and shapes are present, how a space is composed. That is description, and a strong form of it: relational and concrete rather than impressionistic.
 
 For a table, the relational mode is arguably the more useful one. Players assemble their own mental picture more reliably from spatial relationships and concrete attributes than from atmosphere.
 
-So description belongs in the tool for the same reason everything else does: **latency, not difficulty.** Prepared descriptive text for locations, NPCs, and set pieces is retrieval-ready material — one less thing to compose mid-sentence while three people wait. The `READ ALOUD` convention already does this for dialogue; extending it to place and person is the same move.
+Description belongs in the tool for the same reason everything else does: **latency, not difficulty.** Prepared descriptive text for locations, NPCs, and set pieces is retrieval-ready material — one less thing to compose mid-sentence while three people wait.
 
 ---
 
@@ -103,13 +127,14 @@ So description belongs in the tool for the same reason everything else does: **l
 |---|---|
 | Entity records | Structured text — facts, attributes, typed relationships |
 | Prep view | Text: opening beats, live branches, likely NPCs, prepared description |
-| At-the-table retrieval | Text, fast, searchable |
+| **At the table** | **Reference visualization, open; text detail one step away** |
+| At-the-table lookup | Text, fast, searchable |
 | Authoring and editing | Text, or inline from a view |
-| Finding non-obvious structure | Visualization — this is where it earns the most |
-| Checking the record against memory | Visualization, rendered faithfully |
+| Finding non-obvious structure | Visualization, discovery mode |
+| Checking record against memory | Visualization, audit mode — faithful, complete |
 | Graph topology, clusters, gaps | Rendered on request, scoped, multiple layouts |
 | State machines and lifecycles | Rendered on request |
 | Temporal diffs and trajectories | Rendered on request |
 | Coverage and readiness | Text statement first; visual if scale makes it clearer |
 
-The default *presentation* is text. But when the question is "what's here that I haven't noticed" or "does this match what I think is true," reach for a rendering — those are jobs reading does badly.
+Away from the table, the default presentation is text. At the table, a reference map is the front door and the text is what it opens onto.
