@@ -29,32 +29,65 @@ Design context, stated plainly so the tool can be built for the actual person us
 
 **The drive toward systems, processes, and detail is a given.** It isn't going to be moderated by willpower, and shouldn't be — it's also why the campaign has a coherent structure at all. The tool's job is to be a *container* for it: somewhere the depth can go productively, with a clear edge.
 
-**Two failure modes, and they're the same failure.** Feeling unprepared at the table is the worst outcome. Investing days in a branch the party never takes is also a bad outcome. Both come from the same missing thing: **no reliable signal for when preparation is sufficient.** Without that signal, the only strategies available are prepare-forever or accept-anxiety.
+**Recall is strong.** Full character sheets reconstructed from memory an hour after creation — backgrounds, skills, stats, equipment choices. Major storylines from a two-year campaign retained without notes.
 
-So the single most valuable thing this tool can provide is **a defensible definition of done.**
+**Cognition is systemic, not visual.** Aphantasia: no mental imagery. Everything is held as processes, structures, and relationships rather than pictures.
+
+Both of these change what the tool is for.
+
+### The tool is not primarily an external memory
+
+If recall is reliable, "I forgot" is not the failure mode being designed against. The failure is **"I couldn't have noticed."**
+
+A campaign accumulates entities faster than any memory can cross-reference them. Remembering forty NPCs is achievable; noticing that three of them are related *and* the party has independently interacted with all three *and* one appears in next session's planned encounter is combinatorial, not mnemonic. No amount of good memory does that reliably under time pressure.
+
+So the tool's value is **computation over what's already known**, not storage of what might be forgotten:
+
+- Cross-referencing at a scale that exceeds working memory
+- Detecting staleness — which projections rest on premises that have since changed
+- Surfacing non-obvious intersections
+- Guaranteeing coverage, so readiness is confirmed rather than felt
+
+Retrieval speed still matters, but for a narrower reason: recall under time pressure at the table, mid-sentence, is different from recall in general. The tool covers the pressure case, not a deficit.
+
+**Corollary:** the tool should not spend effort re-explaining things the GM already knows. Summaries of one's own campaign are noise. Show what changed, what's new, and what wasn't noticeable — not what's already held.
+
+### Systemic representation is the native format
+
+The graph model in [[Information-Architecture]] isn't an arbitrary structuring choice — it matches how this GM already thinks. Typed relationships, states, conditional branches, and derived views are the native encoding. That's a strong signal the direction is right, and a reason to keep the tool's *internal* representation structural rather than narrative.
+
+Two consequences worth being deliberate about:
+
+**Sensory description is not the native output, and the players want it.**
+Locations and NPCs get encoded here as function, relationship, and mechanics. What a place *looks, smells, and sounds like* is a separate act of translation — and it's what makes the world feel real to the people at the table.
+
+This makes descriptive text a genuine tool responsibility rather than decoration: hold sensory detail for locations and NPCs as prepared material, ready to read or paraphrase. The `READ ALOUD` convention already in use is exactly this, and its value is now explained rather than incidental. Worth extending beyond dialogue to place and person description.
+
+**Whether visual outputs help is an open question, not a settled one.**
+Aphantasia doesn't imply visual artifacts are useless — an external map may be *more* valuable precisely because there's no internal one to consult. But it does mean a graph visualization or a map is unlikely to feel like a shortcut to comprehension the way it might for someone who thinks in images.
+
+Best treated empirically: build the structural views first, since those are certainly useful, and test whether visual ones add anything before investing in them.
 
 ### Preparedness needs a definition of done
+
+Two failure modes, and they're the same failure. Feeling unprepared at the table is the worst outcome. Investing days in a branch the party never takes is also bad. Both come from **no reliable signal for when preparation is sufficient** — without which the only strategies are prepare-forever or accept-anxiety.
 
 Readiness is a coverage question, not a depth question:
 
 > Every live branch the party could plausibly take next session has *something* behind it.
 
-That's checkable. Not "is this good enough" — an unbounded question with no answer — but "does every open path have a node," which terminates.
+That's checkable. Not "is this good enough" — unbounded, no answer — but "does every open path have a node," which terminates.
 
-What follows from that:
-
-- **Coverage is the metric, depth is optional.** A branch with three lines behind it is covered. Making it excellent is a choice, not a requirement.
-- **The tool should be able to say the words.** *You are prepared for the next session.* Stated plainly, backed by what it checked. That sentence is the deliverable.
-- **Prep beyond the covered set should be visibly optional** — clearly marked as elective rather than incomplete, so continuing is a choice rather than an obligation.
-- **The `speculative` tier exists for exactly this.** Six held possibilities cost almost nothing; six authored encounters cost days. Detail belongs after the party commits to a direction, not before.
+- **Coverage is the metric, depth is optional.** A branch with three lines behind it is covered. Making it excellent is a choice.
+- **The tool should be able to say the words.** *You are prepared for the next session*, backed by what it checked. That sentence is the deliverable.
+- **Prep beyond the covered set should be visibly optional** — marked elective rather than incomplete.
+- **The `speculative` tier exists for exactly this.** Six held possibilities cost almost nothing; six authored encounters cost days.
 
 ### Reacting at the table is retrieval, not preparation
 
-Deep preparation is often compensation for slow retrieval. If the right detail can be found in seconds mid-session, less needs to be pre-written — improvisation is grounded in what's already recorded rather than invented from nothing.
+Deep preparation is often compensation for slow retrieval. If the right detail can be found in seconds mid-session, less needs pre-writing — improvisation is grounded in what's recorded rather than invented cold.
 
-This means **retrieval speed directly reduces required prep volume.** It's the highest-leverage capability in the whole tool for this GM specifically, and it's already noted as a latency requirement in [[North-Star]].
-
-The corollary: unanticipated player choices become far less threatening. The failure isn't "I didn't plan for this" — it's "I can't reach what I know while they're waiting."
+**Retrieval speed directly reduces required prep volume.** The corollary: an unanticipated choice stops being "I didn't plan for this" and becomes "can I reach what I already know while they wait."
 
 ---
 
@@ -66,7 +99,7 @@ Design targets, not incidentals. These are payoffs the tool should actively serv
 
 The debrief is part of the fun — telling the table what was really going on, what nearly happened, how close they came.
 
-This adds a feature that the rest of the design didn't anticipate. [[Arcs]] states that projections are never shown to players — **that's true only while they're live.** After resolution, the projection becomes the best possible debrief material:
+This adds a feature the rest of the design didn't anticipate. [[Arcs]] states that projections are never shown to players — **that's true only while they're live.** After resolution, the projection becomes the best possible debrief material:
 
 > Here's what I thought you'd do. Here's what I'd built for the other branch. Here's the version where you didn't save him.
 
@@ -160,6 +193,7 @@ Everything live has something behind it. The urge to keep going is present anywa
 - **Make the GM feel behind.** A dashboard of unresolved threads and undeveloped arcs becomes a guilt engine. Show what's useful now.
 - **Leave readiness ambiguous.** If it can't say whether the next session is covered, it has failed at its primary job.
 - **Treat elective prep as incomplete work.** Optional depth must look optional, or every session appears unfinished.
+- **Re-explain what the GM already knows.** Summaries of one's own campaign are noise. Show what changed, what's new, what wasn't noticeable.
 - **Remove uncertainty from the GM's own experience.** Some things should stay unknown until the table discovers them together.
 - **Reduce prep to compliance.** Checklists that must be completed turn a creative act into paperwork.
 - **Discard unused material.** Abandoned branches are debrief material and future reuse, not waste.
