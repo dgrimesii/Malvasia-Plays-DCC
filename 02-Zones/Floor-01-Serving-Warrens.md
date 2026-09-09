@@ -14,6 +14,8 @@ tags: []
 **Setting:** Tunnels, Cold Halls, Sewers
 **Quest Arc:** [[Arc-Food-is-Love|Food is Love (Godpapa John & Godmama Mia)]]
 
+See [[System-Reference]] for Degrees of Success, Encounter Math, and resolution heuristics.
+
 ## Party Roster
 * **Mitch "Z" Vanderzee** (Sam) — Bruiser / Improvised Weapons (Tire Iron)
 * **Hilda** (Amy) — Trick Archery / Stealth / Grifter (Recurve Bow, 0 DR)
@@ -23,14 +25,25 @@ tags: []
 Entered via the Threshold sequence in Session 1 — see [[2026-09-09-Session-01-Prep]].
 
 ## Encounter Rules
-**Encounter Math (Party of 3):** Weak = 2 Mobs | Moderate = 3 Mobs | Strong = 5 Mobs
-**Floor Stat Modifier (+F):** Add +1 to all Mob hit checks, Evade target numbers, and Surprise values.
+**This floor:** Party of 3 | Floor Stat Modifier (+F) = +1 (added to Mob hit checks, Evade target numbers, and Surprise values)
 
 ## Notable Locations
 
 
-## Encounters / Hazards
+## Encounters
 
+<!-- Copy this block per encounter. Type: combat | social | skill -->
+### [Encounter Name]
+- **Type:** 
+- **Trigger:** 
+- **Participants:** 
+- **Stakes:** 
+- **Resolution Detail:** flat / 3-tier / full-ladder
+- **Resolution:** 
+- **Standard Success:** 
+- **Standard Failure:** 
+- **Escalates On:** 
+- **Escalates To:** 
 
 ## NPCs Present
 - [[]]

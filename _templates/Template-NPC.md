@@ -21,6 +21,11 @@ tags: []
 ## Motivations
 
 
+## Roleplay Hooks
+- **Voice/Mannerisms:**
+- **What they'd bring up:**
+- **Current want:**
+
 <!-- visibility:gm -->
 ## Secrets (GM only)
 

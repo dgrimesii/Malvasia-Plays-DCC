@@ -10,7 +10,16 @@ tags: []
 
 # Session {{session_number}} — {{date}}
 
-## Recap
+## Plan
+(scripted beats, READ ALOUD blocks — what you intend to run)
+
+### Social Beats
+| NPC | Motivates Them | Likely Approach | Possible Directions |
+|---|---|---|---|
+
+---
+
+## Recap (fill in after the session)
 
 
 ## Key Events
