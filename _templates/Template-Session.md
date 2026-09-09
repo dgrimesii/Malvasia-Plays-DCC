@@ -32,24 +32,24 @@ tags: []
 
 ## Interaction facts
 
-Factual lines plus a phrase on manner where there's something to say. Describe *how* it was played; don't rate how much it mattered. Antipathy counts as much as affection. Omit freely — this is a sample, not a log.
+Factual lines. Add manner only where there's something to say — **most rows won't have any, and that's correct.** Don't rate significance. Antipathy counts as much as affection. Omit freely; this is a sample, not a log. Empty tables are a valid record.
 
 **In-fiction** — what the characters did
-| Character | Entity | What happened | How |
+| Character | Entity | What happened | How (often blank) |
 |---|---|---|---|
 | | | | |
 
-**Table-level** — what the players did, out of character. Usually the strongest signal, and the easiest to miss: it won't come out of writing the recap. Prompt yourself — who sighed, who conferred before acting, who raised something after the scene had ended?
-| Player | Entity | What happened | How |
+**Table-level** — what the players did, out of character. Usually the strongest signal, and the easiest to miss: it won't come out of writing the recap. Prompt yourself — who conferred before acting, who raised something after the scene had ended?
+| Player | Entity | What happened | How (often blank) |
 |---|---|---|---|
 | | | | |
 
-**Roleplaying behavior** — register shifts, emotional tone, unusual care, choices that broke pattern, reaching for their own dossier background.
+**Roleplaying behavior** — only when something departed from that player's own norm. A quiet player staying quiet is not a signal; a quiet player becoming animated is. Never read low expressiveness as low investment.
 | Player / character | What was notable |
 |---|---|
 | | |
 
-**Resurfaced unprompted** — anything from an earlier session they returned to on their own. The strongest single signal.
+**Resurfaced unprompted** — anything from an earlier session they returned to on their own. The strongest single signal, and it works regardless of how demonstrative the player is.
 | Who | Entity | From when | What they said or did |
 |---|---|---|---|
 | | | | |
