@@ -47,7 +47,7 @@ Nodes have attributes — largely what's in frontmatter today (`type`, `status`,
 The planning tiers are not the same kind of thing, and conflating them is what made the Zone/Arc relationship feel awkward:
 
 - **Zone** — *where*. A place. People and things exist there; events happen there. It has its own attributes (hazards, floor modifier, layout) that are true regardless of any storyline.
-- **Arc** — *why it matters*. A narrative thread. It has no inherent location.
+- **Arc** — *why it matters*. A narrative thread carrying real stakes. It has no inherent location.
 - **Event** — *what happened*. An encounter, a scene, a revelation. This is the thing that has both a place and a meaning.
 - **Session** — *when, in the real world*. A timebox containing the events the players experienced through their characters. Not a fictional occurrence; a container.
 
@@ -66,33 +66,49 @@ This also means a Zone can host events from several unrelated storylines without
 
 ## Quest and Arc are different things
 
-They have been conflated so far — the existing `Arc-Food-is-Love.md` is labeled "Quest Arc," straight from the source synthesis. They need separating.
+They have been conflated so far — the existing `Arc-Food-is-Love.md` is labeled "Quest Arc," straight from the source synthesis. "Food is Love" is a **quest**, not an arc.
 
 | | **Quest** | **Arc** |
 |---|---|---|
-| Nature | A pre-defined objective | An emergent story thread |
-| Origin | Authored, assigned, or discovered | Recognized in hindsight |
-| State | Completable: `not started` / `active` / `complete` / `failed` | Never "completed" — it develops, resolves, or is abandoned |
+| Nature | An assignment | A narrative thread with stakes |
+| Origin | Authored, assigned, or discovered | Emerges from play |
+| State | Completable: `not started` / `active` / `complete` / `failed` | Develops, resolves, or goes dormant |
 | Boundaries | Known at creation | Only clear in retrospect |
-| Player-facing | Usually yes — players know they have a quest | Usually not — this is GM sense-making |
+| Player-facing | Usually yes — players know they have a quest | Usually not named — but felt |
 | Required? | A quest need not belong to any arc | An arc need not contain any quest |
+| Can be authored? | Yes, fully | **No** — only its conditions can be set up |
 
-**Quests are objects.** They have objectives, success and failure conditions, and rewards. They behave like encounters: concrete, resolvable, and knowable in advance.
+**Quests are assignments.** Objectives with success and failure conditions and rewards. Concrete, resolvable, knowable in advance. They behave like encounters.
 
-**Arcs are interpretations.** If an RPG is collective storytelling, arcs are the storylines being built — recognized as they emerge from what the table actually does, not planned in advance and executed. They function as *narrative hints for the GM*, shaping what to plan next rather than dictating it.
+**Arcs require stakes the players actually feel.** An arc is not merely a thread connecting things — connection alone is just continuity. An arc exists when something the players are *invested in* is placed at risk, and a choice about it carries weight. That investment cannot be authored, because player attachment cannot be authored.
+
+### How an arc is born
+
+The worked example:
+
+1. A quest is assigned — deal with the rats on Floor 1. Purely an assignment.
+2. Something unplanned happens: the party bonds with one of the rats. The GM did not write this; it emerged at the table.
+3. Sessions later, that rat reappears on another floor, in peril.
+4. The party must choose whether to save it or let it die. **The choice has weight because of step 2.**
+
+Only at step 4 does an arc exist. Steps 1 and 3 are authored; step 2 is not; and without step 2, step 4 is just an encounter.
+
+The GM's actual leverage is in noticing step 2 and *engineering step 3* — setting up the conditions for weight, then letting the table supply the meaning.
 
 ### Consequences
 
-- An arc's membership grows over time. An event that seemed incidental three sessions ago can be recognized as part of a thread later — which means **arc membership must be assignable retroactively**, without rewriting the event.
-- Arcs should not have a `status` that implies a lifecycle of planned stages. Something looser — `forming` / `developing` / `resolving` / `dormant` — fits how they actually behave.
+- **Arc membership must be assignable retroactively.** An event that seemed incidental three sessions ago can be recognized as part of a thread later, without rewriting the event.
+- **Arcs cannot be planned into existence**, only prepared for. A GM can hope for one and build the conditions; whether it becomes an arc is decided at the table.
+- Arcs shouldn't carry a `status` implying planned stages — that's quest behavior. Something looser fits: `forming` / `developing` / `resolving` / `dormant`.
 - A quest can be completed while the arc it fed continues.
-- **This is where AI assistance is most valuable.** Noticing that four scattered events form an unremarked thread is exactly the pattern-finding a GM can't easily do by hand across months of play, and exactly what a graph makes tractable.
+- **Player investment is a first-class signal.** What the party names, returns to, protects, jokes about, or asks after is the raw material of arcs. If the tool tracks anything about players beyond their sheets, it should track this.
+- **This is where AI assistance is most valuable.** Two distinct jobs: surfacing candidate investments ("the party has mentioned this rat unprompted in three sessions"), and proposing where a callback would carry weight. Neither is doable by hand across months of play; both are cheap on a graph.
 
 ### Not everything routes through events
 
 Some relationships are genuinely direct and shouldn't be forced through an event:
 
-- `NPC --key_figure_in--> Arc` — Godpapa John belongs to the Food is Love thread whether or not he has yet appeared in a scene.
+- `NPC --key_figure_in--> Arc` — a figure can belong to a thread before appearing in a scene.
 - `NPC --member_of--> Faction`
 - `NPC --located_in--> Zone` — where someone habitually is, independent of any event.
 
@@ -108,7 +124,7 @@ Both ends should surface the relationship, but not identically. Standing on the 
 - **Backlinks stop being manual.** Traversal in either direction is free.
 - **Visibility gets finer.** "Players know the Warden exists, and know the Convergence exists, but don't know he works for them" becomes expressible — which the current file-level `visibility` flag cannot say at all.
 - **Continuity checking becomes possible.** Contradictions are easier to spot on a graph than across prose.
-- **Emergent threads become discoverable.** "These events are two hops apart via an unremarked path" is a concrete thing to surface — and is how arcs get found.
+- **Emergent threads become discoverable.** Investment signals and unremarked connections are both graph queries — and are how arcs get found.
 - **Arcs stay portable.** A storyline isn't pinned to a floor, so it can resurface anywhere without contradiction.
 
 ## Consequences for the current templates
@@ -116,10 +132,10 @@ Both ends should surface the relationship, but not identically. Standing on the 
 The live templates encode the flattened version and would need revising if this model is adopted:
 
 - `Template-Zone.md` has an `arc:` frontmatter field — under this model that's derived, not stored, and should come off.
-- `Template-Arc.md` has `zones: []` and a `Stages / Milestones` table — both assume a planned lifecycle. Derived membership and a looser status fit better.
+- `Template-Arc.md` has `zones: []` and a `Stages / Milestones` table — both assume a planned lifecycle. Derived membership and a looser status fit better. It also needs somewhere to record *what the stakes are and whose investment they rest on*.
 - **There is no Quest template.** One is needed — objective, success/failure conditions, reward, state.
-- Encounter blocks need `Advances:` (quest) and `Contributes To:` (arc) — currently an encounter records where it happens but not what it serves.
-- `Arc-Food-is-Love.md` is currently both a quest and an arc and should be split.
+- Encounter blocks need `Advances:` (quest) and `Contributes To:` (arc).
+- `Arc-Food-is-Love.md` should be reclassified as a quest.
 
 Not yet applied — flagged pending a decision.
 
@@ -136,9 +152,10 @@ No decision needed now. What matters is that the *model* is a directed attribute
 ## Open questions
 
 1. **How closed is the edge vocabulary?** Too small and it can't express the campaign; too open and it stops being queryable.
-2. **Can an event contribute to an arc without the GM saying so** — i.e. are suggested arc memberships surfaced automatically, or only on request?
-3. **Do edges need their own history,** or only their current state?
-4. **Are Notes nodes or edges?** A note about one thing is a node; a note about an intersection is an edge attribute. Possibly both, possibly a node that can attach to an edge.
-5. **Does a node's visibility cascade to its edges,** or are they independent? Independent is more expressive and more work.
-6. **What happens to an edge when a node is deleted or merged?**
-7. **Are player-facing quests and GM-facing quests the same object** with a visibility flag, or genuinely different?
+2. **How is player investment recorded?** It's the precondition for arcs, but it's a soft signal — observed at the table, not a mechanical outcome. Does the GM log it deliberately, or is it inferred from session notes?
+3. **Can an event contribute to an arc without the GM saying so** — are candidate memberships surfaced automatically, or only on request?
+4. **Do edges need their own history,** or only their current state?
+5. **Are Notes nodes or edges?** A note about one thing is a node; a note about an intersection is an edge attribute.
+6. **Does a node's visibility cascade to its edges,** or are they independent?
+7. **What happens to an edge when a node is deleted or merged?**
+8. **Are player-facing quests and GM-facing quests the same object** with a visibility flag, or genuinely different?
