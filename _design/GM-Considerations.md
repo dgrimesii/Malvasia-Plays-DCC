@@ -31,11 +31,11 @@ Design context, stated plainly so the tool can be built for the actual person us
 
 **Recall is strong.** Full character sheets reconstructed from memory an hour after creation — backgrounds, skills, stats, equipment choices. Major storylines from a two-year campaign retained without notes.
 
-**Cognition is systemic, not visual.** Aphantasia: no mental imagery. Everything is held as processes, structures, and relationships rather than pictures.
-
 **Professional grounding is directly relevant.** Career built at the intersection of software engineering, process engineering, and data flow — applying all three to hard real problems. The GM is both the user and the builder of this tool, and design documents can assume full technical fluency.
 
-These change what the tool is for.
+**The mental model is a temporal graph.** Aphantasia — no pictorial imagery — but that's an absence of *pictures*, not an absence of spatial structure. The working representation is a graph interacting with process flow across four dimensions: clearly defined concepts, their interactions, their branches, and how all of it changes over time.
+
+This is the most important design input in the document, and it's addressed below.
 
 ### The tool is not primarily an external memory
 
@@ -54,9 +54,26 @@ Retrieval speed still matters, but for a narrower reason: recall under time pres
 
 **Corollary:** the tool should not spend effort re-explaining things the GM already knows. Summaries of one's own campaign are noise. Show what changed, what's new, and what wasn't noticeable — not what's already held.
 
-### Systemic representation is the native format
+### Time is the fourth dimension, and most views are missing it
 
-The graph model in [[Information-Architecture]] isn't an arbitrary structuring choice — it matches how this GM already thinks. Typed relationships, states, conditional branches, and derived views are the native encoding. That's a strong signal the direction is right, and a reason to keep the tool's internal representation structural rather than narrative.
+The graph model in [[Information-Architecture]] matches the native representation — but a static graph is only three of the four dimensions. The mental model includes evolution: how topology and state change session over session.
+
+This unifies things the design has been treating separately:
+
+| Time | What it holds | Already in the model as |
+|---|---|---|
+| **Past** | Established edges, resolved events, what actually happened | Session records, `used` encounters, evidence |
+| **Present** | Current node states, live branches, active arcs | Coverage, `potential` encounters, established arcs |
+| **Future** | Projected branches with likelihoods | Projections, `speculative` events |
+
+**A projection is not a separate artifact from the graph — it's the graph's forward cone.** Premise decay is what happens when the past changes underneath a future branch. Divergence is the future cone collapsing to one realized path. Same structure, read at different times.
+
+What this asks for in practice:
+
+- **Views should be scrubable, not static.** "Show the graph as of Session 3" and "show it now" are the same view at different t.
+- **Diffs are a first-class output.** What changed since last session is more useful than the current state alone — and matches the "don't re-explain what I know" rule exactly.
+- **Trajectory matters more than snapshot.** An arc gaining evidence and one going dormant look identical in a still image and completely different over time.
+- **The forward cone should be renderable.** Branching projections with likelihood weights, shown as structure rather than prose — and after resolution, this is the debrief artifact.
 
 ### Structural visualization is high-value; pictorial representation is not
 
@@ -68,8 +85,9 @@ The distinction that matters is *what* is being visualized:
 |---|---|
 | Entity graphs — nodes, typed edges, clusters | Character portraits |
 | State machines — arc and encounter lifecycles | Scene illustration |
-| Flow diagrams — planning-tree branches, escalation paths | Mood and atmosphere imagery |
+| Flow diagrams — branches, escalation paths, forward cones | Mood and atmosphere imagery |
 | Timelines — canon proximity, session sequence | Anything conveying "what it looks like" |
+| Temporal diffs — what changed between sessions | |
 | Density and coverage views — pacing, readiness | |
 
 Structural views should be built as first-class outputs, not decoration. Pictorial material still matters — but for the players, not the GM.
@@ -95,6 +113,8 @@ That's checkable. Not "is this good enough" — unbounded, no answer — but "do
 - **Prep beyond the covered set should be visibly optional** — marked elective rather than incomplete.
 - **The `speculative` tier exists for exactly this.** Six held possibilities cost almost nothing; six authored encounters cost days.
 
+Coverage is a property of the forward cone at t+1: every branch reachable next session has a node behind it.
+
 ### Reacting at the table is retrieval, not preparation
 
 Deep preparation is often compensation for slow retrieval. If the right detail can be found in seconds mid-session, less needs pre-writing — improvisation is grounded in what's recorded rather than invented cold.
@@ -117,7 +137,7 @@ This adds a feature the rest of the design didn't anticipate. [[Arcs]] states th
 
 So speculative events and abandoned branches shouldn't be deleted when they go unused. They're the raw material for the reveal. A `revealed` state for retired projections would let them move from GM-only into shared history without losing the record of what was secret when.
 
-A rendered branch diagram of what *could* have happened, shown after the fact, is likely the strongest form this takes.
+The strongest form this takes: **the collapsed forward cone, rendered.** The branches that existed at the decision point, the weights assigned, and the single path taken — shown after the fact.
 
 ### Storyline reveal and payoff
 
@@ -208,6 +228,7 @@ Everything live has something behind it. The urge to keep going is present anywa
 - **Leave readiness ambiguous.** If it can't say whether the next session is covered, it has failed at its primary job.
 - **Treat elective prep as incomplete work.** Optional depth must look optional, or every session appears unfinished.
 - **Re-explain what the GM already knows.** Summaries of one's own campaign are noise. Show what changed, what's new, what wasn't noticeable.
+- **Show state without trajectory.** A snapshot hides whether something is building or dying. Where it matters, show the change.
 - **Remove uncertainty from the GM's own experience.** Some things should stay unknown until the table discovers them together.
 - **Reduce prep to compliance.** Checklists that must be completed turn a creative act into paperwork.
 - **Discard unused material.** Abandoned branches are debrief material and future reuse, not waste.
