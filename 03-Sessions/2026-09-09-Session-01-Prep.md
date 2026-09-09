@@ -4,6 +4,7 @@ session_number: 1
 date: 
 zone: Floor-01-Serving-Warrens
 arc: Food-is-Love
+source: gemini-synthesis
 visibility: gm
 tags: [prep]
 ---

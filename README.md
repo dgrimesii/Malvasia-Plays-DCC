@@ -15,6 +15,16 @@ GM planning happens at three nested scopes, each contained in the one above it:
 
 Zones and Sessions cross-reference which Arc they serve via an `arc:` frontmatter field; Arcs list which Zones (`zones:`) they touch.
 
+## Workflow: Synthesis → Integration
+
+Planning content is synthesized externally before it reaches this repo:
+
+1. Official source PDFs live in Google Drive.
+2. A Gemini Notebook references them and produces synthesized planning content, written directly as Markdown.
+3. That output lands untouched in `_working/` via `_templates/Template-Intake.md`.
+4. The GM cross-references it against existing NPCs, Arcs, Zones, and Sessions, then splits/promotes the relevant pieces into the real canon folders (00–08), linking as it goes.
+5. The intake file is marked `status: integrated` or deleted once nothing of value remains outside the canon files.
+
 ## Structure
 
 - `00-Campaign/` — campaign overview, timeline, house rules
@@ -26,7 +36,8 @@ Zones and Sessions cross-reference which Arc they serve via an `arc:` frontmatte
 - `06-Factions/` — factions and organizations
 - `07-Items-Loot/` — notable items, artifacts, and rewards
 - `08-GM-Notes/` — secrets, plot threads, showrunner-eyes-only material
-- `_templates/` — starter templates for new Arcs, NPCs, Zones, Factions, and Sessions
+- `_templates/` — starter templates for new Arcs, NPCs, Zones, Factions, Sessions, and Intake
+- `_working/` — landing zone for synthesized content awaiting integration (not canon)
 - `assets/` — maps and reference images
 
 ## Conventions
@@ -34,6 +45,7 @@ Zones and Sessions cross-reference which Arc they serve via an `arc:` frontmatte
 - Every file uses YAML frontmatter (`type`, `status`, `tags`, etc.) so entries can be queried later by tools like Obsidian's Dataview/Bases, or any custom navigation tool.
 - File names are prefixed by type (`Dossier-`, `Arc-`, `NPC-`, `Zone-`/`Floor-`, `Faction-`, `Session-`) for predictable searching and globbing.
 - Text meant to be read verbatim at the table is wrapped in a blockquote starting `> **READ ALOUD`, so it's easy to spot mid-session.
+- An optional `source:` frontmatter field records provenance (e.g. `gemini-synthesis`) for content that passed through the intake workflow above.
 
 ## Visibility & Access Control
 

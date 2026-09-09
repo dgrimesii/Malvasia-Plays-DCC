@@ -4,6 +4,7 @@ name: Serving Warrens
 floor: 1
 status: in-progress
 arc: Food-is-Love
+source: gemini-synthesis
 visibility: gm
 tags: []
 ---
