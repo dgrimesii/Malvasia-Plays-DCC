@@ -131,10 +131,25 @@ Properties that make this work:
 - **Proposes, never applies.** It may suggest raising stakes or attaching to an arc; it does neither on its own.
 - **Dismissible with memory.** A rejected ticket shouldn't return every time the same entity comes up.
 
+## The arc lifecycle — and the inversion
+
+An arc's relationship to planning reverses once it's established.
+
+**Before establishment — arcs are discovered.** Events accumulate, investment builds, and the thread is recognized in hindsight. Causality runs *events → arc*. The system's job is noticing.
+
+**After establishment — arcs drive planning.** The arc becomes a lens the GM plans through: what does this thread need next, who's owed a reappearance, where would pressure land hardest. Causality runs *arc → events*. The system's job shifts from noticing to serving.
+
+The same node, two directions, depending on where it is in its life. That has consequences:
+
+- **An arc file must work as a prep surface, not just a record.** Once established it's something the GM opens *before* planning a session, alongside the zone and the session doc.
+- **Flagging becomes deliberate.** Post-establishment, the GM attaches new events, quests, NPCs, and items to the arc as an intentional act — no inference required, no ticket needed.
+- **Inference doesn't stop being useful**, but it changes register: less "is there a thread here," more "this new element connects to an established thread you may not have noticed."
+- **Arcs can go dormant and return.** A thread that stops receiving events isn't dead; it's waiting. Dormancy should be visible so the GM can decide whether to revive or let it rest.
+
 ### Consequences
 
 - **Arc membership must be assignable retroactively.** An event that seemed incidental three sessions ago can be recognized as part of a thread later, without rewriting the event.
-- **Arcs cannot be planned into existence**, only prepared for and declared as intent.
+- **Arcs cannot be planned into existence**, only prepared for and declared as intent — but once they exist, they absolutely can be planned *from*.
 - Arcs shouldn't carry a `status` implying planned stages — that's quest behavior. Something looser fits: `forming` / `developing` / `resolving` / `dormant`.
 - A quest can be completed while the arc it fed continues.
 - Session records need to capture *meaningful interaction*, not just events — otherwise there's nothing for inference to run on.
@@ -161,6 +176,7 @@ Both ends should surface the relationship, but not identically. Standing on the 
 - **Visibility gets finer.** "Players know the Warden exists, and know the Convergence exists, but don't know he works for them" becomes expressible — which the current file-level `visibility` flag cannot say at all.
 - **Continuity checking becomes possible.** Contradictions are easier to spot on a graph than across prose.
 - **Emergent threads become discoverable.** Investment clustering and unremarked connections are both graph queries — and are how arcs get found.
+- **Established arcs become plannable.** Once a thread exists, "what does it need next" is a traversal, not a memory exercise.
 - **Arcs stay portable.** A storyline isn't pinned to a floor, so it can resurface anywhere without contradiction.
 
 ## Consequences for the current templates
@@ -168,7 +184,7 @@ Both ends should surface the relationship, but not identically. Standing on the 
 The live templates encode the flattened version and would need revising if this model is adopted:
 
 - `Template-Zone.md` has an `arc:` frontmatter field — under this model that's derived, not stored, and should come off.
-- `Template-Arc.md` has `zones: []` and a `Stages / Milestones` table — both assume a planned lifecycle. It also needs somewhere to record *what the stakes are, whose investment they rest on*, and whether the arc is intended or realized.
+- `Template-Arc.md` has `zones: []` and a `Stages / Milestones` table — both assume a planned lifecycle. It needs somewhere to record *what the stakes are, whose investment they rest on*, whether the arc is intended or realized, and — once established — what the thread needs next.
 - **There is no Quest template.** One is needed — objective, success/failure conditions, reward, state.
 - Encounter blocks need `Advances:` (quest) and `Contributes To:` (arc).
 - Session records need a place for *meaningful interactions*, distinct from events — the raw material for inference.
@@ -191,8 +207,9 @@ No decision needed now. What matters is that the *model* is a directed attribute
 1. **How closed is the edge vocabulary?** Too small and it can't express the campaign; too open and it stops being queryable.
 2. **What counts as a "meaningful interaction"?** Inference needs a recordable unit. Is it GM-flagged at session write-up, or inferred from the narrative text itself?
 3. **How strong must a pattern be before a ticket fires?** Too eager and it becomes noise the GM learns to dismiss reflexively.
-4. **Do edges need their own history,** or only their current state?
-5. **Are Notes nodes or edges?** A note about one thing is a node; a note about an intersection is an edge attribute.
-6. **Does a node's visibility cascade to its edges,** or are they independent?
-7. **What happens to an edge when a node is deleted or merged?**
-8. **Are player-facing quests and GM-facing quests the same object** with a visibility flag, or genuinely different?
+4. **What marks the moment an arc becomes established?** A GM declaration, a threshold of evidence, or simply the first time it's used to plan from?
+5. **Do edges need their own history,** or only their current state?
+6. **Are Notes nodes or edges?** A note about one thing is a node; a note about an intersection is an edge attribute.
+7. **Does a node's visibility cascade to its edges,** or are they independent?
+8. **What happens to an edge when a node is deleted or merged?**
+9. **Are player-facing quests and GM-facing quests the same object** with a visibility flag, or genuinely different?
