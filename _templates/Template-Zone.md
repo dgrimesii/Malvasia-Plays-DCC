@@ -3,6 +3,7 @@ type: zone
 name: 
 floor: 
 status: unexplored
+arc: 
 visibility: gm
 tags: []
 ---

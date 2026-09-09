@@ -3,6 +3,7 @@ type: session
 session_number: 
 date: 
 zone: 
+arc: 
 visibility: gm
 tags: []
 ---
