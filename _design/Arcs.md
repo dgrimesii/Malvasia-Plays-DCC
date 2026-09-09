@@ -24,30 +24,66 @@ The working relationship is **iterative adjustment against a projected path**: t
 
 ---
 
-## The projection
+## The projection is probabilistic
 
-An established arc holds a **projected path** — the GM's current best guess at where this thread is heading. Its defining properties:
+A projection is not a single forecast line. It's conditional reasoning about likely futures, and it branches.
+
+The GM's actual thought process looks like:
+
+> The party humiliated the Toll Warden in Session 3. Godmama Mia exists on Floor 2 and is his sister. She will hear about it. So: she confronts them (likely), or she moves against them indirectly (also likely), or she ignores it because she never liked him either (possible but less so). Let me project a conflict event.
+
+That decomposes into parts worth holding separately:
+
+| Part | What it is |
+|---|---|
+| **Premises** | What's already true and drives the inference — events that happened, relationships that exist, dispositions established |
+| **Inference** | The reasoning connecting premises to outcomes |
+| **Outcomes** | The branching possibilities, each with a rough likelihood |
+| **Projected events** | Speculative events the GM might author if a branch looks live |
+
+### Likelihood should stay coarse
+
+Qualitative bands — `likely` / `possible` / `unlikely` — not percentages. Precise numbers on narrative speculation are false precision, and they invite treating a projection as a forecast to be scored rather than a tool for readiness.
+
+The useful question a likelihood answers is "how much prep does this branch deserve?" `Likely` gets a sketched event. `Possible` gets a note. `Unlikely` gets a line so it isn't forgotten if it happens.
+
+### Projected events extend the encounter ladder
+
+An encounter already has `potential` and `used`. Projection adds a stage before both:
+
+```
+speculative  →  potential  →  used
+(projected,     (authored,     (played)
+ not written)    not run)
+```
+
+A speculative event is a *possibility the GM is holding*, not content. Promoting it to `potential` is the act of actually writing it. This keeps projections cheap — the GM can hold six speculative branches without writing six encounters.
+
+### Premises decay
+
+This is the part worth building for. A projection rests on premises, and premises change:
+
+- The party humiliated the Warden — then rescued him two sessions later.
+- Godmama Mia is his sister — then that turns out to be a cover story.
+- She'll hear about it — then the only witness dies.
+
+When a premise changes, **every projection resting on it should be flagged for revisit.** Not auto-revised — flagged, with the changed premise named:
+
+> This projection assumed the party was hostile to the Warden. That changed in Session 5.
+
+This is only possible if premises are recorded as links to the things they depend on, rather than written as prose. It's the strongest practical argument for the graph model in the whole design: stale speculation is invisible in prose and cheap to detect on a graph.
+
+### Properties of the projection as a whole
 
 - **It is a forecast, not a plan.** Every element is provisional and expected to change.
 - **It is revised after play, not defended.** When the table diverges, the projection is wrong, not the players.
 - **It is never shown to players.** This is GM sense-making, and it includes possibilities that may never happen.
 
-What a projection holds:
-
-| Element | What it captures |
-|---|---|
-| Where it's heading | The GM's current guess at a destination |
-| Rising pressure | What would raise the stakes next |
-| Candidate climax | The moment this thread is building toward |
-| Possible resolutions | Outcomes worth being ready for, including bad ones |
-| Dependencies | What must happen or exist first |
-| Connections to future plans | Other threads, floors, or events this touches |
-
 This is what makes an established arc a prep surface. "What does this thread need next session" should be answerable by reading the projection, not by reconstructing it from memory.
 
 ### Divergence is information
 
-When the players go somewhere the projection didn't anticipate, that gap is worth noticing rather than smoothing over. Consistent divergence in one direction says something about what the table actually wants. A projection that never needed revising probably means the arc is being performed rather than co-authored.
+When the players go somewhere no branch anticipated, that gap is worth noticing rather than smoothing over. Consistent divergence in one direction says something about what the table actually wants. A projection that never needed revising probably means the arc is being performed rather than co-authored.
 
 Worth keeping lightly: what was projected, what actually happened, and what the GM changed as a result. Not as an audit trail — as a read on the table.
 
@@ -82,7 +118,7 @@ Merging must preserve:
 
 - **Both handles.** The merged arc keeps both as aliases; the GM will still think of it by whichever one they remember.
 - **All accumulated evidence**, with its original attribution. Evidence for the merged thread is the union of both, and it must remain clear which events came from which side — that's the record of two things becoming one.
-- **Both projections**, reconciled by the GM rather than automatically. Two forecasts don't merge cleanly; the GM writes the new one.
+- **Both projections**, reconciled by the GM rather than automatically. Two forecasts don't merge cleanly; premises may now conflict, and branches that were independent may become mutually exclusive. The GM writes the new one.
 - **The moment of convergence.** *When* and *why* the threads joined is often the most narratively significant fact about the merged arc — the chapter-seven meeting itself.
 
 Merging is always a GM action. The system may notice overlapping evidence and propose it, but combining two threads is an interpretive judgment.
@@ -99,12 +135,12 @@ An arc file needs to hold, at minimum:
 - **Handle(s)** — including aliases from merges
 - **Stakes** — what's at risk and whose investment it rests on
 - **Evidence** — the events and interactions supporting it, with sessions
-- **Projection** — the current forecast, explicitly provisional
+- **Projection** — premises, branching outcomes with likelihoods, speculative events
 - **Divergence notes** — where the table went somewhere else, and what changed
 - **Connections to future plans** — other threads, floors, or events this touches
 - **Resolution** — once concluded, what actually happened
 
-The `Stages / Milestones` table in the current `Template-Arc.md` should be replaced by the projection. Stages imply a plan to be executed; a projection is a guess to be revised, and that difference is the whole point.
+The `Stages / Milestones` table in the current `Template-Arc.md` should be replaced by the projection. Stages imply a plan to be executed; a projection is branching speculation to be revised, and that difference is the whole point.
 
 ---
 
@@ -112,6 +148,8 @@ The `Stages / Milestones` table in the current `Template-Arc.md` should be repla
 
 1. **How much projection history is worth keeping?** Enough to see the shape of divergence, not so much that it becomes an archive nobody reads.
 2. **Should the system propose projections,** or only react to the GM's? Proposing where tension could rise is genuinely useful; proposing a climax may overstep into authoring the story.
-3. **Can an arc resolve unsatisfyingly and stay resolved?** Not every thread earns a climax, and forcing one is its own failure mode.
-4. **Do players ever see that an arc exists** — not its contents, but the fact that something they did became a thread? There's a real argument both ways.
-5. **What happens to a projection when an arc goes dormant?** Frozen as-is, or explicitly marked stale so it isn't trusted on revival?
+3. **Should the system propose *branches* on an existing projection?** Narrower than proposing a whole projection — "you haven't considered that she might do nothing" — and possibly the more useful version.
+4. **Can an arc resolve unsatisfyingly and stay resolved?** Not every thread earns a climax, and forcing one is its own failure mode.
+5. **Do players ever see that an arc exists** — not its contents, but the fact that something they did became a thread? There's a real argument both ways.
+6. **What happens to a projection when an arc goes dormant?** Frozen as-is, or explicitly marked stale so it isn't trusted on revival?
+7. **Do speculative events that never happen get deleted or kept?** Kept, they're a library of unused ideas; deleted, the projection stays readable.
