@@ -13,6 +13,16 @@ Marked **[blocking]** where other requirements depend on the answer.
 
 ---
 
+## Settled assumptions
+
+- **Work is batched.** Changes are grouped into units, most likely aligned to workflow steps — an intake promotion, a session write-up, an accepted proposal set. The batching mechanism is deferred; that batches exist is assumed.
+- **Deletion is possible.** See §6.
+- **A bounded rollback window exists.** Not permanent version history.
+- **The repo is the database.** Storage format is a design-phase concern.
+- **Text is canonical; visualization is on demand.** Except the table view. See [[Interface-Direction]].
+
+---
+
 ## 1. Access and identity
 
 **[blocking] Do players need individual identity in the system?**
@@ -106,16 +116,14 @@ This resolves an apparent conflict with the "discard unused material" rule in [[
 
 The test is not "was it used" but **"is it true."** Unused material is history and debrief fodder. Incorrect material is pollution, and its cost compounds — every projection resting on a false premise is quietly wrong.
 
-### Rollback operates on batches, not edits
+### Rollback operates on batches
 
-**A bounded rollback window is required** — not permanent version history, but enough depth that a body of work built on a hallucination or a bad input can be cleanly undone.
+Errors don't arrive as single facts. They arrive as a body of work sharing a root cause — one integration pass, one flawed source document, one session's write-up. Undoing forty-seven individual changes is not a recovery path anyone uses. The requirement is *"undo that integration,"* as one action.
 
-The unit matters more than the depth. Errors don't arrive as single facts; they arrive as **a batch of work sharing a root cause**: one integration pass, one flawed source document, one session's write-up. Undoing forty-seven individual changes is not a recovery path anyone actually uses. The requirement is *"undo that integration,"* as one action.
-
-Natural batch boundaries already exist in the workflow: an intake promotion, a session write-up, an accepted proposal set. Whatever the unit, it must be **addressable and reversible as a whole**.
+Batching is assumed (see Settled assumptions). What remains open:
 
 **[blocking] What happens to work built on top of a rolled-back batch?**
-This is the hard case. Bad data lands Monday; good work Tuesday references it; rolling back Monday breaks Tuesday. Three possible behaviors, and the choice is a requirement:
+Bad data lands Monday; good work Tuesday references it; rolling back Monday breaks Tuesday. Three possible behaviors, and the choice is a requirement:
 
 - **Block** the rollback until dependents are dealt with
 - **Cascade** — remove dependents too, which risks discarding good work
