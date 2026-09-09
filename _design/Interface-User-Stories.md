@@ -11,11 +11,22 @@ Written from the user's perspective. No architecture, no technology choices. Thi
 
 ---
 
+## Assumptions
+
+These are settled and shape everything below:
+
+- **The repo is the database.** The markdown and YAML files are storage, not an interface. Whether that storage format changes is a design-phase decision and has no bearing on these stories.
+- **The interface handles all display.** Neither user group interacts with files, folders, or version control directly. Players never see raw markdown; rendered markdown is a perfectly good display format for them.
+- **Players never touch the repo.** Their access is entirely through the interface.
+- **The GM's synthesis happens elsewhere.** Source PDFs are referenced in Gemini, which produces markdown. The tool picks up once that markdown exists — it is not where broad research or first-draft ideation happens.
+
+---
+
 ## The Users
 
-**The GM (David)** — runs the campaign. Comfortable with markdown, files, and technical tooling. Does synthesis work outside this system and brings the results in. Needs to move fluidly between long-range story thinking and "what do I run in twenty minutes."
+**The GM (David)** — runs the campaign. Comfortable with markdown, files, and technical tooling. Brings in synthesized planning content from outside and needs to turn it into connected, runnable material. Moves constantly between long-range story thinking and "what do I run in twenty minutes."
 
-**The Players (Julia, Amy, Sam)** — play the game. One is comfortable with technical tooling; two are not and should never encounter markdown, folders, or version control. They interact with the campaign a few hours a week, mostly around session time, and they should feel like they're consulting a record of their own adventure — not browsing a database.
+**The Players (Julia, Amy, Sam)** — play the game. One is comfortable with technical tooling; two are not. They read rendered content and type plain text; neither group ever encounters syntax, files, or structure. They interact a few hours a week, mostly around session time, and should feel like they're consulting a record of their own adventure — not browsing a database.
 
 ---
 
@@ -23,7 +34,7 @@ Written from the user's perspective. No architecture, no technology choices. Thi
 
 ### Planning
 
-- As the GM, I want to see where the party currently is — floor, arc, and what happened last session — without opening several files, so I can orient quickly.
+- As the GM, I want to see where the party currently is — floor, arc, and what happened last session — in one view, so I can orient quickly.
 - As the GM, I want to see which encounters on the current floor are still `potential` and which are `used`, so I know what's left to draw on.
 - As the GM, I want to see the branch options hanging off the encounter the party just finished, so I can prepare one or two moves ahead rather than a whole tree.
 - As the GM, I want to see which arcs are active and which have gone quiet, so long-range threads don't quietly die.
@@ -31,10 +42,12 @@ Written from the user's perspective. No architecture, no technology choices. Thi
 
 ### Organizing
 
-- As the GM, I want to drop a synthesized planning document in and have its named entities matched against everything already recorded, so I find connections I wouldn't have remembered.
+- As the GM, I want to bring in a synthesized planning document and have its named entities matched against everything already recorded, so I find connections I wouldn't have remembered.
+- As the GM, I want to work through integration inside the tool — splitting a draft into the arcs, zones, sessions, and NPCs it implies — rather than editing files by hand.
 - As the GM, I want proposed cross-links presented for my approval rather than applied automatically, so nothing enters the canon record without my say-so.
 - As the GM, I want links maintained in both directions — when a new encounter references an existing NPC, that NPC's record should reflect the new appearance.
-- As the GM, I want to find everything connected to a given NPC, faction, zone, or item in one place, regardless of which file it lives in.
+- As the GM, I want to find everything connected to a given NPC, faction, zone, or item in one place, regardless of where it's stored.
+- As the GM, I want to see what's still sitting unintegrated, so drafts don't get stranded half-promoted.
 
 ### Synthesizing
 
@@ -69,7 +82,7 @@ Written from the user's perspective. No architecture, no technology choices. Thi
 ### Capturing their own notes
 
 - As a player, I want to write a note during or after a session and attach it to the session, NPC, zone, monster, or faction it's about.
-- As a player, I want to write in plain text with no formatting rules to learn.
+- As a player, I want to type plainly, with no syntax or formatting rules to learn.
 - As a player, I want to find my own notes again later, including ones about things I've since learned more about.
 - As a player, I want my notes to be mine — visible to me always, and shared with the table only if I choose to share them.
 - As a player, I want to record a theory or a suspicion, not just facts, and have it stay marked as my speculation.
@@ -91,9 +104,9 @@ Written from the user's perspective. No architecture, no technology choices. Thi
 
 These need answers before this becomes a build, but not before it becomes a shared understanding.
 
-1. **Player notes are a new kind of content.** Everything recorded so far is GM-authored. Player notes are player-authored, need to survive alongside the canon record without becoming canon, and belong to their author. Where they live and who can edit them is undecided.
-2. **What happens when a player's note references something they shouldn't know?** A player writing "I think the Warden works for Godpapa John" may be right, and the system shouldn't confirm or deny it.
-3. **Is there a shared party-visible layer** — notes players deliberately publish to each other — or only private notes and GM-revealed content?
+1. **What happens when a player's note references something they shouldn't know?** A player writing "I think the Warden works for Godpapa John" may be right, and the system shouldn't confirm or deny it.
+2. **Is there a shared party-visible layer** — notes players deliberately publish to each other — or only private notes and GM-revealed content?
+3. **Does the GM see player notes?** Arguments both ways: they're a rich signal about what the table finds interesting, but players may write more freely believing they're unobserved.
 4. **How do players reach this?** Phone at the table, laptop between sessions, or both, changes what the experience should feel like.
-5. **Does the GM see player notes?** Arguments both ways: they're a rich signal about what the table finds interesting, but players may write more freely believing they're unobserved.
-6. **Revealing in bulk.** After a session, several things become known at once. Is that one action or many?
+5. **Revealing in bulk.** After a session, several things become known at once. Is that one action or many?
+6. **Does the GM ever author in the tool from scratch,** or does everything originate as synthesized markdown brought in from outside?
