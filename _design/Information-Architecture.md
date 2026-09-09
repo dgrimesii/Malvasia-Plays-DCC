@@ -72,7 +72,7 @@ They have been conflated so far — the existing `Arc-Food-is-Love.md` is labele
 |---|---|---|
 | Nature | An assignment | A narrative thread with stakes |
 | Origin | Authored, assigned, or discovered | Emerges from play |
-| State | Completable: `not started` / `active` / `complete` / `failed` | Develops, resolves, or goes dormant |
+| State | Completable: `not started` / `active` / `complete` / `failed` | Recognized, then develops or goes dormant |
 | Boundaries | Known at creation | Only clear in retrospect |
 | Player-facing | Usually yes — players know they have a quest | Usually not named — but felt |
 | Required? | A quest need not belong to any arc | An arc need not contain any quest |
@@ -131,6 +131,40 @@ Properties that make this work:
 - **Proposes, never applies.** It may suggest raising stakes or attaching to an arc; it does neither on its own.
 - **Dismissible with memory.** A rejected ticket shouldn't return every time the same entity comes up.
 
+## Arc states
+
+**An arc becomes established by GM declaration.** Nothing else promotes it — not evidence thresholds, not system confidence. The system proposes; the GM decides.
+
+During integration and discovery, the system surfaces potential arcs. Each suggestion gets one of three responses:
+
+| Response | Meaning | Result |
+|---|---|---|
+| **Approve** | This is a real thread | Becomes `established` — plannable, usable as a lens |
+| **Reject** | Not a thread, or not one worth keeping | Discarded, and **remembered** so the same pattern isn't re-proposed |
+| **Defer** | Might become something — watch it | Becomes `emerging` — kept, accumulating evidence, not yet real |
+
+Deferral is not indecision. It's an explicit instruction to keep watching, which makes emerging arcs a **live watchlist** rather than a parking lot.
+
+### The states
+
+| State | Meaning | Can plan from it? |
+|---|---|---|
+| `suggested` | System-proposed, not yet triaged | No |
+| `emerging` | GM deferred — watching for more development | No |
+| `established` | GM declared it real | **Yes** |
+| `dormant` | Established, but receiving no new events | Yes — and worth reviewing |
+| `resolved` | Concluded | Historical reference |
+
+The gate is `established`. Only past that point does the causality inversion apply and the arc become a planning lens.
+
+### What the system does with emerging arcs
+
+Because deferral means "watch this," the system has an ongoing job:
+
+- **Re-surface on new evidence.** When an emerging arc accumulates further support — another related interaction, another investment signal — bring it back with the new evidence attached, rather than waiting for the GM to remember it exists.
+- **Don't nag on silence.** An emerging arc with no new evidence stays quiet. Re-proposing the same case with nothing added is noise.
+- **Age gracefully.** An emerging arc that develops nothing over many sessions should eventually be offered for dismissal rather than lingering indefinitely.
+
 ## The arc lifecycle — and the inversion
 
 An arc's relationship to planning reverses once it's established.
@@ -150,7 +184,6 @@ The same node, two directions, depending on where it is in its life. That has co
 
 - **Arc membership must be assignable retroactively.** An event that seemed incidental three sessions ago can be recognized as part of a thread later, without rewriting the event.
 - **Arcs cannot be planned into existence**, only prepared for and declared as intent — but once they exist, they absolutely can be planned *from*.
-- Arcs shouldn't carry a `status` implying planned stages — that's quest behavior. Something looser fits: `forming` / `developing` / `resolving` / `dormant`.
 - A quest can be completed while the arc it fed continues.
 - Session records need to capture *meaningful interaction*, not just events — otherwise there's nothing for inference to run on.
 - **Two distinct AI jobs, worth keeping separate:** surfacing candidate investment (observation), and proposing where a callback would carry weight (authoring). Only the second should ever require approval as content.
@@ -184,7 +217,7 @@ Both ends should surface the relationship, but not identically. Standing on the 
 The live templates encode the flattened version and would need revising if this model is adopted:
 
 - `Template-Zone.md` has an `arc:` frontmatter field — under this model that's derived, not stored, and should come off.
-- `Template-Arc.md` has `zones: []` and a `Stages / Milestones` table — both assume a planned lifecycle. It needs somewhere to record *what the stakes are, whose investment they rest on*, whether the arc is intended or realized, and — once established — what the thread needs next.
+- `Template-Arc.md` has `zones: []` and a `Stages / Milestones` table — both assume a planned lifecycle. It needs somewhere to record *what the stakes are, whose investment they rest on*, its state, the evidence supporting it, and — once established — what the thread needs next.
 - **There is no Quest template.** One is needed — objective, success/failure conditions, reward, state.
 - Encounter blocks need `Advances:` (quest) and `Contributes To:` (arc).
 - Session records need a place for *meaningful interactions*, distinct from events — the raw material for inference.
@@ -207,9 +240,10 @@ No decision needed now. What matters is that the *model* is a directed attribute
 1. **How closed is the edge vocabulary?** Too small and it can't express the campaign; too open and it stops being queryable.
 2. **What counts as a "meaningful interaction"?** Inference needs a recordable unit. Is it GM-flagged at session write-up, or inferred from the narrative text itself?
 3. **How strong must a pattern be before a ticket fires?** Too eager and it becomes noise the GM learns to dismiss reflexively.
-4. **What marks the moment an arc becomes established?** A GM declaration, a threshold of evidence, or simply the first time it's used to plan from?
-5. **Do edges need their own history,** or only their current state?
-6. **Are Notes nodes or edges?** A note about one thing is a node; a note about an intersection is an edge attribute.
-7. **Does a node's visibility cascade to its edges,** or are they independent?
-8. **What happens to an edge when a node is deleted or merged?**
-9. **Are player-facing quests and GM-facing quests the same object** with a visibility flag, or genuinely different?
+4. **Do emerging arcs need a name before they're established?** Naming a thread makes it feel real prematurely; not naming it makes it hard to refer to.
+5. **Can two emerging arcs merge** when evidence shows they're the same thread — and what happens to their accumulated evidence?
+6. **Do edges need their own history,** or only their current state?
+7. **Are Notes nodes or edges?** A note about one thing is a node; a note about an intersection is an edge attribute.
+8. **Does a node's visibility cascade to its edges,** or are they independent?
+9. **What happens to an edge when a node is deleted or merged?**
+10. **Are player-facing quests and GM-facing quests the same object** with a visibility flag, or genuinely different?
