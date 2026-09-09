@@ -20,9 +20,10 @@ See [[System-Reference]] for Degrees of Success, Encounter Math, and resolution 
 
 ## Encounters
 
-<!-- Copy this block per encounter. Type: combat | social | skill -->
+<!-- Add nodes as you anticipate them — 1-2 branches ahead is enough. Copy this block per encounter. -->
 ### [Encounter Name]
-- **Type:** 
+- **Status:** potential | used
+- **Type:** combat | social | skill
 - **Trigger:** 
 - **Participants:** 
 - **Stakes:** 
@@ -30,8 +31,10 @@ See [[System-Reference]] for Degrees of Success, Encounter Math, and resolution 
 - **Resolution:** (Encounter Math tier for combat; skill(s) + Difficulty for social/skill)
 - **Standard Success:** 
 - **Standard Failure:** 
-- **Escalates On:** (failure tier(s), if any)
-- **Escalates To:** (linked encounter name, if any)
+- **Branches:**
+  - On [condition]: → [[#Other Encounter]]
+  - On [condition]: → [[#Another Encounter]]
+- **Covered In:** (session link — fill in only once Status flips to `used`)
 
 <!-- Optional — only if this encounter deviates from the System Reference defaults -->
 - **Amazing Success:** 

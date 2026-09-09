@@ -32,9 +32,10 @@ Entered via the Threshold sequence in Session 1 — see [[2026-09-09-Session-01-
 
 ## Encounters
 
-<!-- Copy this block per encounter. Type: combat | social | skill -->
+<!-- Add nodes as you anticipate them — 1-2 branches ahead is enough. Copy this block per encounter. -->
 ### [Encounter Name]
-- **Type:** 
+- **Status:** potential | used
+- **Type:** combat | social | skill
 - **Trigger:** 
 - **Participants:** 
 - **Stakes:** 
@@ -42,8 +43,10 @@ Entered via the Threshold sequence in Session 1 — see [[2026-09-09-Session-01-
 - **Resolution:** 
 - **Standard Success:** 
 - **Standard Failure:** 
-- **Escalates On:** 
-- **Escalates To:** 
+- **Branches:**
+  - On [condition]: → [[#Other Encounter]]
+  - On [condition]: → [[#Another Encounter]]
+- **Covered In:** (session link — fill in only once Status flips to `used`)
 
 ## NPCs Present
 - [[]]
@@ -54,7 +57,7 @@ Entered via the Threshold sequence in Session 1 — see [[2026-09-09-Session-01-
 ## Session Coverage
 | Scene/Encounter | Status | Covered In |
 |---|---|---|
-| Scene 1: The Collapse to the Threshold | Planned | Session 1 |
+| Scene 1: The Collapse to the Threshold | potential | Session 1 |
 
 <!-- visibility:gm -->
 ## GM Notes (secrets, twists)
