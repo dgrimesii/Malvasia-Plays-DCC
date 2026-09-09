@@ -3,6 +3,7 @@ type: player-dossier
 character: Hilda
 player: Amy
 status: active
+visibility: player-rw
 tags: [pc]
 ---
 

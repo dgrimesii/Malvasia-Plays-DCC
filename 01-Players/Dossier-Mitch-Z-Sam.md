@@ -3,6 +3,7 @@ type: player-dossier
 character: Mitch "Z" Vanderzee
 player: Sam
 status: active
+visibility: player-rw
 tags: [pc]
 ---
 

@@ -3,6 +3,7 @@ type: player-dossier
 character: Hannah Solo
 player: Julia
 status: active
+visibility: player-rw
 tags: [pc]
 ---
 

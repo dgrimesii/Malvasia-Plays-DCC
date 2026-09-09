@@ -4,6 +4,7 @@ name:
 zone: 
 faction: 
 status: alive
+visibility: gm
 tags: []
 ---
 
@@ -20,8 +21,11 @@ tags: []
 ## Motivations
 
 
+<!-- visibility:gm -->
 ## Secrets (GM only)
 
+
+<!-- /visibility:gm -->
 
 ## Related
 - Zone: [[]]

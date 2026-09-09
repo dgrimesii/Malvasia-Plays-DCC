@@ -1,5 +1,6 @@
 ---
 type: timeline
+visibility: player-ro
 tags: []
 ---
 

@@ -1,5 +1,6 @@
 ---
 type: house-rules
+visibility: player-ro
 tags: []
 ---
 

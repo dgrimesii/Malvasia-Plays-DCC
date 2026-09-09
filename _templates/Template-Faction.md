@@ -3,6 +3,7 @@ type: faction
 name: 
 allegiance: 
 status: active
+visibility: gm
 tags: []
 ---
 
@@ -20,5 +21,8 @@ tags: []
 ## Relationship to Party
 
 
+<!-- visibility:gm -->
 ## GM Notes
 
+
+<!-- /visibility:gm -->

@@ -3,6 +3,7 @@ type: zone
 name: 
 floor: 
 status: unexplored
+visibility: gm
 tags: []
 ---
 
@@ -23,5 +24,8 @@ tags: []
 ## Loot / Rewards
 
 
+<!-- visibility:gm -->
 ## GM Notes (secrets, twists)
 
+
+<!-- /visibility:gm -->

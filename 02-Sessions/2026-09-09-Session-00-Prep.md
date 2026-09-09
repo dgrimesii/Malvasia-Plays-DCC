@@ -3,6 +3,7 @@ type: session
 session_number: 0
 date: 2026-09-09
 zone: 
+visibility: gm
 tags: [prep]
 ---
 

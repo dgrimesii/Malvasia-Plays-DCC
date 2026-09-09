@@ -1,5 +1,6 @@
 ---
 type: campaign-overview
+visibility: player-ro
 tags: []
 ---
 
