@@ -9,7 +9,7 @@ tags: [canon, arcs, design]
 
 The campaign takes place inside a story that has already been written. This document covers how the party's story relates to that one.
 
-Companion to [[North-Star]], [[Arcs]], and [[Information-Architecture]].
+Companion to [[North-Star]], [[GM-Considerations]], [[Arcs]], and [[Information-Architecture]].
 
 ---
 
@@ -91,7 +91,7 @@ This makes the insulated phase a deadline, not just a warm-up:
 
 - By Floor 6, at least one arc should be `established` — something the party demonstrably cares about.
 - The investment tracking described in [[Arcs]] matters most during Floors 1–5, because that's when there's nothing else competing for the table's attention.
-- If nothing has emerged by Floor 5, that's a signal worth acting on rather than pushing forward.
+- If nothing has emerged by Floor 5, that's a signal worth acting on rather than pushing forward. What to do about it is a judgment call — see [[GM-Considerations]].
 
 ### Why the ambient phase works
 
@@ -176,4 +176,3 @@ The intensity curve is how both halves get delivered in the right order: authors
 3. **Does divergence need to be visible to players?** Knowing the campaign has left canon is itself a powerful narrative fact — or a spoiler about what canon was.
 4. **How much canon needs recording before play** versus being pulled in as proximity arises? Floors 1–5 need almost none; Floor 6 onward needs enough to compute proximity reliably.
 5. **Do canon events feed the arc tree?** A canon figure the party comes to care about from a distance could carry real weight — and would be an arc they share with millions of other crawlers, which is its own interesting thing.
-6. **What if the party reaches Floor 6 with no established arc?** Push forward, or deliberately slow down and let one form first?
