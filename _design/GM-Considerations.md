@@ -33,7 +33,9 @@ Design context, stated plainly so the tool can be built for the actual person us
 
 **Cognition is systemic, not visual.** Aphantasia: no mental imagery. Everything is held as processes, structures, and relationships rather than pictures.
 
-Both of these change what the tool is for.
+**Professional grounding is directly relevant.** Career built at the intersection of software engineering, process engineering, and data flow — applying all three to hard real problems. The GM is both the user and the builder of this tool, and design documents can assume full technical fluency.
+
+These change what the tool is for.
 
 ### The tool is not primarily an external memory
 
@@ -54,19 +56,29 @@ Retrieval speed still matters, but for a narrower reason: recall under time pres
 
 ### Systemic representation is the native format
 
-The graph model in [[Information-Architecture]] isn't an arbitrary structuring choice — it matches how this GM already thinks. Typed relationships, states, conditional branches, and derived views are the native encoding. That's a strong signal the direction is right, and a reason to keep the tool's *internal* representation structural rather than narrative.
+The graph model in [[Information-Architecture]] isn't an arbitrary structuring choice — it matches how this GM already thinks. Typed relationships, states, conditional branches, and derived views are the native encoding. That's a strong signal the direction is right, and a reason to keep the tool's internal representation structural rather than narrative.
 
-Two consequences worth being deliberate about:
+### Structural visualization is high-value; pictorial representation is not
 
-**Sensory description is not the native output, and the players want it.**
+Aphantasia and a love of data visualization are not in tension — they explain each other. **An external visualization does precisely the work internal imagery cannot.** A rendered graph isn't a substitute for a mental picture; it's a structure made inspectable, which is how this GM thinks anyway.
+
+The distinction that matters is *what* is being visualized:
+
+| High value | Low personal value |
+|---|---|
+| Entity graphs — nodes, typed edges, clusters | Character portraits |
+| State machines — arc and encounter lifecycles | Scene illustration |
+| Flow diagrams — planning-tree branches, escalation paths | Mood and atmosphere imagery |
+| Timelines — canon proximity, session sequence | Anything conveying "what it looks like" |
+| Density and coverage views — pacing, readiness | |
+
+Structural views should be built as first-class outputs, not decoration. Pictorial material still matters — but for the players, not the GM.
+
+### Sensory description is translation work, and the players need it
+
 Locations and NPCs get encoded here as function, relationship, and mechanics. What a place *looks, smells, and sounds like* is a separate act of translation — and it's what makes the world feel real to the people at the table.
 
-This makes descriptive text a genuine tool responsibility rather than decoration: hold sensory detail for locations and NPCs as prepared material, ready to read or paraphrase. The `READ ALOUD` convention already in use is exactly this, and its value is now explained rather than incidental. Worth extending beyond dialogue to place and person description.
-
-**Whether visual outputs help is an open question, not a settled one.**
-Aphantasia doesn't imply visual artifacts are useless — an external map may be *more* valuable precisely because there's no internal one to consult. But it does mean a graph visualization or a map is unlikely to feel like a shortcut to comprehension the way it might for someone who thinks in images.
-
-Best treated empirically: build the structural views first, since those are certainly useful, and test whether visual ones add anything before investing in them.
+That makes descriptive text a genuine tool responsibility rather than decoration: hold sensory detail for locations and NPCs as prepared material, ready to read or paraphrase. The `READ ALOUD` convention already in use is exactly this, and its value is now explained rather than incidental. Worth extending beyond dialogue to place and person description.
 
 ### Preparedness needs a definition of done
 
@@ -104,6 +116,8 @@ This adds a feature the rest of the design didn't anticipate. [[Arcs]] states th
 > Here's what I thought you'd do. Here's what I'd built for the other branch. Here's the version where you didn't save him.
 
 So speculative events and abandoned branches shouldn't be deleted when they go unused. They're the raw material for the reveal. A `revealed` state for retired projections would let them move from GM-only into shared history without losing the record of what was secret when.
+
+A rendered branch diagram of what *could* have happened, shown after the fact, is likely the strongest form this takes.
 
 ### Storyline reveal and payoff
 
