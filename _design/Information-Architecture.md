@@ -95,14 +95,50 @@ Only at step 4 does an arc exist. Steps 1 and 3 are authored; step 2 is not; and
 
 The GM's actual leverage is in noticing step 2 and *engineering step 3* — setting up the conditions for weight, then letting the table supply the meaning.
 
+## Investment has two sources
+
+Investment is the precondition for arcs, and it arrives two ways. Both are needed; neither is sufficient alone.
+
+### Inferred (observed)
+
+The system notices patterns across recorded play: the party has had meaningful interactions with three NPCs who turn out to be related; a name keeps recurring in session notes; they returned to the same place unprompted.
+
+This is a graph query — clustering on entities the players have repeatedly touched, then checking whether those entities are themselves connected.
+
+### Declared (intended)
+
+The GM states outright that something is meant to be part of an arc, or is being planted as future weight. This is explicit and doesn't wait for evidence.
+
+### They are not the same thing, and the difference matters
+
+A declared arc is an **intent**, not an accomplished fact. The GM can decide a thread is meant to matter; only the table can make it matter. Which means the model should distinguish:
+
+- **Intended** — the GM has declared this a thread
+- **Realized** — player investment is evidenced in what actually happened
+
+An intended arc with no realized investment is itself a useful signal: the GM keeps pushing a thread the table isn't biting on. Better to see that plainly than to keep escalating stakes nobody feels.
+
+### The ticket
+
+The interaction that makes inference useful is **contextual interruption, not a dashboard.** When the GM is authoring an event involving an entity that has accumulated investment, the system raises a ticket at that moment:
+
+> Three prior meaningful interactions involve members of this family. This may be arc material — consider raising the stakes.
+
+Properties that make this work:
+
+- **Fires at the point of authoring**, when the GM can act on it, not in a report read later.
+- **Cites its evidence** — which interactions, which sessions — so the GM can judge whether the pattern is real.
+- **Proposes, never applies.** It may suggest raising stakes or attaching to an arc; it does neither on its own.
+- **Dismissible with memory.** A rejected ticket shouldn't return every time the same entity comes up.
+
 ### Consequences
 
 - **Arc membership must be assignable retroactively.** An event that seemed incidental three sessions ago can be recognized as part of a thread later, without rewriting the event.
-- **Arcs cannot be planned into existence**, only prepared for. A GM can hope for one and build the conditions; whether it becomes an arc is decided at the table.
+- **Arcs cannot be planned into existence**, only prepared for and declared as intent.
 - Arcs shouldn't carry a `status` implying planned stages — that's quest behavior. Something looser fits: `forming` / `developing` / `resolving` / `dormant`.
 - A quest can be completed while the arc it fed continues.
-- **Player investment is a first-class signal.** What the party names, returns to, protects, jokes about, or asks after is the raw material of arcs. If the tool tracks anything about players beyond their sheets, it should track this.
-- **This is where AI assistance is most valuable.** Two distinct jobs: surfacing candidate investments ("the party has mentioned this rat unprompted in three sessions"), and proposing where a callback would carry weight. Neither is doable by hand across months of play; both are cheap on a graph.
+- Session records need to capture *meaningful interaction*, not just events — otherwise there's nothing for inference to run on.
+- **Two distinct AI jobs, worth keeping separate:** surfacing candidate investment (observation), and proposing where a callback would carry weight (authoring). Only the second should ever require approval as content.
 
 ### Not everything routes through events
 
@@ -124,7 +160,7 @@ Both ends should surface the relationship, but not identically. Standing on the 
 - **Backlinks stop being manual.** Traversal in either direction is free.
 - **Visibility gets finer.** "Players know the Warden exists, and know the Convergence exists, but don't know he works for them" becomes expressible — which the current file-level `visibility` flag cannot say at all.
 - **Continuity checking becomes possible.** Contradictions are easier to spot on a graph than across prose.
-- **Emergent threads become discoverable.** Investment signals and unremarked connections are both graph queries — and are how arcs get found.
+- **Emergent threads become discoverable.** Investment clustering and unremarked connections are both graph queries — and are how arcs get found.
 - **Arcs stay portable.** A storyline isn't pinned to a floor, so it can resurface anywhere without contradiction.
 
 ## Consequences for the current templates
@@ -132,9 +168,10 @@ Both ends should surface the relationship, but not identically. Standing on the 
 The live templates encode the flattened version and would need revising if this model is adopted:
 
 - `Template-Zone.md` has an `arc:` frontmatter field — under this model that's derived, not stored, and should come off.
-- `Template-Arc.md` has `zones: []` and a `Stages / Milestones` table — both assume a planned lifecycle. Derived membership and a looser status fit better. It also needs somewhere to record *what the stakes are and whose investment they rest on*.
+- `Template-Arc.md` has `zones: []` and a `Stages / Milestones` table — both assume a planned lifecycle. It also needs somewhere to record *what the stakes are, whose investment they rest on*, and whether the arc is intended or realized.
 - **There is no Quest template.** One is needed — objective, success/failure conditions, reward, state.
 - Encounter blocks need `Advances:` (quest) and `Contributes To:` (arc).
+- Session records need a place for *meaningful interactions*, distinct from events — the raw material for inference.
 - `Arc-Food-is-Love.md` should be reclassified as a quest.
 
 Not yet applied — flagged pending a decision.
@@ -152,8 +189,8 @@ No decision needed now. What matters is that the *model* is a directed attribute
 ## Open questions
 
 1. **How closed is the edge vocabulary?** Too small and it can't express the campaign; too open and it stops being queryable.
-2. **How is player investment recorded?** It's the precondition for arcs, but it's a soft signal — observed at the table, not a mechanical outcome. Does the GM log it deliberately, or is it inferred from session notes?
-3. **Can an event contribute to an arc without the GM saying so** — are candidate memberships surfaced automatically, or only on request?
+2. **What counts as a "meaningful interaction"?** Inference needs a recordable unit. Is it GM-flagged at session write-up, or inferred from the narrative text itself?
+3. **How strong must a pattern be before a ticket fires?** Too eager and it becomes noise the GM learns to dismiss reflexively.
 4. **Do edges need their own history,** or only their current state?
 5. **Are Notes nodes or edges?** A note about one thing is a node; a note about an intersection is an edge attribute.
 6. **Does a node's visibility cascade to its edges,** or are they independent?
