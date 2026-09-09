@@ -23,100 +23,128 @@ Resolves the capture question from [[Open-Requirements]] §2. This is the near-t
 
 ## Describe manner; don't rate meaning
 
-The temptation is a field like `significance: high`. It fails for a structural reason: **an interaction's meaning is often not knowable when it happens.** The rat mattered only once it reappeared in peril, sessions later. A GM asked to rate significance in the moment will either guess or flatten everything to medium.
+The temptation is a field like `significance: high`. It fails structurally: **an interaction's meaning is often not knowable when it happens.** A GM asked to rate significance in the moment will guess or flatten everything to medium.
 
-But that doesn't mean capture should be terse. There's a clear line:
+But capture shouldn't be terse. The line:
 
 | Record this | Not this |
 |---|---|
 | "Played it reluctantly, kept deflecting with jokes" | "This seemed important" |
-| "Spent several minutes describing how she cleaned the knife" | "Significance: high" |
+| "Called them an asshole, said we should have shanked them" | "Significance: high" |
 | "Went quiet, then changed the subject" | "Probably an arc" |
 | "Adopted a formal register she hadn't used before" | "Emotionally invested" |
 
-The left column is **observation of manner** — checkable, and still true in ten sessions. The right column is **interpretation of significance** — which is exactly what should be derived later, not asserted now.
+The left column is **observation of manner** — checkable, still true in ten sessions. The right is **interpretation of significance**, which should be derived later, not asserted now.
 
-Qualitative description is a fact. "How" is observable. "How much it matters" isn't, yet.
+---
+
+## Recurrence is the primary signal
+
+Stronger than any single interaction: **did they come back to it without being prompted?**
+
+A character questioned in Session 3 and complained about in Session 4 is a stronger signal than any one exchange, however heated. Repetition across time is investment that can't be explained by circumstance — the moment had passed, and they returned to it anyway.
+
+This cuts across the layers below rather than sitting inside one. When Z complains about an NPC an hour later and says the party should have killed them, it doesn't much matter whether Sam said it in character or as himself. **The return is the evidence; the register is metadata.**
+
+Practical consequence for write-up: note when something resurfaces, and note that it resurfaced *unprompted*. That second word does the work — an answer to a GM question isn't the same as raising it themselves.
+
+---
+
+## Investment includes antipathy
+
+Early framing skewed positive — bonding, protecting, affection. That's half of it.
+
+**Hatred is investment, and often the more durable kind.** Nobody nurses a grudge about something they don't care about. An NPC the party loathes is arc material on the same terms as one they love, and comes pre-loaded: if that NPC reappears, tension exists before anyone says a word.
+
+So capture records valence but doesn't filter on it. What matters is that attention persists, not that it's warm. The signals are identical:
+
+- Returning to the subject unprompted
+- Arguing about how to handle them
+- Remembering details about them
+- Making plans that involve them
+
+All of those fire for an enemy exactly as they do for a friend. A system that only looked for affection would have missed the best hook in the example that prompted this section.
 
 ---
 
 ## Three layers of signal
 
+Secondary to recurrence, but worth distinguishing since they carry different weight.
+
 ### In-fiction — what the characters did
 
-Actions taken in the world: spoke rather than fought, spared something, named an entity, gave away something valuable, returned somewhere unprompted, asked about a specific topic.
+Spoke rather than fought, spared something, named an entity, gave away something valuable, returned somewhere unprompted, pressed someone on a specific topic.
 
 ### Table-level — what the players did
 
-Behavior out of character: asked about something unprompted, especially across sessions; debated a choice before acting; remembered a detail the GM had half-forgotten; adopted a running joke; expressed relief, dread, or anger; made plans involving a specific entity.
+Asked about something unprompted; debated a choice before acting; remembered a detail the GM had half-forgotten; adopted a running joke; expressed relief, dread, or anger; made plans involving a specific entity.
 
-**The stronger signal.** In-fiction action can be purely tactical — sparing an enemy may be strategy. Three players arguing for ten minutes about whether to go back for someone has no tactical explanation.
+**Usually the strongest of the three.** In-fiction action can be purely tactical — sparing an enemy may be strategy. Three players arguing for ten minutes about whether to go back for someone has no tactical explanation.
+
+**And the one least likely to be captured.** A prose recap naturally records in-fiction action and manner, because that's what a narrative account *is*. Table-level facts require noticing something outside the story — a sigh, a glance between players, a topic raised again after the scene ended. It won't fall out of writing the recap; it needs a deliberate prompt at write-up.
 
 ### Roleplaying behavior — how it was played
 
-The texture of performance, which is where investment often surfaces before anyone would name it:
+Voice or register changes, especially from their usual. Emotional tone in character. Leaning in versus staying detached. Unusual care in describing their own actions. A choice that fit the character but cost them something. A choice that broke from how they'd played the character before — either a mistake or a development, and the difference matters.
 
-- Voice, register, or manner choices, especially changes from their usual
-- Emotional tone in character — reluctance, eagerness, cruelty, tenderness
-- Whether they leaned in or stayed detached
-- Unusual care or detail in describing their own actions
-- A choice that fit the character but cost them something
-- A choice that broke from how they'd played the character before
+---
 
-That last one is worth watching. A character acting out of character is either a mistake or a development, and the difference matters.
+## Investment in one's own character
 
-All three layers are worth recording, distinguishably, because they carry different weight.
+A distinct signal worth tracking separately: a player reaching for their dossier background unprompted.
+
+When Z's anger traces to the paternal-contempt thread, or Hilda reaches for the grifter register, that isn't investment in the NPC — it's investment in *their own character*. Foundational, and worth knowing early, because "the dossiers are landing" is a different question from "the world is landing."
 
 ---
 
 ## What a capture record needs
 
-Per interaction fact:
-
 | Field | Purpose |
 |---|---|
-| Who | Which character, or which player if table-level |
-| With what | The entity involved — NPC, place, item, faction |
+| Who | Character, or player if table-level |
+| With what | Entity involved |
 | What happened | Short factual statement |
 | How | Qualitative description of manner, if notable |
 | Layer | In-fiction, table-level, or roleplaying |
+| Recurrence | Whether this resurfaced unprompted from an earlier session |
 | Session | When |
 
-The `how` field is optional but is often where the value is. It's also the field that can't be reconstructed later — what happened can be inferred from consequences; how it felt in the room cannot.
+The `how` field is optional and often where the value is. It's also the one that can't be reconstructed later — what happened is recoverable from consequences; how it felt in the room is not.
 
 ---
 
 ## Keep the write-up cheap
 
-Capture happens after a session, when energy is low. If it feels like data entry it won't happen consistently, and inconsistent capture is worse than none — it produces confidently wrong pattern detection over a biased sample.
+Capture happens after a session, when energy is low. Data entry doesn't get done, and inconsistent capture is worse than none — confident pattern detection over a biased sample.
 
 - **A fact is one line**, plus a phrase of manner if there's something to say.
-- **Omission is expected.** Not every interaction gets recorded. The signal survives sampling.
-- **Prose recap stays.** Narrative record and structured facts sit alongside each other; neither replaces the other.
-- **Nothing is required.** A session with no interaction facts is a valid session record.
-- **Write manner in your own words.** No vocabulary to learn, no controlled list. Free text is the point.
+- **Omission is expected.** The signal survives sampling.
+- **Prose recap stays.** Narrative and structured facts sit alongside each other.
+- **Nothing is required.** A session with no interaction facts is a valid record.
+- **Write manner in your own words.** No controlled vocabulary. Free text is the point.
 
 ---
 
 ## Why manner matters beyond inference
 
-Two payoffs the GM already wants, from [[GM-Considerations]]:
+**The debrief.** Recounting what was behind the screen is far better with texture. "You all went completely silent" is what makes the retelling land.
 
-**The debrief.** Recounting what was going on behind the screen is much better with texture. "You all went completely silent" is the detail that makes the retelling land.
+**The callback.** A payoff hits hardest referencing *how* something happened. An NPC remembering that Hilda joked to cover her discomfort is sharper than one remembering she was present.
 
-**The callback.** A payoff hits hardest when it references *how* something happened, not just that it did. An NPC remembering that Hilda made a joke to cover her discomfort is a sharper callback than one remembering she was present.
-
-Texture also degrades faster than structure. What happened is recoverable from consequences; the manner of it is gone in a week if not written down.
+Texture degrades faster than structure. What happened is recoverable; the manner of it is gone in a week.
 
 ---
 
 ## Open
 
 **Do player notes eventually contribute?**
-A player writing "I hope the rat made it" *is* a table-level signal, self-reported — possibly better than GM observation, since it needs no interpretation.
+A player writing "I hope the rat made it" is a self-reported table-level signal — possibly better than GM observation, since it needs no interpretation.
 
 **Does the AI extract facts from the prose recap?**
-Cheaper than writing both. But extraction can hallucinate, and these become premises. Probably: propose extractions, GM confirms. Manner descriptions are the riskiest to extract — they're the most interpretive.
+Cheaper than writing both, but extraction can hallucinate and these become premises. Probably: propose, GM confirms. Manner descriptions are the riskiest — the most interpretive.
+
+**How is recurrence recorded without re-reading old sessions?**
+Noticing that something resurfaced requires remembering it surfaced before. Strong GM recall covers this early; at scale it may need support.
 
 **How long until enough accumulates?**
-Clustering needs volume. Four to six sessions may not produce detectable patterns — fine, since the interface isn't due until then either.
+Clustering needs volume. Four to six sessions may not produce detectable patterns — fine, since the interface isn't due until then.

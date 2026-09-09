@@ -32,22 +32,27 @@ tags: []
 
 ## Interaction facts
 
-Factual lines plus a phrase on manner where there's something to say. Describe *how* it was played; don't rate how much it mattered. Omit freely — this is a sample, not a log.
+Factual lines plus a phrase on manner where there's something to say. Describe *how* it was played; don't rate how much it mattered. Antipathy counts as much as affection. Omit freely — this is a sample, not a log.
 
 **In-fiction** — what the characters did
 | Character | Entity | What happened | How |
 |---|---|---|---|
 | | | | |
 
-**Table-level** — what the players did, out of character. Stronger signal.
+**Table-level** — what the players did, out of character. Usually the strongest signal, and the easiest to miss: it won't come out of writing the recap. Prompt yourself — who sighed, who conferred before acting, who raised something after the scene had ended?
 | Player | Entity | What happened | How |
 |---|---|---|---|
 | | | | |
 
-**Roleplaying behavior** — how it was played. Register shifts, emotional tone, unusual care, choices that broke pattern.
+**Roleplaying behavior** — register shifts, emotional tone, unusual care, choices that broke pattern, reaching for their own dossier background.
 | Player / character | What was notable |
 |---|---|
 | | |
+
+**Resurfaced unprompted** — anything from an earlier session they returned to on their own. The strongest single signal.
+| Who | Entity | From when | What they said or did |
+|---|---|---|---|
+| | | | |
 
 
 ## NPCs involved
