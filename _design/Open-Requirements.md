@@ -93,7 +93,39 @@ Enough to see divergence shape, not so much it becomes an unread archive.
 
 ---
 
-## 6. Lifecycle events
+## 6. Correctness and deletion
+
+AI-assisted authoring produces incorrect data, and errors are often discovered long after they're introduced and have propagated. Deletion is therefore a requirement, not an edge case.
+
+This resolves an apparent conflict with the "discard unused material" rule in [[GM-Considerations]]. Two different things were being conflated:
+
+| | Keep | Delete |
+|---|---|---|
+| **Unused but valid** — abandoned branches, dead projections, speculative events never played | ✓ | |
+| **Invalid** — hallucinated NPCs, wrong relationships, misattributed events, bad integrations | | ✓ |
+
+The test is not "was it used" but **"is it true."** Unused material is history and debrief fodder. Incorrect material is pollution, and its cost compounds — every projection resting on a false premise is quietly wrong.
+
+**[blocking] What happens to dependents when something is deleted?**
+Late discovery means bad data has already propagated: edges reference it, arcs cite it as evidence, projections rest on it as a premise. Silent removal creates dangling references and, worse, leaves conclusions standing that were only supported by the deleted thing.
+
+The premise-decay mechanism already designed for [[Arcs]] is exactly the machinery needed here — **deletion should flag dependents for review rather than cascade silently or orphan them.** The requirement is that the GM sees what else is now suspect.
+
+**Does content carry provenance?**
+If GM-authored, AI-proposed-and-accepted, and AI-generated content are distinguishable, errors become auditable — "show me everything the system generated during that integration" is a viable cleanup path. Without provenance, finding the blast radius of a bad batch means checking everything.
+
+**Is deletion recoverable?**
+Deleting the wrong thing while cleaning up bad data is its own failure mode. Whether removal is reversible, and for how long, is a requirement.
+
+**Can deletion be done in bulk?**
+A bad integration pass may create dozens of wrong facts at once. Removing them one at a time is how cleanup doesn't get done.
+
+**Is there a review step before AI-generated content becomes canonical?**
+Nothing is applied without approval — but approval under time pressure isn't the same as verification. Whether newly integrated content sits in a probationary state before being trusted as premise material is worth deciding.
+
+---
+
+## 7. Lifecycle events
 
 **[blocking] What happens when a character dies?**
 DCC runs on lethality; this will happen. Does the dossier become historical? Do their arcs transfer, resolve, or go dormant? Does the player's new character inherit their notes and relationships? Does the dead character remain in the graph as a node others reference?
@@ -102,14 +134,11 @@ DCC runs on lethality; this will happen. Does the dossier become historical? Do 
 Established as needed. Requirements: both handles preserved, evidence unioned with attribution intact, moment of convergence recorded, projections reconciled by the GM.
 
 **Do speculative events that never happen get kept?**
-Resolved: kept, as debrief material. Noted here because it constrains storage growth.
-
-**Does anything ever get deleted?**
-"Discard unused material" is on the never-do list. Over years, that has consequences worth acknowledging now.
+Resolved: kept, as debrief material — provided they're valid. See §6.
 
 ---
 
-## 7. Context of use
+## 8. Context of use
 
 **[blocking] Must the tool work at the table, live?**
 The table view assumes yes. That imposes latency targets, device constraints, and possibly offline operation. If the answer is "between sessions only," the product is substantially simpler.
@@ -125,7 +154,7 @@ In-person weekly game. If not reliable, offline capability becomes a requirement
 
 ---
 
-## 8. Scope boundaries
+## 9. Scope boundaries
 
 **Is this one campaign or a system for many?**
 Reuse across campaigns changes the data model's assumptions considerably.
@@ -140,10 +169,11 @@ Export, backup, or migration off this system if it's abandoned. The repo-as-data
 
 ## Suggested order of resolution
 
-The blocking questions cluster into three decisions that unlock most of the rest:
+The blocking questions cluster into four decisions that unlock most of the rest:
 
 1. **Is this a multi-user system?** (§1) — determines whether the player surface exists as a real product.
-2. **Must it work live at the table?** (§7) — determines latency, device, and offline requirements.
-3. **What gets captured, when, and by whom?** (§2) — determines whether inference, arcs, and investment tracking are possible at all.
+2. **What gets captured, when, and by whom?** (§2) — determines whether inference, arcs, and investment tracking are possible at all.
+3. **How does bad data get found and removed?** (§6) — determines whether the record stays trustworthy over years. Everything built on top of the graph assumes the graph is right.
+4. **Must it work live at the table?** (§8) — determines latency, device, and offline requirements.
 
 Canon workload (§4) and campaign length (§5) can wait, but both have real deadlines — Floor 6 for the first, and the sooner the better for the second.
