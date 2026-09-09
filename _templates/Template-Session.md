@@ -3,7 +3,6 @@ type: session
 session_number: 
 date: 
 zone: 
-arc: 
 visibility: gm
 tags: []
 ---
@@ -13,30 +12,50 @@ tags: []
 ## Plan
 (scripted beats, READ ALOUD blocks — what you intend to run for the opening)
 
-## Anticipated Branches
-(links to `potential` encounter nodes in the Zone doc you're anticipating — 1-2 branches ahead, not a full tree)
+## Anticipated branches
+(links to `potential` encounter nodes in the Zone doc — 1-2 ahead, not a full tree)
 - [[Zone-Name#Encounter Name]] — why this might come up
 
-### Social Beats
-| NPC | Motivates Them | Likely Approach | Possible Directions |
+### Social beats
+| NPC | Motivates them | Likely approach | Possible directions |
 |---|---|---|---|
 
 ---
 
-## Recap (fill in after the session)
+## Recap
+(narrative account of what happened — for your own memory, and eventually for players)
 
 
-## Key Events
+## Key events
+(what occurred, in order; mark anything that resolved or advanced something)
 
 
-## NPCs Introduced/Involved
+## Interaction facts
+
+Short factual lines. No judgment of significance — just what happened. Omit freely; this is a sample, not a log.
+
+**In-fiction** — what the characters did
+| Character | Entity | What happened |
+|---|---|---|
+| | | |
+
+**Table-level** — what the players did, out of character. Stronger signal.
+| Player | Entity | What happened |
+|---|---|---|
+| | | |
+
+
+## NPCs involved
 - [[]]
 
-## Loot Awarded
+## Loot awarded
 
 
 <!-- visibility:gm -->
-## Threads to Follow Up
+## Threads to follow up
 
+
+## Encounters to mark `used`
+- [[Zone-Name#Encounter Name]]
 
 <!-- /visibility:gm -->
