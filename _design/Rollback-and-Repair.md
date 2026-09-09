@@ -7,7 +7,9 @@ tags: [requirements, rollback]
 
 # Rollback and Repair
 
-Detail on the hardest correctness requirement. Referenced from [[Open-Requirements]] §6.
+**Status: open. Nothing here is decided.** The repair model described below may well be overkill for a single-GM campaign — it's recorded so the reasoning isn't lost if the simpler options turn out to be insufficient.
+
+Referenced from [[Open-Requirements]] §6.
 
 ---
 
@@ -15,20 +17,24 @@ Detail on the hardest correctness requirement. Referenced from [[Open-Requiremen
 
 Errors are discovered late. By then the bad batch has propagated: later work references its entities, cites it as evidence, rests on it as premise. Rolling it back naively either destroys good work or leaves silent wreckage.
 
-Four possible behaviors were considered:
+---
 
-| Option | Behavior | Cost |
-|---|---|---|
-| Block | Refuse rollback until dependents are handled | Cheap, often unusable — dependents may be extensive |
-| Cascade | Remove dependents too | Cheap, destroys good work |
-| Flag | Roll back, mark dependents suspect, GM repairs | Moderate, leaves the graph degraded indefinitely |
-| **Repair** | Roll back, keep dependents, redo correctly, re-attach, resolve the rest | **Expensive, and the right one** |
+## Four candidate behaviors
+
+| Option | Behavior | Cost | Failure mode |
+|---|---|---|---|
+| **Block** | Refuse rollback until dependents are handled | Cheap | Often unusable — dependents may be extensive |
+| **Cascade** | Remove dependents too | Cheap | Destroys good work |
+| **Flag** | Roll back, mark dependents suspect, GM repairs by hand | Moderate | Graph stays degraded indefinitely |
+| **Repair** | Roll back, keep dependents, redo correctly, re-attach, resolve the rest | High | Significant machinery for a rare event |
+
+**Start with the cheapest option that survives contact with a real error.** The frequency and size of actual mistakes is unknown; building repair before knowing whether flag would have sufficed is speculative. If manual repair proves painful in practice, the case for building more is then evidence-based.
 
 ---
 
-## The repair model
+## The repair model, if it proves necessary
 
-The chosen behavior, described as a sequence:
+Described as a sequence:
 
 1. **Undo the bad batch.** Its entities and edges are removed from the active graph.
 2. **Keep the good work.** Later batches survive, including anything that referenced the removed material. They are now knowingly inconsistent.
@@ -40,56 +46,46 @@ The aim is not perfect automatic recovery. It's **maximum automatic recovery wit
 
 ---
 
-## What this requires that simpler options don't
+## What repair requires that the simpler options don't
 
 ### Dangling references must survive
 
-Normally, deleting a target either cascades to its references or nulls them. Neither works here. A reference to a removed entity must persist as a **tombstone** — retaining what it pointed at, by name and by whatever identity it had — so that step 4 has something to match against.
+Normally, deleting a target either cascades to its references or nulls them. Neither works for repair. A reference to a removed entity would need to persist as a **tombstone** — retaining what it pointed at — so step 4 has something to match against.
 
-If references are cleaned up on delete, the information needed to repair them is gone, and step 4 is impossible. This is the single most consequential implication in this document.
+**This one has a decision deadline earlier than the rest.** If deletion is built to clean up references, the information repair needs is destroyed at the moment of deletion, and repair becomes impossible to add later without a migration. Even if repair is never built, preserving tombstones is a cheap hedge worth considering.
 
-### The graph must support a knowingly-inconsistent state
+### A knowingly-inconsistent state
 
-Between step 1 and step 5, the record is broken and everyone knows it. That is a legitimate working state, not a transaction to be rolled forward or aborted.
+Between step 1 and step 5 the record is broken and everyone knows it — a legitimate working state, not a transaction to complete or abort. That implies: inconsistency visible rather than silent, work usable while degraded, inference suppressed in affected regions, and a way to exit the state so repair doesn't become permanent debt.
 
-Consequences:
+### An identity mapping step
 
-- **Inconsistency must be visible, not silent.** Affected entities are marked; nothing looks fine when it isn't.
-- **Work must remain usable while degraded.** The GM may need to run a session mid-repair. Broken references degrade what's shown; they don't block access.
-- **Inference must be conservative during repair.** Suggestions and tickets drawn from an inconsistent region are unreliable and should be suppressed or clearly caveated.
-- **The state must be exitable.** A repair that can be started and never finished becomes permanent debt.
+Step 4 only works if corrected entities can be matched to what the tombstones point at. Some matches are obvious; others aren't — the hallucinated `Marco` is really `Marcus`, or one wrong NPC was really two. The GM confirms correspondences, and everything downstream of a confirmed mapping reattaches at once.
 
-### Reconciliation needs an identity mapping step
-
-Step 4 only works if corrected entities can be matched to what the tombstones point at. Some matches are obvious — same name, same type. Others aren't: the hallucinated `Marco` is really `Marcus`, or one wrong NPC turns out to have been two real ones.
-
-So repair needs a **mapping step**: the GM confirms or supplies correspondences between removed and corrected entities, and everything downstream of a confirmed mapping reattaches at once.
-
-That mapping is the highest-leverage moment in the whole process. One correspondence can repair dozens of references.
+One correspondence can repair dozens of references, which is what makes the model worth its cost if it's ever needed.
 
 ---
 
 ## Open questions
 
-**How is the manual worklist scoped and presented?**
-It should be finite, ordered, and dismissible — a queue, not a diffuse warning state. "Seventeen references need attention" is workable; "the graph may be inconsistent" is not.
+**Which behavior is actually needed?** Unknown until real errors have been experienced. This is the top-level open question; everything below is conditional on repair being chosen.
 
-**Can repair be abandoned partway?**
-If a repair is started and the GM walks away, what state is the record in? Possibly: unresolved tombstones simply persist as visible gaps, indefinitely. That's tolerable if they stay visible.
+**Should tombstones be preserved regardless?** A cheap hedge that keeps the repair option open, even if flag or cascade is chosen for now.
 
-**Does redoing the work produce a new batch, or replace the old one?**
-Affects rollback depth and whether the original error remains inspectable afterward. Keeping the failed batch as history has debrief value — "here's what the tool got wrong" — but costs storage and complexity.
+**How is a manual worklist scoped and presented?** Finite, ordered, dismissible — a queue, not a diffuse warning state.
 
-**What if the corrected work legitimately contradicts the later good work?**
-Not a matching failure but a genuine conflict: Tuesday's session recorded the party meeting an NPC who, corrected, was never there. This is a narrative problem, not a data problem, and probably can only be surfaced — never resolved automatically.
+**Can repair be abandoned partway?** Possibly fine if unresolved tombstones persist as visible gaps.
 
-**Is a partial repair worth it?**
-Re-attaching 80% and leaving 20% may be more useful than an all-or-nothing guarantee. Likely yes, given the alternative is manual reconstruction of everything.
+**Does redoing produce a new batch or replace the old?** Keeping the failed batch has debrief value — "here's what the tool got wrong" — at a storage and complexity cost.
+
+**What if corrected work legitimately contradicts later good work?** Tuesday's session recorded the party meeting an NPC who, corrected, was never there. A narrative problem wearing a data problem's clothes — surfaceable, never automatically resolvable.
 
 ---
 
-## Why this is worth the cost
+## Why any of this matters
 
 Every other correctness feature assumes the record is trustworthy. Premise decay, coverage checks, investment inference, arc discovery — all of it reasons over the graph and produces confident output.
 
-A graph that quietly contains hallucinated facts produces confident wrong output, and the GM has no way to tell the difference. Repair is what makes the record recoverable rather than gradually poisoned, and it's the difference between a tool that stays trustworthy over years and one that has to be abandoned and rebuilt.
+A graph quietly containing hallucinated facts produces confident wrong output, with no way to tell the difference from the inside. Whatever behavior is chosen, the requirement it serves is that the record stays recoverable rather than gradually poisoned.
+
+That requirement can be met cheaply or expensively. It can't be skipped.
