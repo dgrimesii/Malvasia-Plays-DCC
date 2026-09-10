@@ -2,77 +2,81 @@
 type: design
 status: draft
 visibility: gm
-tags: [model, characters, players]
+tags: [model, characters, players, knowledge]
 ---
 
-# Players and Characters
+# Players, Characters, and Knowledge
 
-Resolves the character death question from [[Open-Requirements]] §7.
+Resolves the character death question from [[Open-Requirements]] §7 and simplifies the visibility model.
 
 ---
 
-## They are separate assets
+## Two knowledge domains, and only two
+
+- **GM** — everything.
+- **Players** — a subset, revealed deliberately by the GM.
+
+No per-player knowledge. No per-character knowledge. The party knows what the party knows.
+
+This collapses several questions that looked hard:
+
+- **Character death has no knowledge implications.** A new character doesn't need to un-know anything, because knowledge was never held at the character level.
+- **Visibility is binary**, not a per-person calculation.
+- **Split-party scenes need no modeling.** If Hilda goes off alone, the record doesn't track that the others weren't there. The GM handles it in play, the way tables always have.
+
+The cost is real but small: the tool can't represent one character knowing something the others don't. That's a trust-and-roleplay matter, not a data matter (see [[Scope]] — the tool doesn't enforce, it supports recall).
+
+---
+
+## Knowledge and ownership are different axes
+
+Worth stating plainly, because the earlier `player-rw` tag blurred them:
+
+| | What it governs | Granularity |
+|---|---|---|
+| **Knowledge** | What has been revealed about the world | Party-level |
+| **Ownership** | Who wrote something and can edit it | Per-player |
+
+A player's private note is *their content*, not world knowledge. Sam speculating that the Warden works for Godpapa John is "Sam wrote that," attributed and owned by him — not a fact the party knows.
+
+So the two coexist cleanly: knowledge is shared, authorship is individual.
+
+---
+
+## Players and characters are separate assets
 
 - **Player** — a person at the table. Persists for the campaign.
 - **Character** — a data asset with a state. Belongs to a player.
-
-A player may have several characters over a campaign. A character has exactly one player.
 
 ```
 Player --plays--> Character
 ```
 
-## Death is a state, not a deletion
+A player may have several characters over a campaign. A character has exactly one player.
 
-A dead character keeps its node, its history, its relationships, and everything recorded about it. `status: dead` and nothing else changes.
+### Death is a state, not a deletion
 
-That makes the useful things work without special handling:
+A dead character keeps its node, history, and relationships. `status: dead` and nothing else changes.
 
-- NPCs can reference them
-- The party can avenge or mourn them
-- Their arcs continue, resolve, or go dormant on their own terms
-- Evidence attached to them stays valid — it describes what happened, which is still true
+That makes the useful things work with no special handling: NPCs can reference them, the party can avenge or mourn them, their arcs continue or resolve on their own terms, and evidence attached to them stays valid because it describes what happened.
 
-A new character is simply a new asset linked to the same player. Nothing transfers, because nothing needs to.
+A new character is a new asset linked to the same player. Nothing transfers, because nothing needs to.
 
----
+### Investment survives death automatically
 
-## Why investment survives death automatically
+The capture split in [[Session-Capture]] pays off here for a reason it wasn't designed for:
 
-The capture split in [[Session-Capture]] pays off here for a reason it wasn't designed for.
-
-| Layer | Attributed to | Survives character death |
+| Layer | Attributed to | On character death |
 |---|---|---|
-| In-fiction | The character | Stays with the dead character, as history |
+| In-fiction | The character | Stays as that character's history |
 | Table-level | The player | Carries forward intact |
 | Roleplaying | The player | Carries forward intact |
 
-Sam's investments belong to Sam. When Z dies, the record of what Sam has been drawn to — which topics he returns to, what he argues about, what he looks up — is unaffected. Which is correct: Sam still cares about the same things the following week.
-
-No transfer logic, no inheritance rules.
-
----
-
-## The open question: knowledge after death
-
-Sam knows what Z learned. Z's replacement does not.
-
-The player view has to pick:
-
-| | Faithful | Practical |
-|---|---|---|
-| **Split** — the new character sees only what they've witnessed | Yes | More work; also possibly annoying, since the player already knows |
-| **Merged** — the player sees everything they've ever learned | No | Simple; quietly makes every death less costly |
-
-Most tables handle this loosely by convention, and the GM adjudicates. A tool has to choose a default.
-
-Worth noting the stake: if knowledge merges automatically, death loses part of its bite — the party keeps everything except a sheet. If it splits, the tool is enforcing something the table may prefer to handle by trust.
-
-Probably: merge by default, since the tool's job is recall support rather than rules enforcement (see [[Scope]]), and let the GM handle in-character ignorance the way tables always have.
+Sam's investments belong to Sam. When Z dies, the record of what Sam returns to, argues about, and looks up is unaffected — which is correct, since Sam cares about the same things the following week.
 
 ---
 
 ## Also open
 
 **What happens when a player leaves the campaign?**
-Their characters keep their state. Their notes remain theirs. Whether their record stays visible to the others is a question about the table, not the data.
+Their characters keep their state; their notes remain theirs. Whether their record stays visible to the others is a question about the table, not the data.
