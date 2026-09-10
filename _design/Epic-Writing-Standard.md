@@ -73,18 +73,25 @@ Story voice does not change. Stories stay written as value to the user, not as i
 
 ---
 
-## Examples are invented, for a reason other than secrecy
+## What examples may be drawn from
 
-**There is currently almost nothing to spoil.** The only real campaign secret is the Floor 1 plan — its specific rooms and its quest. The NPCs and connections that appear throughout `_design/` are illustrations written to explain a model, not established campaign facts. Julia can read the design documents without harm.
+**There is currently almost nothing to spoil.** The only real campaign secret is the Floor 1 plan — its specific rooms and its quest. The NPCs and connections that appear throughout `_design/` are illustrations written to explain a model, not established campaign facts.
 
-So the rule is narrow: **epics use invented or logical examples, and never the Floor 1 plan.**
+| Source | Usable in epics |
+|---|---|
+| **Player character material** — the dossiers, backgrounds, and choices made during character creation | **Yes.** Creation happened in the open, in person. Everyone at the table already knows it. |
+| **Invented examples** | **Yes**, and the default. |
+| **The Floor 1 plan** — its rooms, its quest | **No.** |
+| **GM plans built on player material** — hooks intended from a background, threads being set up, anything not yet in play | **No.** The dossier is shared; what the GM intends to do with it is not. |
 
-Two reasons to hold to it even though the risk is currently near zero:
+Real character material is genuinely useful for the epics about dossier answers as hooks and about a player reaching for their own character's background — those are hard to illustrate convincingly with invented people.
 
-- **Invented examples are better teaching examples.** One built to isolate the exact behaviour under discussion is clearer than a real case carrying incidental detail — and it can demonstrate situations the campaign has not reached, which is where several epics live.
-- **The constraint has a shelf life.** Secrets accumulate: arcs, off-screen events, canon plans from Floor 6 onward. A convention adopted now costs nothing; retrofitting it once real material is embedded means a scrub, and a scrub that misses one item has already done the damage.
+**Invented examples remain the default anyway**, for two reasons that have nothing to do with secrecy:
 
-**Use role labels rather than player names** in the capture and investment epics. Not secrecy — [[GM-Player-View-and-Transparency]] settles that players are told the mechanism exists. It is simply unnecessary to describe behavioural inference about one player to another, and the role label reads more clearly as a requirement anyway.
+- One built to isolate the exact behaviour under discussion is clearer than a real case carrying incidental detail — and it can demonstrate situations the campaign has not reached, which is where several epics live.
+- **The constraint has a shelf life.** Secrets accumulate: arcs, off-screen events, canon plans from Floor 6 onward. A convention adopted now costs nothing; retrofitting it later means a scrub, and a scrub that misses one item has already done the damage.
+
+**Characters may be named; players should not be**, in the epics about behavioural inference. [[GM-Player-View-and-Transparency]] settles that players are told the mechanism exists, so it is not secrecy — it is that *"the system noticed this player kept returning to X"* is a requirement about a real person, reads more clearly as a role, and gains nothing from a name. Facts about a character carry no such issue.
 
 ---
 
