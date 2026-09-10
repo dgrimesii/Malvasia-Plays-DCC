@@ -15,34 +15,36 @@ Where each surface is actually used. Companion to [[Prep-Rhythm]] and [[Interfac
 
 | Context | Device | Mode |
 |---|---|---|
-| The prep block | Desk | Full capability |
-| Touch-ups | Desk or phone | Capture, review, read, small edits |
-| At the table | TBD | Table view, fast retrieval |
+| The prep block | Laptop | Full capability |
+| Touch-ups | Laptop or phone | Capture, review, read, small edits |
+| At the table | **Laptop** | Table view, fast retrieval |
 
-Phone is the constraining case, and it's the touch-up mode — text, short interactions, no complex graph navigation.
+**The table view gets a full interface.** Laptop at the table means keyboard, pointer, and real screen space — no cramping, and complex interaction is available if it earns its place. The table view can be a genuine working surface rather than a glanceable card.
 
-**Still open:** what the GM uses at the table. Laptop is the obvious guess, but it hasn't been confirmed, and it determines the table view's layout.
+Phone remains the constraining case, and it's touch-up mode only: text, short interactions, no graph navigation.
 
 ---
 
 ## Players
 
-Tablet, laptop, or a foldable phone. Between sessions and possibly at the table.
+Tablet, laptop, or a foldable used in open mode.
+
+**The floor is tablet-class.** Nobody is on a small phone screen. Density is affordable — an entity page can show what the party was told, their notes, and related links together rather than making them drill.
 
 ### What follows
 
-**More density is affordable.** These are medium-to-large screens, unlike the GM's phone touch-ups. An entity page can show what the party was told, their notes, and related links together rather than making them drill.
+**Touch and pointer both.** Tablets and foldables are touch; laptops aren't. Nothing requires hover, and targets work for fingers.
 
-**Touch and pointer both.** Tablet and foldable are touch; laptop isn't. Nothing should require hover, and targets need to work for fingers.
+**No fixed viewport.** A foldable changes size when it opens and closes. Layout adapts continuously rather than choosing a size class once at load. This is a real case, not a hypothetical — one player is on a foldable.
 
-**No fixed viewport.** A foldable changes size mid-session. Layout adapts rather than assuming a size class at load.
+**Typing is short-form.** Notes get typed on glass. Reinforces the existing design — plain text, brief notes, no formatting to learn (see [[Players-and-Characters]]).
 
-**Typing is short-form.** Notes get typed on glass. That reinforces the existing design — plain text, brief notes, no formatting to learn (see [[Players-and-Characters]]). Long-form composition isn't the expected use.
-
-**Tablets at the table are plausible**, which supports the read-latency requirement applying to the player surface too, not just the GM's.
+**Tablets at the table are plausible**, so the read-latency requirement applies to the player surface too, not just the GM's.
 
 ---
 
 ## Shared implication
 
-Text-primary (see [[Interface-Direction]]) holds up across every device here. Interactive graph views do not — they're desk-and-block only. Anything essential must work as text.
+Text-primary (see [[Interface-Direction]]) holds across every device here. Interactive graph views are laptop-only in practice — fine for the GM's block and table use, not something the player surface should depend on.
+
+Anything essential must work as text.
