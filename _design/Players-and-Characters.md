@@ -2,12 +2,12 @@
 type: design
 status: draft
 visibility: gm
-tags: [model, characters, players, knowledge]
+tags: [model, characters, players, knowledge, notes]
 ---
 
-# Players, Characters, and Knowledge
+# Players, Characters, Knowledge, and Notes
 
-Resolves the character death question from [[Open-Requirements]] §7 and simplifies the visibility model.
+Resolves [[Open-Requirements]] §1 and §7.
 
 ---
 
@@ -22,24 +22,38 @@ This collapses several questions that looked hard:
 
 - **Character death has no knowledge implications.** A new character doesn't need to un-know anything, because knowledge was never held at the character level.
 - **Visibility is binary**, not a per-person calculation.
-- **Split-party scenes need no modeling.** If Hilda goes off alone, the record doesn't track that the others weren't there. The GM handles it in play, the way tables always have.
+- **Split-party scenes need no modeling.** If Hilda goes off alone, the record doesn't track that the others weren't there. The GM handles it in play, as tables always have.
 
-The cost is real but small: the tool can't represent one character knowing something the others don't. That's a trust-and-roleplay matter, not a data matter (see [[Scope]] — the tool doesn't enforce, it supports recall).
+The cost is small: the tool can't represent one character knowing something the others don't. That's a trust-and-roleplay matter, not a data matter (see [[Scope]]).
 
 ---
 
-## Knowledge and ownership are different axes
+## Notes are shared, attributed content
 
-Worth stating plainly, because the earlier `player-rw` tag blurred them:
+There is no such thing as a private note.
 
-| | What it governs | Granularity |
-|---|---|---|
-| **Knowledge** | What has been revealed about the world | Party-level |
-| **Ownership** | Who wrote something and can edit it | Per-player |
+A note is **attached to an entity** — an NPC, a zone, a faction, a session — and **carries an author**. Everyone sees it. The author is metadata, not access control.
 
-A player's private note is *their content*, not world knowledge. Sam speculating that the Warden works for Godpapa John is "Sam wrote that," attributed and owned by him — not a fact the party knows.
+> A player note on the Warden that happens to have been made by Sam.
 
-So the two coexist cleanly: knowledge is shared, authorship is individual.
+This resolves several questions at once:
+
+- **No private tier.** Nothing to hide, nothing to gate.
+- **No shared-party layer to design.** There's one layer, and it's shared by default.
+- **Does the GM see player notes?** Yes, trivially. Everyone sees everything on the player side.
+- **Identity is for attribution, not permissions.** A name on a note, not accounts and gates. Much lighter than §1 assumed.
+
+### Why shared is better here
+
+It directly serves the authorship half of [[North-Star]]. A note by Sam sitting on the Warden's page, visible to everyone, next to the GM's material, is the opposite of the **scrapbook** failure mode — player contributions live in the record rather than in a personal sidebar.
+
+It also gives the party a shared working memory. Notes become how they coordinate between sessions, not just how they remember individually.
+
+### Notes are not knowledge
+
+A note is attributed content, not a world fact. Sam speculating that the Warden works for Godpapa John reads as *"Sam thinks the Warden works for Godpapa John"* — true as a statement about Sam, regardless of whether the claim is right.
+
+Same attribution rule that keeps NPC lies from becoming world facts (see [[Facts-and-Revelation]]). It's why player notes need no GM approval: a wrong note can't corrupt the record, because it was never asserting a fact.
 
 ---
 
@@ -58,7 +72,7 @@ A player may have several characters over a campaign. A character has exactly on
 
 A dead character keeps its node, history, and relationships. `status: dead` and nothing else changes.
 
-That makes the useful things work with no special handling: NPCs can reference them, the party can avenge or mourn them, their arcs continue or resolve on their own terms, and evidence attached to them stays valid because it describes what happened.
+NPCs can reference them, the party can avenge or mourn them, their arcs continue or resolve on their own terms, and evidence attached to them stays valid because it describes what happened.
 
 A new character is a new asset linked to the same player. Nothing transfers, because nothing needs to.
 
@@ -72,11 +86,19 @@ The capture split in [[Session-Capture]] pays off here for a reason it wasn't de
 | Table-level | The player | Carries forward intact |
 | Roleplaying | The player | Carries forward intact |
 
-Sam's investments belong to Sam. When Z dies, the record of what Sam returns to, argues about, and looks up is unaffected — which is correct, since Sam cares about the same things the following week.
+Sam's investments belong to Sam. When Z dies, the record of what Sam returns to, argues about, and looks up is unaffected — correct, since Sam cares about the same things the following week.
+
+---
+
+## Consequence for the visibility tag
+
+The `visibility` frontmatter currently uses `gm | player-ro | player-rw`, which conflates knowledge with editability. Under this model it should be `gm | player` for knowledge, with authorship tracked separately on anything a player wrote.
+
+Only the dossiers use `player-rw` today, so the change is cheap now and gets more annoying later.
 
 ---
 
 ## Also open
 
 **What happens when a player leaves the campaign?**
-Their characters keep their state; their notes remain theirs. Whether their record stays visible to the others is a question about the table, not the data.
+Their characters keep their state; their notes stay in the record, still attributed. Probably nothing needs to happen.
