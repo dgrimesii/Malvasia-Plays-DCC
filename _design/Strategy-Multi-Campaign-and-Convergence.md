@@ -42,6 +42,19 @@ Person --holds_role(gm | player)--> Campaign
 
 Three fields, no permissions machinery, and it is the difference between adding a second campaign later and rewriting the knowledge model to do it.
 
+### Record-keeping is a separate attribute from role
+
+Chronicle demonstrates this directly. There, the person maintaining the record is a **player acting as the table's scribe** — not the DM, who does not participate in the tool at all.
+
+So two independent facts about a person in a campaign:
+
+| | Magers | This campaign |
+|---|---|---|
+| Role | Player | GM |
+| Keeps the record? | Yes | Yes |
+
+Same person, same record-keeping function, opposite roles. Collapsing the two would make the model wrong for one campaign or the other.
+
 ### Visibility must be data, not view behaviour
 
 Already an R1 obligation in [[Release-Plan]] for a different reason — R2 needs it. Multi-campaign is a second, independent argument for the same thing.
@@ -58,13 +71,27 @@ No accounts, no login, no sharing, no campaign switcher, no permissions model. [
 
 ### What Chronicle actually is
 
-Worth correcting one framing before building on it. `Chronicle-MagersCampaign` describes itself as a DM tool and campaign log manager, and its structure is **an admin surface plus a read-only player view** — not a player-authoring tool with a separate GM area.
+**Chronicle is a player-side artifact end to end.** The DM does not use it, does not author in it, and does not gate anything in it. It is maintained by one player acting as scribe for the table, who digitizes handwritten session notes so the rest of the party has a shared record of what happened.
 
-All authoring happens in the admin surface: session intake with OCR of handwritten notes, AI-assisted round filling, a delta review queue with explicit approval before publish, integrity gap checking, and version backups. The player view is browse and graph, read-only.
+Its labelling obscures this. The "admin" surface is the **scribe's workbench** — session intake with OCR of handwritten notes, AI-assisted round filling, a delta review queue with approval before publish, integrity gap checking, backups. The "player" view is the finished artifact the rest of the table reads.
 
-The role that surface actually serves is **keeper of the record**. In Magers that happens to be a player; in this campaign it would be the GM. That is a useful abstraction: the authoring role is orthogonal to whether the person is a GM or a player.
+That reframes the relationship between the two systems considerably, and in a favourable direction.
 
-So the two systems are not two halves of one product waiting to be joined. They are **two record-keeping tools with overlapping models and different subject matter.**
+### Chronicle is a mature implementation of the half this tool has barely specified
+
+The player side of this tool is thin. [[Interface-User-Stories]] gives players lookup and short attributed notes; [[Players-and-Characters]] settles that notes are shared and attributed. That is roughly a page of requirements for three users, deferred entirely to R2.
+
+Chronicle is that half, built, running, and refined across sessions — with an authoring workflow, an approval gate, integrity checking, a graph view, and a test suite.
+
+**It is not a competing authority over "what happened."** It is the party's record, from the party's vantage, maintained by one of them. This tool already has a place for exactly that: player-authored attributed content, distinct from GM knowledge. Chronicle populates that place far better than anything specified here.
+
+### The scribe is a product concept this tool does not have
+
+[[Session-Capture]] assumes the GM captures. [[Interface-User-Stories]] assumes each player writes their own short notes. Neither anticipates **one player producing the shared record on behalf of the table**, which is what Chronicle does and what the other Magers players get value from.
+
+That is a different shape from "everyone writes notes," and it is a plausible and cheap variant for R2 here — one that concentrates effort on the person willing to do it rather than depending on three people to write things down.
+
+Worth carrying into R2 planning as a real option rather than discovering it later.
 
 ### The seam already exists, and it is in the right place
 
@@ -90,25 +117,29 @@ And [[Scope]] has already excluded exactly the system-specific half from this to
 
 The last two are the strongest signal that these are the same kind of system underneath.
 
-### Where the models genuinely conflict
+### Where the models genuinely differ
 
-Four, in order of difficulty.
+Three, and two of them are additive rather than conflicting.
 
-**1. Utterance versus claim.** Chronicle has a `reliability` field on lore and bestiary entries — a coarse gesture at the same problem. It does not separate *what was said* from *whether it is true*, which [[Facts-and-Revelation]] treats as foundational and [[Release-Plan]] makes an R1 obligation. This is the sharpest incompatibility and the one that cannot be retrofitted cheaply on either side.
+**1. Utterance versus claim — the real one.** Chronicle has a `reliability` field on lore and bestiary entries, a coarse gesture at the same problem. It does not separate *what was said* from *whether it is true*, which [[Facts-and-Revelation]] treats as foundational and [[Release-Plan]] makes an R1 obligation. This is the sharpest incompatibility and cannot be retrofitted cheaply on either side.
 
-**2. Visibility enforcement.** Chronicle's cohorts are admin-only by being absent from the player HTML file. Visibility is partly a property of code rather than of data. Converging would require moving it into the data — a real change to a running system.
+Note the asymmetry in why: a party-side record has less need for it, since the party has no privileged knowledge to protect. But it still matters — the party is routinely lied to, and a record that flattens *"the innkeeper told us"* into *"it is true"* misleads its own readers.
 
-**3. Edge expressiveness.** Chronicle's `entity_relationships` carries type, session, and notes with a closed vocabulary. [[Information-Architecture]] additionally wants direction, `visibility`, `status`, and `established_in`. Chronicle's shape is a strict subset, so convergence means extending rather than replacing. Good news.
+**2. Chronicle has no concept of revealed knowledge — and does not need one.** Its entire content is already known to the party. What is admin-only there — cohorts, deferred gaps, the prompt improvement log — is **workflow state the scribe keeps out of the shared view**, not secrets. That is a different thing from GM revelation, and my earlier reading of it as weak visibility enforcement was wrong.
 
-**4. Who authors the record of play.** Here the GM captures, and player notes are attributed content that never becomes canon. In Chronicle the log *is* the record, produced by the keeper from session notes. Merged, "what happened" would have two candidate authorities. That needs a stated rule before any merge, not during one.
+Convergence therefore *adds* a concept Chronicle lacks rather than fixing one it implements poorly. Additive, and cheaper than it looked.
+
+**3. Edge expressiveness.** Chronicle's `entity_relationships` carries type, session, and notes with a closed vocabulary. [[Information-Architecture]] additionally wants direction, `visibility`, `status`, and `established_in`. Chronicle's shape is a strict subset, so convergence means extending rather than replacing.
 
 **Arcs are simply absent from Chronicle.** Not a conflict — net-new, and additive.
 
-### The non-technical problem
+### The ownership question, now much smaller
 
-Chronicle serves a campaign run by someone else. A shared substrate means another GM's campaign record lives inside a system owned and operated by a player in that campaign.
+An earlier draft framed this as another GM's campaign record living in a player-owned system. That overstated it.
 
-**That is a consent and ownership question, not an architecture question**, and it does not get easier by being deferred. Anything beyond "these two tools happen to share a schema" needs that conversation first.
+**No DM material is in Chronicle and none would be.** John's prep, secrets, and plans were never there; the record is the party's own observations, kept by one of them, shared with the rest. That is a table arrangement the group already has and already benefits from.
+
+What remains is narrower and worth asking once, not solving in advance: **if a shared substrate ever existed, would that DM want to contribute to or gate any of it?** Today he does not participate at all, so the answer is currently moot — but it is his campaign, and a system that quietly grew a GM surface around his game would be a different proposition from a scribe's notebook.
 
 ### The scope-inflation risk, stated plainly
 
@@ -124,7 +155,8 @@ Chronicle is precisely the set of things [[Scope]] excludes: combat detail, mech
 
 - **Chronicle changes nothing.** It is a running system holding a live campaign, and the cost of any migration lands on real play.
 - **This tool designs so that a mapping to Chronicle's schema is writable.** That is a document, not code — a compatibility note maintained alongside the model, checked when the model changes.
-- **Borrow freely in the other direction.** The `mechanics` / `narrative` split, the `entity_relationships` shape, the delta-review approval pattern, the fixture and safe-test-mode discipline — all are proven and all fit [[Shippable-Increment]]'s requirements. Reinventing them would be waste.
+- **Borrow freely in the other direction.** The `mechanics` / `narrative` split, the `entity_relationships` shape, the delta-review approval pattern, and the fixture and safe-test-mode discipline are all proven and all fit [[Shippable-Increment]]'s requirements. Reinventing them would be waste.
+- **Treat Chronicle as the reference design for R2**, not merely as a system to be compatible with. It is the player-side artifact, already working, with real users who value it.
 
 ---
 
@@ -133,7 +165,7 @@ Chronicle is precisely the set of things [[Scope]] excludes: combat detail, mech
 **Added to R1 as thin structural requirements — not features:**
 
 - A campaign container, holding exactly one campaign.
-- Person as a first-class thing, with a role held per campaign.
+- Person as a first-class thing, with a role held per campaign, and record-keeping as a separate attribute from role.
 - Identifiers unique within a campaign, never assumed globally unique.
 - Visibility as a property of data, not of a rendering surface. *(Already required for R2.)*
 
@@ -143,5 +175,7 @@ Chronicle is precisely the set of things [[Scope]] excludes: combat detail, mech
 
 - A compatibility note mapping this model to Chronicle's schema, maintained as the model changes.
 - The glossary required by [[Epic-Writing-Standard]] should mark which terms are system-specific and which are not. Most will be portable, and knowing which are not is exactly the information convergence needs.
+
+**Carried into R2 planning:** the scribe as an alternative to per-player note-taking.
 
 **One decision to revisit:** [[Backlog-Readiness]] §G2 asks whether the graph model is adopted. Chronicle independently arrived at an entity-and-relationship model with a graph view, from a different game system and a different authoring role. That is evidence in favour, and worth weighing when that decision is made.
