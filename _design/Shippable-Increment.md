@@ -13,9 +13,14 @@ Defines what "shippable" means for this project. Refines [[Release-Plan]].
 
 ## Settled
 
-**An increment is shippable when it functions and breaks nothing. It need not be useful.**
+An increment is shippable when it is:
 
-A capability may ship with no consumer downstream. Something that produces correct output which nothing yet reads is a legitimate release. The queue is allowed to end in mid-air.
+1. **Functional** — it does what it claims.
+2. **Non-breaking** — nothing that worked before stops working, and the record survives.
+3. **Testable** — its behaviour can be asserted, and the assertion can fail.
+4. **Demoable** — it can be shown. A script or a file output is sufficient; a UI is not required.
+
+**It need not be useful.** A capability may ship with no consumer downstream. Something that produces correct output which nothing yet reads is a legitimate release. The queue is allowed to end in mid-air.
 
 ---
 
@@ -27,7 +32,7 @@ Shippable is a much lower bar and sits well below 1a. Individual stories within 
 
 ---
 
-## What "breaks nothing" means here
+## Non-breaking
 
 There is no production system and no user base to regress. So the bar is not availability — it is the record.
 
@@ -42,33 +47,60 @@ An increment does **not** break anything merely by being incomplete, unused, or 
 
 ---
 
-## What this changes
+## Testable
 
-**Ordering follows dependency and risk, not user value.** Producers can ship before consumers. That fits this domain unusually well — capture, the graph, and the derived layer are all producers whose consumers arrive later.
+Every story carries at least one assertion that can fail. Without a consumer to notice misbehaviour, the test is the only thing standing between a quiet defect and a poisoned record.
 
-**R1 and R2 remain audience milestones, not delivery units.** [[Release-Plan]] slices 1a–1d stay useful as an ordering, but nothing waits for a slice to complete before shipping.
+### This forces precision where the design is currently vague
 
-**Risky things move earlier.** The parts of the design most likely to be wrong — what counts as a meaningful interaction ([[Session-Capture]]), ticket thresholds ([[Information-Architecture]]), whether density is measurable at all ([[Arcs]]) — can now ship early and be observed, rather than being deferred until they are surrounded by enough machinery to be useful.
+Several capabilities are described in judgment terms that cannot be asserted as written. *"The ticket fires when the pattern is strong enough"* has no test. *"Given this evidence set, a ticket fires and cites these three interactions"* does.
+
+That is a feature of the requirement, not a burden: the areas hardest to make testable — ticket thresholds, investment clustering, what counts as a meaningful interaction — are exactly the ones [[Backlog-Readiness]] §G4 flags as having no acceptance thresholds. Writing the test is how the threshold gets decided.
+
+### The negative constraints must be asserted too
+
+[[Constraint-Manner-and-Intent]] is a list of things that must never happen — no generated manner, no inferred intent, no filling a blank because the field exists, no embellishment in recaps. **These are the constraints most likely to erode silently**, because nothing visibly goes wrong when they are violated.
+
+Assertions of absence are cheap and belong in the acceptance criteria for anything that writes capture records. *"Manner is empty in the output"* is a test.
+
+### Test data must not be the live campaign
+
+Two reasons, both hard:
+
+- Testing against the real record risks the one thing the non-breaking rule protects.
+- The real record changes every week, so assertions written against it break for reasons unrelated to the code.
+
+So increments need **fixtures — a small synthetic campaign** with known entities, sessions, interactions, and edges, stable enough to assert against. This is a real deliverable that no design document has yet named, and it is needed by the first increment that writes anything.
+
+It also has a second use: fixtures are the only way to exercise scenarios the live campaign has not reached yet — a character death, a merged arc, a revealed lie, a Floor 6 canon proximity — long before they happen at the table.
 
 ---
 
-## Three conditions
+## Demoable
 
-Accepting the lower bar requires these, or increments become unverifiable.
+The increment can be shown and judged. **The demo path is part of the story, not an afterthought** — if there is no way to show it, it is not ready to be worked.
 
-### 1. Every increment is inspectable
+Acceptable forms, in ascending cost:
 
-A capability with no consumer still has to be checkable, or acceptance means nothing. The output must be visible somehow — a rendered file, a listing, a dump. Crude is fine; absent is not.
+- Reading the file the increment produced
+- A diff against what existed before
+- A script that runs it against a fixture and prints the result
+- A rendered view, where one happens to exist
 
-This is cheap here because of a property already settled in [[Interface-User-Stories]]: **the repo is the database.** Most output will land as files that can simply be read.
+Cheap here because of a property already settled in [[Interface-User-Stories]]: **the repo is the database.** Most output lands as files that can simply be read.
 
-### 2. Record integrity is the standing acceptance criterion
+### Test and demo are doing different jobs
 
-Every story inherits it, whether or not it is restated: after this runs, the campaign record is still valid and still readable.
+Worth keeping distinct, because several capabilities in this design can only be accepted by the second:
 
-### 3. Regression is checked, not assumed
+| | Answers | Used for |
+|---|---|---|
+| **Test** | Did it do the specified thing? | Behaviour that can be stated in advance |
+| **Demo** | Is this any good? | Judgment — whether a proposal is a *good* reading, whether a handle elicits memory, whether a coverage claim is trustworthy |
 
-Each increment leaves the previously shipped ones working. With no users to notice otherwise, this needs to be deliberate.
+[[Open-Requirements]] §3 asks what happens when a proposal is a bad reading — not a hallucinated fact but a wrong interpretation. No test catches that. The demo is where it gets caught, and the GM is the instrument.
+
+So for the inference and proposal epics, **the demo is the acceptance mechanism**, and the test only guards the floor beneath it.
 
 ---
 
@@ -100,6 +132,14 @@ Because increments need not be useful, the GM will be working partly in markdown
 
 **Story voice does not change.** Stories stay written from the user's perspective, as value statements. This definition governs how increments are *composed and gated*, not how they are *written*.
 
-**Acceptance criteria gain a second form.** Alongside the user-visible outcome, a story may be accepted on the correctness and inspectability of what it produces — for stories whose consumer does not exist yet.
+**Acceptance criteria have up to three parts:**
+
+- The **user outcome**, where a consumer exists to deliver it to
+- The **assertion** — what must be true of the output, including what must be absent
+- The **demo path** — how it gets shown
+
+For a producer with no consumer yet, the first is empty and the other two carry the acceptance on their own.
 
 **Epics stop implying a delivery bundle.** An epic is a coherent body of value; its stories may ship across a long span, in dependency order, with the epic incomplete and nothing wrong with that.
+
+**Fixtures are a prerequisite, not a nice-to-have.** They should be scheduled ahead of the first increment that writes campaign data, since testability is now a gate rather than a preference.
