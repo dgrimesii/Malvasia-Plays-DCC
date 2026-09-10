@@ -5,11 +5,9 @@ visibility: gm
 tags: [capture, ai-boundaries, constraint, provenance]
 ---
 
-# Constraint: Manner, Intent, and Inference
+# Constraint: Manner, Intent, and Provenance
 
 **Hard rules, not preferences.** Referenced from [[Session-Capture]] and [[Open-Requirements]] §3.
-
-Two related constraints: what the AI may never generate, and how anything it does generate must be marked.
 
 ---
 
@@ -30,11 +28,11 @@ A hallucinated NPC is a false statement about fiction — a data error, correcta
 
 **Manner and intent are claims about real people.** "Amy seemed reluctant" is a statement about Amy. Generated from nothing but the fact that Hilda hesitated in a scene, it's a fabricated observation about a person who was in the room.
 
-That error is worse in three ways:
+Worse in three ways:
 
 1. **Unfalsifiable in retrospect.** Nobody can check what the room felt like six months later. A wrong NPC name gets caught; a wrong emotional read never does.
 2. **It propagates into how people get treated.** Investment inference feeds arc formation, which determines what material gets aimed at whom. A fabricated read on a quiet player produces real consequences for that player's experience.
-3. **It corrupts the signal it claims to measure.** The point of capturing manner is that it's observed. Generated manner is evidence of nothing but the model's priors about how people behave.
+3. **It corrupts the signal it claims to measure.** The point of capturing manner is that it's observed. Generated manner is evidence of nothing but the model's priors.
 
 ### Permitted
 
@@ -53,57 +51,24 @@ That error is worse in three ways:
 
 ---
 
-## Part 2 — Inferences are labeled as inferences
+## Part 2 — Proposals are marked while pending; acceptance makes them fact
 
-Everything the AI derives — even from perfectly good human input — is marked as inferred **at the moment it's created**, not at the moment it's approved.
+Keep this light.
 
-### Acceptance does not convert an inference into a fact
+**Before acceptance:** anything the AI derives is visibly a proposal, with the facts it was drawn from attached so the GM can judge it. Unaccepted proposals never render as established — in text or in any view.
 
-If the GM approves "these three NPCs form a thread," the record now contains an **accepted interpretation**. That is not the same as an observation, and the difference must survive.
+**On acceptance:** it becomes a fact and is treated as one going forward. The GM's decision is what elevates it. No separate tier, no confidence scores, no chain-depth tracking.
 
-Why it matters later:
+**Provenance persists as a small tag** noting it was AI-generated. That's all it needs to do — enough to answer "show me everything the system produced during that integration" when cleaning up after a bad batch. It carries no ongoing weight and shouldn't affect how the fact is displayed or reasoned over.
 
-- **Premise decay depends on it.** When an underlying fact changes, everything inferred from it needs re-examination. That's only possible if inferences are identifiable years after the fact.
-- **Audits need it.** "Show me everything derived rather than recorded" is the fastest route to finding where a bad assumption took root.
-- **Confidence is not provenance.** A strongly-supported inference is still an inference. Strength of evidence and kind of origin are separate properties and shouldn't be collapsed.
-- **Approval happens under time pressure.** A GM accepting a proposal mid-prep hasn't verified it to the standard of something they watched happen.
+### What this trades away
 
-### What must be recorded with an inference
+Automatic re-examination when an underlying fact later changes. If an accepted inference rested on something that turns out wrong, nothing will flag it on its own.
 
-| Field | Purpose |
-|---|---|
-| Origin | Inferred, not observed |
-| Supporting evidence | Links to the specific facts it was drawn from |
-| Chain depth | Whether it rests on other inferences, and how deep |
-| Status | Proposed / accepted / rejected |
-| When | Which batch produced it |
-
-**Chain depth is the one most likely to be skipped and most likely to matter.** An inference resting on an inference is materially weaker than one resting on recorded facts, and the difference is invisible unless tracked. Two or three layers deep, a conclusion can look well-supported while resting on nothing anyone observed.
-
-### It renders distinctly, everywhere
-
-Consistent with the faithful-rendering requirement in [[Interface-Direction]]:
-
-- Inferred edges never draw the same as recorded ones — in any view, at any zoom level.
-- Zooming out may drop an edge's label; it must not drop the fact that the edge was inferred.
-- Text views mark it too. This isn't only a visualization concern.
-
-### What this doesn't restrict
-
-Inference itself. Investment clustering, arc proposals, connection-finding, gap detection, continuity checking — all remain fully in scope.
-
-The constraint is on **labeling**, not on reasoning. An inference clearly marked as one, with its evidence attached, is exactly what the tool should be producing.
+That's an acceptable cost here: one GM, one campaign, strong recall, and the provenance tag still supports manual audit. Worth revisiting only if it actually bites.
 
 ---
 
-## The general shape
+## The shape
 
-**Facts in, patterns out, never feelings in — and always say which is which.**
-
-| Kind | Origin | Can be checked against |
-|---|---|---|
-| Observation | GM or player recorded it | What happened |
-| Inference | AI derived it | The facts it cites |
-| Accepted inference | AI derived it, GM approved | The facts it cites — *not* what happened |
-
-The third row is the one that erodes if unmarked. It looks like the first row and behaves like the second.
+**Facts in, patterns out, never feelings in.** Proposals are visible as proposals until you accept them; after that they're just facts with a note about where they came from.
