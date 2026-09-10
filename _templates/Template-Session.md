@@ -1,5 +1,7 @@
 ---
 type: session
+id: ses-
+campaign: malvasia-dcc
 session_number: 
 date: 
 zone: 
@@ -28,6 +30,33 @@ tags: []
 
 ## Key events
 (what occurred, in order; mark anything that resolved or advanced something)
+
+
+## Told to the party
+
+What anyone said to them, recorded as **something they were told** — never as a world fact. Fill `True` from what you know now; you can change it later, and deciding retroactively that something was a lie is authorship, not a correction.
+
+| Who said it | What they said | True | About |
+|---|---|---|---|
+| | | | [[]] |
+
+
+## Materialized this session
+
+Anything that appeared at the table for the first time. Its existence is public from here on; its name and facts are not, unless listed below.
+
+| Entity | Kind | Did they learn a name? |
+|---|---|---|
+| [[]] | npc / zone / faction / item | |
+
+
+## Names the party used
+
+What they called things, in their own words. Then either reveal the official name promptly, or adopt theirs as an alias — a name they coined becoming real is the point.
+
+| What they called it | What it is | Adopt as alias? |
+|---|---|---|
+| | [[]] | |
 
 
 ## Interaction facts
@@ -59,6 +88,17 @@ Factual lines. Add manner only where there's something to say — **most rows wo
 - [[]]
 
 ## Loot awarded
+
+
+---
+
+## Revealed after this session
+
+What you made visible, and when. A reveal is an event — recording it is what lets the party later be shown what's new, and what makes prompt revelation checkable rather than remembered.
+
+| Item | Kind | Date revealed |
+|---|---|---|
+| | existence / name / fact / relationship | |
 
 
 <!-- visibility:gm -->
