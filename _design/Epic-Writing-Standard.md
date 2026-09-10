@@ -73,24 +73,23 @@ Story voice does not change. Stories stay written as value to the user, not as i
 
 ---
 
-## Two prerequisites this creates
+## Examples are invented, for a reason other than secrecy
 
-### The glossary is now blocking
+**There is currently almost nothing to spoil.** The only real campaign secret is the Floor 1 plan — its specific rooms and its quest. The NPCs and connections that appear throughout `_design/` are illustrations written to explain a model, not established campaign facts. Julia can read the design documents without harm.
 
-[[Backlog-Readiness]] §G10 treats the glossary as a cheap consistency fix. Under this standard it becomes a prerequisite for writing the epics at all, since every domain term needs somewhere to point.
+So the rule is narrow: **epics use invented or logical examples, and never the Floor 1 plan.**
+
+Two reasons to hold to it even though the risk is currently near zero:
+
+- **Invented examples are better teaching examples.** One built to isolate the exact behaviour under discussion is clearer than a real case carrying incidental detail — and it can demonstrate situations the campaign has not reached, which is where several epics live.
+- **The constraint has a shelf life.** Secrets accumulate: arcs, off-screen events, canon plans from Floor 6 onward. A convention adopted now costs nothing; retrofitting it once real material is embedded means a scrub, and a scrub that misses one item has already done the damage.
+
+**Use role labels rather than player names** in the capture and investment epics. Not secrecy — [[GM-Player-View-and-Transparency]] settles that players are told the mechanism exists. It is simply unnecessary to describe behavioural inference about one player to another, and the role label reads more clearly as a requirement anyway.
+
+---
+
+## One prerequisite this creates
+
+**The glossary is now blocking.** [[Backlog-Readiness]] §G10 treats it as a cheap consistency fix. Under this standard it becomes a prerequisite for writing the epics at all, since every domain term needs somewhere to point.
 
 It also has to be written for a reader who knows nothing — not as a disambiguation aid for people who already know the terms and only need the local distinctions.
-
-### Spoiler safety — the non-obvious one
-
-**Julia is a player in this campaign.** The design documents are `visibility: gm` and their examples are drawn from live campaign material: an NPC's deception, a suspected connection between two figures, a creature the party may care about later.
-
-If epics inherit those examples, handing her the backlog spoils the game she is playing.
-
-So:
-
-- **Examples in epics are neutral or invented**, never drawn from live campaign content. Adopt this from the first epic rather than scrubbing later — a scrub that misses one item has already done the damage.
-- **Use role labels, not player names.** The investment and capture epics describe behavioural inference about specific people at the table. [[GM-Player-View-and-Transparency]] settles that players are told the mechanism exists, so the capability itself is not a secret. Describing it to one player using another player's name is a different thing, and unnecessary.
-- **Campaign structure is safe; campaign content is not.** That floors exist, that sessions are recorded, that threads are tracked — all fine. What is actually in them is not.
-
-This constraint applies to any artifact Julia reviews, not only to epics.
