@@ -7,201 +7,159 @@ tags: [requirements, open-questions]
 
 # Open Requirements
 
-Consolidated from across `_design/`, plus questions not yet asked anywhere. These are **requirements** questions — what the system must do and for whom. Design and architecture choices stay deferred.
+Requirements questions only — what the system must do and for whom. Design and architecture stay deferred.
 
 Marked **[blocking]** where other requirements depend on the answer.
 
 ---
 
-## Settled assumptions
+## Settled
 
-- **Work is batched.** Changes are grouped into units, most likely aligned to workflow steps — an intake promotion, a session write-up, an accepted proposal set. The batching mechanism is deferred; that batches exist is assumed.
-- **Deletion is possible.** See §6.
-- **A bounded rollback window exists.** Not permanent version history.
-- **The repo is the database.** Storage format is a design-phase concern.
-- **Text is canonical; visualization is on demand.** Except the table view. See [[Interface-Direction]].
+- **Work is batched**, most likely aligned to workflow steps. Mechanism deferred.
+- **Deletion is possible.** Bounded rollback window; behavior undecided (see [[Rollback-and-Repair]]).
+- **Reads are fast, writes are once per session.** No sync, no concurrency (see [[Update-Cadence]]).
+- **Scope is narrative.** No stats, rules enforcement, or produced prose (see [[Scope]]).
+- **The GM captures most content**, via templates plus repo plus AI (see [[Session-Capture]]).
+- **Player notes need no GM approval.** Attribution handles correctness — *"Sam wrote X"* stays true even when X is false, the same way an NPC's lie stays a recorded utterance.
+- **No bootstrap problem.** The tool comes online around Session 4. Sessions 1–3 are captured as GM notes with straightforward references, which is enough to seed it.
+- **Text is canonical; visualization on demand**, except the table view (see [[Interface-Direction]]).
+
+### Consequence of the Session 4 timing
+
+Capture for Sessions 1–3 has to be good enough to bootstrap from. The template is the tool for those sessions, and anything not recorded then isn't recoverable later. Worth a look at [[Session-Capture]] before Session 1 rather than after.
+
+---
+
+## Moved to design phase
+
+- **Where player notes live** relative to the repo. Storage question.
+- **How batching is implemented.**
+- **How tiering is implemented** (see [[Retrieval-Tiering]]).
 
 ---
 
 ## 1. Access and identity
 
 **[blocking] Do players need individual identity in the system?**
-Everything about `player-rw`, note ownership, and per-player visibility assumes the system knows who's who. If yes, that's accounts, sessions, and permissions. If no, the player surface is one shared read-only view and half the player stories collapse.
+Note ownership, per-player visibility, and query attribution all assume the system knows who's who.
 
 **Does the GM see player notes?**
-Arguments both ways: rich signal about what the table finds interesting, versus players writing more freely when unobserved. Affects whether notes need a private tier at all.
+Rich signal versus players writing freely when unobserved.
 
 **Is there a shared party-visible layer?**
-Three possible tiers: private to author, shared with party, GM-revealed. Two of the three might be enough.
+Private to author, shared with party, GM-revealed — possibly only two of the three are needed.
 
 **What happens when a player leaves or joins mid-campaign?**
-Their character's dossier, their notes, their arcs. Realistic over a long campaign.
 
 ---
 
 ## 2. Capture
 
 **[blocking] What counts as a "meaningful interaction"?**
-Investment inference — the precondition for arcs — needs a recordable unit. Is it GM-flagged during write-up, or derived from narrative text? Nothing about arc discovery works until this is defined.
-
-**[blocking] When does session capture happen, and by whom?**
-Live during play, immediately after, or days later? The GM alone, or do player notes contribute? This determines whether the tool must work *during* a session or only between them — which cascades into device, latency, and offline requirements.
+Partly answered by [[Session-Capture]] — facts, not judgments, across three layers plus recurrence. Whether that shape survives contact with real sessions is open.
 
 **How much detail must a session record hold?**
 Enough to reconstruct events, or enough to feed inference? The second is a higher bar.
 
-**Do players capture during or after sessions?**
-At-the-table note-taking is a different product from between-session reflection.
+**Does the AI extract facts from the prose recap?**
+Cheaper than writing both, but extraction can hallucinate and manner must never be manufactured.
 
 ---
 
 ## 3. What the AI may propose
 
 **[blocking] Where is the line between surfacing and authoring?**
-Established: observation is always welcome, and nothing is applied without approval. Unresolved: may it propose *content* — a projection, a climax, a story beat — or only *connections* and *gaps*?
+May it propose *content* — a projection, a climax, a story beat — or only *connections* and *gaps*?
 
-**May it propose branches on an existing projection?**
-Narrower than proposing whole projections — "you haven't considered she might do nothing." Possibly the more useful version.
+**What happens when a proposal is a bad reading?**
+Not a hallucinated fact but a wrong interpretation — "the party seems invested in the Warden" when they aren't. Rejection exists; whether rejection *teaches* anything, or just dismisses one card, is undecided.
 
 **How strong must a pattern be before a ticket fires?**
-Too eager and tickets get dismissed reflexively, killing the feature. Needs a target, even a rough one.
+Too eager and tickets get dismissed reflexively.
 
 **Should the system ever push back?**
-Density awareness implies it might say "this is too connected, let the next one be a dungeon." Is that in scope, or purely the GM's call?
+Density awareness implies it might say "let the next one just be a dungeon."
 
 ---
 
 ## 4. Canon
 
 **[blocking] How much canon must be recorded, and when?**
-Floors 1–5 need almost none. Floor 6 onward needs enough to compute proximity. That's a real data-acquisition workload with a deadline — and it can't be answered without knowing how proximity gets computed and how precise it must be.
+Floors 1–5 need almost none; Floor 6 onward needs enough to compute proximity.
 
 **Can the party affect canon outcomes, or only experience them?**
-Determines whether divergence is an edge case or a core mechanic.
 
 **Does divergence need to be visible to players?**
-Knowing the campaign has left canon is a powerful narrative fact — or a spoiler about what canon was.
 
 **Has anyone at the table read the books?**
-Changes proximate events from mystery to dramatic irony, per player. Needs answering before Floor 6 regardless of tooling.
+Changes proximate events from mystery to dramatic irony, per player.
 
 **Do canon events feed the arc tree?**
-A canon figure the party comes to care about from a distance could carry real weight.
 
 ---
 
 ## 5. Campaign shape
 
 **[blocking] Does the campaign have a known length?**
-Arc budgeting, convergence planning, and pacing warnings all require a horizon. If open-ended, pacing has to be judged some other way and several proposed features lose their basis.
+Arc budgeting and convergence planning need a horizon.
 
 **Is arc density measurable in a useful way?**
-Counting arc-connected events may mistake quantity for weight — one devastating choice can carry a campaign. If the metric misleads, the pacing feature shouldn't be built.
-
-**How much projection history is worth keeping?**
-Enough to see divergence shape, not so much it becomes an unread archive.
+Counting arc-connected events may mistake quantity for weight.
 
 ---
 
-## 6. Correctness, deletion, and rollback
+## 6. Correctness and rollback
 
-AI-assisted authoring produces incorrect data, and errors are often discovered long after they're introduced and have propagated. Deletion is therefore a requirement, not an edge case.
+See [[Rollback-and-Repair]] and [[Facts-and-Revelation]]. Most apparent "fact changes" are revelations, which are additive; only genuine errors need deletion.
 
-This resolves an apparent conflict with the "discard unused material" rule in [[GM-Considerations]]. Two different things were being conflated:
+**[blocking] What happens to work built on a rolled-back batch?**
+Block, cascade, flag, or repair. Undecided, possibly overkill.
 
-| | Keep | Delete |
-|---|---|---|
-| **Unused but valid** — abandoned branches, dead projections, speculative events never played | ✓ | |
-| **Invalid** — hallucinated NPCs, wrong relationships, misattributed events, bad integrations | | ✓ |
-
-The test is not "was it used" but **"is it true."** Unused material is history and debrief fodder. Incorrect material is pollution, and its cost compounds — every projection resting on a false premise is quietly wrong.
-
-### Rollback operates on batches
-
-Errors don't arrive as single facts. They arrive as a body of work sharing a root cause — one integration pass, one flawed source document, one session's write-up. Undoing forty-seven individual changes is not a recovery path anyone uses. The requirement is *"undo that integration,"* as one action.
-
-Batching is assumed (see Settled assumptions). What remains open:
-
-**[blocking] What happens to work built on top of a rolled-back batch?**
-Bad data lands Monday; good work Tuesday references it; rolling back Monday breaks Tuesday. Three possible behaviors, and the choice is a requirement:
-
-- **Block** the rollback until dependents are dealt with
-- **Cascade** — remove dependents too, which risks discarding good work
-- **Flag** — roll back the batch, mark dependents as resting on removed material, leave the GM to repair
-
-The premise-decay mechanism in [[Arcs]] already implies the third, and it's likely right — but it needs deciding rather than defaulting.
-
-**How deep is the window?**
-By count (last N batches) or by time (last N weeks)? Given errors surface late, a window measured in a handful of sessions is probably the floor.
-
-**Is partial rollback needed?**
-An integration that produced eight good facts and two hallucinations — undo all ten, or extract the good ones first? All-or-nothing is far simpler and may be sufficient if re-integration is cheap.
-
-### Supporting requirements
-
-**Does content carry provenance?**
-If GM-authored, AI-proposed-and-accepted, and AI-generated content are distinguishable — and tagged with the batch that produced them — errors become auditable and rollback becomes addressable. Without provenance, finding the blast radius of a bad batch means checking everything.
-
-**Is deletion outside the rollback window still possible?**
-Rollback handles recent, batch-shaped errors. A single wrong fact discovered a year later needs ordinary deletion, with dependent-flagging.
-
-**Can deletion be done in bulk outside a batch boundary?**
-Errors don't always align with how work was committed.
-
-**Is there a probationary state before AI-generated content becomes premise material?**
-Nothing is applied without approval — but approval under time pressure isn't verification. Whether newly integrated content can be *used as a premise* before being confirmed is worth deciding, since premises are where a wrong fact does the most quiet damage.
+**Should tombstones be preserved regardless?**
+A cheap hedge with an early deadline — if deletion cleans up references, repair becomes impossible to add later.
 
 ---
 
 ## 7. Lifecycle events
 
 **[blocking] What happens when a character dies?**
-DCC runs on lethality; this will happen. Does the dossier become historical? Do their arcs transfer, resolve, or go dormant? Does the player's new character inherit their notes and relationships? Does the dead character remain in the graph as a node others reference?
+DCC runs on lethality. Does the dossier become historical? Do their arcs transfer or resolve? Does a new character inherit their relationships? Does the dead character stay in the graph as a node others reference?
 
 **Can arcs merge and split, and what survives?**
-Established as needed. Requirements: both handles preserved, evidence unioned with attribution intact, moment of convergence recorded, projections reconciled by the GM.
-
-**Do speculative events that never happen get kept?**
-Resolved: kept, as debrief material — provided they're valid. See §6.
+Handles, evidence with attribution, moment of convergence, reconciled projection.
 
 ---
 
-## 8. Context of use
+## 8. Working rhythm
 
-**[blocking] Must the tool work at the table, live?**
-The table view assumes yes. That imposes latency targets, device constraints, and possibly offline operation. If the answer is "between sessions only," the product is substantially simpler.
+**What does the week before a session actually look like?**
+One long block, scattered minutes, or the morning of? Everything about surfacing hints and readiness assumes a moment when the GM sits down to prep. Worth confirming that moment exists and what shape it has.
 
-**What device, in what conditions?**
-Laptop at the table, tablet, phone, second screen. Determines everything about the table view's layout.
+**Does anything get shown to players automatically?**
+Everything so far is GM-gated reveal. But a session recap players can read afterward is the obvious thing they'd want, and manual publishing each week is exactly the step that gets skipped. Small question, large effect on whether the player surface gets used at all.
 
-**Is connectivity guaranteed where you play?**
-In-person weekly game. If not reliable, offline capability becomes a requirement rather than a nicety.
-
-**What is an acceptable retrieval latency mid-session?**
-"Seconds" has been the working phrase. A number would be better, since it's the constraint that reduces required prep volume.
+**What's the fallback if the tool isn't available mid-session?**
+Dead laptop, no connectivity, a bug. Plain markdown helps, but worth answering deliberately.
 
 ---
 
 ## 9. Scope boundaries
 
 **Is this one campaign or a system for many?**
-Reuse across campaigns changes the data model's assumptions considerably.
 
 **Does the GM need to invent new relationship types during play?**
-A closed edge vocabulary is queryable; an open one is expressive. Whether the GM can extend it at runtime is a requirements question, not a design one.
+Closed vocabulary is queryable; open is expressive.
 
 **Is content portability required?**
-Export, backup, or migration off this system if it's abandoned. The repo-as-database choice partly answers this, but only partly.
+Export, backup, migration off this system.
 
 ---
 
-## Suggested order of resolution
+## Suggested order
 
-The blocking questions cluster into four decisions that unlock most of the rest:
+1. **Is this a multi-user system?** (§1)
+2. **What does prep week look like?** (§8) — shapes the GM surface more than anything else unanswered.
+3. **How does bad data get found and removed?** (§6)
+4. **Character death** (§7) — will happen, probably sooner than expected.
 
-1. **Is this a multi-user system?** (§1) — determines whether the player surface exists as a real product.
-2. **What gets captured, when, and by whom?** (§2) — determines whether inference, arcs, and investment tracking are possible at all.
-3. **How does bad data get found and removed?** (§6) — determines whether the record stays trustworthy over years. Everything built on top of the graph assumes the graph is right.
-4. **Must it work live at the table?** (§8) — determines latency, device, and offline requirements.
-
-Canon workload (§4) and campaign length (§5) can wait, but both have real deadlines — Floor 6 for the first, and the sooner the better for the second.
+Canon workload (§4) has a Floor 6 deadline. Campaign length (§5) the sooner the better.
