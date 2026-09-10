@@ -9,6 +9,8 @@ tags: [north-star, goals]
 
 Everything else in `_design/` is instrumental to this. When a design decision is unclear, this is the thing to decide against.
 
+See [[Scope]] for what's explicitly out of bounds.
+
 ---
 
 ## The goal
@@ -50,7 +52,6 @@ So the world has to be conveyed by **implication and consequence** rather than d
 ### For the sense of authorship
 
 - **Player-created content must sit as an equal to canon in the player view.** If their notes look like scratch paper attached to the real material, they'll feel like annotators. If their record of what happened sits alongside the world's record, they'll feel like authors.
-- **Session records are chapters, not minutes.** What the party did *is* the new material. Framing and presenting it that way — narrative, not logs — is most of the job.
 - **Their choices must visibly change things.** An NPC's disposition shifting, a faction's stance moving, a place being different than it was. Change is the proof that authorship is real.
 - **Their inventions should become world facts.** A name a player coins, a reputation they earn, a rumor they start — once it's in the record with the same weight as anything else, the world has absorbed their contribution.
 
@@ -61,10 +62,10 @@ So the world has to be conveyed by **implication and consequence** rather than d
 | Design element | What it's actually for |
 |---|---|
 | The graph model | Making consequence traceable, so the world can react to what players did |
-| Arcs | Ensuring the party's own story has weight and shape — the chapters they're writing |
+| Arcs | Ensuring the party's own story has weight and shape |
 | The planning tree | Making sure the world is ready wherever they go, so it feels like it exists independently |
-| Density band | Story that neither grinds nor railroads — the feeling of a real story happening at a real pace |
-| Investment tracking | Noticing what the players are actually writing about, so the GM can build on it |
+| Density band | Story that neither grinds nor railroads |
+| Investment tracking | Noticing what the players are actually drawn to, so the GM can build on it |
 | Visibility control | Preserving discovery, which is what makes a large world feel large |
 | The player interface | Making the world persist between sessions, and their contributions visible in it |
 
