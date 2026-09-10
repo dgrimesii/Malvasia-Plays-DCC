@@ -2,76 +2,91 @@
 type: design
 status: draft
 visibility: gm
-tags: [requirements, latency, retrieval]
+tags: [requirements, latency, retrieval, investment]
 ---
 
-# Retrieval Tiering
+# Retrieval Tiering and Query Signal
 
-Not all content needs equal access latency. Companion to [[Update-Cadence]].
+Two related ideas: not all content needs equal access latency, and what players look up is useful information.
 
-**Requirements only.** How tiering is implemented is deferred.
+**Requirements only.** Implementation deferred.
 
 ---
 
-## The system knows roughly what will be asked
+## Part 1 — Tiering
+
+### The system knows roughly what will be asked
 
 Unusual property: the GM's plan is a prediction of the next session's queries. Combined with what's currently active, that's enough to prioritize preparation rather than treating all content equally.
 
-Signals, roughly in order of strength:
-
 | Signal | Why it predicts demand |
 |---|---|
-| In the planned session | Directly expected to come up |
+| In the planned session | Directly expected |
 | One or two hops from planned assets | The branches the party might take |
 | Attached to an active arc | Live threads get referenced |
 | Recently appeared | Recency drives recall questions |
 | Frequently appeared | Recurring figures get asked about |
 
-And the converse: an NPC who appeared once five sessions ago, has no link to an active arc, and isn't in the plan is **cold**. Slower access is acceptable.
+Conversely: an NPC who appeared once five sessions ago, has no link to an active arc, and isn't in the plan is **cold**. Slower access is acceptable.
 
----
+### Cold must still mean available
 
-## Cold must still mean available
+The design assumes players go off-plan. The NPC from five sessions ago is *most* likely to come up precisely because the party is doing something unanticipated — the plan being wrong and the query being cold are correlated.
 
-The entire design assumes players go off-plan. The NPC from five sessions ago is *most* likely to come up precisely because the party is doing something unanticipated — the plan being wrong and the query being cold are correlated.
-
-So:
-
-- **Cold tier needs a bounded worst case**, not just "eventually." A ten-second lookup mid-session is a failure regardless of tier.
+- **Cold tier needs a bounded worst case.** Ten seconds mid-session is a failure regardless of tier.
 - **Nothing is unreachable.** Tiering affects speed, never availability.
-- **Degradation should be graceful and visible.** If a cold lookup is slower, that's fine; if it silently returns less, that's not.
+- **Degradation is visible, not silent.** Slower is fine; returning less is not.
 
 ---
 
-## A cold hit is a signal
+## Part 2 — Player queries as signal
 
-When the party asks about something nothing predicted, that's information:
+What the players look up is evidence of what they're thinking about. The use case is specific: **a hint to the GM about where prep or an arc may be needed.**
 
-- **The plan was off** — useful to know, and cheap to notice.
-- **Or there's investment the system hasn't detected.** Players don't look up entities they don't care about.
+### Attention coverage
 
-Retrieval is behavior, and behavior is exactly the evidence [[Session-Capture]] is trying to collect. This channel is free, requires no GM observation, and doesn't depend on anyone being expressive.
+This surfaces a kind of readiness the design didn't previously have a source for:
 
-Worth feeding back: repeated cold lookups on the same entity is a strong candidate for the investment clustering described in [[Arcs]]. It may be the single most reliable signal available, since it's an unprompted action with no performance component.
+| | Question it answers | Evidence source |
+|---|---|---|
+| **Path coverage** | If they go left, is something there? | The GM's own branch mapping |
+| **Attention coverage** | If they pursue what they're already thinking about, is anything there? | Player queries |
 
-**Caveat:** searching for something isn't the same as caring about it. A player may look up an NPC purely to check a fact before acting. Frequency and repetition matter more than any single lookup.
+Path coverage is what the readiness check in [[GM-Considerations]] measures. Attention coverage is orthogonal, and query data is the only way to see it.
+
+### The actionable signal
+
+**High query volume plus no corresponding prep is a gap.**
+
+> The party has looked up the Warden four times since last session. Nothing planned involves him.
+
+That's a prep hint, not analytics. Variants worth surfacing:
+
+- **Queried repeatedly, nothing prepared** — they're heading somewhere the GM isn't ready for.
+- **Queried repeatedly, thin content** — the world has a hole where their attention is. Worth deepening.
+- **Multiple connected entities queried** — candidate arc material, and a strong version of the investment clustering in [[Arcs]], since the queries are unprompted.
+- **Queried and then acted on** — confirms the lookup was planning, not idle checking.
+
+### Why this signal is unusually good
+
+- **Unprompted.** Nobody asked them to look.
+- **No performance component.** Fixes the quiet-player problem in [[Session-Capture]] — a player who never emotes still searches.
+- **Requires no GM observation.** It accumulates without anyone noticing anything at the table.
+- **It's behavior, not interpretation.** Fully consistent with [[Constraint-Manner-and-Intent]] — the record is "looked up X four times," which is a fact. Why they looked is not inferred.
+
+### Caveats
+
+- **A single lookup means little.** Someone may be checking a fact before acting. Repetition is the signal.
+- **Queries reflect uncertainty as much as interest.** Frequent lookups may mean the GM's delivery wasn't clear, not that the topic is compelling. Both are useful to know, but they're different findings.
+- **Tell the players it's recorded.** A signal that quietly shapes the campaign is different from a known one, and the honest version costs nothing — most players would find it flattering that their curiosity steers prep.
 
 ---
 
 ## Requirements summary
 
-- Access latency may vary by predicted demand.
-- Prediction may use the GM's plan, arc activity, recency, and frequency.
-- Cold content stays available with a bounded worst case.
-- Tiering never changes *what* is returned, only how fast.
-- Retrieval events are recorded and available as investment signal.
-
----
-
-## Open
-
-**Are player retrieval events recorded at all?**
-Useful as signal, but it's monitoring what the players look at. Worth being deliberate rather than assuming — and possibly worth telling them.
-
-**Does the GM's own retrieval count as signal?**
-Probably not the same thing. The GM looking something up reflects prep needs, not investment.
+- Access latency may vary by predicted demand; cold content stays available with a bounded worst case.
+- Tiering never changes what is returned, only how fast.
+- Player retrieval events are recorded, with entity and timestamp.
+- The GM sees query-derived prep hints: repeated queries with no prep, thin content where attention is, and connected clusters.
+- GM retrieval is recorded separately or not at all — it reflects prep needs, not investment.
+- Players are told their queries inform prep.
