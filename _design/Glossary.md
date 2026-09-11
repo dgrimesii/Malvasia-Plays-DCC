@@ -157,4 +157,4 @@ Recording an utterance as a claim is the single most consequential mistake avail
 
 **Storyteller** *[process]* — This tool.
 
-**Chronicle** *[process]* — A separate, existing tool for a different campaign in a different system: a player-side record kept by one player as scribe for their table. Not integrated with Storyteller. See [[Roadmap]] for the strategic position.
+**Chronicle** *[process]* — A separate, existing tool for a different campaign in a different system: a player-side record kept by one player as scribe for their table. Deliberately not integrated with Storyteller today — a strategic divergence, not an oversight, weighed openly during design. The model stays extensible toward it: Storyteller is kept mappable to Chronicle's schema, one-directionally, without requiring Chronicle to change. See [[Strategy-Multi-Campaign-and-Convergence]] for the full position.
