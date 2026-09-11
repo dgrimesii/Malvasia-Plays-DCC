@@ -35,7 +35,7 @@ Every domain term used in an epic points here. If a term is missing, it either n
 
 **Table** *[game]* — The group and the occasion. *"At the table"* means during live play, with everyone present — as opposed to preparation beforehand or writing up afterward.
 
-**In-fiction and table-level** *[game]* — Two different layers. In-fiction: a character picks a lock. Table-level: a player leans in and asks a question about a locked door. Both are worth recording, and they mean different things.
+**In-fiction and table-level** *[game]* — Two different layers. In-fiction: a character picks a lock. Table-level: a player leans in and asks a question about a locked door. Both are worth recording, and they mean different things. Neither is the players' own conversation about the session afterward — reliving it, comparing notes, talking about what almost happened. That's a real and valued part of playing a TTRPG, and Storyteller has no part in it; see **Canon**'s Supersession note for a concrete case.
 
 **Session** *[game]* — One sitting of play, a few hours long. This group plays roughly weekly. The unit almost everything is organised around.
 
@@ -130,6 +130,8 @@ Two examples make the distinction concrete. *Carl summons the god Emberus to the
 Most table interaction with canon is **extension**, not conflict: the party doing something in a bubble the books never documented, filling gaps the source material leaves open by design. That needs no special handling — an ordinary table fact, optionally linked to the concurrent canon fact by an ordinary Relationship, nothing more.
 
 **Supersession** is the genuine exception: the table explicitly changes a *documented* outcome — an NPC saved who dies in the books, a canon event blocked outright. The canon fact itself never changes; it belongs to the source and stays in the record exactly as written, permanently. What's new is a table fact carrying a `supersedes` relationship to it, made visible to the GM so anything built on the original outcome is reachable and known to be superseded — for this campaign's own narrative only.
+
+The `supersedes` relationship works the same as any other, but there's no in-fiction reason it would ever be marked visible to the party — it connects two facts about the story's own authorship, not something a character could notice or a scene could reveal. Whether the players later notice or discuss that something played out differently from the books is a real conversation the humans have themselves, at or after the session — the same kind of thing Storyteller was never going to record. It keeps the campaign's story, not the players' own conversations about having played it.
 
 **Off-screen event** *[model]* — Something happening elsewhere while the party is not there. Recorded when its effects will reach them.
 
