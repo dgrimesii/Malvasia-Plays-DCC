@@ -42,45 +42,35 @@ Abilities used, round-by-round combat, results grounded against the rules. This 
 
 And *"grounded against the game rules"* is the part that can never be shared. It requires a model of what actions exist, what results are valid, what a character can do — which is why Chronicle harvests ability lists from D&D Beyond. That is bound to 5e in a way nothing lifts out of.
 
-**So the two objectives are the two layers of Chronicle's own v4 schema.** Objective 1 is `narrative` — portable. Objective 2 is `mechanics` — system-specific. The seam was not a lucky accident; it is the shape of the problem.
-
 ---
 
-## Objective 2 diverges in structure, not vocabulary
+## Why objective 2 can't be shared by renaming fields
 
-This is the part that kills the tempting cheap answer — one combat schema with different field names per system.
+The tempting cheap answer is one combat schema with per-system field names. It fails, and the reason is structural rather than a matter of vocabulary.
 
-| | D&D 5e | DCC |
-|---|---|---|
-| Turn order | Fixed initiative order | Declaration phase, then resolution |
-| Commitment | Act when your turn arrives, knowing what came before | Declare before knowing what others declared |
-| Action economy | Action, bonus action, move, reaction | No reaction; an **interrupt** spends your action to preempt an enemy's |
-| What a round is | An ordered sequence of turns | A set of commitments, then a resolution |
+Chronicle's combat record encodes 5e's turn structure directly: `slots[{s, a, act, res, val}]` where `s` is a slot number 1–6, plus a separate `enemy_turns[]`. **Ordinal position carries meaning** — the schema assumes a round is an ordered sequence of turns, that each participant acts once at a known point, and that what came before is known when you act.
 
-Chronicle's combat record encodes the first column structurally: `slots[{s, a, act, res, val}]` where `s` is slot number 1–6, plus a separate `enemy_turns[]`. **Ordinal position carries meaning.**
+Those are real assumptions about how a game works, and systems differ on every one of them. Some resolve simultaneously rather than in sequence. Some separate what you commit to from when it resolves. Some let one action preempt or cancel another, which is a *relation between two actions* rather than a position in a sequence. A system making any of those choices does not fit a slot list, whatever the fields are called, and forcing it in loses information in both directions.
 
-In DCC it would not. Declaration order is not resolution order, and an interrupt is a *relation between two actions* rather than a position in a sequence. Forcing either into the other's shape loses real information in both directions.
+That is enough to settle the boundary. Establishing it does not require cataloguing how any particular system resolves a round — and this tool deliberately holds no such model, which is the point of the scope exclusion. What matters is only that the assumptions are not universal.
 
 ### The consequence for the boundary
 
 **The shared core stops at the event.** It knows that a combat happened, where, who was involved, and how it came out. It does not know how a round works.
 
-Everything below that line is a **system-specific payload** the core does not interpret — opaque to it, owned by whatever tool handles that game system. A DCC play-record tool, if one were ever wanted, would be a *sibling* of Chronicle sharing the core, not a feature of this tool.
+Everything below that line is a **system-specific payload** the core does not interpret — opaque to it, owned by whatever tool handles that game system. A play-record tool for any other system, if one were ever wanted, would be a *sibling* of Chronicle sharing the core, not a feature of this tool.
 
 That is a cheap boundary to hold, and it is the thing convergence actually needs: a stable contract at the event, and no assumptions about what is underneath it.
 
-### But the interrupt is narrative, and belongs here
+### Narratively weighted mechanical moments still belong here
 
 [[Scope]] draws the line at narrative weight: *"the use of a capability at a significant moment is narrative. The capability's numbers are not."*
 
-DCC's structure produces exactly that kind of moment, arguably more than 5e's does:
+Every system produces moments of that kind, and which moments carry weight is shaped by its structure — a system where you commit before knowing what others will do generates misfires and accidental rescues; one where an action can be spent to preempt another generates choices under pressure with a real cost. Those are character, not bookkeeping.
 
-- **Spending your own action to interrupt someone else's** is a choice under pressure with a cost — protecting an ally, or stopping something at the expense of your own turn. That is character, not bookkeeping.
-- **Declaring before knowing what others declared** produces commitments that misfire, plans that collide, and people covering for each other by accident. Dramatic irony, generated by the rules.
+*"Hilda spent her action to stop the Warden's order"* is a portable narrative fact and worth capturing here. The resolution mechanics beneath it are not, and are not wanted.
 
-*"Hilda spent her action to interrupt the Warden's order"* is a portable narrative fact and worth capturing here. The resolution mechanics beneath it are not, and are not wanted.
-
-**System structure shapes which moments carry weight. Capturing those moments does not require capturing the structure.**
+**System structure shapes which moments carry weight. Capturing those moments does not require capturing the structure** — which is fortunate, because capturing the structure is exactly what the core cannot portably do.
 
 ---
 
@@ -88,18 +78,20 @@ DCC's structure produces exactly that kind of moment, arguably more than 5e's do
 
 Entities, typed relationships between them, and events — **as observed.**
 
-That is the whole substrate. Everything else in either tool sits on top of it:
+That is the whole substrate. Everything else in either tool sits on top of it, as a context layer over shared things rather than a competing model of them:
 
 | Layer | Chronicle | This tool |
 |---|---|---|
 | **Shared core** | People, places, events, relationships, sessions | Same |
-| Adds | Rules-grounded play detail — combat rounds, actions, results | Planning and speculation, visibility and revelation, arcs |
+| Adds | Rules-grounded play detail — combat rounds, actions, results | Planning and speculation, visibility and revelation, investment, arcs |
+
+This supersedes an earlier framing in which the seam ran through Chronicle's own `mechanics` / `narrative` two-layer split on each entity. That split is a reasonable first read and points in the right direction, but the sharper cut is one shared entity core with a context layer per tool — see [[Strategy-Multi-Campaign-and-Convergence]]. Both tools describe the same people, places, events, quests, and objects; each attaches its own point of view to them.
 
 ### One difference worth naming precisely
 
 **Chronicle only ever writes facts.** It records what happened, after it happened. Nothing in it is provisional.
 
-This tool writes facts *and* things that have not happened — projections, speculative events, planned encounters, intended arcs. [[Off-Screen-Events]] already gives the state model for this: `planned` versus `fact`, with authoring effort tracked separately on the `speculative / potential / used` ladder.
+This tool writes facts *and* things that have not happened — projections, speculative events, planned encounters, arc intent. [[Off-Screen-Events]] already gives the state model for this: `planned` versus `fact`, with authoring effort tracked separately on the `speculative / potential / used` ladder.
 
 That means the substrate already accommodates both tools without modification. Chronicle simply never uses one of the states. **A shared core does not require Chronicle to grow a notion of speculation, and does not require this tool to give one up.**
 
@@ -123,7 +115,7 @@ A system that treats depth as a completeness target will make every low-appetite
 
 Chronicle has already met this problem and solved it the right way: the integrity checker surfaces a gap, and the scribe must explicitly **Accept**, **Defer**, or **Edit** it. The decision is recorded rather than assumed, and publishing is blocked until every gap has one.
 
-That pattern is directly reusable here, and it applies to the readiness and coverage checks in [[GM-Considerations]] for the same reason — a coverage claim that cannot distinguish "deliberately thin" from "overlooked" is not trustworthy.
+That pattern is directly reusable here, and it is the same shape as intake's review stage in [[Session-Capture]] — the system proposes, the human decides, nothing is assumed silently. It applies to the readiness and coverage checks in [[GM-Considerations]] for the same reason: a coverage claim that cannot distinguish "deliberately thin" from "overlooked" is not trustworthy.
 
 ### Appetite is per-campaign configuration
 
@@ -137,7 +129,7 @@ Cheap to allow for. Awkward to add once anything reads a global setting.
 
 - **The shared core is entities, typed relationships, events — observed.** Anything proposed as "core" that does not fit that description is not core.
 - **The core boundary is the event.** Mechanical detail below it is a system-specific payload the core does not interpret.
-- **Narratively weighted mechanical moments are captured as narrative facts**, without the mechanical structure that produced them. An interrupt, a capability used at a hinge point, a commitment that misfired.
+- **Narratively weighted mechanical moments are captured as narrative facts**, without the mechanical structure that produced them. A capability used at a hinge point, a commitment that misfired, an action spent to stop someone else's.
 - **The planned/fact distinction stays**, and costs convergence nothing.
 - **Coverage and integrity checks must record an explicit human decision on each gap**, rather than assuming absence means incompleteness. Reuse Chronicle's Accept / Defer / Edit shape.
 - **The campaign container carries configuration**, including expected capture depth.
