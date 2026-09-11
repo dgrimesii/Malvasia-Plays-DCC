@@ -123,7 +123,9 @@ Recording an utterance as a claim is the single most consequential mistake avail
 
 **Reveal** *[model]* — The GM deliberately making something visible to the party. Not a switch on an entity — a chosen set of existences, names, facts, and connections. Recorded as an event, so what is new can be shown later.
 
-**Canon** *[campaign]* — Established published material about the wider world, versus what this campaign has invented. Matters from Floor 6, when the two start touching.
+**Canon** *[model]* — Facts whose source is an author external to the campaign — the published setting itself — rather than something the GM or table invented. Treated as immutable: the GM builds around canon rather than contradicting it, absent a deliberate divergence. Earlier drafts tied this definition to Floor 6; that was one campaign's example of when canon starts to bite, not part of what canon *is*. Whether, and when, canon starts to matter is campaign-specific — another table, another system, might hit that threshold on day one, or never.
+
+A canon event doesn't need the party present to matter. In *Gate of the Feral Gods*, Carl summons the god Emberus to the 5th floor; the rampage affects every bubble on that floor, including ones Carl never enters. Modeled the same way any other **Off-screen event** is — recorded because its effects reach the party, whether or not the canon event itself, or the entity at its center, ever materializes for them.
 
 **Off-screen event** *[model]* — Something happening elsewhere while the party is not there. Recorded when its effects will reach them.
 
