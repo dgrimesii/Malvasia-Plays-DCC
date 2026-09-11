@@ -89,6 +89,12 @@ An **event** *[model]* is a thing that happened, or is planned to happen, record
 
 **Effort** *[model]* is `speculative` → `potential` → `used` — how much writing has gone into it. A `potential` encounter is fully written and has not happened; a `speculative` one is a possibility being held cheaply.
 
+**Change vs Ticket** *[model]*
+
+A **change** is a concrete edit to the record proposed from session notes — a new entity, a new fact on an existing one, a new or extended relationship. It is not applied until the GM accepts it. See **Intake**.
+
+A **ticket** is raised *after* changes are accepted, about what the now-accepted facts imply. Changes alter the record; tickets ask a question about it. Keeping the two apart is what makes intake reviewable: the GM confirms what happened before being asked what it means.
+
 ---
 
 ## Part 3 — The model
@@ -131,7 +137,7 @@ Most table interaction with canon is **extension**, not conflict: the party doin
 
 **Supersession** is the genuine exception: the table explicitly changes a *documented* outcome — an NPC saved who dies in the books, a canon event blocked outright. The canon fact itself never changes; it belongs to the source and stays in the record exactly as written, permanently. What's new is a table fact carrying a `supersedes` relationship to it, made visible to the GM so anything built on the original outcome is reachable and known to be superseded — for this campaign's own narrative only.
 
-Finding the collision is not the GM's job. It's a third question in the same **Signal** pass that already checks new facts for possible relationships and possible investment shifts — run automatically, most naturally during session-note intake, against canon facts already in the record. A **Ticket** surfaces it when found. The GM's job is confirming whether it's deliberate, not noticing that it happened.
+Finding the collision is not the GM's job. A canon fact is an ordinary fact, so a table fact colliding with one is just a particular case of the impact detection **Ticket** already performs against everything in the record — nothing canon-specific about the mechanism. The GM's job is confirming whether it's deliberate, not noticing that it happened.
 
 The `supersedes` relationship works the same as any other, but there's no in-fiction reason it would ever be marked visible to the party — it connects two facts about the story's own authorship, not something a character could notice or a scene could reveal. Whether the players later notice or discuss that something played out differently from the books is a real conversation the humans have themselves, at or after the session — the same kind of thing Storyteller was never going to record. It keeps the campaign's story, not the players' own conversations about having played it.
 
@@ -143,9 +149,16 @@ The `supersedes` relationship works the same as any other, but there's no in-fic
 
 **Investment** *[model]* — An entity or thread's current degree of investment, as last set by the GM. Not calculated or aggregated automatically — a judgment call, recorded the same way any GM decision is: as an event, with provenance. Its history — rising, declining, gone quiet — is read off the sequence of these events over time, the same way any other history in the model is read. This is what lets a GM pace delivery of impact: investment is what turns an event into something the table feels.
 
-**Signal** *[model]* — Not a recorded event in its own right. The inference engine's automated read of newly recorded facts — most naturally run during session-note intake — asking several parallel questions of each one: does this imply a new relationship to another fact or entity; does this imply a shift in an entity's investment; does this collide with an existing canon fact. Surfaced through a **Ticket** whenever something crosses the threshold, never applied automatically. Detecting the possible match is the system's job in every case; confirming it — is this real, does it count, is it deliberate — is always the GM's.
+**Signal** *[model]* — Not a recorded event in its own right. Accepted facts that the impact pass reads as evidence an entity's investment may have shifted. One of the things a **Ticket** can be about, not a separate mechanism.
 
-**Ticket** *[model]* — A short, dismissible prompt raised by the system when it notices something: a possible connection between two facts or entities, a possible shift in investment, a possible supersession of a documented canon outcome, a gap in coverage, two records that may be the same. A suggestion, never an action taken.
+**Intake** *[model]* — Turning session notes into record changes, in two stages that never merge.
+
+1. **Proposed changes, reviewed by the GM.** The system reads the notes and proposes concrete edits — new entities, new facts on existing entities, new or extended relationships. The GM reviews the list, edits what's wrong, rejects what shouldn't land, and accepts the rest. **Nothing is written until accepted.** Extraction can misread, and a wrong fact accepted silently becomes a premise everything downstream is built on.
+2. **Impact detection, after acceptance.** Only once the facts are settled does the system look at what they imply, raising **Tickets**. Running inference over unreviewed extractions would compound a bad reading into a bad conclusion.
+
+The ordering is the point: confirm what happened, then ask what it means.
+
+**Ticket** *[model]* — A short, dismissible prompt raised after accepted changes land, about what they imply for the record: a possible new connection between facts or entities, a possible shift in investment, a possible supersession of a documented canon outcome, two records that may be the same, a gap in coverage. All of these are one thing — detecting impact on existing entities and relationships, and the inferences that follow from it. A suggestion, never an action taken.
 
 **Intersection note** *[model]* — Writing about the meeting of two things — this NPC in this place — that is reachable from both, rather than being filed under one and lost to the other.
 
