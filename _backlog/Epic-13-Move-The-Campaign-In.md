@@ -45,7 +45,7 @@ There is a second danger running the other way. A file marked GM-only says nothi
 - **Not authoring.** Creating and connecting new material is Epic 4.
 - **Not repair.** Undoing damage to a live store is Epic 12. This epic's protection is that it never damages the source.
 - **Not judging what should have been recorded.** Gaps in the existing record are the record's business, and per [[Shared-Core]] absence is never inferred to be an omission.
-- **Not multi-campaign capability.** S11 creates the container and fixes the addressing shape. A second campaign, switching between them, accounts, and sharing are all out — see [[First-User]].
+- **Not multi-campaign or multi-setting capability.** S11 creates the containers and fixes the addressing and identity shapes. Seeding a second campaign, switching between them, accounts, and sharing are all out — see [[First-User]] and [[Settings-and-Campaigns]].
 
 ---
 
@@ -59,8 +59,9 @@ There is a second danger running the other way. A file marked GM-only says nothi
 | Template-shaped content converts mechanically; everything older does not | [[Store-and-Access]] |
 | Known model errors exist in the live content and must be resolved rather than carried forward | [[Backlog-Readiness]] §G10 |
 | A gap has two causes and the difference cannot be inferred | [[Shared-Core]] |
-| Optionality is cheap; capability is expensive. A campaign container costs almost nothing now and is a migration later | [[Strategy-Multi-Campaign-and-Convergence]] |
+| Optionality is cheap; capability is expensive. The containers cost almost nothing now and are migrations later | [[Strategy-Multi-Campaign-and-Convergence]], [[Settings-and-Campaigns]] |
 | Places nest to arbitrary depth; there is no fixed tier count and no enumerated place types | [[Glossary]] |
+| Entities are durable across campaigns; facts and visibility belong to one | [[Settings-and-Campaigns]] |
 
 ---
 
@@ -103,8 +104,10 @@ Three costs:
 *As the GM, I want everything to arrive private unless the source actually says the party learned it, because the opposite mistake cannot be undone.*
 
 - **Outcome:** No conversion outcome is a spoiler.
-- **Assertion:** Visibility defaults to GM-only, and is held per fact and per connection rather than per file. A fact is marked known to the party only where the source states it. This holds even where the source file as a whole was marked player-visible.
+- **Assertion:** Visibility defaults to GM-only, and is held per fact and per connection rather than per file — and against the campaign, not globally. A fact is marked known to the party only where the source states it. This holds even where the source file as a whole was marked player-visible.
 - **Demo:** Convert a fixture containing a mix. Nothing is marked known to the party without a stated basis, and the basis is shown.
+
+**The campaign scope matters even with one campaign.** Per [[Settings-and-Campaigns]], a single-valued visibility field cannot be split later without guessing which campaign each value belonged to — on the one axis where guessing wrong spoils a campaign silently and unrecoverably.
 
 ### S4 — Decide the ambiguous cases myself
 
@@ -164,15 +167,15 @@ Three costs:
 
 **This is the file-name-to-model gap the README flags.** Converting the convention as-is would bake a two-tier geography into the store on day one, and [[Glossary]] is explicit that a GM wanting *continent → country → city → structure → floor → room* should get it without new vocabulary.
 
-### S11 — Put it all in a campaign, addressed the way it will stay
+### S11 — Put it in a setting and a campaign, addressed and identified the way they will stay
 
-*As the GM, I want my campaign to arrive inside a named container at a stable address, so that adding a second one later is a new record rather than a rebuild.*
+*As the GM, I want my world and my story to arrive as separate containers at a stable address, so that a second campaign in the same world later is a new record rather than a rebuild.*
 
-- **Outcome:** One campaign exists, addressed the way every future campaign will be.
-- **Assertion:** All converted content belongs to a campaign. Identifiers are unique within it and never assumed unique across campaigns. The campaign is addressed by path — `storyteller.warpandweft.ink/malvasia` — never by subdomain. No accounts, no switcher, no second campaign.
-- **Demo:** Show every converted record resolving to the campaign, and the campaign reachable at its path.
+- **Outcome:** One setting holding one campaign, with identity and addressing in their final shape.
+- **Assertion:** A setting exists and holds the campaign. **Entity identifiers are unique within the setting**, so a later campaign meeting the same NPC meets the same record. Facts, sessions, reveals, and visibility belong to the campaign. The campaign is addressed by path — `storyteller.warpandweft.ink/malvasia` — never by subdomain. **No interface acknowledges that settings exist.** No seeding, no switcher, no accounts, no second campaign.
+- **Demo:** Show entities resolving to the setting and facts resolving to the campaign, the campaign reachable at its path, and nothing in the GM's view mentioning a setting.
 
-**Thin structure, not a feature.** Per [[Strategy-Multi-Campaign-and-Convergence]], the container and the path shape cost almost nothing now and are a link-breaking migration later. The capability they leave room for stays firmly out of R1.
+**Thin structure, not a feature.** Per [[Settings-and-Campaigns]], identity scoped to the setting is what makes inheritance possible at all — a campaign-scoped identifier means a second campaign gets a copied starting position rather than a shared world. Both containers cost almost nothing while there is one of each.
 
 ### S12 — Tell me what happened
 
@@ -193,6 +196,7 @@ Three costs:
 | When is cutover — the point after which the tool is authoritative and the templates are only an import format? | Nothing here; everything after | Choose it rather than arrive at it |
 | Does anything need converting a second time, for content written between the first run and cutover? | Planning only | S5's repeatability makes this cheap either way |
 | Is the person holding the GM role modelled now, or deferred? | Nothing in RC 1a | [[Strategy-Multi-Campaign-and-Convergence]] wants the role held per campaign rather than baked in as a singleton. With one user it changes nothing visible; the question is only whether it is cheaper here than later |
+| Do facts need an explicit in-world time position, separate from the session date? | Nothing in RC 1a | [[Settings-and-Campaigns]]. Session date is sufficient while one campaign exists; it stops being sufficient the moment a second one starts earlier in world time |
 
 ---
 
