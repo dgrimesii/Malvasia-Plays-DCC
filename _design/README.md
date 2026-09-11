@@ -77,7 +77,7 @@ Hard rules, not preferences.
 Where this goes beyond one campaign.
 
 - **[[Strategy-Multi-Campaign-and-Convergence]]** — multi-campaign optionality, and the deliberate divergence from Chronicle. Which near-term choices are cheap to keep open and which are expensive retrofits.
-- **[[Shared-Core]]** — what Storyteller and Chronicle would actually have in common. ⚠️ See the correction note at the bottom of this file.
+- **[[Shared-Core]]** — what Storyteller and Chronicle would actually have in common, and where the boundary between them falls.
 
 ## Delivery
 
@@ -93,13 +93,3 @@ Where this goes beyond one campaign.
 ## Open
 
 - **[[Open-Requirements]]** — consolidated requirements questions, blocking ones marked.
-
----
-
-## Known correction needed
-
-**[[Shared-Core]] contains content derived from the wrong game system.** Its section comparing D&D 5e turn structure to "DCC" describes a declaration phase, a resolution phase, and an interrupt that spends your action — mechanics attributed to Dungeon Crawl **Classics**, not the Dungeon Crawler **Carl** RPG this campaign runs. The same error previously sat in [[Glossary]] and has been corrected there.
-
-Two things follow. The comparison table and the argument built on it are unverified and should not be cited until someone checks them against the actual rulebook. Separately, the document's conclusion that the seam between the two tools is Chronicle's `mechanics`/`narrative` split has since been superseded by [[Strategy-Multi-Campaign-and-Convergence]], which frames it instead as one shared entity core with a context layer per tool.
-
-Its load-bearing conclusions appear to survive both problems — the shared core is entities, typed relationships, and events as observed; the core boundary is the event; sparse records are valid records; gaps need an explicit human decision. Those don't depend on the specific mechanics being right. But the document needs a pass before it's trusted in detail.
