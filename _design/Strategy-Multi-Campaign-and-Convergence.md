@@ -93,29 +93,30 @@ That is a different shape from "everyone writes notes," and it is a plausible an
 
 Worth carrying into R2 planning as a real option rather than discovering it later.
 
-### The seam already exists, and it is in the right place
+### The seam is a shared entity core, not a per-entity mechanics split
 
-Chronicle's v4 schema puts a `mechanics` / `narrative` two-layer split on every entity type. Mechanical facts are structured and queryable; prose for human readers sits beside them.
+Chronicle's v4 schema puts a `mechanics` / `narrative` two-layer split on every entity type — a reasonable first read, but not the sharpest cut. The clearer frame: both tools describe the same underlying things — people, places, events, quests, objects — and each attaches its own point of view to them. Two contexts on one shared core, not two competing models of the same data.
 
-That is very close to the correct cut for convergence:
+- **The core, shared.** Entity, Identifier, Name, Alias, Relationship — the things that exist in the game world, and their identity. Chronicle and Storyteller are both, at root, describing the same people, places, events, quests, and objects.
+- **Storyteller's context.** Fact, Utterance/claim/belief, Visibility, Reveal, Materialize, Investment, Arc — actions, interactions, and narrative weight attached to the shared things. System-agnostic by construction; see [[Glossary]].
+- **Chronicle's context.** Combat rounds, initiative slots, damage values, reliability, ability harvesting from D&D Beyond — game-table mechanics attached to the same shared things. None of it means anything outside 5e.
 
-- **`narrative` is system-agnostic.** Sessions, NPCs, locations, quests, items, lore, factions, relationships — all portable between game systems.
-- **`mechanics` is system-specific.** Combat rounds, initiative slots, damage values, reliability, ability harvesting from D&D Beyond — none of it means anything outside 5e.
-
-And [[Scope]] has already excluded exactly the system-specific half from this tool: no stats, no rules enforcement, no rules lookup, no combat resolution. **That exclusion, made for unrelated reasons, is what makes this tool's core portable.**
+And [[Scope]] has already excluded exactly Chronicle's context layer from this tool: no stats, no rules enforcement, no rules lookup, no combat resolution. **That exclusion, made for unrelated reasons, is what makes this tool's core portable.**
 
 ### Where the models agree
 
 | Concept | Chronicle | This tool | Fit |
 |---|---|---|---|
 | Sessions, NPCs, locations, items, factions, lore | Present, mature | Present | Direct |
-| Quests with status, objectives, progress | `quest_ledger` | Quest, per [[Information-Architecture]] | Direct |
+| Quests with status, objectives, progress | `quest_ledger` | Quest, per [[Information-Architecture]] | Direct — see handoff note below |
 | Typed relationships between entities | `entity_relationships`, closed vocabulary | Typed directed edges | **Subset** — see below |
 | Graph as a first-class view | D3 force-directed, both surfaces | [[Interface-Direction]] table view | Same instinct |
 | AI proposes, human approves before commit | Delta review queue | [[Constraint-Manner-and-Intent]] Part 2 | **The same rule, independently arrived at** |
 | Synthetic fixtures, safe test mode | Built and running | Required by [[Shippable-Increment]] | Prior art worth copying outright |
 
 The last two are the strongest signal that these are the same kind of system underneath.
+
+**Where Quest crosses the seam.** Chronicle's `quest_ledger` status (given → in-progress → completed / failed / abandoned) and Storyteller's own quest state (`planned` → `fact`, `speculative` → `potential` → `used` effort, per [[Glossary]]) are not two views of the same axis. They are sequential, and they meet at exactly one point: **Reveal**. Before reveal, a quest belongs entirely to Storyteller's side, invisible to Chronicle — pure GM planning. After reveal, everything about its progress belongs to Chronicle, the party's own view of a thing they now know about. Neither model needs to represent the other's half; the handoff is the whole relationship.
 
 ### Where the models genuinely differ
 
@@ -157,6 +158,8 @@ Chronicle is precisely the set of things [[Scope]] excludes: combat detail, mech
 - **This tool designs so that a mapping to Chronicle's schema is writable.** That is a document, not code — a compatibility note maintained alongside the model, checked when the model changes.
 - **Borrow freely in the other direction.** The `mechanics` / `narrative` split, the `entity_relationships` shape, the delta-review approval pattern, and the fixture and safe-test-mode discipline are all proven and all fit [[Shippable-Increment]]'s requirements. Reinventing them would be waste.
 - **Treat Chronicle as the reference design for R2**, not merely as a system to be compatible with. It is the player-side artifact, already working, with real users who value it.
+
+This divergence is deliberate, not an oversight — weighed openly here, with the extensibility above kept cheap on purpose so the option stays open without paying for it now.
 
 ---
 
