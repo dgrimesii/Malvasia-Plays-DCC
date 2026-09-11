@@ -113,7 +113,7 @@ Recording an utterance as a claim is the single most consequential mistake avail
 
 **Relationship** *[model]* — A connection between two entities, with a direction and a type. Carries its own visibility: the party can know two things exist without knowing they are connected.
 
-**Provenance** *[model]* — Who asserted something, from which side of the screen, and when.
+**Provenance** *[model]* — Who asserted something, from which side of the screen, and when. Values include the GM, a player, or an author external to the campaign, carrying a citation — a **canon** fact is simply the last of these, nothing more.
 
 **Attribution** *[model]* — Whose contribution a piece of content is. A player note is theirs and stays theirs. Attribution is a name on a note, not a permission.
 
@@ -123,9 +123,9 @@ Recording an utterance as a claim is the single most consequential mistake avail
 
 **Reveal** *[model]* — The GM deliberately making something visible to the party. Not a switch on an entity — a chosen set of existences, names, facts, and connections. Recorded as an event, so what is new can be shown later.
 
-**Canon** *[model]* — Facts whose source is an author external to the campaign — the published setting itself — rather than something the GM or table invented. Treated as immutable: the GM builds around canon rather than contradicting it, absent a deliberate divergence. Earlier drafts tied this definition to Floor 6; that was one campaign's example of when canon starts to bite, not part of what canon *is*. Whether, and when, canon starts to matter is campaign-specific — another table, another system, might hit that threshold on day one, or never.
+**Canon** *[model]* — Not a new class of thing in the model. A Fact, Entity, or Relationship like any other, distinguished only by its **Provenance**: sourced from an author external to the campaign, with a citation, rather than invented by the GM or the table. Everything else works exactly as it does for any other fact — visible to the GM only until **Reveal**, and revealed the same way, on the GM's own timing. No separate node type, no separate status machine.
 
-A canon event doesn't need the party present to matter. In *Gate of the Feral Gods*, Carl summons the god Emberus to the 5th floor; the rampage affects every bubble on that floor, including ones Carl never enters. Modeled the same way any other **Off-screen event** is — recorded because its effects reach the party, whether or not the canon event itself, or the entity at its center, ever materializes for them.
+Two examples make the distinction concrete. *Carl summons the god Emberus to the 5th floor* (from *Gate of the Feral Gods*) is a canon fact — known to the GM in advance, because it's what the book says. *The party felt the rampage reach their own bubble on Floor 5* is a different fact: an ordinary table event, with its own provenance (this GM, this session), connected back to the canon fact through a **Relationship** rather than being the same fact revealed. The canon fact can stay unrevealed indefinitely while its consequences still reach the party as an **Off-screen event** — the two are linked, not identical.
 
 **Off-screen event** *[model]* — Something happening elsewhere while the party is not there. Recorded when its effects will reach them.
 
@@ -137,7 +137,7 @@ A canon event doesn't need the party present to matter. In *Gate of the Feral Go
 
 **Signal** *[model]* — Not a recorded event in its own right. Accumulated facts the inference engine flags as possible evidence that an entity's investment has shifted — the same pass that also flags possible new relationships, just aimed at a different question. Surfaced through a **Ticket**, never applied automatically. The ticket asks the GM two separate questions: is this evidence real, and does it move the degree. A "yes" to the second is what creates the investment-change event; a "yes" to only the first just means the evidence was noted without crossing a threshold.
 
-**Ticket** *[model]* — A short, dismissible prompt raised by the system when it notices something: a possible connection between two facts or entities, a possible shift in investment, a gap in coverage, two records that may be the same. A suggestion, never an action taken.
+**Ticket** *[model]* — A short, dismissible prompt raised by the system when it notices something: a possible connection between two facts or entities, a possible shift in investment, a possible contradiction with canon, a gap in coverage, two records that may be the same. A suggestion, never an action taken.
 
 **Intersection note** *[model]* — Writing about the meeting of two things — this NPC in this place — that is reachable from both, rather than being filed under one and lost to the other.
 
