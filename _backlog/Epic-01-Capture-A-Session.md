@@ -46,6 +46,7 @@ Meanwhile the time available is small. Capture happens after play, tired, with o
 - **Not analysis.** Noticing patterns across sessions is Epic 6. This epic only produces the material.
 - **Not editing the wider record.** Creating and connecting entities is Epic 4. This epic writes session records that reference entities.
 - **Not correction or rollback.** Repairing a bad batch is Epic 12. Adding to a record you wrote yourself is in scope; undoing damage is not.
+- **Not offline operation.** Web-first from day one, per [[Strategy-Multi-Campaign-and-Convergence]]. See S11.
 
 ---
 
@@ -63,6 +64,8 @@ Domain assertions this epic rests on. Take these as given — they are establish
 | Returning to something unprompted is the strongest available signal of what the group cares about | [[Session-Capture]] |
 | What someone was *told* and what is *true* are different records and must not be merged | [[Facts-and-Revelation]], [[Release-Plan]] |
 | An empty field is a valid record, not an incomplete one | [[Session-Capture]], [[Shared-Core]] |
+| The table where this campaign is played has reliable connectivity | Confirmed by the GM; see Epic 2 |
+| Intake is two stages — proposed changes reviewed and accepted, then impact detection — and this epic owns only the first | [[Session-Capture]], [[Glossary]] |
 
 ---
 
@@ -169,16 +172,18 @@ Three distinct costs if it is absent or weak:
 *As the GM, I want to jot something down during play in a few seconds, so that a detail worth keeping survives until I write up.*
 
 - **Outcome:** A fragment captured at the table is waiting when the GM writes the session up.
-- **Assertion:** A fragment can be saved without choosing a category, entity, or session part, and appears attached to the session in progress.
-- **Demo:** Save three words mid-session. They appear in that session's write-up unattached to anything else.
+- **Assertion:** A fragment can be saved without choosing a category, entity, or session part, and appears attached to the session in progress. A save that fails says so immediately and keeps the text on screen — a fragment is never silently lost to a bad moment on the network.
+- **Demo:** Save three words mid-session. They appear in that session's write-up unattached to anything else. Repeat with the network unavailable: the failure is stated at once and the text is still there to retry.
 
 ### S12 — Get help turning rough notes into a record, without invention
 
 *As the GM, I want assistance shaping my scrappy notes into a session record, so long as nothing appears that I did not say.*
 
 - **Outcome:** The GM writes less and reviews more, without losing authorship of the content.
-- **Assertion:** Assistance produces a proposal that the GM approves, edits, or rejects before anything is written. No manner, intent, or emotional state appears in any proposal. No field is populated because it exists.
+- **Assertion:** Assistance produces a list of proposed changes that the GM approves, edits, or rejects individually before anything is written. No manner, intent, or emotional state appears in any proposal. No field is populated because it exists.
 - **Demo:** Feed in rough notes containing no emotional description. Every manner field in the proposal is empty. Reject the proposal; nothing is written.
+
+**This is stage 1 of intake**, per [[Session-Capture]]. Stage 2 — impact detection over accepted changes — belongs to Epic 6 and must not run here, since inference over unreviewed extraction compounds a misreading into a conclusion.
 
 ### S13 — Add to a session record later
 
@@ -194,7 +199,7 @@ Three distinct costs if it is absent or weak:
 
 | Question | What it blocks | Where it sits |
 |---|---|---|
-| Does capture work with no connectivity? | S11 in particular, and this epic's acceptance overall | Open decision — the smallest question on the list with the earliest need |
+| ~~Does capture work with no connectivity?~~ | — | **Resolved: no.** Web-first from day one and the table has a reliable connection. S11 instead requires that a failed save is stated immediately and the text retained. Capture is the recoverable half — write-up already happens after play — so if offline is ever built, retrieval needs it first |
 | What counts as invention when shaping rough notes? Splitting a sentence into two rows is structure; choosing which entity it refers to may not be | S12's assertion | Needs a threshold before S12 can be accepted |
 | Is mid-session capture actually used, or does it break the GM's attention more than it saves? | Whether S11 is worth its cost | Answer by observation over a few sessions, not in advance |
 | How are corrections distinguished from additions before Epic 12 exists? | S13's edges | Deferrable — S13 covers addition only |
@@ -204,4 +209,5 @@ Three distinct costs if it is absent or weak:
 ## Dependencies
 
 - **Epic 4** creates and connects entities. Session records reference entities; this epic assumes they can be referenced, not that it creates them. Where a session mentions something with no record yet, the fragment is captured against the session until Epic 4 provides somewhere to put it.
+- **Epic 6** owns stage 2 of intake. This epic stops at accepted changes.
 - **Prerequisites P2 and P3** — harness and fixtures — must exist before any story here can be accepted, since every assertion above runs against a fixture rather than the live campaign.
