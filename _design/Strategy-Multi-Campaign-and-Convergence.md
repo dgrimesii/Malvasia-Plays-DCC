@@ -154,24 +154,32 @@ Chronicle is precisely the set of things [[Scope]] excludes: combat detail, mech
 
 ## Part 3 — Naming and addressing
 
-Settled during earlier planning, recorded here because the access boundary and the demo surface both hang off it.
+Recorded here because the access boundary and the demo surface both hang off it.
 
-### The domain
+### The domain — open
 
-**`legendarium.quest`** is the parent. Products sit on subdomains:
+**The previously chosen name is unavailable.** `legendarium.quest` is registered and live, hosting *Legendarium*, an Open Legend RPG character sheet manager. Same product space, so it would have been a genuine collision rather than merely a taken name.
 
-| Address | What |
+**The selection criterion survives, and it is the durable part.** The parent must name **the shared record both roles serve**, not a third role. Storyteller and Chronicle are personifications — a storyteller and a chronicle are things a person is or makes — and a subdomain hierarchy is containment, so a personified parent would read as one person containing another. The parent should name the material: the accumulated body of a world's stories. The personified names then sit on it naturally as possessives — the storyteller *of* the saga, the chronicle *of* the saga.
+
+Candidates meeting that criterion. None checked for availability; that has to be done at a registrar, not by guessing.
+
+| Candidate | Note |
 |---|---|
-| `storyteller.legendarium.quest` | This tool |
-| `chronicle.legendarium.quest` | Chronicle |
+| `saga.quest` | Strongest of these. Short enough to survive a prefix; both products read as natural possessives. |
+| `annals.quest` | The record of years. More clerical, equally accurate. |
+| `chapter.quest` | Double meaning — a division of a book, and a body of people. |
+| `thelore.quest` | Fallback if `lore.quest` is premium-priced, which it likely is. |
 
-The parent had to name **the shared record both roles serve**, not a third role. Storyteller and Chronicle are personifications — a storyteller and a chronicle are things a person is or makes — and a subdomain hierarchy is containment, so a personified parent would have read as one person containing another. A legendarium is the accumulated body of a world's stories: the material, not an implement, and not an actor. The personified names sit on it naturally as possessives — the storyteller *of* the legendarium, the chronicle *of* the legendarium.
+**The TLD is not load-bearing.** `.quest` is pleasant but incidental; the apex word carries the meaning. A good word on a different TLD beats a compromised word on this one.
+
+Whatever is chosen, products sit on subdomains — `storyteller.<parent>` and `chronicle.<parent>` — and everything below still applies unchanged.
 
 ### Campaigns go on paths, not subdomains
 
-**This is the fork worth holding to.** If subdomains name products, they cannot also name campaigns without collision — and the strategy above is eventual consolidation, which means the product subdomains are **transitional by design**. They name the current state; the apex names the destination.
+**This is the fork worth holding to, and it survives whatever the parent turns out to be.** If subdomains name products, they cannot also name campaigns without collision — and the strategy above is eventual consolidation, which means the product subdomains are **transitional by design**. They name the current state; the apex names the destination.
 
-So campaigns are paths: `storyteller.legendarium.quest/malvasia`, never `malvasia.storyteller.legendarium.quest`. When a unified application arrives, the product subdomains can quietly disappear without the campaign addresses moving.
+So campaigns are paths: `storyteller.<parent>/malvasia`, never `malvasia.storyteller.<parent>`. When a unified application arrives, the product subdomains can quietly disappear without the campaign addresses moving.
 
 Cheap to hold now. Awkward to reverse once anything has been linked or bookmarked.
 
@@ -180,6 +188,8 @@ Cheap to hold now. Awkward to reverse once anything has been linked or bookmarke
 - **`demo.`** — a permanent home for the synthetic campaign. Worth having given demoable is a shipping gate in [[Shippable-Increment]], and the cleanest way to give a reviewer something to open rather than documents to read.
 - **`fixture.`** — the test corpus from [[Shippable-Increment]], which never runs against the real record.
 - **`dev.`**, **`test.`** — for the same reason.
+
+Reserving costs nothing: registering the parent buys the entire namespace beneath it. Subdomains are DNS records created afterward, with no registrar step and no per-name cost. "Reserve" here means only that these names are spoken for, so nothing else claims them later.
 
 ---
 
@@ -214,6 +224,6 @@ This divergence is deliberate, not an oversight — weighed openly here, with th
 
 **Carried into R2 planning:** the scribe as an alternative to per-player note-taking.
 
-**On addressing:** campaigns on paths from the first URL that exists, since retrofitting that is a link-breaking change.
+**On addressing:** campaigns on paths from the first URL that exists, since retrofitting that is a link-breaking change. The parent domain itself is not blocking — nothing before the first deployed URL depends on it.
 
 **One decision to revisit:** [[Backlog-Readiness]] §G2 asks whether the graph model is adopted. Chronicle independently arrived at an entity-and-relationship model with a graph view, from a different game system and a different authoring role — and recursive place containment (see **Place** in [[Glossary]]) wants arbitrary depth, which is trivial in a graph and awkward otherwise. Two independent arguments in favour, worth weighing when that decision is made.
