@@ -49,6 +49,7 @@ And the GM will not construct a query while mid-sentence. Whatever they remember
 - **Not editing.** Changing what is found is Epic 4.
 - **Not rules lookup.** Out of scope entirely, per [[Scope]].
 - **Not tracking what the GM searched for.** Search behaviour as a signal applies to players, in Epic 16. The GM looking things up in their own store says nothing worth recording.
+- **Not offline operation.** See the note below. This epic assumes the table has a working connection.
 
 ---
 
@@ -63,7 +64,21 @@ And the GM will not construct a query while mid-sentence. Whatever they remember
 | The GM will not compose a structured query while running a scene | [[Interface-Direction]] |
 | An entity has several names, including ones the party invented | [[Names-and-Aliases]] |
 | What someone was told and what is true must stay distinguishable when read back | [[Facts-and-Revelation]] |
-| Retrieval works with no network available | [[Hosting-Implications]] |
+| **The table where this campaign is played has reliable connectivity** | Confirmed by the GM; see below |
+
+### On connectivity
+
+An earlier version of this epic required retrieval to work with no network, on the grounds that *the venue's connection is not something I control*. That was written when the intended first build was local, and offline fell out of the architecture for free.
+
+Two things changed. The product is now web-first from day one — a hosted application at a registered domain, per [[Strategy-Multi-Campaign-and-Convergence]] — so offline would have to be built deliberately rather than inherited. And the specific table this campaign runs at has reliable connectivity, so the requirement was addressing a problem this GM does not have.
+
+**The requirement is dropped, not deferred on a technicality.** It should come back if any of three things becomes true:
+
+- The campaign moves somewhere with an unreliable connection.
+- A second GM adopts the tool whose table does not have one.
+- The hosted service proves unreliable enough that the network is the weak link even in a good room.
+
+Worth noting what the asymmetry would be if it does return. **Capture failing offline is recoverable** — [[Session-Capture]] already assumes write-up happens after play, from memory and rough notes. **Retrieval failing offline is not** — it is precisely the scene this epic's vignette describes, mid-sentence with three people waiting. If offline is ever built, retrieval is the half that needs it.
 
 ---
 
@@ -96,16 +111,18 @@ Three costs if this is absent or slow:
 *As the GM, I want an answer fast enough that I do not have to stop the scene.*
 
 - **Outcome:** The GM stays in the scene while looking something up.
-- **Assertion:** A retrieval at the table returns in seconds. Ten seconds is a failed test, not a slow one.
-- **Demo:** Time a set of representative lookups against a fixture sized like a real campaign.
+- **Assertion:** A retrieval at the table returns in seconds, measured end to end from a phone on a normal connection — network time included, since the network is now on the critical path. Ten seconds is a failed test, not a slow one.
+- **Demo:** Time a set of representative lookups against a fixture sized like a real campaign, over the hosted deployment rather than locally.
 
-### S3 — Find things with no network
+### S3 — Know immediately when the connection is the problem
 
-*As the GM, I want lookup to work whether or not the room has a signal, because the venue's connection is not something I control.*
+*As the GM, I want a lost connection to announce itself instantly, so that I stop waiting and move on rather than losing the scene to a spinner.*
 
-- **Outcome:** Retrieval is unaffected by connectivity.
-- **Assertion:** With the network unavailable, at-the-table retrieval returns the same results as with it.
-- **Demo:** Run the same lookups twice, once with the network disabled. Results match.
+- **Outcome:** A bad connection costs a moment, not the scene.
+- **Assertion:** When the store cannot be reached, that is stated within the same few seconds a successful lookup would have taken, and is visibly distinct from *nothing is recorded*. No indefinite wait, and no silent blank.
+- **Demo:** Disable the network mid-lookup. The failure is stated promptly and is distinguishable at a glance from an empty result.
+
+**This replaces the former offline requirement.** Building the campaign into an offline-capable client is out of scope; failing fast and legibly is not, because a thirty-second spinner costs exactly what the vignette above describes.
 
 ### S4 — See everything connected to a thing
 
@@ -179,7 +196,8 @@ Three costs if this is absent or slow:
 
 | Question | What it blocks | Where it sits |
 |---|---|---|
-| How much of the store must be resident on the device — all of it, or a prepared subset? | S3's scope | [[Update-Cadence]] suggests a prepared artifact is enough; needs deciding, not designing, before S3 is accepted |
+| ~~How much of the store must be resident on the device?~~ | — | **Resolved: none.** Web-first, connectivity assumed; there is no device-resident copy to size |
+| What is the acceptable end-to-end budget for S2, now that network time counts against it? | S2 acceptance | Needs a number. The ten-second failure bar is unchanged; the question is what the target is beneath it |
 | What failure rate is acceptable when interpreting a plain-language question? | S5 and S6 acceptance | Needs a threshold. Likely answered by observation across a few sessions |
 | Should results rank by recency, or by proximity to the current session? | S1, S5 quality | Answer after use, not in advance |
 | Is the at-the-table view a different surface, or the same one behaving differently? | Nothing yet | Genuinely a design question — deliberately left open |
@@ -191,3 +209,4 @@ Three costs if this is absent or slow:
 - **Epic 1** produces the material this epic reads.
 - **Epic 13** puts the existing campaign into the store. Until it lands, this epic can be demonstrated against fixtures but not used — retrieval over an empty store is a demonstration, not a tool.
 - **Prerequisites P2 and P3.** S2 in particular needs a fixture sized like a real campaign; timing against a small one proves nothing.
+- **A deployed environment.** S2 now measures over the network, so it cannot be accepted against a local run. `demo.warpandweft.ink` is the natural home for the fixture, per [[Strategy-Multi-Campaign-and-Convergence]].
