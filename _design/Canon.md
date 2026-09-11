@@ -57,6 +57,8 @@ Canon events happen; the party is unaware. The default for Floors 1–5, and cor
 ### Proximate
 The party experiences the *effects* of a canon event without participating in it. A floor-wide announcement. A change in what mobs do. A crowd reacting to something on the broadcast. Prices shifting because a market crashed elsewhere.
 
+**Concrete example:** in *Gate of the Feral Gods*, Carl summons the god Emberus to the 5th floor. The rampage affects every bubble on that floor — including bubbles Carl never enters. A party in an unrelated bubble on Floor 5 would feel this as proximate: effects reaching them from a canon event they had no part in and may never fully understand the source of.
+
 **This is the highest-value relationship for the campaign**, and from Floor 6 it becomes the default state rather than an occasional event. It delivers the vast-world feeling almost for free — the party feels the world reacting to something they had nothing to do with, which is the strongest possible evidence that it exists independently of them.
 
 ### Intersecting
@@ -176,3 +178,9 @@ The intensity curve is how both halves get delivered in the right order: authors
 3. **Does divergence need to be visible to players?** Knowing the campaign has left canon is itself a powerful narrative fact — or a spoiler about what canon was.
 4. **How much canon needs recording before play** versus being pulled in as proximity arises? Floors 1–5 need almost none; Floor 6 onward needs enough to compute proximity reliably.
 5. **Do canon events feed the arc tree?** A canon figure the party comes to care about from a distance could carry real weight — and would be an arc they share with millions of other crawlers, which is its own interesting thing.
+
+---
+
+## Relationship to the portable model
+
+[[Glossary]] now defines **Canon** generically — facts sourced from an author external to the campaign, treated as immutable — with Floor 6 demoted from the definition to an example specific to this campaign. Everything in this document is that generic concept applied to *this* campaign and *this* system: the specific floor threshold, the specific fidelity choices, the specific canon-character roster. Another campaign running a different book or system would need its own version of this document, not a different definition of Canon itself.
