@@ -111,7 +111,7 @@ A **ticket** is raised *after* changes are accepted, about what the now-accepted
 
 **Place** *[model]* — An entity that can contain other places, to any depth, through an ordinary `contains` **Relationship**. There is no fixed set of place tiers and no enumerated place types: *continent → country → state → city → neighbourhood → structure → floor → room* is as valid as *floor → zone → room*, and a campaign needing only two levels invents nothing to get there. Region, zone, and place are vocabulary a GM uses to talk about relative depth — not classes the model enforces. In this campaign, **Floor** and **Zone** are the names for two of those tiers; another campaign's names would differ without the model changing at all.
 
-**Identifier** *[model]* — What an entity actually *is*, in the record. A short code like `npc-a7k2`. Deliberately not the name, because names change, get revealed, and get merged. Deliberately not sequential, because a visible `npc-007` and `npc-009` would prove `npc-008` exists.
+**Identifier** *[model]* — What an entity actually *is*, in the record. A short code like `npc-a7k2`. Deliberately not the name, because names change, get revealed, and get merged. Deliberately not sequential, because a visible `npc-007` and `npc-009` would prove `npc-008` exists. Unique within a **setting**, not within a campaign — see [[Settings-and-Campaigns]].
 
 **Name** *[model]* — A fact about an entity, not a header. An entity can have several at once: a title everyone uses, a false one it gave the party, and a real one nobody knows. Each carries who knows it and whether it is true.
 
@@ -129,11 +129,13 @@ Recording an utterance as a claim is the single most consequential mistake avail
 
 **Relationship** *[model]* — A connection between two entities, with a direction and a type. Carries its own visibility: the party can know two things exist without knowing they are connected.
 
-**Provenance** *[model]* — Who asserted something, from which side of the screen, and when. Values include the GM, a player, or an author external to the campaign, carrying a citation — a **canon** fact is simply the last of these, nothing more.
+**Setting and Campaign** *[model]* — A **setting** is a world; a **campaign** is a story told in it. Entities belong to the setting and are durable across campaigns. Facts, sessions, reveals, arcs, and visibility belong to a campaign. Both tiers exist from the start holding exactly one of each, and the setting is invisible until a second campaign is created. See [[Settings-and-Campaigns]].
+
+**Provenance** *[model]* — Who asserted something, from which side of the screen, and when. Values include the GM, a player, an author external to the campaign carrying a citation, or a previous campaign in the same setting — a **canon** fact is any of the last two, nothing more. Also records whether a relationship was authored outright or inferred and then accepted.
 
 **Attribution** *[model]* — Whose contribution a piece of content is. A player note is theirs and stays theirs. Attribution is a name on a note, not a permission.
 
-**Visibility** *[model]* — Whether the party knows a thing. Two values: `gm` and `player`. Applies to facts and relationships individually, not just to whole entities.
+**Visibility** *[model]* — Whether the party knows a thing. Two values: `gm` and `player`. Applies to facts and relationships individually, not just to whole entities — and is held per campaign, since the same fact can be known to one party and not another in the same setting.
 
 **Materialize** *[model]* — An entity materializes when the party learns it exists — whether by meeting it directly or simply being told about it. After that its existence is permanently public, though its name and facts stay individually gated. One-way; nothing un-materializes. A dead or destroyed entity that never materialized needs no separate status: it is simply a Fact (dead) on an entity that has not materialized — both already tracked, so nothing new is needed to ask what is known only indirectly, if at all. *Considered and declined:* a distinct "foreclosed" or "indirect-only" state, since it would duplicate what Fact and Materialize already express and could drift out of sync with them.
 
@@ -142,6 +144,8 @@ Recording an utterance as a claim is the single most consequential mistake avail
 **Canon** *[model]* — Not a new class of thing in the model. A Fact, Entity, or Relationship like any other, distinguished only by its **Provenance**: sourced from an author external to the campaign, with a citation, rather than invented by the GM or the table. Everything else works exactly as it does for any other fact — visible to the GM only until **Reveal**, and revealed the same way, on the GM's own timing. No separate node type, no separate status machine.
 
 Two examples make the distinction concrete. *Carl summons the god Emberus to the 5th floor* (from *Gate of the Feral Gods*) is a canon fact — known to the GM in advance, because it's what the book says. *The party felt the rampage reach their own bubble on Floor 5* is a different fact: an ordinary table event, with its own provenance (this GM, this session), connected back to the canon fact through a **Relationship** rather than being the same fact revealed. The canon fact can stay unrevealed indefinitely while its consequences still reach the party as an **Off-screen event** — the two are linked, not identical.
+
+**A previous campaign in the same setting is canon to a later one**, by the same mechanism with a different author. What the first party established is immutable, revealed on the new GM's timing, and supersedable if the new table changes an outcome. See [[Settings-and-Campaigns]].
 
 Most table interaction with canon is **extension**, not conflict: the party doing something in a bubble the books never documented, filling gaps the source material leaves open by design. That needs no special handling — an ordinary table fact, optionally linked to the concurrent canon fact by an ordinary Relationship, nothing more.
 
@@ -161,6 +165,10 @@ The `supersedes` relationship works the same as any other, but there's no in-fic
 
 **Signal** *[model]* — Not a recorded event in its own right. Accepted facts that the impact pass reads as evidence an entity's investment may have shifted. One of the things a **Ticket** can be about, not a separate mechanism.
 
+**Candidate relationship** *[model]* — A standing proposal that two entities are connected, holding the **clues** accumulated for it. The durable unit behind an inference; a **Ticket** is only the notification that one is worth looking at now. Accepting creates the relationship. Rejecting clears it from view entirely — not a backlog, not browsable — and it resurfaces only when a new clue is detected for that same pair, with the earlier rejection shown alongside. See [[Inference-and-Candidate-Relationships]].
+
+**Clue** *[model]* — One piece of evidence that two entities may be connected: a shared session with no recorded link, several threads converging, a coincidence landing on a concept the setting has invested in. **The more clues, the stronger the inference** — not because any one grew stronger, but because there are more of them. Same shape as **Signal** and **Investment**: evidence accumulates, the system surfaces, the GM decides.
+
 **Intake** *[model]* — Turning notes into record changes, in two stages that never merge. The input is a set of notes — written after a session, or before one while planning. Either kind runs the same two stages; they differ in what the proposed changes look like, not in how they are handled.
 
 1. **Proposed changes, reviewed by the GM.** The system reads the notes and proposes concrete edits — new entities, new facts on existing entities, new or extended relationships. Post-session notes mostly propose facts that are `fact` and `used`; planning notes mostly propose ones that are `planned` and `speculative` or `potential`. The GM reviews the list, edits what's wrong, rejects what shouldn't land, and accepts the rest. **Nothing is written until accepted.** Extraction can misread, and a wrong fact accepted silently becomes a premise everything downstream is built on.
@@ -168,7 +176,7 @@ The `supersedes` relationship works the same as any other, but there's no in-fic
 
 The ordering is the point: confirm what happened — or what is planned — then ask what it means. Intake on planning notes is where impact detection earns the most, because a ticket raised before the session is still actionable at the table.
 
-**Ticket** *[model]* — A short, dismissible prompt raised after accepted changes land, about what they imply for the record: a possible new connection between facts or entities, a possible arc forming, a possible shift in investment, a possible supersession of a documented canon outcome, two records that may be the same, a gap in coverage. All of these are one thing — detecting impact on existing entities and relationships, and the inferences that follow from it. A suggestion, never an action taken.
+**Ticket** *[model]* — A short, dismissible prompt raised after accepted changes land, about what they imply for the record: a **candidate relationship** worth considering, a possible arc forming, a possible shift in investment, a possible supersession of a documented canon outcome, two records that may be the same, a gap in coverage. All of these are one thing — detecting impact on existing entities and relationships, and the inferences that follow from it. A suggestion, never an action taken, and never a confidence score: a ticket shows the evidence it walked, not a number.
 
 **Intersection note** *[model]* — Writing about the meeting of two things — this NPC in this place — that is reachable from both, rather than being filed under one and lost to the other.
 
