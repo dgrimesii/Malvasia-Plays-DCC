@@ -2,7 +2,7 @@
 type: design
 status: draft
 visibility: gm
-tags: [strategy, multi-campaign, convergence, chronicle, scope]
+tags: [strategy, multi-campaign, convergence, chronicle, scope, domain, hosting]
 ---
 
 # Strategy: Multi-Campaign and Convergence with Chronicle
@@ -103,6 +103,8 @@ Chronicle's v4 schema puts a `mechanics` / `narrative` two-layer split on every 
 
 And [[Scope]] has already excluded exactly Chronicle's context layer from this tool: no stats, no rules enforcement, no rules lookup, no combat resolution. **That exclusion, made for unrelated reasons, is what makes this tool's core portable.**
 
+See [[Shared-Core]] for where the boundary falls in detail.
+
 ### Where the models agree
 
 | Concept | Chronicle | This tool | Fit |
@@ -150,13 +152,44 @@ Chronicle is precisely the set of things [[Scope]] excludes: combat detail, mech
 
 ---
 
+## Part 3 — Naming and addressing
+
+Settled during earlier planning, recorded here because the access boundary and the demo surface both hang off it.
+
+### The domain
+
+**`legendarium.quest`** is the parent. Products sit on subdomains:
+
+| Address | What |
+|---|---|
+| `storyteller.legendarium.quest` | This tool |
+| `chronicle.legendarium.quest` | Chronicle |
+
+The parent had to name **the shared record both roles serve**, not a third role. Storyteller and Chronicle are personifications — a storyteller and a chronicle are things a person is or makes — and a subdomain hierarchy is containment, so a personified parent would have read as one person containing another. A legendarium is the accumulated body of a world's stories: the material, not an implement, and not an actor. The personified names sit on it naturally as possessives — the storyteller *of* the legendarium, the chronicle *of* the legendarium.
+
+### Campaigns go on paths, not subdomains
+
+**This is the fork worth holding to.** If subdomains name products, they cannot also name campaigns without collision — and the strategy above is eventual consolidation, which means the product subdomains are **transitional by design**. They name the current state; the apex names the destination.
+
+So campaigns are paths: `storyteller.legendarium.quest/malvasia`, never `malvasia.storyteller.legendarium.quest`. When a unified application arrives, the product subdomains can quietly disappear without the campaign addresses moving.
+
+Cheap to hold now. Awkward to reverse once anything has been linked or bookmarked.
+
+### Reserve more than two
+
+- **`demo.`** — a permanent home for the synthetic campaign. Worth having given demoable is a shipping gate in [[Shippable-Increment]], and the cleanest way to give a reviewer something to open rather than documents to read.
+- **`fixture.`** — the test corpus from [[Shippable-Increment]], which never runs against the real record.
+- **`dev.`**, **`test.`** — for the same reason.
+
+---
+
 ## Recommendation
 
 **Do not integrate. Do preserve the option, one-directionally.**
 
 - **Chronicle changes nothing.** It is a running system holding a live campaign, and the cost of any migration lands on real play.
 - **This tool designs so that a mapping to Chronicle's schema is writable.** That is a document, not code — a compatibility note maintained alongside the model, checked when the model changes.
-- **Borrow freely in the other direction.** The `mechanics` / `narrative` split, the `entity_relationships` shape, the delta-review approval pattern, and the fixture and safe-test-mode discipline are all proven and all fit [[Shippable-Increment]]'s requirements. Reinventing them would be waste.
+- **Borrow freely in the other direction.** The `entity_relationships` shape, the delta-review approval pattern, and the fixture and safe-test-mode discipline are all proven and all fit [[Shippable-Increment]]'s requirements. Reinventing them would be waste.
 - **Treat Chronicle as the reference design for R2**, not merely as a system to be compatible with. It is the player-side artifact, already working, with real users who value it.
 
 This divergence is deliberate, not an oversight — weighed openly here, with the extensibility above kept cheap on purpose so the option stays open without paying for it now.
@@ -181,4 +214,6 @@ This divergence is deliberate, not an oversight — weighed openly here, with th
 
 **Carried into R2 planning:** the scribe as an alternative to per-player note-taking.
 
-**One decision to revisit:** [[Backlog-Readiness]] §G2 asks whether the graph model is adopted. Chronicle independently arrived at an entity-and-relationship model with a graph view, from a different game system and a different authoring role. That is evidence in favour, and worth weighing when that decision is made.
+**On addressing:** campaigns on paths from the first URL that exists, since retrofitting that is a link-breaking change.
+
+**One decision to revisit:** [[Backlog-Readiness]] §G2 asks whether the graph model is adopted. Chronicle independently arrived at an entity-and-relationship model with a graph view, from a different game system and a different authoring role — and recursive place containment (see **Place** in [[Glossary]]) wants arbitrary depth, which is trivial in a graph and awkward otherwise. Two independent arguments in favour, worth weighing when that decision is made.
