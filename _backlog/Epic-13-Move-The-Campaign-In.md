@@ -45,6 +45,7 @@ There is a second danger running the other way. A file marked GM-only says nothi
 - **Not authoring.** Creating and connecting new material is Epic 4.
 - **Not repair.** Undoing damage to a live store is Epic 12. This epic's protection is that it never damages the source.
 - **Not judging what should have been recorded.** Gaps in the existing record are the record's business, and per [[Shared-Core]] absence is never inferred to be an omission.
+- **Not multi-campaign capability.** S11 creates the container and fixes the addressing shape. A second campaign, switching between them, accounts, and sharing are all out — see [[First-User]].
 
 ---
 
@@ -58,6 +59,8 @@ There is a second danger running the other way. A file marked GM-only says nothi
 | Template-shaped content converts mechanically; everything older does not | [[Store-and-Access]] |
 | Known model errors exist in the live content and must be resolved rather than carried forward | [[Backlog-Readiness]] §G10 |
 | A gap has two causes and the difference cannot be inferred | [[Shared-Core]] |
+| Optionality is cheap; capability is expensive. A campaign container costs almost nothing now and is a migration later | [[Strategy-Multi-Campaign-and-Convergence]] |
+| Places nest to arbitrary depth; there is no fixed tier count and no enumerated place types | [[Glossary]] |
 
 ---
 
@@ -100,7 +103,7 @@ Three costs:
 *As the GM, I want everything to arrive private unless the source actually says the party learned it, because the opposite mistake cannot be undone.*
 
 - **Outcome:** No conversion outcome is a spoiler.
-- **Assertion:** Visibility defaults to GM-only. A fact is marked known to the party only where the source states it. This holds even where the source file as a whole was marked player-visible.
+- **Assertion:** Visibility defaults to GM-only, and is held per fact and per connection rather than per file. A fact is marked known to the party only where the source states it. This holds even where the source file as a whole was marked player-visible.
 - **Demo:** Convert a fixture containing a mix. Nothing is marked known to the party without a stated basis, and the basis is shown.
 
 ### S4 — Decide the ambiguous cases myself
@@ -151,7 +154,27 @@ Three costs:
 - **Assertion:** Content that conflates a quest with an arc, embeds encounters inside a zone document, or carries drifted hand-maintained links is raised for a decision rather than converted as-is.
 - **Demo:** Convert a fixture containing one of each; each appears in the queue.
 
-### S10 — Tell me what happened
+### S10 — Keep my floors and zones as places that contain places
+
+*As the GM, I want the geography to arrive as nested places rather than as fixed tiers, so the shape of the world is not frozen by the file names it happens to have.*
+
+- **Outcome:** `Floor-XX-Name.md` becomes a place containing places, not a special kind of record called a floor.
+- **Assertion:** Places carry no tier type. Containment is an ordinary connection and nests to arbitrary depth. Floor and zone survive as names, not as classes.
+- **Demo:** Convert the existing floor and zone files; show a place nested three levels deep, and confirm nothing in the store records a fixed tier.
+
+**This is the file-name-to-model gap the README flags.** Converting the convention as-is would bake a two-tier geography into the store on day one, and [[Glossary]] is explicit that a GM wanting *continent → country → city → structure → floor → room* should get it without new vocabulary.
+
+### S11 — Put it all in a campaign, addressed the way it will stay
+
+*As the GM, I want my campaign to arrive inside a named container at a stable address, so that adding a second one later is a new record rather than a rebuild.*
+
+- **Outcome:** One campaign exists, addressed the way every future campaign will be.
+- **Assertion:** All converted content belongs to a campaign. Identifiers are unique within it and never assumed unique across campaigns. The campaign is addressed by path — `storyteller.warpandweft.ink/malvasia` — never by subdomain. No accounts, no switcher, no second campaign.
+- **Demo:** Show every converted record resolving to the campaign, and the campaign reachable at its path.
+
+**Thin structure, not a feature.** Per [[Strategy-Multi-Campaign-and-Convergence]], the container and the path shape cost almost nothing now and are a link-breaking migration later. The capability they leave room for stays firmly out of R1.
+
+### S12 — Tell me what happened
 
 *As the GM, I want a plain account of what came in, what was queued, and what did not convert, so I know where I stand.*
 
@@ -169,6 +192,7 @@ Three costs:
 | At what granularity does prose become facts — one per sentence, one per claim? | S6 acceptance | Needs a stated basis. S6's retention of the original text makes an imperfect answer survivable |
 | When is cutover — the point after which the tool is authoritative and the templates are only an import format? | Nothing here; everything after | Choose it rather than arrive at it |
 | Does anything need converting a second time, for content written between the first run and cutover? | Planning only | S5's repeatability makes this cheap either way |
+| Is the person holding the GM role modelled now, or deferred? | Nothing in RC 1a | [[Strategy-Multi-Campaign-and-Convergence]] wants the role held per campaign rather than baked in as a singleton. With one user it changes nothing visible; the question is only whether it is cheaper here than later |
 
 ---
 
@@ -178,3 +202,4 @@ Three costs:
 - **The templates** are the import contract for S8. Every rule in `_templates/CONVENTIONS.md` exists so that story requires no interpretation.
 - **Prerequisite P3** — the fixture corpus must include legacy-shaped content and the deliberately awkward cases, so this epic is testable long before it runs against the live record.
 - **S2 requires an export path.** Writing the store back out as readable text is a standing requirement from [[Knowledge-Assets]]; this epic is where it is first needed and first proven.
+- **A deployed environment** for S11's address assertion.
