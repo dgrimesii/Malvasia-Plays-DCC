@@ -18,7 +18,7 @@ Resolves the capture question from [[Open-Requirements]] §2. This is the near-t
 - **Qualitative description is recorded when present** — and is frequently absent.
 - **The mechanism is templates plus this repo plus AI.** That is the tool for now.
 - **No interface until the end of Floor 2** — roughly 4–6 sessions out.
-- **Intake is human-in-the-loop**, in two stages — see below.
+- **Intake is human-in-the-loop**, in two stages, and runs over planning notes as well as post-session notes — see below.
 
 ---
 
@@ -153,9 +153,11 @@ Capture happens after a session, when energy is low. Data entry doesn't get done
 
 Capture produces notes. Turning those notes into record changes is a separate step, and **it is not automatic**. Two stages, in order, that never merge. See **Intake** in [[Glossary]].
 
+**Intake is not only a post-session activity.** The same two stages run over forward-looking planning notes — what the GM intends for an upcoming session — as over a recap of one already played. What differs is the shape of the proposed changes, not how they are handled: post-session notes mostly propose facts that are `fact` and `used`; planning notes mostly propose ones that are `planned` and `speculative` or `potential`. How the notes were produced is equally irrelevant — a typed recap, an externally synthesized document, and handwritten notes photographed afterward are all the same input.
+
 **1. Proposed changes, reviewed before anything is written.**
 
-The system reads the session notes and proposes concrete edits: new entities, new facts on existing entities, new or extended relationships. Most of a session's output is *extension* of things already in the record, not creation of new ones — a known NPC gains a fact, an existing relationship gains a session reference, a place the party revisited gains what happened there this time.
+The system reads the notes and proposes concrete edits: new entities, new facts on existing entities, new or extended relationships. Most output is *extension* of things already in the record rather than creation of new ones — a known NPC gains a fact, an existing relationship gains a session reference, a place the party revisited gains what happened there this time.
 
 The GM sees that as a list of discrete changes. Edit what's misread, reject what shouldn't land, accept the rest. **Nothing is written until accepted.**
 
@@ -163,11 +165,13 @@ This is not ceremony. Extraction from prose misreads in specific, predictable wa
 
 **2. Impact detection, only after acceptance.**
 
-Once the facts are settled, the system looks at what they now imply and raises **Tickets**: a possible new connection, a possible shift in investment, a possible collision with a canon fact, two records that might be the same. These are all one thing — detecting impact on existing entities and relationships, and the inferences that follow.
+Once the facts are settled, the system looks at what they now imply and raises **Tickets**: a possible new connection, a possible arc forming, a possible shift in investment, a possible collision with a canon fact, two records that might be the same. These are all one thing — detecting impact on existing entities and relationships, and the inferences that follow.
 
 Running this stage over unreviewed extractions would compound a bad reading into a bad conclusion, and a ticket carrying inferred weight is harder to dismiss than a raw misread line would have been. **Confirm what happened, then ask what it means.**
 
-The ordering also keeps the GM's two jobs distinct. Stage 1 asks *is this what happened* — a memory question, answerable immediately after play. Stage 2 asks *does this matter* — a judgment question, and one the GM may reasonably defer.
+The ordering also keeps the GM's two jobs distinct. Stage 1 asks *is this what happened, or what I intend* — a memory or authoring question, answerable immediately. Stage 2 asks *does this matter* — a judgment question, and one the GM may reasonably defer.
+
+Running intake over planning notes is where stage 2 pays best. A ticket raised before the session — this planned NPC collides with a documented canon outcome, this planned thread connects to something the party already cares about — is still actionable at the table. The same ticket raised afterward is only a record of a missed opportunity.
 
 ---
 
