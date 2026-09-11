@@ -36,9 +36,11 @@ Gates, not features. Each is required before something else can start.
 |---|---|---|
 | **P1** | Glossary, written for a reader who knows nothing | Writing any epic |
 | **P2** | Test harness — run any increment against a fixture, print the output | The first increment |
-| **P3** | Fixture corpus — a synthetic campaign, plus deliberately awkward cases | The first increment that writes campaign data |
+| **P3** | Fixture corpus — a synthetic campaign, plus deliberately awkward cases and legacy-shaped content | The first increment that writes campaign data |
 | **P4** | Challenger protocol — the review question set and role separation | The first review |
 | **P5** | Golden corpus — judged output, frozen as a regression suite | RC 1c |
+
+**P1 is done.** [[Glossary]] is written and maintained.
 
 **Already done, ahead of P1:** the capture templates carry the model invariants, so sessions recorded before the tool exists need no re-encoding later.
 
@@ -48,8 +50,8 @@ Gates, not features. Each is required before something else can start.
 
 | RC | Theme | Epics | Status |
 |---|---|---|---|
-| **1a** | The core loop | 1, 2, 3 | Ready to write |
-| **1b** | Authoring and control | 4, 5, 11, 13, 17 | Ready to write |
+| **1a** | The core loop | 1, 2, 3, 13 | Written |
+| **1b** | Authoring and control | 4, 5, 11, 17 | Ready to write |
 | **1c** | The computed layer | 6, 7, 8, 14 | Blocked |
 | **1d** | Durability | 12 | Blocked |
 | **2a** | Players read the record | 9, 15 | Deferred to R2 |
@@ -66,10 +68,13 @@ Gates, not features. Each is required before something else can start.
 | 1 | **Capture what happened in a session** | A record written cheaply after play, structured enough to reason over later |
 | 2 | **Find anything, fast, at the table** | The right detail retrieved mid-sentence, while three people wait |
 | 3 | **Know the next session is covered** | A trustworthy answer to *am I prepared*, backed by what was checked |
+| 13 | **Move the campaign in without losing anything** | Months of existing writing converted, with proof nothing was lost |
 
 Epic 1 has the earliest deadline in the whole plan: unrecorded sessions are not recoverable, and sessions are being played now.
 
-**Entry criteria:** P1–P4. Epic 2's acceptance criteria additionally need the connectivity decision.
+Epic 13 was moved here from 1b by [[Migration]]. Epics 2 and 3 are demonstrations rather than tools until the real campaign is in the store — retrieval over an empty store returns nothing, and readiness over an empty store reports everything uncovered.
+
+**Entry criteria:** P1–P4.
 
 ---
 
@@ -82,12 +87,11 @@ Epic 1 has the earliest deadline in the whole plan: unrecorded sessions are not 
 | 4 | **Author and connect campaign material** | Writing, editing, and linking without leaving what you're doing |
 | 5 | **Bring in outside material and integrate it** | Synthesized drafts split into the things they imply, cross-referenced against what exists |
 | 11 | **Control what the party knows** | Deliberate reveal — of an entity's existence, a name, a fact, a connection |
-| 13 | **Get started** | Existing dossiers and the Floor 1 plan converted into the current shape |
 | 17 | **Recognise that two records are the same thing** | Combining duplicates without losing either side's contribution |
 
 Epic 11 sits here rather than later because Epics 4 and 5 produce content that must carry visibility from the moment it is written. Epic 17 is here because the same operation is needed again in 1c and 1d, and building it three times is the expensive outcome.
 
-**Entry criteria:** RC 1a under way. Epics 4, 5, and 17 need the graph model decision to be written in detail.
+**Entry criteria:** RC 1a under way, and the graph model decision written in detail.
 
 ---
 
@@ -101,6 +105,8 @@ Epic 11 sits here rather than later because Epics 4 and 5 produce content that m
 | 7 | **Run a thread across a campaign** | Threads recognised, watched, and planned from once they are real |
 | 8 | **Feel the world moving without you** | Events elsewhere whose effects reach the party, surfaced when they are in reach |
 | 14 | **Pace the campaign** | Notice a grind or a railroad forming, before it is either |
+
+Epic 6 owns **stage 2 of intake** — impact detection over accepted changes, per [[Session-Capture]]. Epic 1 stops at stage 1, and the two must not merge: inference run over unreviewed extraction compounds a misreading into a conclusion.
 
 **Blocked** on where the line sits between surfacing and authoring. That decision determines whether these epics propose connections and gaps only, or story content as well — a materially different backlog either way.
 
@@ -156,13 +162,13 @@ Epic 16 needs 2a in real use before it has anything to read.
 
 Chronicle is a player-side record for a different campaign in a different game system, maintained by a scribe. Its first objective — tracking the relationships between people, places, and events as they emerge through play — is the same objective as Storyteller's, observed from the other side of the screen. Its second — a detailed, rules-grounded record of play — is precisely what [[Scope]] excludes here, and diverges structurally between game systems rather than merely in vocabulary.
 
-So a shared substrate would be **entities, typed relationships, and events, as observed**, with the boundary at the event and system-specific detail beneath it opaque. See [[Shared-Core]] and [[Knowledge-Assets]].
+So a shared substrate would be **entities, typed relationships, and events, as observed**, with the boundary at the event and system-specific detail beneath it opaque. Each tool attaches its own context layer to the same shared things rather than holding a competing model of them. See [[Shared-Core]] and [[Knowledge-Assets]].
 
 **The posture:**
 
 - Chronicle changes nothing.
 - Storyteller designs so a mapping between the two models stays writable. A document, not code.
-- Storyteller borrows freely in the other direction — the narrative/mechanics split, the relationship shape, the approve-before-commit pattern, the fixture and safe-test-mode discipline.
+- Storyteller borrows freely in the other direction — the relationship shape, the approve-before-commit pattern, and the fixture and safe-test-mode discipline.
 - Chronicle is the reference design for R2, which is the half Storyteller has barely specified.
 
 **The guardrail:** convergence is about the data model, never the feature set. If a convergence argument ever concludes that Storyteller should track combat rounds, the argument has gone wrong.
@@ -175,12 +181,16 @@ So a shared substrate would be **entities, typed relationships, and events, as o
 
 | Decision | Gates |
 |---|---|
-| Is the graph model adopted? | Epics 4, 5, 7, 17 in detail |
+| **Is the graph model adopted?** | **RC 1a Epic 13 (S10, S11), and Epics 4, 5, 7, 17 in detail.** Now the first thing to settle — the information architecture cannot be written without it, and fixtures cannot be built without that |
 | Where is the line between surfacing and authoring? | All of RC 1c |
-| Does retrieval work with no connectivity? | Epic 2 acceptance criteria |
 | Are tombstones preserved on deletion? | RC 1d — decide during 1b |
 | Does the campaign have a known length? | Epic 14 |
 | How much canon before Floor 6? | Epic 8 |
 | Does anything reach players automatically? | RC 2a |
 
-RC 1a and 1b can be written and started with only the connectivity answer.
+**Resolved since this document was written:**
+
+- *Does retrieval work with no connectivity?* **No.** Web-first from day one at a registered domain, and the table has a reliable connection. Epic 2 instead requires that an unreachable store announces itself within seconds and is distinguishable from an empty result. See [[Strategy-Multi-Campaign-and-Convergence]].
+- *What is the parent domain, and how are campaigns addressed?* `warpandweft.ink`, campaigns on paths rather than subdomains. Epic 13 S11 carries the assertion.
+
+RC 1a is written. It can be started once P2–P4 exist and the graph decision is made.
