@@ -14,7 +14,7 @@ Every domain term used in an epic points here. If a term is missing, it either n
 **Markings**
 
 - **[game]** — true of tabletop roleplaying generally
-- **[system]** — specific to Dungeon Crawl Classics, the rules this campaign uses. Would not carry over to another game system.
+- **[system]** — specific to Dungeon Crawler Carl, the rules this campaign uses. Would not carry over to another game system.
 - **[campaign]** — specific to this campaign
 - **[model]** — how Storyteller represents things
 - **[process]** — how the work is done
@@ -49,7 +49,7 @@ Every domain term used in an epic points here. If a term is missing, it either n
 
 **Dungeon crawl** *[game]* — A structure where the party explores a dangerous place room by room, level by level. This campaign is one.
 
-**Dungeon Crawl Classics**, DCC *[system]* — The rules this campaign uses. Deadly, unpredictable, less concerned with balance than the better-known systems. Two structural details matter to Storyteller: combat runs as a **declaration phase** followed by a **resolution phase** rather than a fixed turn order, and there is an **interrupt** — spending your own action to cut across an enemy's. Both produce moments worth recording as story; neither's mechanics are tracked here.
+**Dungeon Crawler Carl**, DCC *[system]* — The rules this campaign uses: a licensed tabletop adaptation of Matt Dinniman's litRPG novel series, published by Renegade Game Studios. Storyteller is deliberately system-agnostic — mechanics stay in the rulebook, not here, and this holds regardless of which system a given campaign runs. What gets recorded is the story a session produces: people, places, events, arcs, connections. Not dice, not stats, not turn structure.
 
 **Dossier** *[campaign]* — The sheet each player filled in when making their character: background, motivations, ties. Written openly, in person, before play began. A standing source of hooks.
 
