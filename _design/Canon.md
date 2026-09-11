@@ -45,6 +45,8 @@ That decision is not once-per-campaign. It recurs every time canon and the party
 
 Canon's defining property: **it proceeds on its own schedule regardless of the table.** It's the one structure the party cannot influence by default — which is exactly what makes it feel like a real world rather than a stage.
 
+This is a property of where canon facts come from, not a different kind of fact. See [[Glossary]] — canon is an ordinary Fact, Entity, or Relationship, distinguished only by Provenance.
+
 ---
 
 ## Four relationships
@@ -140,24 +142,23 @@ High fidelity on world rules and geography costs nothing and buys enormous authe
 
 ## What this asks of the model
 
-Canon events need to be first-class nodes, distinguishable from GM-authored events:
+Canon needs no node type or status machine of its own. A canon fact, entity, or relationship is an ordinary one, per [[Glossary]] — the only thing that marks it as canon is its **Provenance**: an author external to the campaign, not the GM or the table.
 
-- `type: canon-event`
-- **When** it occurs on the canon timeline
-- **Where** — floor, location
-- **Reach** — how far effects propagate
-- **Source citation** — book/chapter reference only, never reproduced text
-- **Status** — `pending` / `experienced-proximate` / `intersected` / `diverged` / `omitted`
+What provenance carries for a canon-sourced fact, beyond the usual who/when:
 
-Canon characters are NPC nodes with an added property marking them as canon — their dispositions and outcomes are constrained by the source in a way ordinary NPCs aren't.
+- **Source citation** — book/chapter reference only, never reproduced text.
+- **Canon timeline position** — when it occurs relative to the books' own chronology, so proximity to the party's timeline is computable rather than remembered.
+- **Reach** — how far its effects propagate, per the proximity section above.
 
-And the model needs:
+Canon characters are ordinary NPC entities whose defining facts carry this same provenance. No separate flag beyond that.
 
-- **A canon timeline the party's timeline can be positioned against**, so proximity is computable rather than remembered.
-- **Divergence marking.** When the table contradicts canon, that point is recorded and everything downstream that depended on it is flagged — the same premise-decay mechanism described in [[Arcs]].
-- **Separation of canon fact from GM interpretation.** What the books establish and what this table decided must never blur, or the GM loses the ability to check.
+Before **Reveal**, a canon fact is visible to the GM only — exactly like any other GM-known, not-yet-revealed fact, no special-casing. After Reveal, it's known to the party, through the same mechanism as any other reveal.
 
-**Copyright:** canon events are recorded as citations and original GM summaries. The source books are someone else's work; this repo references them and never reproduces them.
+The one genuinely new piece is **divergence**: when something at the table contradicts a canon fact, that isn't a status on the canon fact itself — it's a **Relationship** (*contradicts*) between the new table fact and the canon fact it displaces, flagged by a **Ticket** so the GM can confirm it was deliberate. Everything downstream that assumed the canon fact is then reachable by following that relationship, rather than needing its own decay-tracking field.
+
+The four relationships above don't need their own stored field either, by the same instinct: **Parallel** is a canon fact with no Reveal and no connected off-screen event. **Proximate** is a canon fact whose effects are recorded as a revealed **Off-screen event**. **Intersecting** is a canon fact itself materialized directly. **Divergent** is a canon fact carrying a *contradicts* relationship. All four are readable off primitives already in the model — Reveal, Materialize, Off-screen event, Relationship — not a fifth thing to keep in sync. A canon fact that never connects to anything — "omitted," in the earlier framing — simply stays unconnected; consistent with how unattached planning material is treated everywhere else in this model, there is no separate state to set for it.
+
+**Copyright:** canon facts are recorded as citations and original GM summaries. The source books are someone else's work; this repo references them and never reproduces them.
 
 ---
 
