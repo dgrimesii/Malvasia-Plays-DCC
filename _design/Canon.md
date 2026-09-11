@@ -24,7 +24,7 @@ Companion to [[North-Star]], [[GM-Considerations]], [[Arcs]], and [[Information-
 
 ## The gift and the problem
 
-**The gift:** the source material establishes that millions of crawlers are running the dungeon simultaneously, almost entirely off-screen. The party is canonically consistent by construction — they don't need to be squeezed into gaps in the written story, because the written story explicitly says most of what happened wasn't shown.
+**The gift:** the source material establishes that millions of crawlers are running the dungeon simultaneously, almost entirely off-screen. The party is canonically consistent by construction — they don't need to be squeezed into gaps in the written story, because the written story explicitly says most of what happened wasn't shown. Nearly everything the party does falls into one of these gaps: their own actions in their own bubble, undocumented by the books because the books were never going to document it. That's **extension**, not conflict — see [[Glossary]] — and it needs no special handling.
 
 **The problem:** a canon timeline is running whether or not the party interacts with it. Carl's actions have consequences at scale — floor-wide, sometimes dungeon-wide. The GM has to decide, repeatedly, whether the party feels them.
 
@@ -41,7 +41,7 @@ That decision is not once-per-campaign. It recurs every time canon and the party
 | Authored by | The GM | GM + players | **Someone else, already** |
 | Responds to the party | Yes | Yes | **No** |
 | Timeline | The party's | The party's | **Its own** |
-| Changeable | Freely | Through play | **Only by deliberate divergence** |
+| Changeable | Freely | Through play | **Never — see Supersession, below** |
 
 Canon's defining property: **it proceeds on its own schedule regardless of the table.** It's the one structure the party cannot influence by default — which is exactly what makes it feel like a real world rather than a stage.
 
@@ -68,10 +68,14 @@ The party is directly involved in or present at a canon event. Rare, high-impact
 
 Worth reserving. A campaign can survive one or two of these; more and the party is following someone else's plot.
 
-### Divergent
-Something at the table contradicts canon. Once this happens, the campaign has branched and canon becomes reference rather than truth from that point forward.
+Being present for a canon event is not, by itself, divergence — the party can stand inside the Emberus rampage, act, react, and leave a mark in their own bubble's history, without changing anything the books documented. That's still extension, just an intersecting kind. Divergence is specifically the next case: changing what the books say happened.
 
-Divergence isn't a failure. It's often the point — the unwritten chapters may require it. But it needs to be *known*, because everything downstream that assumed canon is now suspect.
+### Divergent — properly, **Superseded**
+The table explicitly changes a *documented* outcome: an NPC who dies in the books is saved; a canon event the source material describes is blocked from happening at all, directly or as the downstream consequence of something the party did.
+
+**The canon fact itself never changes.** It belongs to the source, stays in the record exactly as written, and is never edited or deleted — Carl still did what the books say he did, in the books. What changes is this campaign's own narrative: a table fact recorded with a `supersedes` relationship to the canon fact it displaces, for this campaign only. Anything built on the original outcome stays reachable by following that relationship — nothing downstream needs to be independently re-flagged.
+
+This is rare by nature, not by rule — inevitable across enough campaigns and enough sessions, and worth designing for rather than treating as an edge case that won't come up. It needs to be *known* to the GM the moment it happens, because everything downstream that assumed the original outcome is now suspect until reviewed.
 
 ---
 
@@ -154,9 +158,11 @@ Canon characters are ordinary NPC entities whose defining facts carry this same 
 
 Before **Reveal**, a canon fact is visible to the GM only — exactly like any other GM-known, not-yet-revealed fact, no special-casing. After Reveal, it's known to the party, through the same mechanism as any other reveal.
 
-The one genuinely new piece is **divergence**: when something at the table contradicts a canon fact, that isn't a status on the canon fact itself — it's a **Relationship** (*contradicts*) between the new table fact and the canon fact it displaces, flagged by a **Ticket** so the GM can confirm it was deliberate. Everything downstream that assumed the canon fact is then reachable by following that relationship, rather than needing its own decay-tracking field.
+**Extension needs nothing new.** The ordinary case — the party doing something in a bubble the books never documented — is just a table fact like any other, optionally linked to the concurrent canon fact by an ordinary Relationship for context. No confirmation, no flag, no divergence machinery. This covers almost everything, including most Intersecting cases: being present for a canon event doesn't itself change what the books say happened.
 
-The four relationships above don't need their own stored field either, by the same instinct: **Parallel** is a canon fact with no Reveal and no connected off-screen event. **Proximate** is a canon fact whose effects are recorded as a revealed **Off-screen event**. **Intersecting** is a canon fact itself materialized directly. **Divergent** is a canon fact carrying a *contradicts* relationship. All four are readable off primitives already in the model — Reveal, Materialize, Off-screen event, Relationship — not a fifth thing to keep in sync. A canon fact that never connects to anything — "omitted," in the earlier framing — simply stays unconnected; consistent with how unattached planning material is treated everywhere else in this model, there is no separate state to set for it.
+**Supersession is the one genuinely new piece.** When a table fact changes a *documented* canon outcome, the canon fact is never edited or removed — it stays exactly as the source recorded it, permanently. The new table fact carries a `supersedes` relationship to it instead, surfaced to the GM by a **Ticket** so it's confirmed as deliberate rather than inferred silently. Everything downstream that assumed the original outcome is then reachable by following that relationship, rather than needing its own decay-tracking field.
+
+**Parallel** and **Proximate** don't need their own stored field either, by the same instinct: Parallel is a canon fact with no Reveal and no connected off-screen event; Proximate is a canon fact whose effects are recorded as a revealed **Off-screen event**. Both are readable off primitives already in the model — Reveal, Materialize, Off-screen event, Relationship — not a fifth thing to keep in sync. A canon fact that never connects to anything simply stays unconnected; consistent with how unattached planning material is treated everywhere else in this model, there is no separate state to set for it.
 
 **Copyright:** canon facts are recorded as citations and original GM summaries. The source books are someone else's work; this repo references them and never reproduces them.
 
@@ -174,9 +180,9 @@ The intensity curve is how both halves get delivered in the right order: authors
 
 ## Open questions
 
-1. **Can the party affect canon outcomes,** or only experience them? The first is more exciting and much harder to keep coherent.
+1. **Can the party affect canon outcomes,** or only experience them? Supersession answers this in principle — yes, rarely, and explicitly — but not how often the group wants that door open in practice.
 2. **What happens if a player has read the books?** Julia, Amy, or Sam knowing what's coming changes proximate events entirely — dramatic irony instead of mystery. Not necessarily worse, but different, and worth knowing per-player before Floor 6.
-3. **Does divergence need to be visible to players?** Knowing the campaign has left canon is itself a powerful narrative fact — or a spoiler about what canon was.
+3. **Does supersession need to be visible to players**, not just the GM? Knowing the campaign has changed a documented outcome is itself a powerful narrative fact — or a spoiler about what canon was.
 4. **How much canon needs recording before play** versus being pulled in as proximity arises? Floors 1–5 need almost none; Floor 6 onward needs enough to compute proximity reliably.
 5. **Do canon events feed the arc tree?** A canon figure the party comes to care about from a distance could carry real weight — and would be an arc they share with millions of other crawlers, which is its own interesting thing.
 
@@ -184,4 +190,4 @@ The intensity curve is how both halves get delivered in the right order: authors
 
 ## Relationship to the portable model
 
-[[Glossary]] now defines **Canon** generically — facts sourced from an author external to the campaign, treated as immutable — with Floor 6 demoted from the definition to an example specific to this campaign. Everything in this document is that generic concept applied to *this* campaign and *this* system: the specific floor threshold, the specific fidelity choices, the specific canon-character roster. Another campaign running a different book or system would need its own version of this document, not a different definition of Canon itself.
+[[Glossary]] now defines **Canon** generically — facts sourced from an author external to the campaign, treated as immutable — with Floor 6 demoted from the definition to an example specific to this campaign, and Extension/Supersession defined generically rather than as DCC-specific concepts. Everything in this document is that generic concept applied to *this* campaign and *this* system: the specific floor threshold, the specific fidelity choices, the specific canon-character roster. Another campaign running a different book or system would need its own version of this document, not a different definition of Canon, Extension, or Supersession.
