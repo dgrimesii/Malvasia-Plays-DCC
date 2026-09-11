@@ -18,6 +18,7 @@ Resolves the capture question from [[Open-Requirements]] §2. This is the near-t
 - **Qualitative description is recorded when present** — and is frequently absent.
 - **The mechanism is templates plus this repo plus AI.** That is the tool for now.
 - **No interface until the end of Floor 2** — roughly 4–6 sessions out.
+- **Intake is human-in-the-loop**, in two stages — see below.
 
 ---
 
@@ -148,6 +149,28 @@ Capture happens after a session, when energy is low. Data entry doesn't get done
 
 ---
 
+## Intake is human-in-the-loop, in two stages
+
+Capture produces notes. Turning those notes into record changes is a separate step, and **it is not automatic**. Two stages, in order, that never merge. See **Intake** in [[Glossary]].
+
+**1. Proposed changes, reviewed before anything is written.**
+
+The system reads the session notes and proposes concrete edits: new entities, new facts on existing entities, new or extended relationships. Most of a session's output is *extension* of things already in the record, not creation of new ones — a known NPC gains a fact, an existing relationship gains a session reference, a place the party revisited gains what happened there this time.
+
+The GM sees that as a list of discrete changes. Edit what's misread, reject what shouldn't land, accept the rest. **Nothing is written until accepted.**
+
+This is not ceremony. Extraction from prose misreads in specific, predictable ways: it conflates an utterance with a claim, attributes a table-level remark to a character, invents manner where none was recorded. A wrong fact accepted silently doesn't stay a small error — it becomes a premise, and everything built on it inherits the mistake. Review is cheapest at exactly this point, while the session is still fresh and the fact hasn't propagated.
+
+**2. Impact detection, only after acceptance.**
+
+Once the facts are settled, the system looks at what they now imply and raises **Tickets**: a possible new connection, a possible shift in investment, a possible collision with a canon fact, two records that might be the same. These are all one thing — detecting impact on existing entities and relationships, and the inferences that follow.
+
+Running this stage over unreviewed extractions would compound a bad reading into a bad conclusion, and a ticket carrying inferred weight is harder to dismiss than a raw misread line would have been. **Confirm what happened, then ask what it means.**
+
+The ordering also keeps the GM's two jobs distinct. Stage 1 asks *is this what happened* — a memory question, answerable immediately after play. Stage 2 asks *does this matter* — a judgment question, and one the GM may reasonably defer.
+
+---
+
 ## Why manner matters when it is present
 
 **The debrief.** Recounting what was behind the screen is better with texture. "You all went completely silent" is what makes the retelling land.
@@ -163,11 +186,11 @@ Texture also degrades faster than structure. What happened is recoverable from c
 **Do player notes eventually contribute?**
 A player writing "I hope the rat made it" is a self-reported table-level signal — and a channel that doesn't depend on the GM reading expressiveness at all. Possibly the best correction for the quiet-player problem.
 
-**Does the AI extract facts from the prose recap?**
-Cheaper than writing both, but extraction can hallucinate and these become premises. Probably: propose, GM confirms. Manner is the riskiest to extract — most interpretive, and most likely to be invented where none existed.
+~~**Does the AI extract facts from the prose recap?**~~
+**Resolved: yes, as stage 1 of intake — proposed, never applied.** Cheaper than writing both, and the review gate is what makes extraction safe to use at all. Manner stays the riskiest field, being the most interpretive and the most likely to be invented where none existed; it warrants the closest attention during review, and [[Constraint-Manner-and-Intent]] holds that Storyteller never generates it in the first place.
 
 **How is recurrence recorded without re-reading old sessions?**
-Noticing something resurfaced requires remembering it surfaced before. Strong GM recall covers this early; at scale it may need support.
+Noticing something resurfaced requires remembering it surfaced before. Strong GM recall covers this early; at scale it may need support. Impact detection is the natural home for this once it exists — a new fact about an entity the party has touched before is exactly the kind of impact stage 2 is looking for.
 
 **How long until enough accumulates?**
 Clustering needs volume. Four to six sessions may not produce detectable patterns — fine, since the interface isn't due until then.
