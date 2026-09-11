@@ -127,6 +127,10 @@ Recording an utterance as a claim is the single most consequential mistake avail
 
 Two examples make the distinction concrete. *Carl summons the god Emberus to the 5th floor* (from *Gate of the Feral Gods*) is a canon fact — known to the GM in advance, because it's what the book says. *The party felt the rampage reach their own bubble on Floor 5* is a different fact: an ordinary table event, with its own provenance (this GM, this session), connected back to the canon fact through a **Relationship** rather than being the same fact revealed. The canon fact can stay unrevealed indefinitely while its consequences still reach the party as an **Off-screen event** — the two are linked, not identical.
 
+Most table interaction with canon is **extension**, not conflict: the party doing something in a bubble the books never documented, filling gaps the source material leaves open by design. That needs no special handling — an ordinary table fact, optionally linked to the concurrent canon fact by an ordinary Relationship, nothing more.
+
+**Supersession** is the genuine exception: the table explicitly changes a *documented* outcome — an NPC saved who dies in the books, a canon event blocked outright. The canon fact itself never changes; it belongs to the source and stays in the record exactly as written, permanently. What's new is a table fact carrying a `supersedes` relationship to it, made visible to the GM so anything built on the original outcome is reachable and known to be superseded — for this campaign's own narrative only.
+
 **Off-screen event** *[model]* — Something happening elsewhere while the party is not there. Recorded when its effects will reach them.
 
 **Coverage** *[model]* — Whether every direction the party might plausibly go has something prepared behind it. The basis for answering *am I ready for the next session*.
@@ -137,7 +141,7 @@ Two examples make the distinction concrete. *Carl summons the god Emberus to the
 
 **Signal** *[model]* — Not a recorded event in its own right. Accumulated facts the inference engine flags as possible evidence that an entity's investment has shifted — the same pass that also flags possible new relationships, just aimed at a different question. Surfaced through a **Ticket**, never applied automatically. The ticket asks the GM two separate questions: is this evidence real, and does it move the degree. A "yes" to the second is what creates the investment-change event; a "yes" to only the first just means the evidence was noted without crossing a threshold.
 
-**Ticket** *[model]* — A short, dismissible prompt raised by the system when it notices something: a possible connection between two facts or entities, a possible shift in investment, a possible contradiction with canon, a gap in coverage, two records that may be the same. A suggestion, never an action taken.
+**Ticket** *[model]* — A short, dismissible prompt raised by the system when it notices something: a possible connection between two facts or entities, a possible shift in investment, a possible supersession of a documented canon outcome, a gap in coverage, two records that may be the same. A suggestion, never an action taken.
 
 **Intersection note** *[model]* — Writing about the meeting of two things — this NPC in this place — that is reachable from both, rather than being filed under one and lost to the other.
 
