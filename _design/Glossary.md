@@ -53,15 +53,17 @@ Every domain term used in an epic points here. If a term is missing, it either n
 
 **Dossier** *[campaign]* — The sheet each player filled in when making their character: background, motivations, ties. Written openly, in person, before play began. A standing source of hooks.
 
-**Floor** *[campaign]* — A level of the structure the campaign takes place in, explored in order. Floor 1 is the beginning; Floor 6 is when a wider world begins to press in.
+**Floor** *[campaign]* — A level of the structure the campaign takes place in, explored in order. This campaign's name for the largest place tier below the campaign itself — another campaign might call the same tier a region, a district, or a province. Floor 1 is the beginning; Floor 6 is when a wider world begins to press in.
 
-**Zone** *[campaign]* — A distinct area within a floor. Where encounters happen and NPCs are found.
+**Zone** *[campaign]* — A named area within a floor. Where encounters happen and NPCs are found. Vocabulary for a middle tier of place, not a distinct kind of thing in the model — see **Place**.
+
+**Bubble** *[system]* — In the source material, one of many separated pockets a floor is divided into, each holding a different set of crawlers. Relevant here because a single event can reach every bubble on a floor at once while the parties inside them never meet.
 
 ---
 
 ## Part 2 — Things that are commonly confused
 
-Four pairs that appear across the design documents and mean different things.
+Five pairs that appear across the design documents and mean different things.
 
 **Quest vs Arc**
 
@@ -70,6 +72,12 @@ A **quest** *[model]* is a task with a stated goal and a finish. *Recover the th
 An **arc** *[model]* is a thread of meaning running through the campaign that the group cares about. It cannot be authored — a GM can only notice one forming and then support it. A quest can belong to an arc; an arc is never just a quest.
 
 A quest's lifecycle crosses the Storyteller/Chronicle seam like any other entity's. Before **Reveal**, its state belongs entirely to Storyteller — `planned`/`fact`, `speculative → potential → used` effort — the GM's own planning, invisible to the party. At Reveal it becomes known, and everything after belongs to the party's experience of it: given, in-progress, completed, failed, abandoned. Storyteller doesn't track that half; Chronicle does. The two state machines never overlap — they meet at exactly one point.
+
+**Arc vs Arc intent**
+
+An **arc** is discovered. Connections form across table play, the system notices them, and the GM confirms that a thread is real.
+
+**Arc intent** *[model]* is the GM aiming at one: material written deliberately to support or provoke a thread that does not exist yet. Authored, speculative, and it may never land. Perfectly legitimate prep — the distinction matters only so the record can tell *the party has demonstrably formed this thread* apart from *the GM hoped they would*. Collapsing the two lets a GM's intention masquerade as evidence of the table's investment.
 
 **Encounter vs Event**
 
@@ -91,7 +99,7 @@ An **event** *[model]* is a thing that happened, or is planned to happen, record
 
 **Change vs Ticket** *[model]*
 
-A **change** is a concrete edit to the record proposed from session notes — a new entity, a new fact on an existing one, a new or extended relationship. It is not applied until the GM accepts it. See **Intake**.
+A **change** is a concrete edit to the record proposed from notes — a new entity, a new fact on an existing one, a new or extended relationship. It is not applied until the GM accepts it. See **Intake**.
 
 A **ticket** is raised *after* changes are accepted, about what the now-accepted facts imply. Changes alter the record; tickets ask a question about it. Keeping the two apart is what makes intake reviewable: the GM confirms what happened before being asked what it means.
 
@@ -100,6 +108,8 @@ A **ticket** is raised *after* changes are accepted, about what the now-accepted
 ## Part 3 — The model
 
 **Entity** *[model]* — A thing in the world with its own identity: a person, a place, a group, an object. Everything else attaches to one.
+
+**Place** *[model]* — An entity that can contain other places, to any depth, through an ordinary `contains` **Relationship**. There is no fixed set of place tiers and no enumerated place types: *continent → country → state → city → neighbourhood → structure → floor → room* is as valid as *floor → zone → room*, and a campaign needing only two levels invents nothing to get there. Region, zone, and place are vocabulary a GM uses to talk about relative depth — not classes the model enforces. In this campaign, **Floor** and **Zone** are the names for two of those tiers; another campaign's names would differ without the model changing at all.
 
 **Identifier** *[model]* — What an entity actually *is*, in the record. A short code like `npc-a7k2`. Deliberately not the name, because names change, get revealed, and get merged. Deliberately not sequential, because a visible `npc-007` and `npc-009` would prove `npc-008` exists.
 
@@ -151,14 +161,14 @@ The `supersedes` relationship works the same as any other, but there's no in-fic
 
 **Signal** *[model]* — Not a recorded event in its own right. Accepted facts that the impact pass reads as evidence an entity's investment may have shifted. One of the things a **Ticket** can be about, not a separate mechanism.
 
-**Intake** *[model]* — Turning session notes into record changes, in two stages that never merge.
+**Intake** *[model]* — Turning notes into record changes, in two stages that never merge. The input is a set of notes — written after a session, or before one while planning. Either kind runs the same two stages; they differ in what the proposed changes look like, not in how they are handled.
 
-1. **Proposed changes, reviewed by the GM.** The system reads the notes and proposes concrete edits — new entities, new facts on existing entities, new or extended relationships. The GM reviews the list, edits what's wrong, rejects what shouldn't land, and accepts the rest. **Nothing is written until accepted.** Extraction can misread, and a wrong fact accepted silently becomes a premise everything downstream is built on.
+1. **Proposed changes, reviewed by the GM.** The system reads the notes and proposes concrete edits — new entities, new facts on existing entities, new or extended relationships. Post-session notes mostly propose facts that are `fact` and `used`; planning notes mostly propose ones that are `planned` and `speculative` or `potential`. The GM reviews the list, edits what's wrong, rejects what shouldn't land, and accepts the rest. **Nothing is written until accepted.** Extraction can misread, and a wrong fact accepted silently becomes a premise everything downstream is built on.
 2. **Impact detection, after acceptance.** Only once the facts are settled does the system look at what they imply, raising **Tickets**. Running inference over unreviewed extractions would compound a bad reading into a bad conclusion.
 
-The ordering is the point: confirm what happened, then ask what it means.
+The ordering is the point: confirm what happened — or what is planned — then ask what it means. Intake on planning notes is where impact detection earns the most, because a ticket raised before the session is still actionable at the table.
 
-**Ticket** *[model]* — A short, dismissible prompt raised after accepted changes land, about what they imply for the record: a possible new connection between facts or entities, a possible shift in investment, a possible supersession of a documented canon outcome, two records that may be the same, a gap in coverage. All of these are one thing — detecting impact on existing entities and relationships, and the inferences that follow from it. A suggestion, never an action taken.
+**Ticket** *[model]* — A short, dismissible prompt raised after accepted changes land, about what they imply for the record: a possible new connection between facts or entities, a possible arc forming, a possible shift in investment, a possible supersession of a documented canon outcome, two records that may be the same, a gap in coverage. All of these are one thing — detecting impact on existing entities and relationships, and the inferences that follow from it. A suggestion, never an action taken.
 
 **Intersection note** *[model]* — Writing about the meeting of two things — this NPC in this place — that is reachable from both, rather than being filed under one and lost to the other.
 
