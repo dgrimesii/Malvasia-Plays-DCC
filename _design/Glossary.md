@@ -69,6 +69,8 @@ A **quest** *[model]* is a task with a stated goal and a finish. *Recover the th
 
 An **arc** *[model]* is a thread of meaning running through the campaign that the group cares about. It cannot be authored — a GM can only notice one forming and then support it. A quest can belong to an arc; an arc is never just a quest.
 
+A quest's lifecycle crosses the Storyteller/Chronicle seam like any other entity's. Before **Reveal**, its state belongs entirely to Storyteller — `planned`/`fact`, `speculative → potential → used` effort — the GM's own planning, invisible to the party. At Reveal it becomes known, and everything after belongs to the party's experience of it: given, in-progress, completed, failed, abandoned. Storyteller doesn't track that half; Chronicle does. The two state machines never overlap — they meet at exactly one point.
+
 **Encounter vs Event**
 
 An **encounter** *[game]* is a prepared or improvised situation the party meets.
@@ -117,7 +119,7 @@ Recording an utterance as a claim is the single most consequential mistake avail
 
 **Visibility** *[model]* — Whether the party knows a thing. Two values: `gm` and `player`. Applies to facts and relationships individually, not just to whole entities.
 
-**Materialize** *[model]* — An entity materializes when it appears at the table. After that its existence is permanently public, though its name and facts stay individually gated. One-way; nothing un-materializes.
+**Materialize** *[model]* — An entity materializes when the party learns it exists — whether by meeting it directly or simply being told about it. After that its existence is permanently public, though its name and facts stay individually gated. One-way; nothing un-materializes. A dead or destroyed entity that never materialized needs no separate status: it is simply a Fact (dead) on an entity that has not materialized — both already tracked, so nothing new is needed to ask what is known only indirectly, if at all. *Considered and declined:* a distinct "foreclosed" or "indirect-only" state, since it would duplicate what Fact and Materialize already express and could drift out of sync with them.
 
 **Reveal** *[model]* — The GM deliberately making something visible to the party. Not a switch on an entity — a chosen set of existences, names, facts, and connections. Recorded as an event, so what is new can be shown later.
 
@@ -127,9 +129,13 @@ Recording an utterance as a claim is the single most consequential mistake avail
 
 **Coverage** *[model]* — Whether every direction the party might plausibly go has something prepared behind it. The basis for answering *am I ready for the next session*.
 
-**Investment** *[model]* — What the group actually cares about, inferred from behaviour rather than declared. The strongest signal is returning to something unprompted, sessions later.
+**Degree of investment** *[model]* — A small, fixed scale describing how much the group cares about an entity or thread, from none to the deepest band — the most cherished ally, the mortal enemy. Provisional bands: *None, Minor, Notable, Deep, Central* — placeholders until the table's own language replaces them. Says nothing about *how* the group feels, only how much: a despised rival held at Central carries exactly as much weight as a beloved ally there.
 
-**Ticket** *[model]* — A short, dismissible prompt raised by the system when it notices something: a possible connection, a gap in coverage, two records that may be the same. A suggestion, never an action taken.
+**Investment** *[model]* — An entity or thread's current degree of investment, as last set by the GM. Not calculated or aggregated automatically — a judgment call, recorded the same way any GM decision is: as an event, with provenance. Its history — rising, declining, gone quiet — is read off the sequence of these events over time, the same way any other history in the model is read. This is what lets a GM pace delivery of impact: investment is what turns an event into something the table feels.
+
+**Signal** *[model]* — Not a recorded event in its own right. Accumulated facts the inference engine flags as possible evidence that an entity's investment has shifted — the same pass that also flags possible new relationships, just aimed at a different question. Surfaced through a **Ticket**, never applied automatically. The ticket asks the GM two separate questions: is this evidence real, and does it move the degree. A "yes" to the second is what creates the investment-change event; a "yes" to only the first just means the evidence was noted without crossing a threshold.
+
+**Ticket** *[model]* — A short, dismissible prompt raised by the system when it notices something: a possible connection between two facts or entities, a possible shift in investment, a gap in coverage, two records that may be the same. A suggestion, never an action taken.
 
 **Intersection note** *[model]* — Writing about the meeting of two things — this NPC in this place — that is reachable from both, rather than being filed under one and lost to the other.
 
