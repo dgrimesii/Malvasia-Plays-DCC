@@ -1,61 +1,70 @@
 # Malvasia-Plays-DCC
 
-GM campaign repository for the Dungeon Crawler Carl Roleplaying Game. Contains floor guides, encounter tables, NPC profiles, and system notes to torment Z, Hilda, and Hannah Solo. Showrunner eyes only.
+Two things live here.
 
-## Planning Hierarchy
+**The campaign** — GM material for a *Dungeon Crawler Carl Roleplaying Game* campaign: floor guides, encounter tables, NPC profiles, and system notes, to torment Z, Hilda, and Hannah Solo. Showrunner eyes only.
 
-GM planning happens at three nested scopes, each contained in the one above it:
+**Storyteller** — a tool being designed to support running that campaign, and campaigns generally. Its design lives in `_design/`, its epics in `_backlog/`. Storyteller is deliberately **system- and campaign-agnostic**: it records people, places, events, quests, arcs, and the connections between them. Mechanics — dice, stats, turn structure — stay in the rulebook and out of the model.
 
-**Campaign** → **Arc** → **Zone** → **Session**
+Start with [`_design/Glossary.md`](_design/Glossary.md). Every term used in an epic is defined there, and it is written for someone who has never played a tabletop RPG.
 
-- **Campaign** — the whole game: premise, house rules, overall timeline.
-- **Arc** — a story throughline spanning multiple floors and sessions (a villain, a quest, a long-term consequence).
-- **Zone** — a single floor: encounter rules, rooms, hazards — reused across every session spent there.
-- **Session** — a single sitting: what's planned, then what actually happened.
+## Repository layout
 
-Zones and Sessions cross-reference which Arc they serve via an `arc:` frontmatter field; Arcs list which Zones (`zones:`) they touch.
+**Design and delivery**
 
-## Workflow: Synthesis → Integration
+- `_design/` — the design corpus: model, scope, constraints, strategy, roadmap
+- `_backlog/` — epics and delivery planning
 
-Planning content is synthesized externally before it reaches this repo:
-
-1. Official source PDFs live in Google Drive.
-2. A Gemini Notebook references them and produces synthesized planning content, written directly as Markdown.
-3. That output lands untouched in `_working/` via `_templates/Template-Intake.md`.
-4. The GM cross-references it against existing NPCs, Arcs, Zones, and Sessions, then splits/promotes the relevant pieces into the real canon folders (00–08), linking as it goes.
-5. The intake file is marked `status: integrated` or deleted once nothing of value remains outside the canon files.
-
-## Structure
+**Campaign content**
 
 - `00-Campaign/` — campaign overview, timeline, house rules
-- `01-Arcs/` — story arcs (multi-floor, long-term)
-- `02-Zones/` — dungeon floors, named `Floor-XX-Name.md`
-- `03-Sessions/` — session-by-session prep and logs, dated `YYYY-MM-DD-Session-NN-Title.md`
+- `01-Arcs/` — arcs and material aimed at arcs (see the note below)
+- `02-Zones/` — floors, named `Floor-XX-Name.md`
+- `03-Sessions/` — session prep and logs, dated `YYYY-MM-DD-Session-NN-Title.md`
 - `04-Players/` — player character dossiers
 - `05-NPCs/` — non-player characters, split into Crawlers / Sponsors / Denizens
 - `06-Factions/` — factions and organizations
 - `07-Items-Loot/` — notable items, artifacts, and rewards
 - `08-GM-Notes/` — secrets, plot threads, showrunner-eyes-only material
-- `_templates/` — starter templates for new Arcs, NPCs, Zones, Factions, Sessions, and Intake
-- `_working/` — landing zone for synthesized content awaiting integration (not canon)
+
+**Supporting**
+
+- `_templates/` — starter templates for new entries
+- `_working/` — landing zone for synthesized content awaiting integration (not part of the campaign record)
 - `assets/` — maps and reference images
+
+## How content gets here today
+
+Planning content is often synthesized outside this repo — currently via a Gemini notebook over official source PDFs in Google Drive — and arrives as Markdown in `_working/` using `_templates/Template-Intake.md`. The GM cross-references it against existing entries, then splits and promotes the relevant pieces into the numbered folders, linking as it goes. The `_working/` file is marked `status: integrated` or deleted once nothing of value remains outside it.
+
+**This is the manual stand-in for what `_design/` calls intake**, and how the notes were produced is irrelevant to it — a Gemini synthesis, a typed recap, and handwritten notes photographed after a session are all the same input. Intake proper is two stages that never merge: the system proposes concrete changes to entities and relationships, the GM reviews and edits and accepts them, and only then does impact detection run over what was accepted. Nothing is written unreviewed. It accepts post-session notes and forward-looking planning notes alike. See [`_design/Session-Capture.md`](_design/Session-Capture.md).
+
+## Two notes on vocabulary
+
+The folder names predate the design work and don't all match the model. Worth knowing before reading either.
+
+**Arcs aren't authored.** An arc is a thread of meaning the table forms through play — discovered by noticing connections, confirmed by the GM, never written into existence. What a GM *can* author is material aimed at one, which the Glossary calls **arc intent**: legitimate prep that may never land. `01-Arcs/` holds both, and they are different things. An arc also isn't a planning scope that contains zones or sessions; it cuts across them.
+
+**Places nest to any depth.** *Floor* and *Zone* are this campaign's names for two tiers of place. In the model there is no fixed tier count and no enumerated place types — places contain places, and a GM wanting *continent → country → city → structure → floor → room* gets it without new vocabulary. The `Floor-XX-Name.md` convention works until the store exists; migrating it is a filename change, not a model change.
+
+Also note **canon** has a precise meaning in the design: facts sourced from an author external to the campaign — the published books — and treated as immutable. It does not mean "the real folders as opposed to `_working/`."
 
 ## Conventions
 
-- Every file uses YAML frontmatter (`type`, `status`, `tags`, etc.) so entries can be queried later by tools like Obsidian's Dataview/Bases, or any custom navigation tool.
+- Every file uses YAML frontmatter (`type`, `status`, `tags`, etc.) so entries can be queried by tools like Obsidian's Dataview/Bases, or any custom navigation tool.
 - File names are prefixed by type (`Dossier-`, `Arc-`, `NPC-`, `Zone-`/`Floor-`, `Faction-`, `Session-`) for predictable searching and globbing.
 - Text meant to be read verbatim at the table is wrapped in a blockquote starting `> **READ ALOUD`, so it's easy to spot mid-session.
-- An optional `source:` frontmatter field records provenance (e.g. `gemini-synthesis`) for content that passed through the intake workflow above.
+- An optional `source:` frontmatter field records provenance (e.g. `gemini-synthesis`) for content that passed through `_working/`.
 
-## Visibility & Access Control
+## Visibility
 
-Every content file carries a `visibility` frontmatter field so a future player-facing tool (Obsidian Publish, a static site, or a custom app) knows what to show whom:
+Every content file carries a `visibility` frontmatter field so a future player-facing tool knows what to show whom:
 
-- `gm` — GM eyes only. **Default for all new Arcs, NPCs, Zones, Factions, and Sessions** — nothing is player-visible until you deliberately promote it.
+- `gm` — GM eyes only. **Default for everything new** — nothing is player-visible until deliberately promoted.
 - `player-ro` — visible to all players, read-only.
 - `player-rw` — a specific player can edit it; everyone else treats it as read-only. Player dossiers use the existing `player:` field to determine the owner.
 
-For files that are mostly player-facing but contain a GM-only block (e.g. an NPC's secrets), wrap just that section in comment markers, which render as invisible in any Markdown viewer:
+For files that are mostly player-facing but contain a GM-only block, wrap just that section in comment markers, which render as invisible in any Markdown viewer:
 
 ```
 <!-- visibility:gm -->
@@ -64,4 +73,6 @@ For files that are mostly player-facing but contain a GM-only block (e.g. an NPC
 <!-- /visibility:gm -->
 ```
 
-**Note:** this repo is currently public (kept that way so the Claude GitHub connector functions reliably). The `visibility` tagging above governs what a future player tool displays — it does not restrict who can read the raw files on GitHub today.
+**These are file-level flags, and the model doesn't work this way.** In `_design/`, visibility has two values (`gm` and `player`) and applies to individual facts and relationships rather than whole documents — the party can know an NPC exists, know one of their names, and not know they are connected to a faction, all at once. The three values above also fold in an edit-permission concept the model treats separately as attribution. The frontmatter is a reasonable approximation for flat files; it is not the target design.
+
+**Note:** this repo is currently public (kept that way so the Claude GitHub connector functions reliably). The `visibility` tagging governs what a future player tool displays — it does not restrict who can read the raw files on GitHub today.
