@@ -160,7 +160,7 @@ Recorded here because the access boundary and the demo surface both hang off it.
 
 **Brand: Warp & Weft. Tagline: *Weave Your Story Together*.**
 
-The earlier choice, `legendarium.quest`, is unavailable — registered and live, hosting an Open Legend RPG character sheet manager. Same product space, so a genuine collision rather than merely a taken name.
+An earlier choice, `legendarium.quest`, turned out to be registered and live — hosting an Open Legend RPG character sheet manager. Same product space, so a genuine collision rather than merely a taken name.
 
 The selection criterion changed with it. A collection-noun names the *material*, which was right when the parent was only a container for two products. A brand names the *promise*, and the promise is the more distinctive thing: this tool notices what a table has come to care about and helps a GM land payoffs on it.
 
@@ -179,15 +179,15 @@ That gives vocabulary that is honest rather than ornamental. It also solves the 
 
 **One caution for tagline and copy.** Weaving carries a fate connotation — the Fates spinning and cutting, *it is woven*. That contradicts the North Star, where arcs are emergent and the party authors them. Copy should stay on craft and away from destiny: *"every table weaves its own"* works; *"the threads were always there"* quietly undoes the claim. The chosen tagline is safe on this count — *your* and *together* both put the weaving in the table's hands.
 
-### The domain — open, pending availability checks
+### The domain — settled
 
-`warpandweft.quest` is the leading candidate. The TLD is not filler there; the whole string reads as a phrase, so the domain carries narrative value *and* matches the spoken brand. Availability still has to be checked at a registrar — it cannot be established by search.
+**`warpandweft.ink`** — registered through Cloudflare, two years, $25.20/yr.
 
-Known constraint: **`warpandweft.com` belongs to an established New York rug studio (founded 2001)**, which also holds `@warpandweft` on X, Instagram, LinkedIn, and Facebook. The `.com` and matching social handles are unavailable regardless of what happens with `.quest`. That is a real word-of-mouth cost — a GM told "look at Warp and Weft" who types the `.com` lands on carpets.
+`.ink` earns its place rather than merely being available: ink is what a record is made of, and the brand is about producing a written account of a campaign. The full string still reads as a phrase, so the domain carries narrative value *and* matches the spoken brand.
 
-Fallbacks if `.quest` is gone: `warpandweft.app`, `warpandweft.gg`, or a prefixed `.com`. A brand-matching address is worth more than a short one.
+Two candidates were passed over. `warpandweft.quest` reads well but Cloudflare Registrar does not support `.quest`, and buying elsewhere would have meant giving up at-cost renewal pricing — a real consideration given novelty TLDs commonly renew far above their first-year price. `weaveyourstory.<tld>` is a good imperative for a landing page but drops the brand name entirely, leaving nothing to connect the spoken name to the address; worth holding later as a redirect, not as the primary.
 
-`weaveyourstory.<tld>` is worth holding as a **redirect**, not as the primary. It is an imperative, which suits a landing page, but it drops the brand name entirely, so nothing connects the spoken name to the address. Domain and application name need not match — `joinhoney.com`, `getpocket.com` — but a path from one to the other should exist.
+**Known constraint, unchanged by the purchase:** `warpandweft.com` belongs to an established New York rug studio (founded 2001), which also holds `@warpandweft` on X, Instagram, LinkedIn, and Facebook. The `.com` and matching social handles are unavailable. That is a standing word-of-mouth cost — someone told "look at Warp and Weft" who types the `.com` lands on carpets — and an argument for always writing the brand with its TLD in any material meant to be read.
 
 ### Structure
 
@@ -195,17 +195,17 @@ A landing page at the apex, with both products reachable from it and addressable
 
 | Address | What |
 |---|---|
-| `<parent>` | Brand landing page; entry to both products |
-| `storyteller.<parent>` | This tool |
-| `chronicle.<parent>` | Chronicle |
+| `warpandweft.ink` | Brand landing page; entry to both products |
+| `storyteller.warpandweft.ink` | This tool |
+| `chronicle.warpandweft.ink` | Chronicle |
 
 Long subdomains are accepted deliberately. They are transitional by design — see below — and clarity beats brevity while there are two products to tell apart.
 
 ### Campaigns go on paths, not subdomains
 
-**This is the fork worth holding to, and it survives whatever the parent turns out to be.** If subdomains name products, they cannot also name campaigns without collision — and the strategy above is eventual consolidation, which means the product subdomains are **transitional by design**. They name the current state; the apex names the destination.
+**This is the fork worth holding to.** If subdomains name products, they cannot also name campaigns without collision — and the strategy above is eventual consolidation, which means the product subdomains are **transitional by design**. They name the current state; the apex names the destination.
 
-So campaigns are paths: `storyteller.<parent>/malvasia`, never `malvasia.storyteller.<parent>`. When a unified application arrives, the product subdomains can quietly disappear without the campaign addresses moving.
+So campaigns are paths: `storyteller.warpandweft.ink/malvasia`, never `malvasia.storyteller.warpandweft.ink`. When a unified application arrives, the product subdomains can quietly disappear without the campaign addresses moving.
 
 Cheap to hold now. Awkward to reverse once anything has been linked or bookmarked.
 
@@ -215,7 +215,7 @@ Cheap to hold now. Awkward to reverse once anything has been linked or bookmarke
 - **`fixture.`** — the test corpus from [[Shippable-Increment]], which never runs against the real record.
 - **`dev.`**, **`test.`** — for the same reason.
 
-Reserving costs nothing: registering the parent buys the entire namespace beneath it. Subdomains are DNS records created afterward, with no registrar step and no per-name cost. "Reserve" here means only that these names are spoken for, so nothing else claims them later.
+Reserving costs nothing: registering the parent bought the entire namespace beneath it. Subdomains are DNS records created in Cloudflare afterward, with no registrar step and no per-name cost. "Reserve" here means only that these names are spoken for, so nothing else claims them later.
 
 ---
 
@@ -250,6 +250,6 @@ This divergence is deliberate, not an oversight — weighed openly here, with th
 
 **Carried into R2 planning:** the scribe as an alternative to per-player note-taking.
 
-**On addressing:** campaigns on paths from the first URL that exists, since retrofitting that is a link-breaking change. The parent domain itself is not blocking — nothing before the first deployed URL depends on it.
+**On addressing:** campaigns on paths from the first URL that exists, since retrofitting that is a link-breaking change. `warpandweft.ink` is registered and DNS sits with Cloudflare, so the first deployment can take its address immediately.
 
 **One decision to revisit:** [[Backlog-Readiness]] §G2 asks whether the graph model is adopted. Chronicle independently arrived at an entity-and-relationship model with a graph view, from a different game system and a different authoring role — and recursive place containment (see **Place** in [[Glossary]]) wants arbitrary depth, which is trivial in a graph and awkward otherwise. Two independent arguments in favour, worth weighing when that decision is made.
