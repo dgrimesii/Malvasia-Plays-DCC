@@ -77,6 +77,8 @@ The table explicitly changes a *documented* outcome: an NPC who dies in the book
 
 This is rare by nature, not by rule — inevitable across enough campaigns and enough sessions, and worth designing for rather than treating as an edge case that won't come up. It needs to be *known* to the GM the moment it happens, because everything downstream that assumed the original outcome is now suspect until reviewed.
 
+This is entirely GM-side bookkeeping. Whether the party's own players later notice or talk about their table's version having gone differently from the books is a real conversation the humans have themselves — part of the ordinary pleasure of having played, not something Storyteller records or needs to.
+
 ---
 
 ## The canon intensity curve
@@ -160,7 +162,7 @@ Before **Reveal**, a canon fact is visible to the GM only — exactly like any o
 
 **Extension needs nothing new.** The ordinary case — the party doing something in a bubble the books never documented — is just a table fact like any other, optionally linked to the concurrent canon fact by an ordinary Relationship for context. No confirmation, no flag, no divergence machinery. This covers almost everything, including most Intersecting cases: being present for a canon event doesn't itself change what the books say happened.
 
-**Supersession is the one genuinely new piece.** When a table fact changes a *documented* canon outcome, the canon fact is never edited or removed — it stays exactly as the source recorded it, permanently. The new table fact carries a `supersedes` relationship to it instead, surfaced to the GM by a **Ticket** so it's confirmed as deliberate rather than inferred silently. Everything downstream that assumed the original outcome is then reachable by following that relationship, rather than needing its own decay-tracking field.
+**Supersession is the one genuinely new piece.** When a table fact changes a *documented* canon outcome, the canon fact is never edited or removed — it stays exactly as the source recorded it, permanently. The new table fact carries a `supersedes` relationship to it instead, surfaced to the GM by a **Ticket** so it's confirmed as deliberate rather than inferred silently. Everything downstream that assumed the original outcome is then reachable by following that relationship, rather than needing its own decay-tracking field. The relationship is GM-side bookkeeping only — it has no in-fiction referent, so there's nothing about it that would ever be player-visible; that's not a gap to close, it's outside what the model needs to represent at all.
 
 **Parallel** and **Proximate** don't need their own stored field either, by the same instinct: Parallel is a canon fact with no Reveal and no connected off-screen event; Proximate is a canon fact whose effects are recorded as a revealed **Off-screen event**. Both are readable off primitives already in the model — Reveal, Materialize, Off-screen event, Relationship — not a fifth thing to keep in sync. A canon fact that never connects to anything simply stays unconnected; consistent with how unattached planning material is treated everywhere else in this model, there is no separate state to set for it.
 
@@ -182,7 +184,7 @@ The intensity curve is how both halves get delivered in the right order: authors
 
 1. **Can the party affect canon outcomes,** or only experience them? Supersession answers this in principle — yes, rarely, and explicitly — but not how often the group wants that door open in practice.
 2. **What happens if a player has read the books?** Julia, Amy, or Sam knowing what's coming changes proximate events entirely — dramatic irony instead of mystery. Not necessarily worse, but different, and worth knowing per-player before Floor 6.
-3. **Does supersession need to be visible to players**, not just the GM? Knowing the campaign has changed a documented outcome is itself a powerful narrative fact — or a spoiler about what canon was.
+3. ~~Does supersession need to be visible to players?~~ **Resolved: no, and not because it's a secret.** Supersession is GM bookkeeping, with no in-fiction referent — nothing a character could notice or a scene could reveal. Whether the group later discusses their table's version having gone differently from the books is a real conversation the players have themselves, part of the ordinary pleasure of having played. Storyteller has no part in it, the same way it has no part in any other post-session conversation.
 4. **How much canon needs recording before play** versus being pulled in as proximity arises? Floors 1–5 need almost none; Floor 6 onward needs enough to compute proximity reliably.
 5. **Do canon events feed the arc tree?** A canon figure the party comes to care about from a distance could carry real weight — and would be an arc they share with millions of other crawlers, which is its own interesting thing.
 
