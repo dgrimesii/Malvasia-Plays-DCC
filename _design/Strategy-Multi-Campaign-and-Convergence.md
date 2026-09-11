@@ -2,7 +2,7 @@
 type: design
 status: draft
 visibility: gm
-tags: [strategy, multi-campaign, convergence, chronicle, scope, domain, hosting]
+tags: [strategy, multi-campaign, convergence, chronicle, scope, domain, hosting, brand]
 ---
 
 # Strategy: Multi-Campaign and Convergence with Chronicle
@@ -152,28 +152,54 @@ Chronicle is precisely the set of things [[Scope]] excludes: combat detail, mech
 
 ---
 
-## Part 3 — Naming and addressing
+## Part 3 — Brand, naming, and addressing
 
 Recorded here because the access boundary and the demo surface both hang off it.
 
-### The domain — open
+### The brand — Warp & Weft
 
-**The previously chosen name is unavailable.** `legendarium.quest` is registered and live, hosting *Legendarium*, an Open Legend RPG character sheet manager. Same product space, so it would have been a genuine collision rather than merely a taken name.
+**Brand: Warp & Weft. Tagline: *Weave Your Story Together*.**
 
-**The selection criterion survives, and it is the durable part.** The parent must name **the shared record both roles serve**, not a third role. Storyteller and Chronicle are personifications — a storyteller and a chronicle are things a person is or makes — and a subdomain hierarchy is containment, so a personified parent would read as one person containing another. The parent should name the material: the accumulated body of a world's stories. The personified names then sit on it naturally as possessives — the storyteller *of* the saga, the chronicle *of* the saga.
+The earlier choice, `legendarium.quest`, is unavailable — registered and live, hosting an Open Legend RPG character sheet manager. Same product space, so a genuine collision rather than merely a taken name.
 
-Candidates meeting that criterion. None checked for availability; that has to be done at a registrar, not by guessing.
+The selection criterion changed with it. A collection-noun names the *material*, which was right when the parent was only a container for two products. A brand names the *promise*, and the promise is the more distinctive thing: this tool notices what a table has come to care about and helps a GM land payoffs on it.
 
-| Candidate | Note |
+**The weaving frame maps onto the model rather than decorating it.**
+
+| Weaving | This model |
 |---|---|
-| `saga.quest` | Strongest of these. Short enough to survive a prefix; both products read as natural possessives. |
-| `annals.quest` | The record of years. More clerical, equally accurate. |
-| `chapter.quest` | Double meaning — a division of a book, and a body of people. |
-| `thelore.quest` | Fallback if `lore.quest` is premium-priced, which it likely is. |
+| **Warp** — fixed threads set up before weaving begins | GM planning: entities, arc intent, laid down in advance |
+| **Weft** — woven across the warp as work proceeds | Table play: the accepted facts intake produces |
+| **The cloth** — exists only where the two cross | The campaign record |
+| Picking up a dropped thread | An arc resurfacing after several quiet sessions |
 
-**The TLD is not load-bearing.** `.quest` is pleasant but incidental; the apex word carries the meaning. A good word on a different TLD beats a compromised word on this one.
+That gives vocabulary that is honest rather than ornamental. It also solves the containment problem the original criterion was written for: warp and weft are materials, so the personified product names sit on them as possessives, and neither reads as one person containing another.
 
-Whatever is chosen, products sit on subdomains — `storyteller.<parent>` and `chronicle.<parent>` — and everything below still applies unchanged.
+**Weft alone was considered and rejected.** Shorter and cleaner as a subdomain parent, but a bare textile term with no narrative weight. The pairing is what makes it a metaphor.
+
+**One caution for tagline and copy.** Weaving carries a fate connotation — the Fates spinning and cutting, *it is woven*. That contradicts the North Star, where arcs are emergent and the party authors them. Copy should stay on craft and away from destiny: *"every table weaves its own"* works; *"the threads were always there"* quietly undoes the claim. The chosen tagline is safe on this count — *your* and *together* both put the weaving in the table's hands.
+
+### The domain — open, pending availability checks
+
+`warpandweft.quest` is the leading candidate. The TLD is not filler there; the whole string reads as a phrase, so the domain carries narrative value *and* matches the spoken brand. Availability still has to be checked at a registrar — it cannot be established by search.
+
+Known constraint: **`warpandweft.com` belongs to an established New York rug studio (founded 2001)**, which also holds `@warpandweft` on X, Instagram, LinkedIn, and Facebook. The `.com` and matching social handles are unavailable regardless of what happens with `.quest`. That is a real word-of-mouth cost — a GM told "look at Warp and Weft" who types the `.com` lands on carpets.
+
+Fallbacks if `.quest` is gone: `warpandweft.app`, `warpandweft.gg`, or a prefixed `.com`. A brand-matching address is worth more than a short one.
+
+`weaveyourstory.<tld>` is worth holding as a **redirect**, not as the primary. It is an imperative, which suits a landing page, but it drops the brand name entirely, so nothing connects the spoken name to the address. Domain and application name need not match — `joinhoney.com`, `getpocket.com` — but a path from one to the other should exist.
+
+### Structure
+
+A landing page at the apex, with both products reachable from it and addressable directly:
+
+| Address | What |
+|---|---|
+| `<parent>` | Brand landing page; entry to both products |
+| `storyteller.<parent>` | This tool |
+| `chronicle.<parent>` | Chronicle |
+
+Long subdomains are accepted deliberately. They are transitional by design — see below — and clarity beats brevity while there are two products to tell apart.
 
 ### Campaigns go on paths, not subdomains
 
