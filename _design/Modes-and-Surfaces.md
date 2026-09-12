@@ -9,7 +9,7 @@ tags: [information-architecture, modes, personas, search, inference, retrieval, 
 
 Three modes of use, the personas in each, and what each mode is optimised for.
 
-Resolves the search-versus-inference tension left open by [[Inference-and-Candidate-Relationships]] and [[Retrieval-Tiering]].
+Resolves the search-versus-inference tension left open by [[Inference-and-Candidate-Relationships]] and [[Retrieval-Tiering]]. Governed at the table by [[Constraint-Serves-The-Table]].
 
 ---
 
@@ -26,6 +26,8 @@ Same graph, same relatedness signal, **opposite operating points.** Treated as o
 
 The mode structure dissolves most of the conflict: **inference never runs at the table.** It is confined to Session Capture and Session Planning, both of which happen between sessions with nobody waiting. Per [[Update-Cadence]], expensive computation there is effectively free. Precision and recall stop being a shared setting and become a per-mode property.
 
+There is a second reason inference stays out of the table modes, and it is the stronger one: **a surfaced insight is an interruption by construction.** See [[Constraint-Serves-The-Table]].
+
 ---
 
 ## Mode 1 — Table play
@@ -38,9 +40,9 @@ Two personas; the GM has two sub-modes.
 |---|---|---|
 | **Encounter Assistant** | GM | The planned facts about the current encounter at hand. Supports description, and relevance to previous and upcoming events. |
 | **Role Play assistance** | GM | Visual of the relationships in the current encounter or event. Enables fast reaction to player questions and raises the relevance of improvised answers. |
-| **Memory bank** | Players | Generic search over known facts and relationships about what is happening at the table. |
+| **Memory bank** | Players | Generic search over known facts and relationships about what is happening at the table. Replaces flipping through handwritten notes — see [[Player-Scope]]. |
 
-Both GM sub-modes read from the **[[Live-Set]]**, not from the whole graph.
+Both GM sub-modes read from the **[[Live-Set]]**, not from the whole graph. Every table surface is **pull-only**: no notification, no badge count, no prompt, nothing arriving unasked.
 
 ### Role Play assistance needs a root
 
@@ -48,7 +50,11 @@ The relationship visual requires a root entity for its subgraph. The planned enc
 
 ### No write path at the table
 
-Anything the GM notices mid-session survives in their head until the recap. This is a deliberate decision, not an omission, and it is recorded here because it cuts against the lost-detail framing in [[North-Star]]. [[Update-Cadence]] previously left mid-session jotting open as *probably allow, nothing should depend on it*. Still open — see §Open.
+Anything the GM notices mid-session survives in their head until the recap.
+
+**Settled**, per [[Constraint-Serves-The-Table]]. A future write capability is permitted but constrained: it must fit inside a pause the conversation would have had anyway, and **nothing may depend on it** — because the tool must always be free to choose the table over the record. A player-facing write at the table is prohibited unconditionally, not merely deferred.
+
+This accepts that details will be lost. A detail lost to protecting the conversation is the correct trade, not a failure.
 
 ---
 
@@ -128,12 +134,14 @@ So the display does not merely render the model — it broadcasts extraction err
 | Surface | Optimise for | Failure mode |
 |---|---|---|
 | **GM, table** | one right answer, seconds, fragment input | the moment is lost |
-| **Player, table** | visibility-filtered per [[Visibility-Model]] | reveals something unrevealed |
+| **Player, table** | visibility-filtered per [[Visibility-Model]]; answer-shaped, not browsable | reveals something unrevealed, or becomes somewhere players dwell |
 | **GM, planning** | breadth, multi-hop, wandering | a dead end with no path onward |
 
 **Planning search is where browse-discovery lives** — the *I would recognise it if I saw it* job, one of the four named in [[Interface-Direction]]. So *no inference discovery at the table* does not mean discovery happens only in the inference queue. Planning search is discovery by a different mechanism and should be optimised for recall and traversal, not ranking.
 
-**Hazard:** if these are built as one search with a toggle, the planning surface inherits the table's precision bias and becomes useless for exploration.
+The player surface is the deliberate opposite: bounded and answer-shaped, because browsing is unbounded and a pleasant-to-scroll memory bank violates [[Constraint-Serves-The-Table]]. See [[Player-Scope]].
+
+**Hazard:** if these are built as one search with a toggle, the planning surface inherits the table's precision bias and becomes useless for exploration — and the table surfaces inherit the planning surface's invitation to wander.
 
 ---
 
@@ -172,5 +180,5 @@ General rule this implies: **any pruning done for search quality destroys infere
 
 1. **Weak-edge vocabulary in the store.** The projection handles the index; the store side is undecided.
 2. **Planned/actual as a per-fact axis.** Confirm all four combinations of planned/actual against gm/player are meaningful before committing.
-3. **Mid-session write path.** Still open. Whatever is decided, nothing may depend on it.
+3. ~~Mid-session write path.~~ **Settled** by [[Constraint-Serves-The-Table]]: none initially; a future GM-side write must fit an existing pause and nothing may depend on it; player-side writes at the table are prohibited.
 4. **The encoding for the two display channels.** Independence and simultaneous legibility are required; the specific visual treatment is not chosen.
