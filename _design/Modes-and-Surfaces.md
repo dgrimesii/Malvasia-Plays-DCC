@@ -2,7 +2,7 @@
 type: design
 status: draft
 visibility: gm
-tags: [information-architecture, modes, personas, search, inference, retrieval]
+tags: [information-architecture, modes, personas, search, inference, retrieval, interface]
 ---
 
 # Modes and Surfaces
@@ -57,7 +57,7 @@ Anything the GM notices mid-session survives in their head until the recap. This
 One persona: the GM. Input is one or more recap documents.
 
 1. **Parse and propose.** The system creates or updates facts about entities and relationships. The recap is treated as fact **about what happened at the table** — not as a statement of the truth of the information in it. See [[Claims-and-Resolution]].
-2. **Review.** Captured facts are presented for review, editing, and acceptance.
+2. **Review.** Captured facts are presented for review, editing, and acceptance. Review must include a **player-view preview** — see §Displaying claim state.
 3. **Inference analysis.** New and changed facts are examined against existing facts to discover candidate relationships. Candidates are queued. The GM accepts, rejects, or **accepts-and-augments** — an accepted inference must be editable, because the GM will usually want to add human context the detector could not supply.
 
 This is stage 1 and stage 2 of the intake process already described in [[Session-Capture]].
@@ -80,6 +80,46 @@ Record Plans is also where most **Resolutions** happen — the GM deciding what 
 They differ only in the state facts land in. Good news for sequencing: closer to one epic than two.
 
 But it generalises something. Planned-versus-actual was previously a property of **Events** only. Under Record Plans, every fact and relationship needs it — *the Warden will turn out to be Hilda's uncle* is a planned relationship. That is a second axis, orthogonal to visibility, which is already held per fact per campaign per [[Settings-and-Campaigns]]. See §Open.
+
+---
+
+## Displaying claim state
+
+Per [[Claims-and-Resolution]], the GM's five observable states are Resolution × Visibility: undetermined, true, false, revealed true, revealed false. Players see undetermined until reveal.
+
+### Two channels, not five labels
+
+The GM is reading **two questions**, not selecting from an enumeration of five:
+
+- *What is true?* → the resolution
+- *Do they know?* → the visibility
+
+Rendering this as five flat labels forces memorisation of a lookup table. Rendering it as **two independent visual channels** — one for resolution, one for reveal — means the state is read rather than recalled. It also makes the absent sixth state fall out naturally: there is no revealed-undetermined because the reveal channel has nothing to modify.
+
+The specific encoding is an interface decision, not settled here. The requirement is that the two channels stay **independent and simultaneously legible**, per the visualisation principles in [[Interface-Direction]].
+
+### Channel priority inverts by mode
+
+Same two channels, different weighting.
+
+| Mode | Urgent question | Louder channel |
+|---|---|---|
+| **Table play** (Encounter Assistant, Role Play assistance) | *Can I say this out loud?* | reveal |
+| **Session Planning** (Record Plans, Search) | *What is actually true?* | resolution |
+
+At the table a resolution the party has not been told is a trap; knowing the truth matters less than knowing whether it is speakable. In planning the reverse holds.
+
+### Player-side uniformity is a correctness requirement
+
+The player surface collapses undetermined, unrevealed true, and unrevealed false into one indistinguishable presentation. **That collapse is the information-hiding guarantee**, and it holds only if the presentation is identical across all three — no differing shade, tooltip, sort position, icon weight, or count.
+
+Not a style preference. It is testable, and it should be a test: render every GM state to the player surface and assert the outputs are identical.
+
+### The badge advertises parser failures
+
+If claims are badged and ordinary world facts are not, **the absence of a badge is informative.** A proposition the parser mis-classified as GM narration appears to the players as plain, unattributed truth.
+
+So the display does not merely render the model — it broadcasts extraction errors to the one audience that must not see them. Hence the **player-view preview in capture review**: the GM must be able to see each proposition as the players will see it, before accepting. It is the only check that operates on the thing that actually leaks.
 
 ---
 
@@ -133,3 +173,4 @@ General rule this implies: **any pruning done for search quality destroys infere
 1. **Weak-edge vocabulary in the store.** The projection handles the index; the store side is undecided.
 2. **Planned/actual as a per-fact axis.** Confirm all four combinations of planned/actual against gm/player are meaningful before committing.
 3. **Mid-session write path.** Still open. Whatever is decided, nothing may depend on it.
+4. **The encoding for the two display channels.** Independence and simultaneous legibility are required; the specific visual treatment is not chosen.
