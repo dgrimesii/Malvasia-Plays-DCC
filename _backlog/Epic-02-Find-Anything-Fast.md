@@ -35,7 +35,7 @@ Two things have now happened. The moment is spent — that particular scene, whe
 
 The second cost is the worse one. **A record that gets contradicted stops being consulted**, and once it stops being consulted it stops being maintained.
 
-The general shape: **a detail that cannot be retrieved in the moment does not exist.** It does not matter that it is written down. The failure is not memory — it is access under time pressure, on a phone, while talking.
+The general shape: **a detail that cannot be retrieved in the moment does not exist.** It does not matter that it is written down. The failure is not memory — it is access under time pressure, while talking.
 
 And the GM will not construct a query while mid-sentence. Whatever they remember is what they have: a fragment of a name, what the party called him, or only what he did.
 
@@ -43,12 +43,23 @@ And the GM will not construct a query while mid-sentence. Whatever they remember
 
 ---
 
+## Scope of the interface in Release 1
+
+**Release 1 is about the store and the queries over it, with just enough interface to operate and verify them.** Per [[Device-Context]], the GM is on a desktop or laptop for planning and capture, and a laptop or tablet at the table. **No GM surface targets a phone**, and nothing here is one-handed, glanceable, or space-constrained.
+
+So every story below is accepted on **what the output contains and how fast it arrives** — not on layout, density, or visual treatment. Where a story notes a stronger presentation requirement, it is recorded as a known requirement of the eventual table surface and is explicitly not an acceptance criterion here.
+
+The first real use of the tool is a **prep week**, not a table session: conversion lands, then the GM plans. The at-the-table stories matter and are specified here because the data they need must be right from the start — not because a polished table surface ships in this candidate.
+
+---
+
 ## What is not being asked for
 
 - **Not the player's view.** Rendering the record as the party would see it is Epic 15, in Release 2. In Release 1 the GM sees everything — but see S12, which is a different thing: telling the GM *whether* the party knows something, not showing them the party's page.
 - **Not withholding anything from the GM.** Nothing here hides, filters, or downranks material because the party has not learned it. See S12.
+- **Not a designed table surface.** See the scope note above.
+- **Not focus-and-neighbourhood navigation.** Choosing a point in the record and working outward from it is the table-play relationship view, per [[Modes-and-Surfaces]], and is later work. This epic is search: the GM asking a question and getting an answer.
 - **Not noticing things.** Surfacing connections the GM did not ask for is Epic 6. This epic answers questions; it does not raise them.
-- **Not the prepared session view.** The at-the-table surfaces that read from a prepared set — the encounter view and the relationship view — are later work, per [[Modes-and-Surfaces]]. This epic is search: the GM asking a question and getting an answer.
 - **Not readiness.** Whether the next session is covered is Epic 3.
 - **Not editing.** Changing what is found is Epic 4.
 - **Not rules lookup.** Out of scope entirely, per [[Scope]].
@@ -64,7 +75,7 @@ And the GM will not construct a query while mid-sentence. Whatever they remember
 | A detail that cannot be retrieved mid-sentence does not exist | [[North-Star]] |
 | At the table the bar is seconds; ten seconds is a failure | [[Retrieval-Tiering]] |
 | There are two tiers — at-the-table and prep — with genuinely different requirements | [[Retrieval-Tiering]] |
-| At the table this happens on a phone or tablet, one-handed, glanced at while talking | [[Device-Context]] |
+| The GM is on a desktop or laptop for prep, and a laptop or tablet at the table. **No GM surface is a phone** | [[Device-Context]] |
 | The GM will not compose a structured query while running a scene | [[Interface-Direction]] |
 | An entity has several names, including ones the party invented | [[Names-and-Aliases]] |
 | What someone was told and what is true must stay distinguishable when read back | [[Facts-and-Revelation]], [[Claims-and-Resolution]] |
@@ -122,7 +133,7 @@ Four costs if this is absent, slow, or careless:
 *As the GM, I want an answer fast enough that I do not have to stop the scene.*
 
 - **Outcome:** The GM stays in the scene while looking something up.
-- **Assertion:** A retrieval at the table returns in seconds, measured end to end from a phone on a normal connection — network time included, since the network is now on the critical path. Ten seconds is a failed test, not a slow one.
+- **Assertion:** A retrieval at the table returns in seconds, measured end to end from a laptop or tablet on a normal connection — network time included, since the network is now on the critical path. Ten seconds is a failed test, not a slow one.
 - **Demo:** Time a set of representative lookups against a fixture sized like a real campaign, over the hosted deployment rather than locally.
 
 ### S3 — Know immediately when the connection is the problem
@@ -193,10 +204,10 @@ Four costs if this is absent, slow, or careless:
 *As the GM, I want what I retrieve to be immediately usable in the scene, not a page I have to read and condense first.*
 
 - **Outcome:** Retrieved material can be read aloud or paraphrased without preparation.
-- **Assertion:** An at-the-table view leads with what is usable in the moment — who they are, what they want, what they would bring up — and is legible on a phone at a glance.
+- **Assertion:** An at-the-table result leads with what is usable in the moment — who they are, what they want, what they would bring up — rather than with metadata or a full record dump.
 - **Assertion:** **Ordering is by relevance to the scene, never by what the party knows.** Material the party has not learned appears wherever it is most useful, marked rather than moved — see S12.
-- **Assertion:** Where an event is involved, the view distinguishes what has happened, what the party is waiting for, and what is only planned, so the GM can tell at a glance which of the three they are looking at.
-- **Demo:** Show the at-the-table view for an NPC on a phone-width screen without scrolling for the essentials, where the NPC carries a mix of known and unknown facts and one planned event. Show that an unrevealed but highly relevant fact is near the top.
+- **Assertion:** Where an event is involved, the result distinguishes what has happened, what the party is waiting for, and what is only planned. **These are marked, never separated** — there is no planned view and no happened view. State is a quality of an item, not a class of item, and a planned event needs the context of what the party already knows about the people in it.
+- **Demo:** Retrieve an NPC carrying a mix of known and unknown facts and one planned event. The usable material comes first, the unrevealed but highly relevant fact is near the top, and the planned event sits among the rest carrying its state.
 
 ### S11 — Search properly when I have time
 
@@ -209,20 +220,23 @@ Four costs if this is absent, slow, or careless:
 
 **The two tiers must not be one search with a speed setting.** They are optimised for opposite things, and building them as one makes the prep tier inherit the table tier's narrowness — which quietly removes the ability to explore, the very thing preparation is for.
 
+**This is the tier that gets used first.** The first real use of the tool is a prep week; the table tier is not exercised in anger until a session follows.
+
 ### S12 — Mark what the party knows, without hiding anything
 
-*As the GM, I want to see at a glance what the party has already learned, because I need to know both what is safe to say and what I am deliberately holding.*
+*As the GM, I want to see what the party has already learned, because I need to know both what is safe to say and what I am deliberately holding.*
 
-- **Outcome:** The GM can speak from what they retrieved without stopping to work out what is safe — and can still see everything they are holding back.
+- **Outcome:** The GM can speak from what they retrieved without working out what is safe — and can still see everything they are holding back.
 - **Assertion:** Every retrieved fact and connection shows one of **three conditions**: the party knows it, the party knows it is coming, or the party has not learned it.
 - **Assertion — marked, never filtered.** Nothing is hidden, collapsed, greyed out, or pushed down the page because the party has not learned it. **Unshared material is often the most useful thing on the screen**, for two reasons the GM cannot work without:
   - **It informs how the character is played.** The innkeeper who knows the tunnels flood and has not said so behaves differently for knowing it. Suppress that and the GM plays him without his own knowledge — a constant, invisible loss, worse than an occasional visible one.
   - **It is the menu for a deliberate reveal.** *Should I give them this now* is a live decision at the table, and the material has to be in front of the GM to be chosen. Sorting it below the fold is the tool quietly deciding not to.
-- **Assertion — the marking must be catchable peripherally**, while glancing at a phone mid-sentence and talking. A marking that is technically present but easy to miss under those conditions **fails this story**. This is a higher bar than *shown*, and it is the real requirement.
 - **Assertion:** The condition is shown independently of a statement's truth, so the combinations stay distinguishable — what the party knows, and separately whether it is true, false, or undecided.
 - **Assertion:** During preparation the emphasis reverses. At a desk the urgent question is what is actually so, and revelation is secondary.
 - **Assertion:** This is **not** the player's view, and **not** a safety mechanism. The GM sees everything and may say anything; they are simply told which parts the party already has.
-- **Demo:** Retrieve an entity carrying both known and unknown facts. On a phone, identify the condition of each without reading closely, with an unrevealed fact ranked at the top. Show the same entity in the prep view, where truth leads instead.
+- **Demo:** Retrieve an entity carrying both known and unknown facts. Each carries its condition, distinguishable without reading closely, with an unrevealed fact ranked at the top. Show the same entity in the prep view, where truth leads instead.
+
+**A known requirement of the eventual table surface, not of this candidate:** the marking must be catchable *peripherally*, while glancing at a screen mid-sentence and talking — a harder bar than being present and distinguishable. Recorded here so it is not lost, and deliberately excluded from acceptance per the scope note above.
 
 **The tool cannot prevent an unintended reveal. It can only mitigate the risk.** Nothing here stops the GM saying whatever they decide to say, and nothing should — per [[Premise-and-Pillars]], the tool makes choices legible rather than making them. What it changes is whether speaking was a **decision** or an **accident**, and that is the whole of its contribution here.
 
@@ -234,11 +248,10 @@ Four costs if this is absent, slow, or careless:
 |---|---|---|
 | ~~How much of the store must be resident on the device?~~ | — | **Resolved: none.** Web-first, connectivity assumed; there is no device-resident copy to size |
 | What is the acceptable end-to-end budget for S2, now that network time counts against it? | S2 acceptance | Needs a number. The ten-second failure bar is unchanged; the question is what the target is beneath it |
-| How is S12's marking made catchable peripherally, on a phone, while talking? | S12 acceptance | The hard part of this epic's design. Two independent signals — what they know, and what is true — must stay separable at a glance without collapsing into one combined label, and without the visual weight of a warning |
-| How is S12 actually tested? | S12 acceptance | *Catchable while distracted* is not checkable by inspection. Probably a timed glance test rather than a screenshot review — worth deciding before the story is accepted |
+| How are S12's two signals shown together without collapsing into one combined label? | S12 acceptance | The requirement is that *what they know* and *what is true* stay separable. The visual treatment is a design question for the table surface; Release 1 needs only that both are present and readable |
 | What failure rate is acceptable when interpreting a plain-language question? | S5 and S6 acceptance | Needs a threshold. Likely answered by observation across a few sessions |
 | Should results rank by recency, or by proximity to the current session? | S1, S5 quality | Answer after use, not in advance |
-| Is the at-the-table view a different surface, or the same one behaving differently? | Nothing yet | Genuinely a design question — deliberately left open. Note S11 and S12 both now require behaviour that differs by situation, which is evidence either way |
+| ~~Is the at-the-table view a different surface, or the same one behaving differently?~~ | — | **Deferred out of this candidate.** The table surface proper — including focus-and-neighbourhood navigation — is later work per [[Modes-and-Surfaces]]. S10, S11 and S12 each require behaviour that differs by situation, which is the evidence that question will be decided against |
 
 ---
 
