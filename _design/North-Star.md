@@ -9,7 +9,7 @@ tags: [north-star, goals]
 
 Everything else in `_design/` is instrumental to this. When a design decision is unclear, this is the thing to decide against.
 
-See [[Scope]] for what's explicitly out of bounds.
+See [[Scope]] for what's explicitly out of bounds. Two documents sit on either side of this one: [[Premise-and-Pillars]] for why any of this should work at all, and **[[Constraint-Serves-The-Table]]**, which caps it — where this document and that one compete, the constraint wins.
 
 ---
 
@@ -42,6 +42,8 @@ So the world has to be conveyed by **implication and consequence** rather than d
 
 ## What this asks of the tool
 
+Read the latency requirements below alongside [[Constraint-Serves-The-Table]]. Taken alone, *findable in seconds mid-session* argues for an ever more present capture and retrieval surface — and followed far enough, that produces a tool sitting between the people at the table. The constraint is the ceiling; this section is the ambition underneath it.
+
 ### For the sense of a vast world
 
 - **The right detail must be findable in seconds, mid-session.** A world detail the GM can't retrieve while talking is a world detail that doesn't exist. This is a latency requirement, not a completeness requirement.
@@ -52,7 +54,7 @@ So the world has to be conveyed by **implication and consequence** rather than d
 ### For the sense of authorship
 
 - **Player-created content must sit as an equal to canon in the player view.** If their notes look like scratch paper attached to the real material, they'll feel like annotators. If their record of what happened sits alongside the world's record, they'll feel like authors.
-- **Their choices must visibly change things.** An NPC's disposition shifting, a faction's stance moving, a place being different than it was. Change is the proof that authorship is real.
+- **Their choices must visibly change things.** An NPC's disposition shifting, a faction's stance moving, a place being different than it was. Change is the proof that authorship is real. This is the **consequence-legibility** claim in [[Premise-and-Pillars]] — and the whole of what the tool contributes to autonomy, since it cannot supply autonomy and must not police it.
 - **Their inventions should become world facts.** A name a player coins, a reputation they earn, a rumor they start — once it's in the record with the same weight as anything else, the world has absorbed their contribution.
 
 ---
@@ -68,6 +70,7 @@ So the world has to be conveyed by **implication and consequence** rather than d
 | Investment tracking | Noticing what the players are actually drawn to, so the GM can build on it |
 | Visibility control | Preserving discovery, which is what makes a large world feel large |
 | The player interface | Making the world persist between sessions, and their contributions visible in it |
+| The [[Live-Set]] | Keeping what the table already put in the room findable, and small enough for the GM to hold |
 
 ---
 
@@ -79,6 +82,8 @@ For any feature under consideration:
 
 If neither, it's overhead. Some of the best features will do both — a player's action being referenced later by an NPC they've never met does both at once.
 
+A feature can pass this test and still be wrong. Apply the four questions in [[Constraint-Serves-The-Table]] second: a capability that competes with the conversation at the table does not belong there, however well it scores here.
+
 ---
 
 ## Failure modes to design against
@@ -88,3 +93,11 @@ If neither, it's overhead. Some of the best features will do both — a player's
 - **The lecture.** GM conveying the world by explaining it rather than showing consequence.
 - **The scrapbook.** Player contributions recorded but visibly second-class, so authorship feels indulged rather than real.
 - **The lost detail.** The GM knows the perfect callback exists but can't find it in time, so it never gets said.
+
+### The lost detail is a symptom, and it is capped
+
+Two corrections to the last item, both from documents written after this one.
+
+**It is a symptom of something larger.** The failure underneath it is the **forced beat** — the GM reaching for a connection, not finding one, and manufacturing something the table can feel was manufactured. See [[Live-Set]], which states the mechanism.
+
+**And it is not the worst outcome available.** Per [[Constraint-Serves-The-Table]], a captured or retrieved detail is worth less than the moment it costs. **A detail lost to protecting the conversation is the correct trade, not a failure.** This item is a failure mode to design against within the space that does not compete with the humans at the table — not a mandate to expand into that space.
