@@ -10,12 +10,13 @@ A note on one word: **canon** has a precise meaning in these documents — facts
 
 ## Start here
 
-Read these in order. Four documents, and they carry most of the reasoning.
+Read these in order. Five documents, and they carry most of the reasoning.
 
 1. **[[North-Star]]** — what the whole thing is for. Decide against this when anything else is unclear.
-2. **[[Glossary]]** — every term used in an epic, written for someone who has never played a tabletop RPG. Prerequisite for everything below.
-3. **[[Scope]]** — what Storyteller does not do. The exclusions are load-bearing; they're what keeps the model portable.
-4. **[[GM-Considerations]]** — the recurring judgment calls the tool supports but never makes.
+2. **[[Live-Set]]** — the job stated in mechanism terms: keep what the table put in the room findable, and small enough to hold. Sharpens North Star.
+3. **[[Glossary]]** — every term used in an epic, written for someone who has never played a tabletop RPG. Prerequisite for everything below.
+4. **[[Scope]]** — what Storyteller does not do. The exclusions are load-bearing; they're what keeps the model portable.
+5. **[[GM-Considerations]]** — the recurring judgment calls the tool supports but never makes.
 
 Then, depending on what you need:
 
@@ -31,10 +32,12 @@ How Storyteller represents a campaign.
 
 - **[[Information-Architecture]]** — the graph model: nodes, edges, quests vs. arcs, investment.
 - **[[Facts-and-Revelation]]** — utterance vs. claim vs. belief, and why conflating them is the costliest capture error available.
+- **[[Claims-and-Resolution]]** — the claim as an object in its own right, resolution as a dated decision, and why `undetermined` is a resource rather than a gap. No probability field anywhere.
 - **[[Names-and-Aliases]]** — names as facts rather than headers; multiple simultaneous names with different audiences.
 - **[[Identity-and-Reconciliation]]** — identifiers, and merging two records that turn out to be one thing.
 - **[[Visibility-Model]]** — what the party knows, held per fact and per relationship rather than per document.
 - **[[GM-Player-View-and-Transparency]]** — what each side sees, and what the difference is for.
+- **[[Settings-and-Campaigns]]** — a world versus a story told in it; which tier entities, facts, and visibility belong to.
 - **[[Off-Screen-Events]]** — things happening where the party isn't; the `planned`/`fact` and `speculative → potential → used` states.
 - **[[Players-and-Characters]]** — people, characters, attribution, and roles held per campaign.
 - **[[Entitlement-Model]]** — who may do what, kept separate from who knows what.
@@ -44,7 +47,10 @@ How Storyteller represents a campaign.
 
 What the tool does with the model.
 
+- **[[Modes-and-Surfaces]]** — the three modes of use and their personas. Inference never runs at the table; search is three distinct surfaces, not one.
 - **[[Session-Capture]]** — what gets recorded from a session, and the two-stage human-in-the-loop intake that turns notes into record changes. The near-term deliverable.
+- **[[Inference-and-Candidate-Relationships]]** — candidate relationships, clues, and how a proposal is surfaced, accepted, augmented, or rejected.
+- **[[Live-Set]]** — the capped, ranked artefact the table surfaces read from, and the attention budget behind it.
 - **[[Arcs]]** — how arcs behave over a campaign: emergence, co-authorship, projection, merging, density.
 - **[[Canon]]** — how the party's story relates to a written one: proximity, fidelity, extension, supersession.
 - **[[Prep-Rhythm]]** — how preparation actually happens between sessions, and what that asks of the tool.
@@ -70,7 +76,7 @@ Hard rules, not preferences.
 - **[[Hosting-Implications]]** — what running this actually requires.
 - **[[Multi-Campaign-Hosting]]** — what changes when there is more than one campaign.
 - **[[Access-Recovery]]** — getting back in when something breaks.
-- **[[Rollback-and-Repair]]** — undoing bad data. Undecided; possibly overkill.
+- **[[Rollback-and-Repair]]** — undoing bad data. Undecided; possibly overkill. Note that tombstones are inference substrate as well as repair substrate.
 
 ## Strategy
 
