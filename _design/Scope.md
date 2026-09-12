@@ -68,7 +68,7 @@ Refined by [[Claims-and-Resolution]]: the players see a claim's resolution as `u
 
 **Rules enforcement.** No validating mob counts against tiers or checking an encounter is mechanically sound. The GM knows the rules.
 
-**Rules lookup.** Not a searchable rulebook. [[System-Reference]] holds mechanics as shared reference, not as a query surface.
+**Rules lookup.** Not a searchable rulebook. A campaign's system reference material sits with the campaign record as shared reference, not as a query surface.
 
 **Producing a written story.** No auto-generated prose narrative, no publishable chronicle. The record serves the next session.
 
