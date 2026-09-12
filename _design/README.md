@@ -10,14 +10,15 @@ A note on one word: **canon** has a precise meaning in these documents — facts
 
 ## Start here
 
-Read these in order. Six documents, and they carry most of the reasoning.
+Read these in order. Seven documents, and they carry most of the reasoning.
 
-1. **[[North-Star]]** — what the whole thing is for. Decide against this when anything else is unclear.
-2. **[[Constraint-Serves-The-Table]]** — the tool serves the table and never joins it. The rule that caps everything below it, including North Star.
-3. **[[Live-Set]]** — the job stated in mechanism terms: keep what the table put in the room findable, and small enough to hold.
-4. **[[Glossary]]** — every term used in an epic, written for someone who has never played a tabletop RPG. Prerequisite for everything below.
-5. **[[Scope]]** — what Storyteller does not do. The exclusions are load-bearing; they're what keeps the model portable.
-6. **[[GM-Considerations]]** — the recurring judgment calls the tool supports but never makes.
+1. **[[Premise-and-Pillars]]** — why this should work at all, and the one claim the whole design rests on. Written so it can be found wrong.
+2. **[[North-Star]]** — what the whole thing is for. Decide against this when anything else is unclear.
+3. **[[Constraint-Serves-The-Table]]** — the tool serves the table and never joins it. The rule that caps everything below it, including North Star.
+4. **[[Live-Set]]** — the job stated in mechanism terms: keep what the table put in the room findable, and small enough to hold. Carries the GM-side case.
+5. **[[Glossary]]** — every term used in an epic, written for someone who has never played a tabletop RPG. Prerequisite for everything below.
+6. **[[Scope]]** — what Storyteller does not do. The exclusions are load-bearing; [[Premise-and-Pillars]] supplies the reason behind the mechanics one.
+7. **[[GM-Considerations]]** — the recurring judgment calls the tool supports but never makes.
 
 Then, depending on what you need:
 
@@ -97,7 +98,7 @@ Where this goes beyond one campaign.
 - **[[Epic-Writing-Standard]]** — how an epic is written and what it must reference.
 - **[[Backlog-Readiness]]** — whether an epic is ready to start; open decisions with deadlines.
 - **[[Update-Cadence]]** — how often these documents are revisited.
-- **[[Verification-and-Challenge]]** — the challenger role: given the artifact, not the reasoning, working from a fixed question set.
+- **[[Verification-and-Challenge]]** — the challenger role: given the artifact, not the reasoning, working from a fixed question set. See also the premise falsification condition in [[Premise-and-Pillars]].
 
 ## Open
 
