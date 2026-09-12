@@ -28,6 +28,31 @@ Two releases:
 
 ---
 
+## What Release 1 is actually about
+
+**Infrastructure and information architecture, with just enough interface to operate and verify them.**
+
+Worth stating plainly, because the epics are written from the GM's point of view and can read as a product brief. They are not. The durable output of R1 is a correct store: facts as objects, per-fact provenance and visibility, two clocks, statements held apart from world facts, places nesting to any depth. The interface exists so those can be exercised and demonstrated.
+
+**Stories are accepted on what the output contains and how fast it arrives** — not on layout, density, or visual treatment. Where an epic notes a stronger presentation requirement, it is recorded as a known requirement of a later surface and excluded from acceptance.
+
+Two things this does *not* license:
+
+- **The data still has to carry what a later interface will need.** A glanceable table view is only possible later if state, visibility, both dates, and truth-as-three-values were recorded per fact from the first session. Deferring a visual bar is cheap; deferring a field is permanent.
+- **R2 is where interface returns as a real requirement**, and it is not a re-skin. See the R2 note below.
+
+Per [[Device-Context]], every R1 surface is desktop or laptop, with a laptop or tablet at the table. **No GM surface targets a phone**, so nothing in R1 is one-handed, glanceable, or space-constrained.
+
+### The first real use is a prep week
+
+RC 1a reads table-first — capture, retrieval, readiness — but that is the order the *value* arrives in, not the order the tool gets used.
+
+In practice: Epic 13 lands, the campaign is in the store, and the next thing that happens is the GM prepares. A table session follows a week later. So the prep-tier query path in Epic 2, and the readiness question in Epic 3, are exercised in anger before any at-the-table story is.
+
+That matters for sequencing within the candidate, and for what the first demo should be.
+
+---
+
 ## Prerequisites
 
 Gates, not features. Each is required before something else can start.
@@ -42,6 +67,10 @@ Gates, not features. Each is required before something else can start.
 
 **P1 is done.** [[Glossary]] is written and maintained.
 
+**P5 carries a design constraint, not just a task.** A frozen regression suite only works if clue detection is deterministic — otherwise a changed result cannot be attributed to the code change rather than to sampling variance. That is what forces detection to be procedural while extraction and generation may use a language model. See [[Inference-and-Candidate-Relationships]].
+
+**P3 has a new requirement** from the epic reconciliation: the fixture needs entities at a range of investment degrees including some with none recorded, and entities carrying a mix of known and unknown facts. Without those, Epic 2 S12 and Epic 3 S10 cannot be exercised.
+
 **Already done, ahead of P1:** the capture templates carry the model invariants, so sessions recorded before the tool exists need no re-encoding later.
 
 ---
@@ -50,9 +79,9 @@ Gates, not features. Each is required before something else can start.
 
 | RC | Theme | Epics | Status |
 |---|---|---|---|
-| **1a** | The core loop | 1, 2, 3, 13 | Written |
+| **1a** | The core loop | 1, 2, 3, 13 | Written and reconciled to the model |
 | **1b** | Authoring and control | 4, 5, 11, 17 | Ready to write |
-| **1c** | The computed layer | 6, 7, 8, 14 | Blocked |
+| **1c** | The computed layer | 6, 7, 8, 14 | Unblocked; entry on P5 |
 | **1d** | Durability | 12 | Blocked |
 | **2a** | Players read the record | 9, 15 | Deferred to R2 |
 | **2b** | Players contribute | 10, 16 | Deferred to R2 |
@@ -74,6 +103,17 @@ Epic 1 has the earliest deadline in the whole plan: unrecorded sessions are not 
 
 Epic 13 was moved here from 1b by [[Migration]]. Epics 2 and 3 are demonstrations rather than tools until the real campaign is in the store — retrieval over an empty store returns nothing, and readiness over an empty store reports everything uncovered.
 
+### Four requirements here are unrecoverable
+
+Not merely unbuilt if omitted — permanently impossible, because the information is never captured. They are the reason this candidate is about the store rather than the screen.
+
+| Requirement | Where | Why it cannot be added later |
+|---|---|---|
+| **Speaker attribution** | Epic 1 S6 | A flattened statement puts a lie in the record's own voice; recovering it means re-reading every session |
+| **Two clocks** | Epic 1 S14, Epic 13 S13 | The strongest inference signal reads date-of-entry exclusively. Stamping conversion with today's date flattens the whole campaign's history, silently |
+| **Comparable attributes** | Epic 1 S15, Epic 13 S14 | Prose similarity is not machine-comparable; retro-fitting means re-reading every character |
+| **Per-fact visibility** | Epic 1, Epic 13 S3 | A file-level flag cannot be split into per-fact values later without guessing, on the one axis where guessing spoils a campaign |
+
 **Entry criteria:** P1–P4.
 
 ---
@@ -89,9 +129,13 @@ Epic 13 was moved here from 1b by [[Migration]]. Epics 2 and 3 are demonstration
 | 11 | **Control what the party knows** | Deliberate reveal — of an entity's existence, a name, a fact, a connection |
 | 17 | **Recognise that two records are the same thing** | Combining duplicates without losing either side's contribution |
 
-Epic 11 sits here rather than later because Epics 4 and 5 produce content that must carry visibility from the moment it is written. Epic 17 is here because the same operation is needed again in 1c and 1d, and building it three times is the expensive outcome.
+Epic 11 sits here rather than later because Epics 4 and 5 produce content that must carry visibility from the moment it is written. It is also where Epic 2 S12's appetite gets satisfied — R1a shows the GM what is unshared, and this is where they can act on it. Epic 17 is here because the same operation is needed again in 1c and 1d, and building it three times is the expensive outcome.
 
-**Entry criteria:** RC 1a under way, and the graph model decision written in detail.
+Epic 5 is the tool's side of the cycle in [[Planning-Loop]]: the GM synthesises outside the tool and loads the result, iterating until they sit down at the table.
+
+**One decision to make during this candidate, for work landing in 1d:** whether deletion preserves enough information to repair later. Note tombstones are inference substrate as well as repair substrate.
+
+**Entry criteria:** RC 1a under way. *(The graph model decision that formerly gated this is resolved — see below.)*
 
 ---
 
@@ -108,9 +152,14 @@ Epic 11 sits here rather than later because Epics 4 and 5 produce content that m
 
 Epic 6 owns **stage 2 of intake** — impact detection over accepted changes, per [[Session-Capture]]. Epic 1 stops at stage 1, and the two must not merge: inference run over unreviewed extraction compounds a misreading into a conclusion.
 
-**Blocked** on where the line sits between surfacing and authoring. That decision determines whether these epics propose connections and gaps only, or story content as well — a materially different backlog either way.
+**Formerly blocked on where the line sits between surfacing and authoring. That is now settled**, in two parts:
 
-**Entry criteria:** P5, plus that decision. Epic 14 additionally needs a campaign horizon; Epic 8 needs the canon recording scope.
+- **Surfacing is authoring.** Inference runs as a batch pass between sessions and is materialised as proposals through intake, rather than computed at query time. See [[Modes-and-Surfaces]].
+- **Generation is permitted, forward only.** Proposing fiction that has not happened is allowed in stage 2 and in planning, never in extraction and never at the table. Investment gates it in reverse: low investment invites a proposal, high investment forbids it. See [[Generative-Projection]].
+
+That makes Epic 6 larger than the headline suggests — it covers detection, the proposal queue, and the generative what-if — and the detective and generative halves have different rules. Worth splitting when the epic is written.
+
+**Entry criteria:** P5. Epic 14 additionally needs a campaign horizon; Epic 8 needs the canon recording scope.
 
 ---
 
@@ -137,7 +186,9 @@ Late in R1 by design — the cheapest option that survives contact with a real e
 | 9 | **Players consult the record of their own adventure** | Plain-language questions, entity lookup, past sessions — never a spoiler, and never a doubt about whether they just saw one |
 | 15 | **See what the party knows** | The GM, checking a page as the party sees it before running a scene |
 
-Epic 15 is a GM capability that cannot exist until the player view does, which is why it waits here.
+Epic 15 is a GM capability that cannot exist until the player view does, which is why it waits here. Note Epic 1 S12 needs a narrow forward slice of it during capture review, so that a mis-parsed statement is caught before it can reach a player.
+
+Per [[Player-Scope]], the player surface replaces a notebook rather than adding a new capability, and must be answer-shaped rather than browsable — somewhere the party *checks*, not somewhere they dwell.
 
 ---
 
@@ -152,7 +203,9 @@ Epic 15 is a GM capability that cannot exist until the player view does, which i
 
 Epic 16 needs 2a in real use before it has anything to read.
 
-**R2 is unvalidated.** R1 is shaped entirely around one expert user who built it. Everything R1 legitimately skips — guidance, forgiving inputs, plain vocabulary, error messaging — returns as a requirement here. These epics are not a re-skin of a proven product.
+Epic 10 is bounded by [[Constraint-Serves-The-Table]]: **no player-facing write at the table, unconditionally.** Player notes happen after the session or during the week, never as an authoring surface open during play.
+
+**R2 is unvalidated.** R1 is shaped entirely around one expert user who built it, on a full-size screen. Everything R1 legitimately skips — guidance, forgiving inputs, plain vocabulary, error messaging, and the whole of interface design — returns as a requirement here. These epics are not a re-skin of a proven product.
 
 ---
 
@@ -181,16 +234,18 @@ So a shared substrate would be **entities, typed relationships, and events, as o
 
 | Decision | Gates |
 |---|---|
-| **Is the graph model adopted?** | **RC 1a Epic 13 (S10, S11), and Epics 4, 5, 7, 17 in detail.** Now the first thing to settle — the information architecture cannot be written without it, and fixtures cannot be built without that |
-| Where is the line between surfacing and authoring? | All of RC 1c |
 | Are tombstones preserved on deletion? | RC 1d — decide during 1b |
+| What is the attention budget, as a number? | Nothing hard, but Epic 3 and Epic 6 both need one |
 | Does the campaign have a known length? | Epic 14 |
 | How much canon before Floor 6? | Epic 8 |
 | Does anything reach players automatically? | RC 2a |
 
 **Resolved since this document was written:**
 
-- *Does retrieval work with no connectivity?* **No.** Web-first from day one at a registered domain, and the table has a reliable connection. Epic 2 instead requires that an unreachable store announces itself within seconds and is distinguishable from an empty result. See [[Strategy-Multi-Campaign-and-Convergence]].
+- *Is the graph model adopted?* **Yes.** A graph domain model on a relational store, with a real database from RC 1a. [[Information-Architecture]] is written against it. This was the top gating decision and it is closed.
+- *Where is the line between surfacing and authoring?* **Surfacing is authoring**, materialised through intake; generation is separately permitted forward-only. See RC 1c above.
+- *Does retrieval work with no connectivity?* **No.** Web-first from day one at a registered domain, and the table has a reliable connection. Epic 2 instead requires that an unreachable store announces itself within seconds and is distinguishable from an empty result.
 - *What is the parent domain, and how are campaigns addressed?* `warpandweft.ink`, campaigns on paths rather than subdomains. Epic 13 S11 carries the assertion.
+- *Do facts need a story time separate from the session date?* **Yes, and it is in RC 1a.** Two clocks on everything, per [[Information-Architecture]].
 
-RC 1a is written. It can be started once P2–P4 exist and the graph decision is made.
+RC 1a is written and reconciled. It can be started once P2–P4 exist.
