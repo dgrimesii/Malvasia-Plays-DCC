@@ -51,11 +51,13 @@ What the tool does with the model.
 
 - **[[Modes-and-Surfaces]]** — the three modes of use and their personas. Inference never runs at the table; search is three distinct surfaces, not one.
 - **[[Session-Capture]]** — what gets recorded from a session, and the two-stage human-in-the-loop intake that turns notes into record changes. The near-term deliverable.
-- **[[Inference-and-Candidate-Relationships]]** — candidate relationships, clues, and how a proposal is surfaced, accepted, augmented, or rejected.
+- **[[Inference-and-Candidate-Relationships]]** — the detective layer: five signals, clues as the durable unit, the procedural/LLM split, and the store requirements that make any of it buildable.
+- **[[Generative-Projection]]** — where the system may propose fiction that hasn't happened. Forward, never backward; investment gates it in reverse.
+- **[[Planning-Loop]]** — how prep actually runs: one iterative cycle at two rhythms, hooks as facts, and why convergence is the GM's problem.
 - **[[Live-Set]]** — the capped, ranked artefact the table surfaces read from, and the attention budget behind it.
 - **[[Arcs]]** — how arcs behave over a campaign: emergence, co-authorship, projection, merging, density.
 - **[[Canon]]** — how the party's story relates to a written one: proximity, fidelity, extension, supersession.
-- **[[Prep-Rhythm]]** — how preparation actually happens between sessions, and what that asks of the tool.
+- **[[Prep-Rhythm]]** — how preparation actually happens between sessions, and what that asks of the tool. Refined by [[Planning-Loop]].
 - **[[Retrieval-Tiering]]** — what needs to be instant at the table versus what can take a moment.
 
 ## Interface
@@ -70,7 +72,7 @@ What the tool does with the model.
 Hard rules, not preferences.
 
 - **[[Constraint-Serves-The-Table]]** — the tool serves the table, never joins it. Pull-only surfaces; a write must fit an existing pause; a captured detail is worth less than the moment it costs.
-- **[[Constraint-Manner-and-Intent]]** — the AI never generates manner, intent, or emotional state. Those come from the GM or from player notes.
+- **[[Constraint-Manner-and-Intent]]** — the AI never generates manner, intent, or emotional state. Those come from the GM or from player notes. Scoped against generation by [[Generative-Projection]].
 - **[[First-User]]** — one user, who is the builder. No accounts, no sharing, no permissions machinery.
 
 ## Store and operations
