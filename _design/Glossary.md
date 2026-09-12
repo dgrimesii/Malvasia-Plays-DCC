@@ -63,7 +63,7 @@ Every domain term used in an epic points here. If a term is missing, it either n
 
 ## Part 2 — Things that are commonly confused
 
-Five pairs that appear across the design documents and mean different things.
+Six pairs that appear across the design documents and mean different things.
 
 **Quest vs Arc**
 
@@ -97,6 +97,10 @@ An **event** *[model]* is a thing that happened, or is planned to happen, record
 
 **Effort** *[model]* is `speculative` → `potential` → `used` — how much writing has gone into it. A `potential` encounter is fully written and has not happened; a `speculative` one is a possibility being held cheaply.
 
+**Claim vs Resolution** *[model]*
+
+A **claim** is a proposition somebody said. A **resolution** is the GM's dated decision about whether it is true. Two objects, not one field — for the same reason Arc is distinct from Arc intent: the thing and the decision about it have different lifetimes. Most claims never get a resolution, and that is the intended outcome rather than a backlog. See [[Claims-and-Resolution]].
+
 **Change vs Ticket** *[model]*
 
 A **change** is a concrete edit to the record proposed from notes — a new entity, a new fact on an existing one, a new or extended relationship. It is not applied until the GM accepts it. See **Intake**.
@@ -127,11 +131,21 @@ A **ticket** is raised *after* changes are accepted, about what the now-accepted
 
 Recording an utterance as a claim is the single most consequential mistake available in capture. It puts a lie in the record's own voice, and the moment a player reads it, the deception is spoiled.
 
+So a recap sentence with a speaker produces **two records**, not one: the utterance as an ordinary world fact, plus a **Claim** whose truth is left open. A sentence with no speaker is GM narration and produces one ordinary fact. See [[Claims-and-Resolution]] for the extraction rule.
+
+**Claim** *[model]* — A proposition carried by an **utterance**, held as an object in its own right, with a speaker, a subject, and a **resolution state**. Whether it was said and whether it is true are separate questions, and the model keeps them separate permanently.
+
+**Resolution** *[model]* — A dated GM decision about a claim's truth. A distinct object, not a field. Records *when the fiction committed* — the same shape as **Reveal** and **Supersession**, which likewise record not just what is so but when it became so. Carries its own provenance, and this matters: a GM's own earlier decision can be overruled freely, while overruling something the table established goes through **Supersession**.
+
+**Resolution state** *[model]* — `true`, `false`, or `undetermined`. Three values, not two-and-a-blank. **Undetermined is the default and a legitimate permanent condition** — the GM may genuinely not know, and may not decide for many sessions, because the fiction has not committed yet. It is not a gap in the record; it is the record correctly saying that nothing has been decided. It must be displayed as a real state rather than as an absence, so *I decided this is false* stays distinguishable from *I have not looked at this*.
+
+An open claim is **optionality the GM can spend later**, with information they did not have when the words left their mouth. The tool therefore protects the open state and **never prompts the GM to close it.** There is deliberately **no probability or lean field**: nothing constrains such a number, and the field would be an attractor that pushes the GM to commit on paper early. What the tool offers instead is a coherence check — *resolving this false now conflicts with two accepted facts* — which is checkable, where story quality is not.
+
 **Relationship** *[model]* — A connection between two entities, with a direction and a type. Carries its own visibility: the party can know two things exist without knowing they are connected.
 
 **Setting and Campaign** *[model]* — A **setting** is a world; a **campaign** is a story told in it. Entities belong to the setting and are durable across campaigns. Facts, sessions, reveals, arcs, and visibility belong to a campaign. Both tiers exist from the start holding exactly one of each, and the setting is invisible until a second campaign is created. See [[Settings-and-Campaigns]].
 
-**Provenance** *[model]* — Who asserted something, from which side of the screen, and when. Values include the GM, a player, an author external to the campaign carrying a citation, or a previous campaign in the same setting — a **canon** fact is any of the last two, nothing more. Also records whether a relationship was authored outright or inferred and then accepted.
+**Provenance** *[model]* — Who asserted something, from which side of the screen, and when. Values include the GM, a player, an author external to the campaign carrying a citation, or a previous campaign in the same setting — a **canon** fact is any of the last two, nothing more. Also records whether a relationship was authored outright or inferred and then accepted, and — for an accepted inference the GM has edited — that it was machine-proposed, GM-accepted, and GM-annotated. Without that third case, a later contradiction cannot be traced to a bad inference rather than a GM error, and there is no way to say how much of the record the system wrote.
 
 **Attribution** *[model]* — Whose contribution a piece of content is. A player note is theirs and stays theirs. Attribution is a name on a note, not a permission.
 
@@ -159,13 +173,17 @@ The `supersedes` relationship works the same as any other, but there's no in-fic
 
 **Coverage** *[model]* — Whether every direction the party might plausibly go has something prepared behind it. The basis for answering *am I ready for the next session*.
 
+**Live Set** *[model]* — The capped, ranked set of material assembled for an upcoming session: the planned encounters, the open **claims** adjacent to them, the entities at Notable investment or higher in scope, and the established connections that are relevant. Built during **Record Plans**. The table surfaces read from it rather than from the whole store — which is how cold material gets promoted to hot before play, and the main mechanism by which the tool reduces what the GM has to hold. See [[Live-Set]].
+
+**Attention budget** *[model]* — A fixed cap on how much the tool may hand the GM in one prep cycle, applied to the **Live Set** and to the ticket queue alike. Deliberately a budget rather than a confidence threshold: a threshold produces unpredictable volume, while a budget is a promise that the GM will never be handed more than they can hold. The scarce resource in this product is GM attention, not compute.
+
 **Degree of investment** *[model]* — A small, fixed scale describing how much the group cares about an entity or thread, from none to the deepest band — the most cherished ally, the mortal enemy. Provisional bands: *None, Minor, Notable, Deep, Central* — placeholders until the table's own language replaces them. Says nothing about *how* the group feels, only how much: a despised rival held at Central carries exactly as much weight as a beloved ally there.
 
 **Investment** *[model]* — An entity or thread's current degree of investment, as last set by the GM. Not calculated or aggregated automatically — a judgment call, recorded the same way any GM decision is: as an event, with provenance. Its history — rising, declining, gone quiet — is read off the sequence of these events over time, the same way any other history in the model is read. This is what lets a GM pace delivery of impact: investment is what turns an event into something the table feels.
 
 **Signal** *[model]* — Not a recorded event in its own right. Accepted facts that the impact pass reads as evidence an entity's investment may have shifted. One of the things a **Ticket** can be about, not a separate mechanism.
 
-**Candidate relationship** *[model]* — A standing proposal that two entities are connected, holding the **clues** accumulated for it. The durable unit behind an inference; a **Ticket** is only the notification that one is worth looking at now. Accepting creates the relationship. Rejecting clears it from view entirely — not a backlog, not browsable — and it resurfaces only when a new clue is detected for that same pair, with the earlier rejection shown alongside. See [[Inference-and-Candidate-Relationships]].
+**Candidate relationship** *[model]* — A standing proposal that two entities are connected, holding the **clues** accumulated for it. The durable unit behind an inference; a **Ticket** is only the notification that one is worth looking at now. Accepting creates the relationship. Rejecting clears it from view entirely — not a backlog, not browsable — and it resurfaces only when a new clue is detected for that same pair, with the earlier rejection shown alongside. **Rejections are recorded, never merely dropped**: otherwise the same inference re-proposes forever, and the precision of the queue has no calibration data to improve from. See [[Inference-and-Candidate-Relationships]].
 
 **Clue** *[model]* — One piece of evidence that two entities may be connected: a shared session with no recorded link, several threads converging, a coincidence landing on a concept the setting has invested in. **The more clues, the stronger the inference** — not because any one grew stronger, but because there are more of them. Same shape as **Signal** and **Investment**: evidence accumulates, the system surfaces, the GM decides.
 
@@ -176,13 +194,13 @@ The `supersedes` relationship works the same as any other, but there's no in-fic
 
 The ordering is the point: confirm what happened — or what is planned — then ask what it means. Intake on planning notes is where impact detection earns the most, because a ticket raised before the session is still actionable at the table.
 
-**Ticket** *[model]* — A short, dismissible prompt raised after accepted changes land, about what they imply for the record: a **candidate relationship** worth considering, a possible arc forming, a possible shift in investment, a possible supersession of a documented canon outcome, two records that may be the same, a gap in coverage. All of these are one thing — detecting impact on existing entities and relationships, and the inferences that follow from it. A suggestion, never an action taken, and never a confidence score: a ticket shows the evidence it walked, not a number.
+**Ticket** *[model]* — A short, dismissible prompt raised after accepted changes land, about what they imply for the record: a **candidate relationship** worth considering, a possible arc forming, a possible shift in investment, an open **claim** now adjacent to something planned, a possible supersession of a documented canon outcome, two records that may be the same, a gap in coverage. All of these are one thing — detecting impact on existing entities and relationships, and the inferences that follow from it. A suggestion, never an action taken, and never a confidence score: a ticket shows the evidence it walked, not a number. Open claims are always surfaced as **available**, never as overdue.
 
 **Intersection note** *[model]* — Writing about the meeting of two things — this NPC in this place — that is reachable from both, rather than being filed under one and lost to the other.
 
 **Reconciliation** *[model]* — Establishing that two records are the same thing and combining them without losing either side's contribution. Both names survive; nothing is deleted.
 
-**Tombstone** *[model]* — A marker left behind when something is deleted, holding enough to repair later. Whether to keep them is an open decision with an early deadline: build deletion without them and repair becomes impossible to add.
+**Tombstone** *[model]* — A marker left behind when something is deleted, holding enough to repair later. Whether to keep them is an open decision with an early deadline: build deletion without them and repair becomes impossible to add. They are also **inference substrate**, not only repair substrate — anything pruned for search quality is material the inference pass can no longer see.
 
 ---
 
@@ -205,3 +223,23 @@ The ordering is the point: confirm what happened — or what is planned — then
 **Storyteller** *[process]* — This tool.
 
 **Chronicle** *[process]* — A separate, existing tool for a different campaign in a different system: a player-side record kept by one player as scribe for their table. Deliberately not integrated with Storyteller today — a strategic divergence, not an oversight, weighed openly during design. The model stays extensible toward it: Storyteller is kept mappable to Chronicle's schema, one-directionally, without requiring Chronicle to change. See [[Strategy-Multi-Campaign-and-Convergence]] for the full position.
+
+---
+
+## Part 5 — Modes of use
+
+Three modes, with different personas and different things to optimise for. Full treatment in [[Modes-and-Surfaces]].
+
+**Table play** *[process]* — Live play. Works on existing facts and relationships only: **no inference discovery, and no writes.** Two personas — the GM and the players.
+
+**Encounter Assistant** *[process]* — GM surface at the table. The planned facts about the encounter in front of them, with its relevance to previous and upcoming events. Reads from the **Live Set**.
+
+**Role Play assistance** *[process]* — GM surface at the table. A visual of the relationships around the current encounter, for reacting quickly to player questions and improvising with higher relevance. Rooted on the planned encounter by default, re-rooting on whatever the GM last searched — because going off-plan is when it matters most.
+
+**Memory bank** *[process]* — The players' surface at the table. A search over what the party knows, filtered by **Visibility**. Also the cheapest available correction to GM-observed **Investment**, since a lookup is evidence something landed — though it measures what the party *cannot remember*, so it is a floor rather than a measure.
+
+**Session Capture** *[process]* — Between sessions, GM only. Recap documents in; parsed into proposed facts, reviewed and accepted, then examined for inferences. The recap is authoritative about **what happened at the table**, not about the truth of what was said in it.
+
+**Session Planning** *[process]* — Between sessions, GM only. Two sub-modes: **Search**, for exploring the record while planning — the planning itself happens outside the tool — and **Record Plans**.
+
+**Record Plans** *[process]* — The planning counterpart to Session Capture, running the same two-stage **Intake**. Everything lands in a `planned` state and nothing is revealed. Also where most **Resolutions** happen, since deciding what the story does next is the act that spends an open claim, and where the **Live Set** is assembled.
