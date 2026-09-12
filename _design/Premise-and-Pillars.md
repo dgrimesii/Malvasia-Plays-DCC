@@ -2,7 +2,7 @@
 type: design
 status: draft
 visibility: gm
-tags: [premise, positioning, scope, psychology, pillars, north-star]
+tags: [premise, positioning, scope, psychology, pillars, north-star, autonomy]
 ---
 
 # Premise and Pillars
@@ -93,22 +93,51 @@ The ordering matters for the argument. The mechanics are not being inferred back
 
 | Need | TTRPG translation | What the tool does | Honest status |
 |---|---|---|---|
-| **Autonomy** | player choice matters and changes the game | makes consequence **visible** — the party can see that what they did stuck | supported indirectly, **and at risk of being undermined** |
+| **Autonomy** | choices matter and influence the story, **within bounds** | makes consequence **legible** — it cannot supply autonomy, and must not become an instrument for removing it | bounded, not maximised — see below |
 | **Competence** | I can reach what I know and act effectively | the memory bank, directly | **the strongest fit** |
 | **Relatedness** | four people in a room | protected by staying out of the way | the basis of [[Constraint-Serves-The-Table]] |
 | **Purpose** | investment; my actions carry weight in something ongoing | arcs, the [[Live-Set]], the whole continuity layer | supported, and the hardest to evidence |
 
 Four rather than Pink's three, because **relatedness** is the one Pink drops and it is arguably the most relevant of all here. A TTRPG is people in a room. Relatedness is the entire basis of [[Constraint-Serves-The-Table]] — Purpose explains why continuity matters; relatedness explains why the tool must stay out of the way.
 
-### Autonomy is the one the tool can subtract
+---
 
-Competence, relatedness and purpose are things Storyteller can add. **Autonomy is a thing it can take away.**
+## Autonomy is a balance, not a quantity
 
-The moment the tool ranks story options by quality, the GM's choice narrows — and a GM running on rails produces players whose choices do not land. The same holds on the player side: a record that tells them what to care about erodes the thing it was meant to serve.
+The correction that matters most in this document, because the obvious reading of SDT is *more autonomy is better*, and in this setting that is false.
 
-This is why **options, not recommendations** in [[Live-Set]] and the content rule in [[Constraint-Manner-and-Intent]] are load-bearing commitments rather than fastidiousness. This framework explains what they are protecting.
+Autonomy at a table is **bounded, and the bounds are constitutive rather than regrettable.** Three layers, none of them a compromise:
 
-### Competence versus mastery
+**The system.** You cannot do what the rules do not resolve. This is less a limit on agency than the thing that makes choices legible at all — an unbounded choice space has no stakes, because nothing can be attempted and failed.
+
+**The social contract.** Four people agreed to play *this* game together. Autonomy exercised against that agreement is **defection, not freedom.** A player who derails the session, kills another PC on a whim, or plays a character nobody else can share a scene with is not more autonomous — they are consuming the table's autonomy to fund their own. **Truthfully, this is harmful to the table.**
+
+**It is collective, not individual.** The relevant unit is the party's shared agency over the story, not each player's independent latitude.
+
+That last layer explains why autonomy and relatedness are not independent needs here — **they are coupled.** Autonomy that damages relatedness is self-defeating, because the agency was only ever exercised jointly.
+
+### The failure mode is symmetric
+
+Not *too little autonomy*. A **balance failure in either direction**:
+
+| End | Failure | Result |
+|---|---|---|
+| GM side | railroading | the group's choices are overridden |
+| Player side | unbounded individual latitude | the shared story dissolves, so there is nothing for choices to matter *to* |
+
+Both ends produce the same outcome by opposite routes: the group's choices stop mattering.
+
+### What this means for the tool
+
+**A claim retracted.** Storyteller does not create autonomy and must not try to police it. The social contract is negotiated by the humans at the table and enforced by them — [[Constraint-Serves-The-Table]] again, applied to a case where the temptation to help would be strong and wrong.
+
+**A narrower claim kept.** The tool makes **consequence legible**, so that choices made within the bounds are visibly seen to have mattered. That serves autonomy without supplying it, and it is the whole of the tool's contribution on this need.
+
+**The commitment stands, for a sharper reason.** Options-not-recommendations in [[Live-Set]] exists to prevent the tool becoming a railroading instrument. A GM who follows ranked story suggestions is railroading with extra steps, and the players feel it exactly the same way. The same logic covers the content rule in [[Constraint-Manner-and-Intent]].
+
+---
+
+## Competence versus mastery
 
 Worth separating, because the two words are used interchangeably and they make different claims.
 
@@ -135,6 +164,7 @@ And it is a premise, not a proof. It is written so that it can be found wrong.
 
 ## Open
 
-1. **Does the record make consequence visible enough to serve autonomy**, or is that claim doing no work? Consequence being *recorded* is not the same as the party *perceiving* it — and the player surface is read-only and answer-shaped by design.
+1. **Does making consequence legible actually reach the players?** Consequence being *recorded* is not the same as the party *perceiving* it — and the player surface is read-only and answer-shaped by design. This is now the whole of the autonomy claim, so if it does no work, the claim is empty.
 2. **Is *narrative possibility foregone* measurable retrospectively?** Carried over from [[Live-Set]] §Open. It is the largest claimed GM cost and has no symptom.
 3. **Games-research citations for SDT** — worth finding and verifying if any of this goes into external material.
+4. **Is there any case where the tool should surface a social-contract problem?** Current answer is no — it is the humans' to handle. Worth revisiting only if a concrete case arises where silence is worse.
