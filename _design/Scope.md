@@ -9,6 +9,8 @@ tags: [scope, boundaries]
 
 What this tool is and isn't. Referenced from [[North-Star]] and [[Open-Requirements]].
 
+The mechanics exclusions below were originally justified on portability grounds. [[Premise-and-Pillars]] supplies the better reason: **every system resolves what happens; none of them supplies what it means.** Storyteller is the meaning layer, which is why it never touches resolution.
+
 ---
 
 ## The purpose
@@ -17,11 +19,15 @@ What this tool is and isn't. Referenced from [[North-Star]] and [[Open-Requireme
 
 The tool exists so the GM can prepare efficiently and react confidently, and so the players can remember what they know and plan with it. It is a narrative instrument, not a record to be read for its own sake.
 
+**Bounded by [[Constraint-Serves-The-Table]]:** facilitating play means serving the human interaction at the table, never competing with it.
+
 ---
 
 ## The player side has the same purpose
 
 Not a chronicle of their adventure. A **working reference** that helps them play better.
+
+Fuller treatment in [[Player-Scope]], including what the surface replaces, the boundary between where players *check* and where they *think*, and why it must be answer-shaped rather than browsable.
 
 The actual questions they'll bring to it:
 
@@ -41,16 +47,18 @@ The distinction from [[Facts-and-Revelation]] does double duty here:
 | | GM sees | Players see |
 |---|---|---|
 | Utterance | The Warden said X | The Warden told you X |
-| Claim status | X is false | *(nothing)* |
+| Claim status | X is false | *undetermined* |
 | Belief | The party believes X | — |
 
 If the player view rendered claims as world facts, it would silently spoil every lie in the campaign, and players would plan against certainties they haven't earned. **Everything in the player view carries its source.**
+
+Refined by [[Claims-and-Resolution]]: the players see a claim's resolution as `undetermined` until it is revealed, and that presentation must be **identical** whether the GM has decided false, decided true, or not decided at all. Uniformity there is the information-hiding guarantee, and it is testable.
 
 **Searchable by entity.** They'll arrive with a name — an NPC, a place, a faction — and want everything they know about it in one place, across sessions.
 
 **Organized for planning, not chronology.** What's unresolved, what was promised, what's still owed. A pure session-by-session list makes them scan for what they need.
 
-**Available when they need it.** Which may well be mid-session, at the table, while deciding what to do. That answers part of the live-at-table question in [[Open-Requirements]] §8 — the player surface likely needs it too, not just the GM's.
+**Available when they need it.** Which may well be mid-session, at the table, while deciding what to do. That answers part of the live-at-table question in [[Open-Requirements]] §8 — the player surface likely needs it too, not just the GM's. **Read-only there**, per [[Constraint-Serves-The-Table]]: a player-facing write at the table is prohibited unconditionally.
 
 ---
 
@@ -65,6 +73,16 @@ If the player view rendered claims as world facts, it would silently spoil every
 **Producing a written story.** No auto-generated prose narrative, no publishable chronicle. The record serves the next session.
 
 **Combat resolution, dice, initiative.** Not a play aid in that sense.
+
+**Resolution machinery of any kind** — including for the exploration and social pillars. Some systems resolve those with skill checks, reaction rolls, or NPC and faction attitude tracks. Those are resolution, and they are out. The nearest miss is worth naming: an attitude track holds a *value*, while the store holds the accumulated facts that justify it and the history of how it moved. A GM with the track and no record has a number they cannot explain. See [[Premise-and-Pillars]].
+
+### Combat is excluded from prep and resolution, not from capture
+
+Worth stating explicitly, because the exclusions above invite the wrong inference.
+
+A fight produces deaths, grudges, debts, reputation, and the thing somebody said while bleeding. Those are facts and relationships the store must hold, and they are among the most consequential events a campaign generates. **The tool never helps run a combat and must fully capture what came out of one.**
+
+Otherwise the parser gets built to skim exactly the sessions that matter most.
 
 ---
 
@@ -103,3 +121,5 @@ That belongs in the record. Damage dice don't.
 > Does this help at the table, or in preparing for the table?
 
 Applies to both users. If it produces an artifact for reading rather than for playing, it's out of scope.
+
+**Then apply the second test**, from [[Constraint-Serves-The-Table]]: does it wait to be asked, does it fit in a pause the conversation already has, does it produce something the people would otherwise have produced themselves, and can it lose to the conversation without breaking anything? A capability can pass the first test and still fail this one, and the constraint wins.
