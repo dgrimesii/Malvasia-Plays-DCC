@@ -2,7 +2,7 @@
 type: design
 status: draft
 visibility: gm
-tags: [information-architecture, model, claims, truth, capture, canon, arcs]
+tags: [information-architecture, model, claims, truth, capture, canon, arcs, visibility, interface]
 ---
 
 # Claims and Resolution
@@ -103,6 +103,48 @@ Same value, different object, different rules. This is the existing supersession
 
 ---
 
+## Resolution carries its own visibility
+
+**Decided.** A resolution is a fact in its own right and holds visibility separately from the claim it resolves, per [[Visibility-Model]]. This closes the question this document previously left open.
+
+The consequence is that the GM's five observable states are not a new enumeration. They are **Resolution × Visibility**, and they fall out of two axes the model already has:
+
+| Resolution | Visibility | GM sees | Players see |
+|---|---|---|---|
+| undetermined | — | undetermined | undetermined |
+| true | `gm` | true | undetermined |
+| true | `player` | **revealed** true | true |
+| false | `gm` | false | undetermined |
+| false | `player` | **revealed** false | false |
+
+There is deliberately no revealed-undetermined state. Nothing has been decided, so there is nothing to reveal. The absent sixth cell is a property of the model, not an omission.
+
+### Players see undetermined until reveal, and that must be uniform
+
+The player surface collapses three GM states — undetermined, unrevealed true, unrevealed false — into a single indistinguishable presentation. **That collapse is the information-hiding guarantee, and it only holds if the presentation is identical across all three.**
+
+Any variation leaks: different shading, a different tooltip, a different sort position, a different icon weight, a count somewhere that differs. The party must not be able to tell *the GM has not decided* from *the GM decided and has not told us.* Uniformity here is not a style preference; it is a correctness requirement, and it is testable.
+
+### Two provenances differ on how they are born
+
+An invariant worth asserting rather than leaving to the reveal flow:
+
+- A resolution from a **GM decision** is born `gm`. Revealing it later is a separate, deliberate act.
+- A resolution from a **table outcome** is born `player`. The party disproving a claim in play *is* the revealing; there is no unrevealed interval.
+
+### The badge advertises parser failures
+
+The sharp consequence of displaying claim state on the player surface.
+
+If claims are badged and ordinary world facts are not, then **the absence of a badge is informative.** A proposition the parser missed — recorded as GM narration when it was really an utterance — appears to the players as plain, unattributed truth. The display does not merely render the model; it broadcasts extraction errors to exactly the audience that must not see them.
+
+Two requirements follow:
+
+1. This raises the stakes on the extraction rule above considerably. It is not a quality concern, it is a containment concern.
+2. **The capture review queue must let the GM see each proposition as the players will see it, before accepting.** A preview of the player rendering is the only check that operates on the thing that actually leaks.
+
+---
+
 ## No probability field
 
 **Decided: there is no numeric or ordinal likelihood anywhere on a claim. No lean.**
@@ -149,16 +191,17 @@ This is a higher-value inference than most relationship discovery, and it is onl
 
 ---
 
-## Players never see any of this
+## Players never see the machinery
 
-Players see the **utterance, attributed** — per [[Scope]], *the Warden told you the tunnels flood at night*, never *the tunnels flood at night.* They do not see resolution states.
+Players see the **utterance, attributed** — per [[Scope]], *the Warden told you the tunnels flood at night*, never *the tunnels flood at night.* They see a resolution only once it is revealed, and see undetermined in every other case.
 
-So the whole three-state machinery lives entirely on the GM side. It can be as expressive as it needs to be without touching the Release 2 filter in [[Visibility-Model]].
+The three-state machinery and its provenance therefore live entirely on the GM side. It can be as expressive as it needs to be without changing what the Release 2 filter in [[Visibility-Model]] has to do.
 
 ---
 
 ## Open
 
-1. **Do resolutions carry visibility separately from the claim?** A claim the GM has marked false, where the falsity has not been revealed, is a spoiler risk on any player surface. The visibility model holds visibility per fact — confirm a resolution is a fact in its own right for this purpose.
-2. **May inference use resolved-false claims?** Strong signal, spoiler risk. Related to (1).
+1. ~~Do resolutions carry visibility separately from the claim?~~ **Resolved:** yes. See §Resolution carries its own visibility.
+2. **May inference use resolved-false claims?** A known-false proposition repeated by several speakers is a strong coordination signal. The spoiler risk is handled by the visibility of the resolution, but confirm that an inference derived from an unrevealed resolution cannot surface anything on a player surface.
 3. **Does a claim need a subject beyond free text** for the coherence check to work, or is neighbourhood adjacency via the utterance's participants sufficient?
+4. **Is the player-side uniformity requirement testable as written?** It should become an explicit test: render every GM state to the player surface and assert the outputs are byte-identical.
