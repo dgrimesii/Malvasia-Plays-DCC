@@ -10,13 +10,14 @@ A note on one word: **canon** has a precise meaning in these documents — facts
 
 ## Start here
 
-Read these in order. Five documents, and they carry most of the reasoning.
+Read these in order. Six documents, and they carry most of the reasoning.
 
 1. **[[North-Star]]** — what the whole thing is for. Decide against this when anything else is unclear.
-2. **[[Live-Set]]** — the job stated in mechanism terms: keep what the table put in the room findable, and small enough to hold. Sharpens North Star.
-3. **[[Glossary]]** — every term used in an epic, written for someone who has never played a tabletop RPG. Prerequisite for everything below.
-4. **[[Scope]]** — what Storyteller does not do. The exclusions are load-bearing; they're what keeps the model portable.
-5. **[[GM-Considerations]]** — the recurring judgment calls the tool supports but never makes.
+2. **[[Constraint-Serves-The-Table]]** — the tool serves the table and never joins it. The rule that caps everything below it, including North Star.
+3. **[[Live-Set]]** — the job stated in mechanism terms: keep what the table put in the room findable, and small enough to hold.
+4. **[[Glossary]]** — every term used in an epic, written for someone who has never played a tabletop RPG. Prerequisite for everything below.
+5. **[[Scope]]** — what Storyteller does not do. The exclusions are load-bearing; they're what keeps the model portable.
+6. **[[GM-Considerations]]** — the recurring judgment calls the tool supports but never makes.
 
 Then, depending on what you need:
 
@@ -61,11 +62,13 @@ What the tool does with the model.
 - **[[Interface-User-Stories]]** — what each user needs to do, from their perspective.
 - **[[Interface-Direction]]** — text-primary, visualization on demand; the four jobs of a visualization.
 - **[[Device-Context]]** — where this gets used, and what that constrains.
+- **[[Player-Scope]]** — what the player surface replaces, the boundary between checking and thinking, and how to pitch it.
 
 ## Constraints
 
 Hard rules, not preferences.
 
+- **[[Constraint-Serves-The-Table]]** — the tool serves the table, never joins it. Pull-only surfaces; a write must fit an existing pause; a captured detail is worth less than the moment it costs.
 - **[[Constraint-Manner-and-Intent]]** — the AI never generates manner, intent, or emotional state. Those come from the GM or from player notes.
 - **[[First-User]]** — one user, who is the builder. No accounts, no sharing, no permissions machinery.
 
