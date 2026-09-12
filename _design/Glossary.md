@@ -77,7 +77,7 @@ A **quest** *[model]* is a task with a stated goal and a finish. *Recover the th
 
 An **arc** *[model]* is a thread of meaning running through the campaign that the group cares about. It cannot be authored — a GM can only notice one forming and then support it. A quest can belong to an arc; an arc is never just a quest.
 
-A quest's lifecycle crosses the Storyteller/Chronicle seam like any other entity's. Before **Reveal**, its state belongs entirely to Storyteller — `planned`/`fact`, `speculative → potential → used` effort — the GM's own planning, invisible to the party. At Reveal it becomes known, and everything after belongs to the party's experience of it: given, in-progress, completed, failed, abandoned. Storyteller doesn't track that half; Chronicle does. The two state machines never overlap — they meet at exactly one point.
+A quest's lifecycle crosses the Storyteller/Chronicle seam like any other entity's. Before **Reveal**, its state belongs entirely to Storyteller — `planned`/`pending`/`fact`, `speculative → potential → used` effort — the GM's own planning, invisible to the party. At Reveal it becomes known, and everything after belongs to the party's experience of it: given, in-progress, completed, failed, abandoned. Storyteller doesn't track that half; Chronicle does. The two state machines never overlap — they meet at exactly one point.
 
 **Arc vs Arc intent**
 
@@ -91,7 +91,7 @@ A **Hook** is neither: it is a single fact placed as bait. Arc intent is the GM'
 
 An **encounter** *[game]* is a prepared or improvised situation the party meets.
 
-An **event** *[model]* is a thing that happened, or is planned to happen, recorded in the store. Encounters produce events; so do conversations, discoveries, and things happening elsewhere that the party never sees.
+An **event** *[model]* is a thing that happened, or will happen, recorded in the store. Encounters produce events; so do conversations, discoveries, and things happening elsewhere that the party never sees.
 
 **Manner vs what happened**
 
@@ -99,11 +99,21 @@ An **event** *[model]* is a thing that happened, or is planned to happen, record
 
 **Manner** *[model]* is how: warily, or delighted, or as though she already knew. It is the GM's read of a real moment. **Storyteller never generates it** — an invented emotional read is a false memory of a real person's behaviour. Blank is the normal state. Note this prohibition is about generating *backward* over what happened at the table; generating *forward* into fiction that has not happened is a different act, permitted under [[Generative-Projection]].
 
-**Planned vs Fact, and how much work went in**
+**State vs Effort — whether it happened, versus how much work went in**
 
-**State** *[model]* is `planned` or `fact` — has this happened. Deciding something is inevitable does not make it a fact.
+**State** *[model]* is where an **event** stands in time: `planned` → `pending` → `fact`. Three values, defined authoritatively in [[Off-Screen-Events]].
 
-**Effort** *[model]* is `speculative` → `potential` → `used` — how much writing has gone into it. A `potential` encounter is fully written and has not happened; a `speculative` one is a possibility being held cheaply. Machine-generated proposals enter at `speculative`, which is why generation needs no new state: an ignored proposal decays by doing nothing.
+- `planned` — hasn't happened, and the party doesn't know it's coming. GM prep, and therefore always `gm`.
+- `pending` — hasn't happened, and the party knows it's coming. **Reveal** is what moves an event here.
+- `fact` — happened. Independently `gm` or `player`, since something can occur without the party learning of it.
+
+**GM certainty does not move an event along this axis.** Deciding the Warden will retaliate is `planned`, however inevitable it feels. What moves it to `pending` is the *party* learning of it; what moves it to `fact` is its occurring.
+
+Facts and relationships take only `planned` and `fact` — `pending` does not arise for them, because a fact the party has been told about is either revealed or is a **Claim** they hold, not a fact in an intermediate state.
+
+**Effort** *[model]* is a different axis entirely: `speculative` → `potential` → `used`, how much writing has gone into something. A `potential` encounter is fully written and has not happened; a `speculative` one is a possibility being held cheaply. Machine-generated proposals enter at `speculative`, which is why generation needs no new state: an ignored proposal decays by doing nothing.
+
+How much work has gone into something says nothing about whether it happened, or whether the party knows of it.
 
 **Claim vs Resolution** *[model]*
 
@@ -136,6 +146,14 @@ A **ticket** is raised *after* changes are accepted, about what the now-accepted
 **Record time and fiction time** *[model]* — **Two clocks, and everything carries both.** Record time is when something entered the store; fiction time is when it happened in the world. An event can be authored in session 20 and set three hundred years earlier.
 
 The distinction is load-bearing rather than tidy: the strongest inference signal available — *this detail was recorded in session 3, the concept it matches was invented in session 20, so the connection could not have been designed* — reads record time exclusively. Omit it and the signal is not merely unbuilt but permanently impossible, because the information was never captured.
+
+Fiction time is **optionally absent**: a `speculative` entity from a regional pass may have no date and no place yet, and a `pending` event may be known to be coming without a stated time.
+
+**Pending** *[model]* — The event state between `planned` and `fact`: it hasn't happened, and **the party knows it's coming.** The dungeon announces the next floor opens in three days; a tournament is scheduled; a quest carries a deadline.
+
+**Pending applies only to events. Never to entities.** *The Warden is coming for us* is two records — a **materialized** entity, and a pending event in which he arrives. Prose fuses the two; the parser splits them, the same operation the extraction rule performs on utterances. If `pending` migrated onto entities, a failed announcement would leave a pending *person* who never arrives, with no way to retire the state.
+
+**A pending event can fail.** The floor doesn't open. It cannot sit pending forever and cannot become `fact` — it resolves through the **Claim** that announced it going `false`, and the event is abandoned. See [[Off-Screen-Events]].
 
 **Utterance, claim, belief** *[model]* — Three different things that look alike.
 
@@ -177,9 +195,15 @@ The distinction is not bookkeeping. A chain resting on inferred or generated hop
 
 **Visibility** *[model]* — Whether the party knows a thing. Two values: `gm` and `player`. Applies to facts and relationships individually, not just to whole entities — and is held per campaign, since the same fact can be known to one party and not another in the same setting.
 
-**Materialize** *[model]* — An entity materializes when the party learns it exists — whether by meeting it directly or simply being told about it. After that its existence is permanently public, though its name and facts stay individually gated. One-way; nothing un-materializes. A dead or destroyed entity that never materialized needs no separate status: it is simply a Fact (dead) on an entity that has not materialized — both already tracked, so nothing new is needed to ask what is known only indirectly, if at all. *Considered and declined:* a distinct "foreclosed" or "indirect-only" state, since it would duplicate what Fact and Materialize already express and could drift out of sync with them.
+**Materialize** *[model]* — An entity materializes when the party learns it exists — whether by meeting it directly or simply being told about it. After that its existence is permanently public, though its name and facts stay individually gated. One-way; nothing un-materializes.
 
-**Reveal** *[model]* — The GM deliberately making something visible to the party. Not a switch on an entity — a chosen set of existences, names, facts, and connections. Recorded as an event, so what is new can be shown later.
+**There is no time component.** A place shown on a map is materialized; whether the party ever goes there is irrelevant, and revelation does not require direct interaction. This is the whole of how an entity stands in the record — entities are materialized or not, where **events** carry `planned`/`pending`/`fact`. The asymmetry is not an inconsistency: an entity exists or is not yet known to, while an event occurs, once.
+
+**Materialization is independent of truth.** A forged map, a trap, or a record gone stale can materialize a place that does not exist — and since materialization is one-way, the party permanently knows of something that isn't there. Correct behaviour, not a defect: they *do* know of it, and being wrong is a legitimate state. The same treatment a name that is known and false already gets.
+
+A dead or destroyed entity that never materialized needs no separate status: it is simply a Fact (dead) on an entity that has not materialized — both already tracked, so nothing new is needed to ask what is known only indirectly, if at all. *Considered and declined:* a distinct "foreclosed" or "indirect-only" state, since it would duplicate what Fact and Materialize already express and could drift out of sync with them.
+
+**Reveal** *[model]* — The GM deliberately making something visible to the party. Not a switch on an entity — a chosen set of existences, names, facts, and connections. Recorded as an event, so what is new can be shown later. Also the act that moves an event from `planned` to `pending`.
 
 **Canon** *[model]* — Not a new class of thing in the model. A Fact, Entity, or Relationship like any other, distinguished only by its **Provenance**: sourced from an author external to the campaign, with a citation, rather than invented by the GM or the table. Everything else works exactly as it does for any other fact — visible to the GM only until **Reveal**, and revealed the same way, on the GM's own timing. No separate node type, no separate status machine.
 
@@ -195,7 +219,7 @@ Finding the collision is not the GM's job. A canon fact is an ordinary fact, so 
 
 The `supersedes` relationship works the same as any other, but there's no in-fiction reason it would ever be marked visible to the party — it connects two facts about the story's own authorship, not something a character could notice or a scene could reveal. Whether the players later notice or discuss that something played out differently from the books is a real conversation the humans have themselves, at or after the session — the same kind of thing Storyteller was never going to record. It keeps the campaign's story, not the players' own conversations about having played it.
 
-**Off-screen event** *[model]* — Something happening elsewhere while the party is not there. Recorded when its effects will reach them.
+**Off-screen event** *[model]* — Something happening elsewhere while the party is not there. A `fact` with `visibility: gm` and no party participants. Recorded when its effects will reach them.
 
 **Coverage** *[model]* — Whether every direction the party might plausibly go has something prepared behind it. The basis for answering *am I ready for the next session*.
 
