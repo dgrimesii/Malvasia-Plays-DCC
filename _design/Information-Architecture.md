@@ -9,7 +9,7 @@ tags: [information-architecture, graph, model]
 
 The object model: what exists in the store, what attaches to what, and which answers are stored versus derived.
 
-**Authoritative for the shape of the store.** Individual objects have their own documents — [[Claims-and-Resolution]], [[Visibility-Model]], [[Settings-and-Campaigns]], [[Names-and-Aliases]], [[Arcs]] — and this document says how they fit together. Where it conflicts with one of those, the specific document wins and this one is wrong.
+**Authoritative for the shape of the store.** Individual objects have their own documents — [[Claims-and-Resolution]], [[Visibility-Model]], [[Settings-and-Campaigns]], [[Names-and-Aliases]], [[Off-Screen-Events]], [[Arcs]] — and this document says how they fit together. Where it conflicts with one of those, the specific document wins and this one is wrong.
 
 Consumed by RC 1a. [[Inference-and-Candidate-Relationships]] §Information architecture requirements states what the inference layer additionally needs; those requirements are incorporated below.
 
@@ -42,7 +42,7 @@ Six kinds of thing. Everything else in the vocabulary is one of these wearing a 
 | **Fact** | Something recorded about an entity. **A first-class object, not an attribute.** |
 | **Claim** | A proposition carried by an utterance, with its own resolution state. See [[Claims-and-Resolution]]. |
 | **Relationship** | A typed, directed connection between two entities, carrying its own attributes. |
-| **Event** | A thing that happened or is planned to happen. The connective tissue — see below. |
+| **Event** | A thing that happened or will happen. The connective tissue — see below. |
 | **Session** | A real-world timebox containing the events the players experienced. Not a fictional occurrence. |
 
 **Arc, Quest, NPC, Faction, Place, Item, Player Character are not separate node types in the store.** They are entities distinguished by their type attribute and by what relates to them. This matters most for Place: per [[Glossary]], places contain places to any depth through an ordinary `contains` relationship, with **no fixed tier count and no enumerated place types.** *Zone* and *Floor* are this campaign's names for two tiers, not classes the model enforces.
@@ -66,7 +66,6 @@ In the file-per-entity version, what an entity *is* lives in its prose and its f
 - its own **provenance** — who asserted it, from which side of the screen, and how it arrived
 - its own **visibility** — the party can know an NPC exists, know one of their names, and not know a third thing about them
 - its own **record time and fiction time**
-- its own **state** — `planned` or `fact`
 
 A **Name** is a fact, not a header — an entity can hold several at once, with different audiences and different truth values. See [[Names-and-Aliases]].
 
@@ -78,18 +77,34 @@ Required because *has a scar on his wrist* and *bears an old mark on his forearm
 
 Only a small set is worth typing: the attributes plausibly indicating shared background. Not hair colour. Which ones earn it is readable from the **golden corpus** after use rather than settled by argument now.
 
-### Planned and actual apply per fact, not only per event
+---
 
-Previously `planned`/`fact` was a property of **Events**. Under Record Plans it is not: *the Warden will turn out to be Hilda's uncle* is a planned **relationship**, and *the eastern reach has a smuggler problem* is a planned **fact**.
+## State belongs to events. Entities materialize.
 
-So the axis applies to facts and relationships too, and it is **orthogonal to visibility.** All four combinations are meaningful:
+The two objects take time differently, and conflating them is the mistake this section exists to prevent.
 
-| | `gm` | `player` |
-|---|---|---|
-| `planned` | the normal case — prep the party has not met | a planned reveal, scheduled but not yet made |
-| `fact` | happened, not yet known to the party | happened and known |
+| Object | How it stands in time |
+|---|---|
+| **Event** | `planned` → `pending` → `fact`. Time is intrinsic; an event occurs, once. |
+| **Entity** | **Materialized or not.** No time component at all. |
 
-The `planned` + `player` cell is the one worth checking against implementation: it means a reveal the GM has committed to but not executed, which is distinct from a fact already revealed. If that turns out to be indistinguishable from an unrevealed fact in practice, the axis collapses to three states and should say so.
+**Event state**, defined authoritatively in [[Off-Screen-Events]]:
+
+- **`planned`** — hasn't happened, and the party doesn't know it's coming. GM prep. **Implies `gm`.**
+- **`pending`** — hasn't happened, and the party knows it's coming. **Reveal** is what moves `planned` here.
+- **`fact`** — happened. Independently `gm` or `player`, because something can occur without the party learning of it.
+
+`planned` is deliberately reserved for *prep the party has not seen*, which is the state the GM touches constantly. The cost is that the axis is no longer purely *has this happened* — `pending` bundles non-occurrence with revelation. Accepted trade.
+
+**`pending` never applies to an entity.** *The Warden is coming for us* is two records: a materialized entity, and a pending event in which he arrives. Prose fuses them; the parser splits them, the same operation the extraction rule performs on utterances. If `pending` migrates onto entities, a failed announcement becomes a pending *person* who never arrives, with no way to retire the state.
+
+**Entity materialization**, per [[Glossary]]: the party learns a thing **exists**, by meeting it or simply by being told. A map showing a place materializes it; whether they ever go there is irrelevant. One-way, permanent, and **independent of truth** — a forged map materializes a place that does not exist, and the party permanently knows of it. Correct behaviour, and the same treatment [[Names-and-Aliases]] gives a name that is known and false.
+
+### Planned and actual also apply to facts and relationships
+
+Previously `planned`/`fact` was a property of Events alone. Under Record Plans it is not: *the Warden will turn out to be Hilda's uncle* is a planned **relationship**, and *the eastern reach has a smuggler problem* is a planned **fact**.
+
+These are GM prep and therefore always `gm` — the `pending` case does not arise, because a fact the party has been told about is either revealed or is a **claim** they hold, not a fact in an intermediate state. So for facts and relationships the axis stays two-valued.
 
 ---
 
@@ -99,7 +114,7 @@ The `planned` + `player` cell is the one worth checking against implementation: 
 
 This is not tidiness. The strongest inference signal available — *this detail was recorded in session 3, the concept it matches was invented in session 20, so the connection cannot have been designed* — reads **record time exclusively.** Omit it and the signal is not merely unbuilt but permanently impossible.
 
-Fiction time is also **optionally absent.** A `speculative` entity from a regional pass may have no fiction time and no place yet, per [[Planning-Loop]], and the store must hold that without treating it as an incomplete record.
+Fiction time is also **optionally absent.** A `speculative` entity from a regional pass may have no fiction time and no place yet, per [[Planning-Loop]], and the store must hold that without treating it as an incomplete record. A `pending` event may likewise have no date — *with or without a specific point in time* is the requirement.
 
 ---
 
@@ -147,7 +162,7 @@ The planning tiers are not the same kind of thing, and conflating them is what m
 
 - **Place** — *where*. People and things exist there; events happen there. Its own attributes (hazards, layout) are true regardless of any storyline.
 - **Arc** — *why it matters*. A narrative thread carrying real stakes. No inherent location.
-- **Event** — *what happened*. An encounter, a scene, a revelation. The thing that has both a place and a meaning.
+- **Event** — *what happened, or will*. An encounter, a scene, a revelation. The thing that has both a place and a meaning.
 - **Session** — *when, in the real world*. A container, not a fictional occurrence.
 
 So the shape is:
@@ -156,12 +171,23 @@ So the shape is:
 Event --occurs_in--> Place
 Event --advances--> Quest
 Event --contributes_to--> Arc
+Event --references--> Event
 Session --contains--> Event
 ```
 
 **A Place is not directly connected to an Arc.** *Which arcs touch Floor 1* is a **derived** answer — traverse the events that occurred there and collect what they contribute to. It is not a fact to be stored, and storing it is what creates drift.
 
 This also means a Place can host events from several unrelated storylines without acquiring a confused identity, and an Arc can move across floors without being re-parented.
+
+### An announcement is an appearance of a future event
+
+Which is what `references` between two events is for. Three records, no new machinery:
+
+1. An event in session A: the announcement was made.
+2. A **claim** carried by it — *the floor opens in three days* — resolution `undetermined`.
+3. The floor opening: a separate event, `pending`, joined to (1) by `references`.
+
+The party knows a **claim about** the event. The event itself is still something they have never participated in. Full treatment in [[Off-Screen-Events]].
 
 ### Not everything routes through events
 
@@ -260,6 +286,7 @@ One consequence worth keeping visible: **the search index is a projection of the
 - **Backlinks stop being manual.** Traversal in either direction is free.
 - **Visibility gets finer.** *The party knows the Warden exists, knows the Convergence exists, and does not know he works for them* becomes expressible, which a file-level flag cannot say at all.
 - **Lies stay lies.** An utterance and the claim it carries are separate records, so the record never asserts a deception in its own voice.
+- **Announced futures work.** A thing the party is waiting for is expressible without pretending it has happened or that they don't know.
 - **Continuity checking becomes possible.** Contradictions are easier to spot on a graph than across prose.
 - **Emergent threads become discoverable.** Investment signals and unremarked connections are both graph queries.
 - **Established arcs become plannable.** *What does this thread need next* is a traversal, not a memory exercise.
@@ -294,5 +321,5 @@ Conversion is an implementation task, scoped by Epic 13.
 8. ~~Does a node's visibility cascade to its edges?~~ **Answered** by [[Visibility-Model]]: independent, held per fact and per relationship.
 9. **What happens to a relationship when an entity is deleted or merged?** Merge behaviour is specified for candidates but not for relationships. Interacts with the tombstone decision in [[Rollback-and-Repair]].
 10. **Are player-facing and GM-facing quests the same object** with a visibility flag, or genuinely different? Note the two state machines meet at exactly one point per [[Glossary]], which suggests one object.
-11. **Does the `planned` + `player` combination exist in practice,** or does the state axis collapse to three? See §Planned and actual.
+11. **How do event state and claim resolution stay reconcilable?** A `pending` event that never happens resolves through its announcing claim going `false`. Whether that is automatic, GM-confirmed, or raised as a **Ticket** is undecided — but it must not be two facts kept in sync by hand. See [[Off-Screen-Events]] §Open.
 12. **Person versus role.** Flagged as an open question by Epic 13 and not yet addressed here: whether *the Warden* is an entity, a role an entity holds, or both.
