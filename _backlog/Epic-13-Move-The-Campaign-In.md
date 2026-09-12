@@ -36,6 +36,8 @@ The general shape: **content can survive conversion and still be effectively los
 
 There is a second danger running the other way. A file marked GM-only says nothing about which of its individual facts the party already knows. Guess generously in one direction and the campaign is spoiled, quietly, the first time a player reads a page.
 
+And a third, which is the hardest to see coming: **conversion can flatten the history of the record itself.** Months of writing arrive on one day, and unless something is done about it, the store believes everything was written at once. See S13.
+
 ---
 
 ## What is not being asked for
@@ -43,6 +45,8 @@ There is a second danger running the other way. A file marked GM-only says nothi
 - **Not ongoing synchronisation.** This is one-way and happens once. Writing the record back out as readable files is a standing requirement, not this epic's job — though S2 depends on it existing.
 - **Not improving the content.** Badly written prose stays badly written. This epic changes shape, not quality.
 - **Not authoring.** Creating and connecting new material is Epic 4.
+- **Not invention.** Nothing is proposed that the source does not contain. Generating fiction belongs to [[Generative-Projection]] and never runs here.
+- **Not deciding what is true.** Where the source records something a character said, conversion records that it was said. Whether it was true is the GM's to settle later, or never — see S8.
 - **Not repair.** Undoing damage to a live store is Epic 12. This epic's protection is that it never damages the source.
 - **Not judging what should have been recorded.** Gaps in the existing record are the record's business, and per [[Shared-Core]] absence is never inferred to be an omission.
 - **Not multi-campaign or multi-setting capability.** S11 creates the containers and fixes the addressing and identity shapes. Seeding a second campaign, switching between them, accounts, and sharing are all out — see [[First-User]] and [[Settings-and-Campaigns]].
@@ -62,6 +66,8 @@ There is a second danger running the other way. A file marked GM-only says nothi
 | Optionality is cheap; capability is expensive. The containers cost almost nothing now and are migrations later | [[Strategy-Multi-Campaign-and-Convergence]], [[Settings-and-Campaigns]] |
 | Places nest to arbitrary depth; there is no fixed tier count and no enumerated place types | [[Glossary]] |
 | Entities are durable across campaigns; facts and visibility belong to one | [[Settings-and-Campaigns]] |
+| Everything carries two dates — when it happened in the story, and when it entered the record | [[Information-Architecture]] |
+| What someone was told and what is true are separate records; leaving truth undecided is a legitimate permanent state | [[Claims-and-Resolution]] |
 
 ---
 
@@ -69,13 +75,15 @@ There is a second danger running the other way. A file marked GM-only says nothi
 
 **Without this, RC 1a is a demonstration rather than a tool.** Epic 2 retrieves; over an empty store there is nothing to retrieve. Epic 3 checks coverage; over an empty store everything is uncovered. The first slice is meant to be the one that earns its place at the table, and it cannot until the campaign is in it.
 
-Three costs:
+Four costs:
 
 **The alternative is retyping.** Months of writing, re-entered by hand, at exactly the moment when enthusiasm for the new tool is what is carrying it.
 
 **An unverifiable conversion is worse than none.** If the GM cannot tell what survived, they will keep consulting the old files as the real record — and then there are two records, diverging, which is the situation the tool exists to end.
 
 **A conversion that guesses wrong about visibility is not recoverable.** A spoiler cannot be un-read.
+
+**A conversion that flattens the record's own history is not recoverable either**, and it is much quieter about it. Nothing looks wrong afterward. See S13.
 
 ---
 
@@ -105,7 +113,8 @@ Three costs:
 
 - **Outcome:** No conversion outcome is a spoiler.
 - **Assertion:** Visibility defaults to GM-only, and is held per fact and per connection rather than per file — and against the campaign, not globally. A fact is marked known to the party only where the source states it. This holds even where the source file as a whole was marked player-visible.
-- **Demo:** Convert a fixture containing a mix. Nothing is marked known to the party without a stated basis, and the basis is shown.
+- **Assertion:** Whether the party is aware something **exists** is recorded separately from whether they know any particular fact about it. A character the party has met, whose secrets they do not know, is one entity they are aware of carrying facts they are not.
+- **Demo:** Convert a fixture containing a mix. Nothing is marked known to the party without a stated basis, and the basis is shown. Show one entity the party is aware of that carries only private facts.
 
 **The campaign scope matters even with one campaign.** Per [[Settings-and-Campaigns]], a single-valued visibility field cannot be split later without guessing which campaign each value belonged to — on the one axis where guessing wrong spoils a campaign silently and unrecoverably.
 
@@ -131,7 +140,8 @@ Three costs:
 
 - **Outcome:** A detail written in prose is retrievable rather than only readable.
 - **Assertion:** Facts extracted from prose carry a source and a visibility. **The original text is retained alongside whatever was extracted from it**, so that imperfect extraction loses nothing.
-- **Demo:** Convert a prose section; show both the extracted facts and the original text, and find one of the facts by search.
+- **Assertion:** Each extracted fact records **where it came from** — that it was converted from the existing record rather than authored in the tool, and which file and passage it came from.
+- **Demo:** Convert a prose section; show both the extracted facts and the original text, and find one of the facts by search. Show one fact's stated origin.
 
 ### S7 — Turn my links into real connections
 
@@ -147,7 +157,8 @@ Three costs:
 
 - **Outcome:** Template-shaped capture requires no interpretation and no queue.
 - **Assertion:** A session record following `_templates/CONVENTIONS.md` converts with no ambiguous items raised. Statements made to the party arrive as statements, not as facts about the world.
-- **Demo:** Convert a template-shaped session. The queue is empty, and a recorded lie is present as something someone said.
+- **Assertion:** A converted statement's truth arrives **undecided** unless the source explicitly records the GM's answer. Conversion never infers that something was true because it went unchallenged, or false because it was contradicted later.
+- **Demo:** Convert a template-shaped session. The queue is empty, a recorded lie is present as something someone said, and its truth reads as undecided rather than blank.
 
 ### S9 — Fix what I already know is wrong
 
@@ -185,6 +196,31 @@ Three costs:
 - **Assertion:** Each run produces a report of what was converted, what was queued, what was skipped and why, and what decisions were applied.
 - **Demo:** Show the report from a run containing all four categories.
 
+### S13 — Keep the order in which I wrote things
+
+*As the GM, I want the record to know that I wrote this in session 3 and that in session 20, even though both arrive on the same afternoon, because when I knew something is a different question from when it happened.*
+
+- **Outcome:** After conversion, the store can still answer *what did I write first* — not just *what happened first in the story*.
+- **Assertion:** Every converted record carries **two dates**, per Epic 1 S14. The date it entered the record is taken from **the best available evidence in the source** — the session it belongs to, the file's own date, or the commit that introduced it — and **never** from the moment conversion ran.
+- **Assertion:** Where no such evidence exists, the record says the date is unknown. It does not substitute the conversion date, because a wrong date is worse than an absent one — an absent date is visibly absent, and a wrong one is silently wrong.
+- **Assertion:** The conversion report states how many records got a dated origin and how many did not.
+- **Demo:** Convert content spanning several months. Show two records written months apart carrying different origin dates, neither of them today's. Show one with no determinable date reading as unknown.
+
+**This is the quiet unrecoverable one, and it has no symptom.** If every converted record is stamped with the conversion date, the store believes months of writing happened in one afternoon. Nothing looks wrong — but the tool's most valuable future observation, that a detail was written down *before* the idea it turns out to match was invented, becomes impossible for every piece of content that existed before the tool did. That is the entire campaign to date, and it cannot be reconstructed afterward.
+
+**A generous partial answer beats a clean total loss.** Session-dated content is most of the record and converts precisely. Getting that much is worth far more than waiting for a method that handles everything.
+
+### S14 — Fill in the few comparable attributes where the source says so
+
+*As the GM, I want the handful of comparable details filled in during conversion where my writing plainly states them, so that the tool can spot things in common without me revisiting every character.*
+
+- **Outcome:** Existing characters arrive with the comparable values from Epic 1 S15 populated where the source supports it.
+- **Assertion:** Where a source plainly states one of the comparable kinds — species, profession, place of origin, era — the value is set. Where it is unclear, the value is left empty and **nothing is queued for it.** This is opportunistic, not a completion exercise.
+- **Assertion:** The prose is never altered, and an empty comparable value is never reported as a gap.
+- **Demo:** Convert characters whose writing states a profession plainly and others where it does not. The first group has values; the second is empty and unreported.
+
+**Deliberately the weakest story here.** Unlike S13, this one is recoverable — the prose survives, and a value can be added later by hand or during ordinary editing. It is included because doing it cheaply during a pass that already reads every file is far better than not, not because the conversion has to get it right.
+
 ---
 
 ## Open questions
@@ -193,16 +229,20 @@ Three costs:
 |---|---|---|
 | Are the dossiers and the Floor 1 plan hand-converted to template shape first? | The size of this epic, substantially | Recommended in [[Migration]]. Doing it shrinks S6 and S7 to almost nothing |
 | At what granularity does prose become facts — one per sentence, one per claim? | S6 acceptance | Needs a stated basis. S6's retention of the original text makes an imperfect answer survivable |
+| What is the best available origin date for content that is not session-shaped? | S13's coverage, not its correctness | File dates and commit history are both available in the existing repo. Worth checking how much of the record each would cover before choosing |
 | When is cutover — the point after which the tool is authoritative and the templates are only an import format? | Nothing here; everything after | Choose it rather than arrive at it |
 | Does anything need converting a second time, for content written between the first run and cutover? | Planning only | S5's repeatability makes this cheap either way |
 | Is the person holding the GM role modelled now, or deferred? | Nothing in RC 1a | [[Strategy-Multi-Campaign-and-Convergence]] wants the role held per campaign rather than baked in as a singleton. With one user it changes nothing visible; the question is only whether it is cheaper here than later |
-| Do facts need an explicit in-world time position, separate from the session date? | Nothing in RC 1a | [[Settings-and-Campaigns]]. Session date is sufficient while one campaign exists; it stops being sufficient the moment a second one starts earlier in world time |
+| ~~Do facts need an explicit in-world time position, separate from the session date?~~ | — | **Resolved: yes, and it is in RC 1a.** Both dates are required per [[Information-Architecture]], and S13 covers the conversion side. The earlier judgement that session date was sufficient while one campaign exists was wrong for a reason unrelated to multiple campaigns |
+| Does existing content contain announced future events that have not happened? | S8's edges | Probably few. Per [[Off-Screen-Events]] these arrive as events the party knows are coming, plus the statement that announced them. Queue rather than guess |
+| Is any converted content sourced from the published books rather than authored? | Whether conversion must record citations | Per [[Canon]], externally-authored facts differ only in where they came from. If the existing record mixes them in without saying so, that distinction is being lost now and S6's origin assertion is where it would be caught |
 
 ---
 
 ## Dependencies
 
 - **Epics 2 and 3** need this to be useful. It is not the other way round — this epic stands alone.
+- **Epic 1** defines the shapes this epic converts *into*. S13 and S14 here are the conversion counterparts of Epic 1 S14 and S15, and S8 depends on Epic 1 S6. Where the two disagree, Epic 1 is the definition and this epic is wrong.
 - **The templates** are the import contract for S8. Every rule in `_templates/CONVENTIONS.md` exists so that story requires no interpretation.
 - **Prerequisite P3** — the fixture corpus must include legacy-shaped content and the deliberately awkward cases, so this epic is testable long before it runs against the live record.
 - **S2 requires an export path.** Writing the store back out as readable text is a standing requirement from [[Knowledge-Assets]]; this epic is where it is first needed and first proven.
