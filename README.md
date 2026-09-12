@@ -4,9 +4,9 @@ Two things live here.
 
 **The campaign** — GM material for a *Dungeon Crawler Carl Roleplaying Game* campaign: floor guides, encounter tables, NPC profiles, and system notes, to torment Z, Hilda, and Hannah Solo. Showrunner eyes only.
 
-**Storyteller** — a tool being designed to support running that campaign, and campaigns generally. Its design lives in `_design/`, its epics in `_backlog/`. Storyteller is deliberately **system- and campaign-agnostic**: it records people, places, events, quests, arcs, and the connections between them. Mechanics — dice, stats, turn structure — stay in the rulebook and out of the model.
+**Storyteller** — a tool being designed to support running that campaign, and campaigns generally. Its design lives in `_design/`, its epics in `_backlog/`. Storyteller is deliberately **system- and campaign-agnostic**: it records people, places, events, quests, arcs, claims, and the connections between them. Mechanics — dice, stats, turn structure — stay in the rulebook and out of the model. Every system supplies a way to *resolve* what happens; none of them supplies what it *means*, and the meaning is what this holds.
 
-Start with [`_design/Glossary.md`](_design/Glossary.md). Every term used in an epic is defined there, and it is written for someone who has never played a tabletop RPG.
+Start with [`_design/README.md`](_design/README.md), which orders the corpus and says which seven documents carry most of the reasoning. If you only read one, read [`_design/Glossary.md`](_design/Glossary.md) — every term used in an epic is defined there, written for someone who has never played a tabletop RPG.
 
 ## Repository layout
 
@@ -39,7 +39,9 @@ Planning content is often synthesized outside this repo — currently via a Gemi
 
 **This is the manual stand-in for what `_design/` calls intake**, and how the notes were produced is irrelevant to it — a Gemini synthesis, a typed recap, and handwritten notes photographed after a session are all the same input. Intake proper is two stages that never merge: the system proposes concrete changes to entities and relationships, the GM reviews and edits and accepts them, and only then does impact detection run over what was accepted. Nothing is written unreviewed. It accepts post-session notes and forward-looking planning notes alike. See [`_design/Session-Capture.md`](_design/Session-Capture.md).
 
-## Two notes on vocabulary
+Synthesizing outside the tool is not a workaround, either — it stays that way by design. The planning cycle in [`_design/Planning-Loop.md`](_design/Planning-Loop.md) has the GM search and read, synthesize externally, load the result, and review what the system then projects from it, iterating until they sit down at the table.
+
+## Three notes on vocabulary
 
 The folder names predate the design work and don't all match the model. Worth knowing before reading either.
 
@@ -47,7 +49,19 @@ The folder names predate the design work and don't all match the model. Worth kn
 
 **Places nest to any depth.** *Floor* and *Zone* are this campaign's names for two tiers of place. In the model there is no fixed tier count and no enumerated place types — places contain places, and a GM wanting *continent → country → city → structure → floor → room* gets it without new vocabulary. The `Floor-XX-Name.md` convention works until the store exists; migrating it is a filename change, not a model change.
 
+**Hooks aren't a kind of thing.** A hook is a fact meant to entice the players and build investment — and a rumour is a **claim** with a speaker, an NPC's assertion is an **utterance**, a visible thing in a room is a **fact** about a place. All three already exist and already carry visibility. *Hook* names the GM's purpose in authoring a fact, not a class in the store. Worth stating because the temptation to add one later is real.
+
 Also note **canon** has a precise meaning in the design: facts sourced from an author external to the campaign — the published books — and treated as immutable. It does not mean "the real folders as opposed to `_working/`."
+
+## What a claim is, and why it matters for notes
+
+The one model idea worth knowing before writing anything into this repo.
+
+A recap sentence with a speaker produces **two** records, not one: the utterance happened, and the proposition it carried is a **claim** whose truth is a separate question. *The Warden said the tunnels flood at night* is permanently true. *The tunnels flood at night* may be a lie.
+
+A claim's truth is `true`, `false`, or **`undetermined`** — and undetermined is the default and a legitimate permanent state. The GM may not have decided, and may not decide for many sessions. That is not a gap in the record; it is optionality kept open deliberately. See [`_design/Claims-and-Resolution.md`](_design/Claims-and-Resolution.md).
+
+Practical consequence for notes written by hand today: **keep the speaker.** *The Warden claims X* and *X* are different entries, and collapsing them is the costliest capture error available — it puts a lie in the record's own voice and spoils the deception the first time a player reads it.
 
 ## Conventions
 
