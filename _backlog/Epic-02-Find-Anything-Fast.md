@@ -46,6 +46,7 @@ And the GM will not construct a query while mid-sentence. Whatever they remember
 ## What is not being asked for
 
 - **Not the player's view.** Rendering the record as the party would see it is Epic 15, in Release 2. In Release 1 the GM sees everything — but see S12, which is a different thing: telling the GM *whether* the party knows something, not showing them the party's page.
+- **Not withholding anything from the GM.** Nothing here hides, filters, or downranks material because the party has not learned it. See S12.
 - **Not noticing things.** Surfacing connections the GM did not ask for is Epic 6. This epic answers questions; it does not raise them.
 - **Not the prepared session view.** The at-the-table surfaces that read from a prepared set — the encounter view and the relationship view — are later work, per [[Modes-and-Surfaces]]. This epic is search: the GM asking a question and getting an answer.
 - **Not readiness.** Whether the next session is covered is Epic 3.
@@ -69,6 +70,8 @@ And the GM will not construct a query while mid-sentence. Whatever they remember
 | What someone was told and what is true must stay distinguishable when read back | [[Facts-and-Revelation]], [[Claims-and-Resolution]] |
 | Whether the party knows a thing is recorded per fact and per connection, not per document | [[Visibility-Model]] |
 | At the table the urgent question is *may I say this*, not *is it true* | [[Modes-and-Surfaces]] |
+| Reveal is a deliberate act on the GM's timing, not a state the tool manages | [[Facts-and-Revelation]] |
+| The tool makes the GM's choices legible; it does not make them | [[Premise-and-Pillars]], [[Constraint-Serves-The-Table]] |
 | Every surface here is pull-only — nothing arrives unasked while the GM is running a scene | [[Constraint-Serves-The-Table]] |
 | **The table where this campaign is played has reliable connectivity** | Confirmed by the GM; see below |
 
@@ -98,7 +101,7 @@ Four costs if this is absent, slow, or careless:
 
 **The record acquires contradictions.** An improvised answer that conflicts with a written one is worse than having written nothing, because the conflict is now permanent and invisible until it surfaces again.
 
-**A fast answer can spoil the campaign.** Retrieval that does not say whether the party already knows something is retrieval that will eventually be read aloud at the wrong moment. This cost runs in the opposite direction from the other three — it is caused by the tool working well, not badly.
+**A fast answer raises the odds of an unintended reveal.** Retrieval that does not make the party's knowledge obvious is retrieval that will eventually be read aloud at the wrong moment. This cost runs in the opposite direction from the other three — it is caused by the tool working well, not badly. **The tool cannot prevent it, only mitigate the risk**; what it can do is make the state obvious enough that speaking is a choice rather than an accident.
 
 **Trust decays, and takes the whole product with it.** A store consulted twice and unhelpful twice is not consulted a third time. Every later capability is a query over this same store; none of them survives the GM deciding it is not worth asking.
 
@@ -191,9 +194,9 @@ Four costs if this is absent, slow, or careless:
 
 - **Outcome:** Retrieved material can be read aloud or paraphrased without preparation.
 - **Assertion:** An at-the-table view leads with what is usable in the moment — who they are, what they want, what they would bring up — and is legible on a phone at a glance.
-- **Assertion:** **What is safe to say leads; what is private follows and is marked.** The view never opens with something the party has not learned, per S12.
-- **Assertion:** Where an event is involved, the view distinguishes what has happened, what the party is waiting for, and what is only planned. A planned event is never presented as something to mention.
-- **Demo:** Show the at-the-table view for an NPC on a phone-width screen without scrolling for the essentials, where the NPC carries a mix of known and unknown facts and one planned event.
+- **Assertion:** **Ordering is by relevance to the scene, never by what the party knows.** Material the party has not learned appears wherever it is most useful, marked rather than moved — see S12.
+- **Assertion:** Where an event is involved, the view distinguishes what has happened, what the party is waiting for, and what is only planned, so the GM can tell at a glance which of the three they are looking at.
+- **Demo:** Show the at-the-table view for an NPC on a phone-width screen without scrolling for the essentials, where the NPC carries a mix of known and unknown facts and one planned event. Show that an unrevealed but highly relevant fact is near the top.
 
 ### S11 — Search properly when I have time
 
@@ -206,18 +209,22 @@ Four costs if this is absent, slow, or careless:
 
 **The two tiers must not be one search with a speed setting.** They are optimised for opposite things, and building them as one makes the prep tier inherit the table tier's narrowness — which quietly removes the ability to explore, the very thing preparation is for.
 
-### S12 — Tell me whether they already know this
+### S12 — Mark what the party knows, without hiding anything
 
-*As the GM, I want to see at a glance whether the party has learned something, because the fastest way to spoil a campaign is to retrieve the right answer and say it at the wrong moment.*
+*As the GM, I want to see at a glance what the party has already learned, because I need to know both what is safe to say and what I am deliberately holding.*
 
-- **Outcome:** The GM can speak from what they retrieved without stopping to work out what is safe.
-- **Assertion:** Every retrieved fact and connection shows whether the party knows it. This is the **most prominent** thing about a result at the table — more prominent than whether it is true — because *may I say this* is the question being asked under time pressure.
-- **Assertion:** This is shown independently of a statement's truth, so the four combinations stay distinguishable: known to the party or not, and true, false, or undecided.
+- **Outcome:** The GM can speak from what they retrieved without stopping to work out what is safe — and can still see everything they are holding back.
+- **Assertion:** Every retrieved fact and connection shows one of **three conditions**: the party knows it, the party knows it is coming, or the party has not learned it.
+- **Assertion — marked, never filtered.** Nothing is hidden, collapsed, greyed out, or pushed down the page because the party has not learned it. **Unshared material is often the most useful thing on the screen**, for two reasons the GM cannot work without:
+  - **It informs how the character is played.** The innkeeper who knows the tunnels flood and has not said so behaves differently for knowing it. Suppress that and the GM plays him without his own knowledge — a constant, invisible loss, worse than an occasional visible one.
+  - **It is the menu for a deliberate reveal.** *Should I give them this now* is a live decision at the table, and the material has to be in front of the GM to be chosen. Sorting it below the fold is the tool quietly deciding not to.
+- **Assertion — the marking must be catchable peripherally**, while glancing at a phone mid-sentence and talking. A marking that is technically present but easy to miss under those conditions **fails this story**. This is a higher bar than *shown*, and it is the real requirement.
+- **Assertion:** The condition is shown independently of a statement's truth, so the combinations stay distinguishable — what the party knows, and separately whether it is true, false, or undecided.
 - **Assertion:** During preparation the emphasis reverses. At a desk the urgent question is what is actually so, and revelation is secondary.
-- **Assertion:** This is **not** the player's view. The GM still sees everything; they are simply told which parts the party has.
-- **Demo:** Retrieve an entity carrying both known and unknown facts. On a phone, identify which are safe to say without reading closely. Show the same entity in the prep view, where truth leads instead.
+- **Assertion:** This is **not** the player's view, and **not** a safety mechanism. The GM sees everything and may say anything; they are simply told which parts the party already has.
+- **Demo:** Retrieve an entity carrying both known and unknown facts. On a phone, identify the condition of each without reading closely, with an unrevealed fact ranked at the top. Show the same entity in the prep view, where truth leads instead.
 
-**This is the epic's one story whose absence causes damage rather than friction.** A slow lookup costs a moment. A fast lookup read aloud unknowingly costs a reveal that cannot be taken back — and the better the rest of this epic works, the more often that opportunity arises.
+**The tool cannot prevent an unintended reveal. It can only mitigate the risk.** Nothing here stops the GM saying whatever they decide to say, and nothing should — per [[Premise-and-Pillars]], the tool makes choices legible rather than making them. What it changes is whether speaking was a **decision** or an **accident**, and that is the whole of its contribution here.
 
 ---
 
@@ -227,7 +234,8 @@ Four costs if this is absent, slow, or careless:
 |---|---|---|
 | ~~How much of the store must be resident on the device?~~ | — | **Resolved: none.** Web-first, connectivity assumed; there is no device-resident copy to size |
 | What is the acceptable end-to-end budget for S2, now that network time counts against it? | S2 acceptance | Needs a number. The ten-second failure bar is unchanged; the question is what the target is beneath it |
-| How are the two channels in S12 shown at once, legibly, on a phone? | S12 acceptance | Two independent signals must stay separable at a glance. The specific treatment is a design question; the requirement is that they do not collapse into a single combined label |
+| How is S12's marking made catchable peripherally, on a phone, while talking? | S12 acceptance | The hard part of this epic's design. Two independent signals — what they know, and what is true — must stay separable at a glance without collapsing into one combined label, and without the visual weight of a warning |
+| How is S12 actually tested? | S12 acceptance | *Catchable while distracted* is not checkable by inspection. Probably a timed glance test rather than a screenshot review — worth deciding before the story is accepted |
 | What failure rate is acceptable when interpreting a plain-language question? | S5 and S6 acceptance | Needs a threshold. Likely answered by observation across a few sessions |
 | Should results rank by recency, or by proximity to the current session? | S1, S5 quality | Answer after use, not in advance |
 | Is the at-the-table view a different surface, or the same one behaving differently? | Nothing yet | Genuinely a design question — deliberately left open. Note S11 and S12 both now require behaviour that differs by situation, which is evidence either way |
@@ -238,5 +246,6 @@ Four costs if this is absent, slow, or careless:
 
 - **Epic 1** produces the material this epic reads. S9 depends on Epic 1 S6, and S12 depends on visibility being recorded per fact from the first session.
 - **Epic 13** puts the existing campaign into the store. Until it lands, this epic can be demonstrated against fixtures but not used — retrieval over an empty store is a demonstration, not a tool. S12 in particular depends on Epic 13 S3, since converted content arrives private by default.
+- **Epic 11** makes reveal a deliberate act in the tool. S12 shows the GM what is unshared; acting on that — revealing it there and then — is Epic 11's, in RC 1b. Until it exists, the GM reveals at the table by speaking and records it afterward per Epic 1 S9.
 - **Prerequisites P2 and P3.** S2 in particular needs a fixture sized like a real campaign; timing against a small one proves nothing. P3 must also include entities carrying a mix of known and unknown facts, or S12 cannot be tested.
 - **A deployed environment.** S2 now measures over the network, so it cannot be accepted against a local run. `demo.warpandweft.ink` is the natural home for the fixture, per [[Strategy-Multi-Campaign-and-Convergence]].
