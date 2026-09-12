@@ -42,10 +42,12 @@ And there is a second failure underneath it. A GM who cannot trust a readiness a
 
 ## What is not being asked for
 
-- **Not proposing material.** Suggesting what should go behind an empty branch is Epic 6, and is blocked on an open decision about how far the tool may go.
-- **Not inferring what the party cares about.** This epic uses only what the GM explicitly recorded — including what they noted the party returned to unprompted. Reading investment from patterns is Epic 6.
+- **Not proposing material.** Suggesting what should go behind an empty branch is Epic 6, and belongs to [[Generative-Projection]]. This epic reports; it never invents.
+- **Not inferring what the party cares about.** Reading engagement from patterns across sessions is Epic 6. **This is not the same as using the degree of investment the GM has already set** — that is a recorded judgment like any other, and S10 uses it. The line is between reading a recorded decision and forming a new one.
 - **Not authoring.** Filling a gap is Epic 4.
 - **Not judging quality.** Whether what is prepared is any good is the GM's business.
+- **Not assembling the session's material.** Gathering a capped, ranked set to carry to the table is the [[Live-Set]], and is later work. This epic answers a question about preparedness; it does not produce the thing the GM runs from.
+- **Not telling the GM to stop.** Per [[Planning-Loop]], when preparation ends is the GM's to decide. This epic informs that judgment and never makes it.
 - **Not scheduling or reminding.** This answers a question when asked; it does not manage the GM's week.
 
 ---
@@ -55,12 +57,15 @@ And there is a second failure underneath it. A GM who cannot trust a readiness a
 | Assumption | Source |
 |---|---|
 | Coverage means every live branch has something behind it — not that everything is written | [[GM-Considerations]] |
+| Coverage is a claim about what the prepared material attaches to, not a count of prepared things | [[Planning-Loop]] |
 | A readiness claim that does not show its basis will not be trusted, and an untrusted claim is worse than none | [[GM-Considerations]] |
 | One or two branches ahead is enough; preparing a full tree is waste | [[Arcs]] |
+| A GM must plan more than will happen, and overpreparing is how the standing anxiety gets managed | [[Planning-Loop]], [[GM-Considerations]] |
 | Preparation happens in fragments across the week, not in one sitting | [[Prep-Rhythm]] |
 | An empty field is a valid record, not a gap | [[Session-Capture]] |
 | A gap has two causes — deliberately thin, and overlooked — and the difference cannot be inferred | [[Shared-Core]] |
 | Effort and state are different: something can be fully written and not have happened | [[Off-Screen-Events]], [[Arcs]] |
+| Investment is a degree the GM sets, never a value the system computes | [[Glossary]] |
 
 ---
 
@@ -74,7 +79,7 @@ Three costs:
 
 **Preparation does not stop.** Without a trustworthy answer, the only safe move is to keep going, and the week has other things in it.
 
-**The thin moments land on the threads that matter most.** The direction the party chooses is usually the one they care about, which makes an uncovered branch disproportionately expensive.
+**The thin moments land on the threads that matter most.** The direction the party chooses is usually the one they care about, which makes an uncovered branch disproportionately expensive — and is why S10 exists.
 
 ---
 
@@ -95,8 +100,14 @@ Three costs:
 *As the GM, I want the open directions gathered in one place, because I cannot hold them all at once and they are what determines whether I am ready.*
 
 - **Outcome:** The whole open surface is visible together rather than recalled piecemeal.
-- **Assertion:** Open directions are assembled from what was recorded — unresolved threads, stated intentions, things the party returned to unprompted — and each shows where it came from.
-- **Demo:** Show the open set for a fixture; trace three entries back to the sessions that produced them.
+- **Assertion:** Open directions are assembled from what was recorded, and each shows where it came from. The sources are:
+  - unresolved threads and stated intentions
+  - things the party returned to unprompted
+  - **statements made to the party whose truth is still undecided** — a rumour the party was told and may chase is an open direction, whether or not the GM has decided yet whether it is true
+  - **events the party knows are coming** — something announced and not yet happened is a direction with a deadline attached
+- **Demo:** Show the open set for a fixture; trace three entries back to the sessions that produced them, including one undecided statement and one announced event.
+
+**The last two are directions the party has been handed rather than ones they chose**, which makes them easy to miss — the GM knows what the party asked about, and is less likely to recall what the party was simply told.
 
 ### S3 — Show me which of them have nothing behind them
 
@@ -104,7 +115,8 @@ Three costs:
 
 - **Outcome:** Uncovered branches are visible before the session, not discovered during it.
 - **Assertion:** Each open direction is shown with what exists behind it and at what depth. An empty one is stated plainly.
-- **Demo:** Show a fixture with a mix of covered and empty branches; the empty ones are identifiable at a glance.
+- **Assertion:** An announced event whose stated time falls within the coming session is reported distinctly from an ordinary open direction, because the party is expecting it rather than merely able to reach it.
+- **Demo:** Show a fixture with a mix of covered and empty branches; the empty ones are identifiable at a glance, and an announced event due this session stands out from the rest.
 
 ### S4 — Let me say that one is deliberately thin
 
@@ -138,7 +150,8 @@ Three costs:
 
 - **Outcome:** The GM stops at sufficient rather than at exhausted.
 - **Assertion:** Depth is reported against a stated expectation — how far ahead coverage is expected to reach — and further depth is shown as beyond it, not as better.
-- **Demo:** Show a branch prepared past the expectation; it reads as covered, not as more covered.
+- **Assertion:** Preparing past the expectation is **never reported as a problem.** More than enough is a legitimate choice, not an overrun, and nothing suggests trimming it.
+- **Demo:** Show a branch prepared past the expectation; it reads as covered, not as more covered, and nothing flags it.
 
 ### S8 — Do not tell me I am behind because fields are empty
 
@@ -146,7 +159,8 @@ Three costs:
 
 - **Outcome:** The readiness answer reflects the coming session, not the tidiness of the record.
 - **Assertion:** No completeness score, progress bar, or prompt to fill appears anywhere in this epic's output. An unfilled optional field never contributes to a gap.
-- **Demo:** Run readiness against a deliberately sparse fixture. It reports ready, and nothing suggests otherwise.
+- **Assertion:** A statement whose truth the GM has not decided is **never** reported as an outstanding item, a gap, or work to be done. It appears in S2 as a direction the party might take, and nowhere as something to resolve. Leaving it undecided for the length of the campaign is correct.
+- **Demo:** Run readiness against a deliberately sparse fixture containing several undecided statements. It reports ready, and nothing suggests otherwise or counts the undecided ones.
 
 ### S9 — Let me check in fragments across the week
 
@@ -156,22 +170,40 @@ Three costs:
 - **Assertion:** The view opens directly to what is open and what is missing, needs no setup step, and reflects any change made since the last visit.
 - **Demo:** Make a change, reopen, and see it reflected without any intervening action.
 
+### S10 — Tell me which gaps actually matter
+
+*As the GM, I want the open directions ordered by how much the party cares about what is behind them, because a gap on something they are invested in costs far more than a gap on something they have never met.*
+
+- **Outcome:** The GM's limited week goes to the branches most likely to be taken and most costly to be thin on.
+- **Assertion:** Each open direction shows the **degree of investment** the GM has recorded for what it attaches to. Directions attaching to nothing recorded are shown as such rather than omitted.
+- **Assertion:** **Readiness is a claim about attachment, not a count.** Several prepared branches all attaching to entities the party has never encountered is reported as thin coverage, not as good coverage, however much material sits behind them.
+- **Assertion:** The system **never sets or adjusts** an investment degree. It reports what the GM recorded, and where nothing was recorded it says so rather than guessing.
+- **Assertion:** Ordering is visible and the GM can override it. Nothing is hidden on the basis of low investment.
+- **Demo:** Show two open directions with equal material behind them, one attaching to a Deep entity and one to an entity never encountered. They are ordered and labelled differently. Show a third attaching to something with no recorded investment, present and marked as unrecorded.
+
+**This is the vignette's actual failure.** The fence was an open direction with nothing behind him — but so were several others that did not matter. What the GM needed was not a list of gaps; it was to know *which* gap was the expensive one. A readiness answer that treats every branch alike hands back the same problem in a tidier shape.
+
+**And it is the one story here that depends on a signal known to be weak.** In Release 1, investment rests on the GM's own observation alone, without player notes or player lookups as a correction — see [[Live-Set]]. So S10 inherits whatever the GM noticed, including what they did not. That is acceptable and worth stating: the tool is ordering by a recorded judgment, not improving on it.
+
 ---
 
 ## Open questions
 
 | Question | What it blocks | Where it sits |
 |---|---|---|
-| What makes a direction *live*? How long does a thread the party dropped stay open? | S2's contents | Needs a stated basis, even a crude one. Likely refined by observation |
+| What makes a direction *live*? How long does a thread the party dropped stay open? | S2's contents | Needs a stated basis, even a crude one. Likely refined by observation. Note undecided statements and announced events may age differently from threads |
 | Is readiness one answer or a list? *Ready* is what the GM wants; a list may be what is honest | S1's shape | Design question, deliberately left open |
 | How far ahead is coverage expected to reach? | S7's assertion | [[Arcs]] says one or two branches. Confirm it as the stated expectation |
-| Does something the party returned to unprompted weigh more heavily than an ordinary open thread? | S5 quality | Weighting edges toward inference. Keep it visible and GM-adjustable rather than automatic |
+| Does the open surface get capped like everything else the tool hands the GM? | S2's shape | Genuine tension. [[Live-Set]] caps what the GM is handed, because attention is the scarce resource — but the whole point of S2 is completeness, since the GM cannot hold the surface themselves. Probably the surface stays complete and the *work* derived from it is capped, but that needs deciding |
+| ~~Does something the party returned to unprompted weigh more heavily than an ordinary open thread?~~ | — | **Answered by S10**, which orders by recorded investment rather than by the kind of the entry. Resurfacing remains an input to the GM's investment judgment, not a separate weight applied by the tool |
+| Should an announced event that has passed its stated time be reported, and as what? | S3's edges | It is neither covered nor open — it failed to happen. Per [[Off-Screen-Events]] it closes through its announcing statement being marked false, which is a GM action, not a readiness finding |
 
 ---
 
 ## Dependencies
 
-- **Epic 1** records unresolved threads, follow-ups, and resurfacing. Without those, S5 and S6 have no input and S2's open set is thin.
+- **Epic 1** records unresolved threads, follow-ups, and resurfacing. Without those, S5 and S6 have no input and S2's open set is thin. S2 additionally depends on Epic 1 S6 for undecided statements and S16 for announced events.
 - **Epic 13** puts the existing campaign in. Readiness over an empty store reports everything as uncovered.
 - **Epic 4** is where a gap gets filled. This epic reports; it does not fix.
-- **Prerequisite P3.** The fixture needs a realistic spread of covered, empty, and deliberately thin branches, or S3 and S4 cannot be exercised.
+- **Investment must be recordable** for S10 to have an input. Where it is set is not yet assigned to an epic — worth confirming it is not orphaned between Epic 1 and Epic 4.
+- **Prerequisite P3.** The fixture needs a realistic spread of covered, empty, and deliberately thin branches, and entities at a range of investment degrees including some with none recorded, or S3, S4 and S10 cannot be exercised.
