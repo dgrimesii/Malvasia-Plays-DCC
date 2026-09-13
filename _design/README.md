@@ -40,7 +40,7 @@ How Storyteller represents a campaign.
 - **[[Visibility-Model]]** — what the party knows, held per fact and per relationship rather than per document.
 - **[[GM-Player-View-and-Transparency]]** — what each side sees, and what the difference is for.
 - **[[Settings-and-Campaigns]]** — a world versus a story told in it; which tier entities, facts, and visibility belong to.
-- **[[Off-Screen-Events]]** — things happening where the party isn't; the `planned`/`fact` and `speculative → potential → used` states.
+- **[[Off-Screen-Events]]** — things happening where the party isn't; the three event states and the `speculative → potential → used` effort ladder.
 - **[[Players-and-Characters]]** — people, characters, attribution, and roles held per campaign.
 - **[[Entitlement-Model]]** — who may do what, kept separate from who knows what.
 - **[[Knowledge-Assets]]** — what the record accumulates and what it's worth.
@@ -51,6 +51,7 @@ What the tool does with the model.
 
 - **[[Modes-and-Surfaces]]** — the three modes of use and their personas. Inference never runs at the table; search is three distinct surfaces, not one.
 - **[[Session-Capture]]** — what gets recorded from a session, and the two-stage human-in-the-loop intake that turns notes into record changes. The near-term deliverable.
+- **[[Extraction-Rules]]** — how the narrative content is found inside a document that also holds mechanics and stage directions. The subject test, and what happens to numbers.
 - **[[Inference-and-Candidate-Relationships]]** — the detective layer: five signals, clues as the durable unit, the procedural/LLM split, and the store requirements that make any of it buildable.
 - **[[Generative-Projection]]** — where the system may propose fiction that hasn't happened. Forward, never backward; investment gates it in reverse.
 - **[[Planning-Loop]]** — how prep actually runs: one iterative cycle at two rhythms, hooks as facts, and why convergence is the GM's problem.
@@ -64,7 +65,7 @@ What the tool does with the model.
 
 - **[[Interface-User-Stories]]** — what each user needs to do, from their perspective.
 - **[[Interface-Direction]]** — text-primary, visualization on demand; the four jobs of a visualization.
-- **[[Device-Context]]** — where this gets used, and what that constrains.
+- **[[Device-Context]]** — where this gets used, and what that constrains. No GM surface targets a phone.
 - **[[Player-Scope]]** — what the player surface replaces, the boundary between checking and thinking, and how to pitch it.
 
 ## Constraints
@@ -94,7 +95,7 @@ Where this goes beyond one campaign.
 ## Delivery
 
 - **[[Roadmap]]** — prerequisites and the path through them.
-- **[[Release-Plan]]** — R1 (GM) and R2 (players), and what each obliges.
+- **[[Release-Plan]]** — the release axis: between sessions, then at the table. Both releases serve both people.
 - **[[Sequencing]]** — what has to come before what, and why.
 - **[[Shippable-Increment]]** — functional, non-breaking, testable, demoable. Not necessarily useful.
 - **[[Epic-Writing-Standard]]** — how an epic is written and what it must reference.
