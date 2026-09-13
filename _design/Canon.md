@@ -7,37 +7,53 @@ tags: [canon, arcs, design, setting]
 
 # Canon
 
-Narrative influences that originate outside the campaign, recorded so the GM knows when their story is about to intersect one.
+Narrative influences authored outside the campaign, recorded so the GM knows when their story is about to intersect one.
 
 Companion to [[North-Star]], [[GM-Considerations]], [[Arcs]], [[Settings-and-Campaigns]], and [[Information-Architecture]].
 
 ---
 
-## What canon is, and what it is not
+## What canon is
 
-**Canon is setting-tier.** Durable, campaign-independent, true regardless of what this party does, and it outlives any story told in the setting.
+> **Canon is material that exists independently of this campaign. Campaign material is material authored for this campaign.**
+>
+> One criterion. **Not when it was written, and not who wrote it — what the authoring was *for*.**
 
-**A published adventure is not canon.** A book that tells the GM how to run a campaign — premade events, encounters, NPCs, a plot — is **campaign material that happens to arrive pre-written.** It sits at the campaign tier alongside everything the GM invented and everything the table produced. It is consumed by playing it.
+**There are no degrees or classifications of canon.** Either a fact was authored independently of this campaign, or it was authored for it. The word is reserved for the first.
 
-**There are no degrees or classifications of canon.** Either a fact is setting-tier and external to this campaign, or it is not. The word is reserved for exactly that.
+### The criterion is what the authoring was for
 
-### The criterion is the tier, not the author
+Two earlier attempts at this definition were wrong in instructive ways, and both are worth recording so they are not re-derived.
 
-An earlier version of this document defined canon by **provenance** — an author external to the campaign. That is wrong, and a homebrew campaign is what exposes it.
+**Not the author.** "Sourced from an author external to the campaign" fails on homebrew. A GM building a world from nothing writes cosmology, history, and geography that exist regardless of what this party does and would carry into a second campaign in the same setting. That is canon by every test that matters, and the author is the GM.
 
-A GM building a world from nothing writes cosmology, history, and geography before play. Those facts originate outside the campaign, are true regardless of what the party does, and would carry into a second campaign in the same setting. **They are canon by every test that matters** — and they were written by the GM, so an external-author definition excludes them.
+**Not the lead time.** *Authored external to the campaign* reads as a statement about when and where — but a publisher writing a campaign-specific adventure book four years ahead is doing the same thing as a GM writing an original encounter four weeks ahead. Different author, different lead time, **same act**: both authored that material *for* a campaign to run. Both are campaign material.
 
-So the question is never *who wrote this*. It is:
+So the test is neither. It is:
 
-> **Does this belong to the setting, or to this story?**
+> **Was this authored for this campaign, or does it exist independently of it?**
 
-Provenance still records who asserted a fact and cites its source. It is no longer what makes something canon.
+Every case lands without ambiguity:
 
-### Why this campaign made the distinction hard
+| Material | For a campaign to run? | |
+|---|---|---|
+| A published campaign book — premade events, encounters, NPCs, a plot | Yes | **Campaign material** |
+| A GM's original encounter written four weeks ahead | Yes | **Campaign material** |
+| Published region guides, novels, setting fiction | No — exist regardless of any table | **Canon** |
+| A homebrew GM's cosmology, written before or during play | No — true whether the party goes there or not | **Canon** |
+| A fact the party established at the table | No, but authored *by* the campaign | **Campaign material** |
 
-Dinniman's novels supply **both**. How the dungeon works, what the Syndicate is, what the System does — setting canon. A premade encounter written for a table to run — campaign material.
+**Provenance still records who asserted a fact and cites its source.** It is not what makes something canon.
 
-**The line runs through individual facts, not through sources.** One book can supply both kinds, and nothing about where a sentence came from settles which it is. That has to be decided when the fact is recorded, not inferred later. See [[Extraction-Rules]].
+**The setting tier is a consequence, not the definition.** Canon lands at the setting tier per [[Settings-and-Campaigns]] *because* it exists independently of any one campaign. Campaign material lands at the campaign tier because that is what it was written for.
+
+### Why this campaign made it hard
+
+Dinniman's novels supply a setting **and** its events in one source, which is why nothing here forced the question earlier.
+
+The test still cuts cleanly: the novels were not written for anyone's table, so everything in them is canon — including Carl's actions, which are world history rather than prep. The DCC rulebook's premade adventure content sits on the other side, with the encounters.
+
+**The line runs through individual sources, not through media.** One publisher supplies both kinds. That has to be decided when a fact is recorded, not inferred from where the text came from. See [[Extraction-Rules]].
 
 ---
 
@@ -51,18 +67,18 @@ What the marking is *for*: **knowing a fact is canon changes how the GM treats i
 
 ### How much canon to record is a GM choice with no right answer
 
-One GM seeds key events across a whole region because they want standing awareness. Another seeds four facts for the coming floor. A homebrew GM may record **more** than either, because they are pulling from a world only they know rather than selecting from a large published corpus.
+One GM seeds key events across a whole region for standing awareness. Another seeds four facts for the coming floor. A homebrew GM may record **more** than either, because they are pulling from a world only they know rather than selecting from a large published corpus.
 
 **Nothing may key off the volume.** Specifically:
 
 - **No completeness measure.** A sparse canon set is not a thin record.
 - **No coverage report on canon**, which would read as a prompt to seed more.
 - **No inference from canon density.** A campaign with four canon facts is not less canon-adjacent than one with forty; the GM simply seeded less. Any signal treating canon count as evidence is measuring the GM's habits.
-- **The record must read sensibly with zero canon facts.** A fully homebrew GM recording none at all should see nothing broken or incomplete. Canon is optional in the strong sense, not merely empty by default.
+- **The record must read sensibly with zero canon facts.** A fully homebrew GM recording none should see nothing broken or incomplete. Canon is optional in the strong sense, not merely empty by default.
 
 ### Collision usually comes first, recording second
 
-An earlier version of this document said finding a collision is not the GM's job — that impact detection catches it. **That is only true for canon already in the record**, and the common case is the campaign colliding with canon that was never entered.
+An earlier version said finding a collision is not the GM's job — that impact detection catches it. **That is only true for canon already in the record**, and the common case is the campaign colliding with canon that was never entered.
 
 No system can catch that. The GM notices it themselves, and *then* records the canon fact — often precisely because something bumped into it.
 
@@ -101,7 +117,7 @@ Everything below is the generic concept applied to *this* campaign. Another camp
 
 | | Planning tree | Arc tree | **Canon** |
 |---|---|---|---|
-| Belongs to | The campaign | The campaign | **The setting** |
+| Authored for | This campaign | This campaign | **Nothing in particular** |
 | Responds to the party | Yes | Yes | **No** |
 | Timeline | The party's | The party's | **Its own** |
 | Changeable | Freely | Through play | **Only by Supersession** |
@@ -130,11 +146,11 @@ The party is directly involved in or present at a canon event. Rare, high-impact
 Being present is not divergence. The party can stand inside the rampage, act, react, and leave a mark on their own bubble's history without changing anything the books documented. Still extension.
 
 ### Superseded
-The table explicitly changes a **documented setting outcome**: a canon NPC who dies in the books is saved; a canon event is blocked from happening at all.
+The table explicitly changes a **documented canon outcome**: a canon NPC who dies in the books is saved; a canon event is blocked from happening at all.
 
 **The canon fact itself never changes.** It belongs to the source and stays in the record exactly as written. What changes is this campaign's narrative: a table fact recorded with a `supersedes` relationship to the canon fact it displaces, for this campaign only.
 
-**Supersession applies to setting canon only.** Departing from a published adventure is not supersession — it is the campaign going differently, which is the normal case and needs no mechanism at all. The module is a script the GM is free to leave. That distinction matters because supersession is genuinely expensive: a later campaign in the same setting inherits the canon, so changing it reaches further than this table.
+**Supersession applies to canon only.** Departing from a published campaign book is not supersession — it is the campaign going differently, which is the normal case and needs no mechanism at all. The book is a script the GM is free to leave. That distinction matters because supersession is genuinely expensive: a later campaign in the same setting inherits the canon, so changing it reaches further than this table.
 
 Detection works only against canon already recorded. Where it applies, intake raises a **Ticket** asking the GM to confirm the collision was deliberate — the same pass that checks for candidate relationships and investment shifts. Where the canon was never recorded, the GM notices first and records second.
 
@@ -204,7 +220,7 @@ High fidelity on world rules and geography costs nothing and buys enormous authe
 
 ## What this asks of the model
 
-Canon needs no node type or status machine of its own. A canon fact, entity, or relationship is an ordinary one — what marks it is that it **belongs to the setting rather than to this campaign**, per [[Settings-and-Campaigns]].
+Canon needs no node type or status machine of its own. A canon fact, entity, or relationship is an ordinary one — what marks it is that it was **authored independently of this campaign**, which is why it lands at the setting tier per [[Settings-and-Campaigns]].
 
 What provenance carries for a canon fact, beyond the usual who and when:
 
@@ -241,9 +257,9 @@ The intensity curve delivers both halves in the right order: authorship first, v
 1. **Can the party affect canon outcomes,** or only experience them? Supersession answers this in principle — yes, rarely, explicitly — but not how often the group wants that door open.
 2. **What happens if a player has read the books?** Knowing what's coming turns proximate events into dramatic irony rather than mystery. Not worse, but different, and worth knowing per-player before Floor 6.
 3. ~~Does supersession need to be visible to players?~~ **Resolved: no**, and not because it's a secret. It has no in-fiction referent.
-4. **How much canon needs recording before play** versus being pulled in as proximity arises? Now partly answered: it is a GM choice with no right answer, and seeding is ongoing. What remains is whether *this* GM wants standing awareness across a region or just-in-time seeding per floor.
+4. **How much canon needs recording before play** versus being pulled in as proximity arises? Partly answered: it is a GM choice with no right answer, and seeding is ongoing. What remains is whether *this* GM wants standing awareness across a region or just-in-time seeding per floor.
 5. **Do canon events feed the arc tree?** A canon figure the party comes to care about from a distance could carry real weight — an arc they share with millions of other crawlers.
-6. **Where is the tier decided at intake?** The line between setting canon and pre-written campaign material runs through individual facts, and one source supplies both. Whether the GM marks this per fact during review, or whether a source can carry a default, is undecided. See [[Extraction-Rules]].
+6. **Where is *authored for this campaign* decided at intake?** One source can supply both kinds, so it cannot be inferred from where the text came from. Whether the GM marks this per fact during review, or whether a source can carry a default, is undecided. See [[Extraction-Rules]].
 
 ---
 
