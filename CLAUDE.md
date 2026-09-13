@@ -1,128 +1,95 @@
-# Working agreement
+# Claude Code — build context
 
-Rules for Claude working on this repository. Every one exists because the failure it prevents **actually happened**, not because it sounded prudent.
-
-Also paste into the Claude Project instructions — a file in the repo is durable, but only the project instructions are loaded automatically at the start of every conversation.
+**Read [`COLLABORATION.md`](COLLABORATION.md) first.** It holds the rules that apply in every context. This file holds what is specific to building.
 
 ---
 
-## The premise
+## Your role here
 
-The design corpus is now large enough that **drift between documents is a bigger risk than gaps in them.** Claude is a significant source of that drift: it works from context that goes stale within a session, restates definitions because it reads better, and will guess an identifier rather than fetch one.
+**Low-level design, build, test, deploy.**
 
-These rules assume that. They are not about catching Claude's errors afterward — they are about not making them.
+The work moves through: *ideate → plan → document → design → build → test → deploy.* Everything up to and including **high-level design and architecture** happens in the chat context and lands in `_design/`. **Design is the break point.** You own everything from low-level design onward.
 
----
-
-## Never guess an identifier
-
-**Fetch the blob SHA before every write.** `git rev-parse HEAD:path` locally, or `get_file_contents`. A guessed SHA is how a stale overwrite happens; the API rejected one this session, which was luck rather than design.
-
-Same rule for file paths, epic numbers, and story numbers. If it can be looked up, look it up.
+So: how a thing is structured in the store, what the objects are, which requirements are unrecoverable — decided already, in `_design/`. Schema details, module boundaries, function signatures, test structure, deployment — yours.
 
 ---
 
-## Read the file before rewriting it
+## The design corpus is upstream and authoritative
 
-Context goes stale inside a single session. Before rewriting a document, confirm the copy being edited matches the branch — compare `git hash-object` against `git rev-parse HEAD:path`.
+**Do not edit `_design/` or `_backlog/` unless explicitly asked to.** They are inputs.
 
-**Writing from memory of what a document said is the single most likely way to silently drop someone else's edit.**
+Implementation will reveal problems with the design. It always does. When it happens:
 
----
+> **Stop and surface it. Do not adjust the model to fit the code.**
 
-## Cite precisely or not at all
+Do not implement something that contradicts the corpus on the grounds that the corpus is wrong. It may well be wrong — changing it is a deliberate decision, made in the chat context, with the superseded reasoning recorded. It is not a side effect of a build session.
 
-An epic asserted that `Device-Context` required phone-and-one-handed use. It said laptop. The false citation is what let a wrong requirement survive review — it looked sourced.
+This is the sharpest drift risk across the boundary, and it is silent when it happens. A schema that quietly means something slightly different from the document that specified it will not announce itself.
 
-Before writing *X says Y*, open X and check. If it does not say Y, either fix X or stop claiming it does.
-
----
-
-## Link, don't restate
-
-> A concept is defined in one document. Everywhere else links to it, and may state implications — never the definition.
-
-Restating makes a document readable standalone, which is exactly why it is tempting and exactly what creates a second copy to drift. `canon` carried three definitions at once before this rule existed.
+**If you find yourself reinterpreting a definition to make an implementation work, that is the signal to stop.**
 
 ---
 
-## Search before coining
+## Before implementing an epic
 
-Before introducing a term, search the corpus for an existing one that means the same thing. *Setting-time* and *fiction time* were invented independently in two documents for one concept.
+Read, in order:
 
-`grep -ri "term" _design/` is cheap. Naming something that already has a name is expensive.
+1. The epic in `_backlog/`
+2. [`_design/Glossary.md`](_design/Glossary.md) — every domain term the epic uses is defined there
+3. [`_design/Information-Architecture.md`](_design/Information-Architecture.md) — the object model
+4. Whatever the epic's **Assumptions** table cites
 
----
-
-## Give every definition a discriminating example
-
-Include at least one case that reads **differently** under a plausible misreading.
-
-*External author* was intended as external-to-the-campaign and read as external-to-the-people. Both readings agree in nearly every case, so the error was invisible until homebrew separated them. One line — *a homebrew GM's own cosmology is canon* — would have caught it immediately.
-
-This is the cheapest rule here and it catches the class of error no automated check can.
+The assumptions table exists so the reasoning does not have to be reconstructed. Take those as given; they are not the right thing to relitigate mid-build.
 
 ---
 
-## Record superseded reasoning in place
+## Four requirements are unrecoverable
 
-When a decision reverses, **keep the old reasoning and say why it failed.** Do not silently overwrite.
+If these are omitted, the capability is not delayed — it is **permanently impossible**, because the information is never captured. They will look like optional polish under delivery pressure. They are not.
 
-`Canon.md` now holds both earlier definitions and what broke each. That is what stops a resolved question being re-derived six weeks later by someone who only sees the conclusion.
+| Requirement | Why it cannot be added later |
+|---|---|
+| **Speaker attribution** — an utterance and the claim it carries are separate records | A flattened statement puts a lie in the record's own voice. Recovering it means re-reading every session |
+| **Two clocks** — record time and fiction time on everything | The strongest inference signal reads date-of-entry exclusively. Stamping conversion with today's date flattens the campaign's history, silently |
+| **Comparable attributes** — a small typed form alongside the prose | Prose similarity is not machine-comparable. Retro-fitting means re-reading every character |
+| **Per-fact visibility**, held per campaign | A file-level or single-valued flag cannot be split later without guessing, on the one axis where guessing spoils a campaign |
 
-Same for open questions: **strike them with the answer, don't delete them.**
-
----
-
-## Don't expand scope while writing
-
-A story was given an acceptance bar — *catchable peripherally while glancing at a phone* — for a surface this release is not building. Written in good faith, and it would have been implemented.
-
-If a requirement belongs to a later release or a different surface, **record it as a known future requirement and exclude it from acceptance explicitly.**
+See [`_design/Roadmap.md`](_design/Roadmap.md) for the full statement.
 
 ---
 
-## Separate proposals from decisions
+## Standing constraints on what gets built
 
-In summaries and recaps, keep clear which side something came from. A Claude suggestion the GM reacted to positively is **not** a decision. Say *I'd suggested X* rather than *you decided X* unless there is a statement to point at.
+These are product constraints, not preferences, and they are easy to violate with a reasonable-looking implementation.
 
-Most corrections this session came from the GM. That is the system working, and it only works if the record shows which was which.
+**No generation in extraction.** Stage 1 of intake extracts what the notes say and nothing more. Proposing fiction is a separate, later stage under [`_design/Generative-Projection.md`](_design/Generative-Projection.md).
 
----
+**No manner, intent, or emotional state generated, ever.** [`_design/Constraint-Manner-and-Intent.md`](_design/Constraint-Manner-and-Intent.md).
 
-## Push back
+**Detection must be deterministic.** A language model may extract and may generate; it may not decide what gets surfaced. An LLM in the detection path makes the golden corpus unreplayable, which removes the only regression test the judgment-bearing features will ever have.
 
-Agreeing reflexively is a failure mode, not politeness. Where a claim looks wrong, say so and explain. Where confidence is low, say that rather than hedging into vagueness.
+**Nothing is written unreviewed.** Every proposal is accepted by the GM before it lands.
 
-Several good decisions this session came from a proposal being rejected and replaced with something better. That cannot happen if the proposal was never stated plainly enough to reject.
+**Undetermined is a real displayed state, never a blank** — and nothing counts, flags, or nags about it. An unset field looks like a to-do; this one is not.
 
----
-
-## Prefer the clone to the API for reading
-
-`git clone --depth 1` then grep. GitHub's code search returns **false negatives** on this repo — it reported no match for a file that plainly existed, with `incomplete_results` set.
-
-For anything structural across the corpus, clone and check locally. It is faster, cheaper in context, and correct.
+**Nothing arrives unasked at the table.** [`_design/Constraint-Serves-The-Table.md`](_design/Constraint-Serves-The-Table.md).
 
 ---
 
-## Run the checks
+## Where your own design lives
 
-After a working session, not only before a release:
+Low-level design belongs **in the code and next to it** — schema definitions, module docs, ADRs in the source tree, docstrings, tests.
 
-```bash
-python3 _tools/check_links.py
-python3 _tools/check_staleness.py
-python3 _tools/check_definitions.py --min 3
-```
+**Not in `_design/`.** That directory is system- and campaign-agnostic narrative design, deliberately free of implementation detail. Adding schema specifics to it breaks the portability the whole model is built for.
 
-See [`_tools/README.md`](_tools/README.md) for what each catches — and for the three failure modes none of them can.
+If a low-level decision turns out to have model consequences, that is exactly the case for stopping and surfacing it.
 
 ---
 
-## Where things live
+## Testing
 
-- `_design/` — the model, constraints, and strategy. Start at `_design/README.md`.
-- `_backlog/` — epics. Written to be readable by a product owner with no TTRPG background.
-- `_tools/` — the consistency checks.
-- Numbered folders — campaign content. **Not design material**; nothing in `_design/` should link into them, since those paths disappear at migration.
+Per [`_design/Verification-and-Challenge.md`](_design/Verification-and-Challenge.md) and the prerequisites in [`_design/Roadmap.md`](_design/Roadmap.md):
+
+- **Tests run against fixtures, never the live campaign record.** It is irreplaceable and changes weekly.
+- **The fixture corpus needs the awkward cases**, not just the happy path — legacy-shaped content, entities at a range of investment degrees including none recorded, and entities carrying a mix of known and unknown facts.
+- Each story in an epic states its own **assertion** and **demo**. Those are the acceptance criteria; implement to them rather than to the story title.
