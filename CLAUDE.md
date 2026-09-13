@@ -28,6 +28,22 @@ This is the sharpest drift risk across the boundary, and it is silent when it ha
 
 **If you find yourself reinterpreting a definition to make an implementation work, that is the signal to stop.**
 
+### Surfacing is a filed finding, not a chat message
+
+Stopping is only half of it. A finding raised in conversation dies with the session.
+
+**File it in [`_feedback/`](_feedback/README.md)** using the template there. Three classes, and only one of them stops the build:
+
+| Class | What it is | Build |
+|---|---|---|
+| **Contradiction** | The corpus says two incompatible things, or something the implementation cannot satisfy | **Stop.** Do not pick a reading and proceed |
+| **Gap** | The corpus does not say, and a choice is needed to continue | Continue — but **record the provisional choice before writing the code** |
+| **Refinement** | Workable as specified; implementation suggests better | Continue. Batch these; never stop for one |
+
+The gap case is the one that matters most, because silence is common and the build cannot halt each time. Filling a small silence and moving on is exactly the drift this exists to catch — **the record goes in first, or it is a rationalisation of a decision already embedded.**
+
+You file findings. You do not close them: that happens in the chat context, by the GM.
+
 ---
 
 ## Before implementing an epic
@@ -82,7 +98,7 @@ Low-level design belongs **in the code and next to it** — schema definitions, 
 
 **Not in `_design/`.** That directory is system- and campaign-agnostic narrative design, deliberately free of implementation detail. Adding schema specifics to it breaks the portability the whole model is built for.
 
-If a low-level decision turns out to have model consequences, that is exactly the case for stopping and surfacing it.
+If a low-level decision turns out to have model consequences, that is exactly the case for filing a finding.
 
 ---
 

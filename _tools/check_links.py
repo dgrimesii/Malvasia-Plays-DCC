@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check that every wikilink in _design/ and _backlog/ resolves to a real document.
+"""Check that every wikilink in _design/, _backlog/ and _feedback/ resolves.
 
 Catches: links to documents that were renamed, never written, or misspelled.
 Does not catch: links that resolve but point somewhere unhelpful.
@@ -14,7 +14,7 @@ import re
 import sys
 from pathlib import Path
 
-SEARCH_DIRS = ["_design", "_backlog"]
+SEARCH_DIRS = ["_design", "_backlog", "_feedback"]
 # Link targets outside the searched dirs that are known-good, with a reason.
 ALLOWED_EXTERNAL: dict[str, str] = {}
 

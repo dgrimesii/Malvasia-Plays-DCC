@@ -76,6 +76,23 @@ Run `python3 _tools/check_links.py`, `check_staleness.py`, and `check_definition
 
 ---
 
+## Closing findings from the build
+
+Claude Code files findings in [`_feedback/`](_feedback/README.md) when implementation reveals a contradiction, a gap, or a possible refinement in the plan. **They are closed here, by the GM.**
+
+Check the directory at the start of a working session. For each open finding:
+
+- **Verify the quoted corpus text** before anything else. A finding that misquotes is worse than none — it looks sourced.
+- **Weigh the cheaper option.** A finding that only offers the expensive fix has not given the decision fairly; ask for the alternative.
+- **On accept**, update `_design/` with the superseded reasoning kept in place, then strike the finding with a pointer to the commit.
+- **On reject, the reasoning is the point.** It is what stops the same thing being re-raised next month.
+
+**Closed findings are struck, not deleted** — the same rule as open questions.
+
+Watch for a finding that touches one of the four unrecoverable requirements. Those are the ones where accepting a sensible-looking simplification is permanently expensive.
+
+---
+
 ## How to be useful here
 
 **Push back.** Agreeing reflexively is a failure mode. Most of the good decisions in this project came from a proposal being rejected and replaced with something better — which only happens if the proposal was stated plainly enough to reject.

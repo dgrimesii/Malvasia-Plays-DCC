@@ -87,6 +87,7 @@ See [`_tools/README.md`](_tools/README.md) for what each catches — and for the
 |---|---|---|
 | `_design/` | Model, constraints, strategy, high-level architecture | Chat context |
 | `_backlog/` | Epics, readable by a product owner with no TTRPG background | Chat context |
+| `_feedback/` | Findings raised while building, awaiting a decision | Filed by Claude Code, closed by the GM |
 | `_tools/` | Consistency checks | Either |
 | Source tree | Implementation and low-level design | Claude Code |
 | Numbered folders | Campaign content — **not design material** | The GM |
@@ -102,3 +103,5 @@ See [`_tools/README.md`](_tools/README.md) for what each catches — and for the
 When implementation reveals a problem with the design — and it will — **stop and surface it.** Do not adjust the model to fit the code, and do not implement something that contradicts the corpus on the grounds that the corpus is wrong. It may well be wrong; changing it is a decision made deliberately, with the superseded reasoning recorded, not a side effect of a build session.
 
 This is the sharpest drift risk across the context boundary, and it is silent when it happens.
+
+**There is a channel for this, and it runs both ways.** Legitimate refinements to the plan and the architecture will arise while building — the build context is not the author of the plan, so it files a finding in [`_feedback/`](_feedback/README.md) rather than editing the corpus. The GM decides; the chat context writes the update. Deviating from the plan is then an explicit, documented decision with an updated plan behind it, which is the whole point.
