@@ -27,6 +27,8 @@ Setting ──contains──> Campaign ──contains──> the story as played
 
 Both tiers exist from day one, holding exactly one of each. **The setting is invisible until a second campaign is created.** A GM who never runs one never encounters the concept, and no interface should introduce it to them.
 
+**This is also where canon lands**, per [[Canon]]: material authored independently of any one campaign belongs to the setting, because that is what *independent of any one campaign* means structurally. Campaign material — including a published campaign book — belongs to the campaign it was written for.
+
 ---
 
 ## The motivating case
@@ -83,11 +85,25 @@ Note what this is not. It is not per-*player* visibility. [[Players-and-Characte
 
 ## Prior campaigns are canon to later ones
 
-A finished campaign's facts reach the next GM exactly as published source material does: **authored by someone else, immutable, revealed on the new GM's timing, and supersedable if their table changes an outcome.**
+A finished campaign's facts reach the next GM exactly as published setting fiction does: **immutable, revealed on the new GM's timing, and supersedable if their table changes an outcome.**
 
-That is the Canon mechanism in [[Glossary]] and [[Canon]], with a different author. No new concept is required. Provenance already distinguishes the GM, a player, and an external author; a previous campaign is the third of these.
+That is the Canon mechanism in [[Glossary]] and [[Canon]], and no new concept is required.
 
-Supersession also already covers the case where the new table changes something the first campaign established — the earlier fact stays exactly as recorded, and the new one carries a `supersedes` relationship to it.
+### Why, precisely — and it is not about the author
+
+An earlier version of this section said a prior campaign's facts are canon because they were *authored by someone else*, and treated a previous campaign as a third value of **Provenance** alongside the GM and an external author.
+
+**That reasoning is wrong, and the same-GM sequel is what exposes it.** A GM running a second campaign in their own setting wrote the first campaign's facts themselves. There is no other author anywhere. The facts are still canon to the new campaign.
+
+The criterion in [[Canon]] is **what the authoring was for**, and it is relative to the campaign asking:
+
+> The first campaign's facts were authored for *that* campaign. Relative to the second, they exist independently — which is exactly what makes them canon.
+
+So this is one mechanism seen from a new angle, not a special case. Provenance still records who asserted each fact and when, and a previous campaign is a legitimate thing for it to name. It is simply not what makes those facts canon.
+
+**The practical consequence is the useful part.** Facts the GM authored freely during the first campaign become immutable to them during the second — not because someone else owns them, but because that story is finished. Changing one is supersession, with the original preserved. That is a real constraint a GM should feel, and it would have been invisible under an author-based rule.
+
+Supersession covers the case where the new table changes something the first campaign established — the earlier fact stays exactly as recorded, and the new one carries a `supersedes` relationship to it.
 
 **And the reach model already covers the companion case.** A first-party action with floor-wide effects reaches a second party elsewhere in the world as an off-screen event, felt without being witnessed. This is the Emberus pattern from [[Canon]] with both roles filled by campaigns rather than by a book.
 
@@ -131,6 +147,6 @@ That gives one-directional fact flow — earlier to later, never back — and re
 
 | Question | What it blocks | Where it sits |
 |---|---|---|
-| Does a fact need an explicit setting-time position, or is the session date enough? | Seeding a prequel or companion campaign | Nothing now. Session date is sufficient while one campaign exists, but in-world and real-world time diverge as soon as a second one starts earlier |
-| When a second campaign writes a fact about a shared entity, does it belong to the setting or stay in the campaign? | Seeding a third campaign | Deferrable. With sequential campaigns the distinction only matters at the third |
-| Is the GM of a later campaign the same person? | Nothing in R1 | If not, the person-holds-role-per-campaign shape in [[Strategy-Multi-Campaign-and-Convergence]] already covers it |
+| Does a fact need an explicit setting-time position, or is the session date enough? | Seeding a prequel or companion campaign | Nothing now. Session date is sufficient while one campaign exists, but in-world and real-world time diverge as soon as a second one starts earlier. Note this is a third clock, distinct from the record time and fiction time in [[Information-Architecture]] — or it may be that fiction time *is* setting-time, which is worth confirming rather than assuming |
+| When a second campaign writes a fact about a shared entity, does it belong to the setting or stay in the campaign? | Seeding a third campaign | Deferrable. With sequential campaigns the distinction only matters at the third. Note [[Canon]]'s criterion answers it in principle: a fact authored during play belongs to the campaign that produced it, however durable it looks |
+| Is the GM of a later campaign the same person? | Nothing in R1 | If not, the person-holds-role-per-campaign shape in [[Strategy-Multi-Campaign-and-Convergence]] already covers it. Note the answer does **not** affect whether the first campaign's facts are canon to the second — see above |
