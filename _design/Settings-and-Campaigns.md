@@ -53,7 +53,7 @@ That falls out of something the model already has. Entities are stable; facts ar
 
 **Entities carry.** The innkeeper is the same innkeeper — one identity, one record, referenced by both campaigns. Seeding is by **reference, not copy**. Duplicating the setting would make the two campaigns diverge immediately and destroy the thing that made inheriting worthwhile.
 
-**Facts belong to the campaign that produced them**, and carry a position in setting-time.
+**Facts belong to the campaign that produced them**, and carry a position in fiction time.
 
 **Visibility does not carry at all.** This is the consequential one — see below.
 
@@ -137,7 +137,7 @@ That gives one-directional fact flow — earlier to later, never back — and re
 - Identifiers are unique within a setting.
 - Visibility is held per fact per campaign, even while there is only one campaign to hold it for.
 
-**Explicitly not now:** seeding a second campaign, setting-time positioning, cross-campaign queries, or any interface acknowledging that settings exist.
+**Explicitly not now:** seeding a second campaign, cross-campaign time comparison, cross-campaign queries, or any interface acknowledging that settings exist.
 
 **The reasoning is the same as the campaign container's.** Optionality is cheap; capability is expensive. The three items above cost almost nothing while there is one campaign, and the third in particular is unrecoverable if deferred — a single-valued visibility field cannot be split later without guessing which campaign each value belonged to.
 
@@ -147,6 +147,7 @@ That gives one-directional fact flow — earlier to later, never back — and re
 
 | Question | What it blocks | Where it sits |
 |---|---|---|
-| Does a fact need an explicit setting-time position, or is the session date enough? | Seeding a prequel or companion campaign | Nothing now. Session date is sufficient while one campaign exists, but in-world and real-world time diverge as soon as a second one starts earlier. Note this is a third clock, distinct from the record time and fiction time in [[Information-Architecture]] — or it may be that fiction time *is* setting-time, which is worth confirming rather than assuming |
+| ~~Does a fact need an explicit setting-time position?~~ | — | **Resolved: setting-time is fiction time**, not a third clock. See [[Information-Architecture]]. The calendar is the GM's own or absent entirely — a published setting usually supplies a reckoning, a homebrew one often does not, and imposing one would repeat the fixed-place-tiers mistake |
+| Can fiction times be compared across two campaigns? | Seeding a prequel or companion campaign | Needs a shared calendar or an explicit offset. Only matters at the second campaign, and **not unrecoverable** — fiction time is captured either way, so a calendar can be layered on later without re-reading anything |
 | When a second campaign writes a fact about a shared entity, does it belong to the setting or stay in the campaign? | Seeding a third campaign | Deferrable. With sequential campaigns the distinction only matters at the third. Note [[Canon]]'s criterion answers it in principle: a fact authored during play belongs to the campaign that produced it, however durable it looks |
 | Is the GM of a later campaign the same person? | Nothing in R1 | If not, the person-holds-role-per-campaign shape in [[Strategy-Multi-Campaign-and-Convergence]] already covers it. Note the answer does **not** affect whether the first campaign's facts are canon to the second — see above |
