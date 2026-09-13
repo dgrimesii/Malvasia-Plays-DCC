@@ -69,7 +69,7 @@ A hook's pull comes from **what it attaches to, not what it says.** A rumour anc
 
 ## Part 2 — Things that are commonly confused
 
-Six pairs that appear across the design documents and mean different things.
+Seven pairs that appear across the design documents and mean different things.
 
 **Quest vs Arc**
 
@@ -86,6 +86,14 @@ An **arc** is discovered. Connections form across table play, the system notices
 **Arc intent** *[model]* is the GM aiming at one: material written deliberately to support or provoke a thread that does not exist yet. Authored, speculative, and it may never land. Perfectly legitimate prep — the distinction matters only so the record can tell *the party has demonstrably formed this thread* apart from *the GM hoped they would*. Collapsing the two lets a GM's intention masquerade as evidence of the table's investment.
 
 A **Hook** is neither: it is a single fact placed as bait. Arc intent is the GM's *aim* in placing a set of them. The facts are in the store; the intention about them is the separate thing.
+
+**Canon vs campaign material** *[model]*
+
+**Canon** is authored **independently of this campaign** — setting fiction, region guides, novels, or a homebrew GM's own world-building. It would be true whether or not this campaign existed.
+
+**Campaign material** is authored **for this campaign** — and that includes a published campaign book. A publisher writing premade events and NPCs four years ahead is doing the same thing as a GM writing an original encounter four weeks ahead: authoring material for a table to run. Different author, different lead time, same act.
+
+So the criterion is neither who wrote it nor when. It is **what the authoring was for.** See [[Canon]].
 
 **Encounter vs Event**
 
@@ -179,9 +187,11 @@ An open claim is **optionality the GM can spend later**, with information they d
 
 **Setting and Campaign** *[model]* — A **setting** is a world; a **campaign** is a story told in it. Entities belong to the setting and are durable across campaigns. Facts, sessions, reveals, arcs, and visibility belong to a campaign. Both tiers exist from the start holding exactly one of each, and the setting is invisible until a second campaign is created. See [[Settings-and-Campaigns]].
 
-**Provenance** *[model]* — Who asserted something, from which side of the screen, and when. Values include the GM, a player, an author external to the campaign carrying a citation, or a previous campaign in the same setting — a **canon** fact is any of the last two, nothing more.
+**Provenance** *[model]* — Who asserted something, from which side of the screen, and when, with a citation where there is an external source. Values include the GM, a player, a published author, or a previous campaign in the same setting.
 
-It also records **how a thing arrived**, in three kinds that behave differently:
+**Provenance does not determine whether a fact is canon.** That is a separate question — what the authoring was *for* — and one author can supply both kinds. See **Canon**.
+
+Provenance also records **how a thing arrived**, in three kinds that behave differently:
 
 | Kind | Meaning |
 |---|---|
@@ -205,19 +215,36 @@ A dead or destroyed entity that never materialized needs no separate status: it 
 
 **Reveal** *[model]* — The GM deliberately making something visible to the party. Not a switch on an entity — a chosen set of existences, names, facts, and connections. Recorded as an event, so what is new can be shown later. Also the act that moves an event from `planned` to `pending`.
 
-**Canon** *[model]* — Not a new class of thing in the model. A Fact, Entity, or Relationship like any other, distinguished only by its **Provenance**: sourced from an author external to the campaign, with a citation, rather than invented by the GM or the table. Everything else works exactly as it does for any other fact — visible to the GM only until **Reveal**, and revealed the same way, on the GM's own timing. No separate node type, no separate status machine.
+**Canon** *[model]* — Not a new class of thing in the model. A Fact, Entity, or Relationship like any other, distinguished by one question:
 
-Two examples make the distinction concrete. *Carl summons the god Emberus to the 5th floor* (from *Gate of the Feral Gods*) is a canon fact — known to the GM in advance, because it's what the book says. *The party felt the rampage reach their own bubble on Floor 5* is a different fact: an ordinary table event, with its own provenance (this GM, this session), connected back to the canon fact through a **Relationship** rather than being the same fact revealed. The canon fact can stay unrevealed indefinitely while its consequences still reach the party as an **Off-screen event** — the two are linked, not identical.
+> **Was this authored for this campaign, or does it exist independently of it?**
 
-**A previous campaign in the same setting is canon to a later one**, by the same mechanism with a different author. What the first party established is immutable, revealed on the new GM's timing, and supersedable if the new table changes an outcome. See [[Settings-and-Campaigns]].
+Canon is the second. **The criterion is what the authoring was for — not who did it, and not when.**
 
-Most table interaction with canon is **extension**, not conflict: the party doing something in a bubble the books never documented, filling gaps the source material leaves open by design. That needs no special handling — an ordinary table fact, optionally linked to the concurrent canon fact by an ordinary Relationship, nothing more.
+- A **published campaign book** — premade events, encounters, NPCs, a plot — was authored *for* a campaign to run. **Campaign material**, not canon. A publisher writing it four years ahead is doing the same thing as a GM writing an original encounter four weeks ahead.
+- **Setting fiction, region guides, and novels** were not written for anyone's table. **Canon.**
+- A **homebrew GM's own world-building** — cosmology, history, geography — is true whether or not the party goes there. **Canon**, even though the GM wrote it.
+- **A previous campaign in the same setting** is canon to a later one, since it was authored for a different campaign, not this one.
 
-**Supersession** is the genuine exception: the table explicitly changes a *documented* outcome — an NPC saved who dies in the books, a canon event blocked outright. The canon fact itself never changes; it belongs to the source and stays in the record exactly as written, permanently. What's new is a table fact carrying a `supersedes` relationship to it, made visible to the GM so anything built on the original outcome is reachable and known to be superseded — for this campaign's own narrative only.
+Because canon exists independently of any one campaign, it lands at the **setting** tier per [[Settings-and-Campaigns]]. That is a consequence of the definition rather than the definition itself.
 
-Finding the collision is not the GM's job. A canon fact is an ordinary fact, so a table fact colliding with one is just a particular case of the impact detection **Ticket** already performs against everything in the record — nothing canon-specific about the mechanism. The GM's job is confirming whether it's deliberate, not noticing that it happened.
+**Provenance is a separate matter.** It records who asserted a fact and cites the source. One source can supply both kinds — Dinniman's novels carry setting fiction *and*, via the rulebook, campaign material — so the distinction cannot be inferred from where the text came from and must be decided when the fact is recorded.
 
-The `supersedes` relationship works the same as any other, but there's no in-fiction reason it would ever be marked visible to the party — it connects two facts about the story's own authorship, not something a character could notice or a scene could reveal. Whether the players later notice or discuss that something played out differently from the books is a real conversation the humans have themselves, at or after the session — the same kind of thing Storyteller was never going to record. It keeps the campaign's story, not the players' own conversations about having played it.
+**The system only knows the canon the GM entered.** There is no corpus and no import. A GM records the handful of facts their campaign is about to run into, and the record's canon is therefore deliberately and permanently partial. How much to record is a GM choice with no right answer — a homebrew GM may record more than one running a published setting — so **nothing in the design may key off canon volume**, and the record must read sensibly with none at all.
+
+Everything else works exactly as it does for any other fact — visible to the GM only until **Reveal**, and revealed the same way, on the GM's own timing. No separate node type, no separate status machine.
+
+Two examples make it concrete. *Carl summons the god Emberus to the 5th floor* (from *Gate of the Feral Gods*) is canon — the novel was not written for this table. *The party felt the rampage reach their own bubble on Floor 5* is a different fact: an ordinary table event with its own provenance, connected back to the canon fact through a **Relationship** rather than being the same fact revealed. The canon fact can stay unrevealed indefinitely while its consequences still reach the party as an **Off-screen event**.
+
+Most table interaction with canon is **extension**, not conflict: the party doing something in a gap the source material leaves open by design. That needs no special handling — an ordinary table fact, optionally linked to the concurrent canon fact by an ordinary Relationship.
+
+**Supersession** is the genuine exception: the table explicitly changes a *documented canon* outcome — a canon NPC saved who dies in the source, a canon event blocked outright. The canon fact itself never changes; it belongs to the source and stays in the record exactly as written, permanently. What's new is a table fact carrying a `supersedes` relationship to it, made visible to the GM so anything built on the original outcome is reachable and known to be superseded — for this campaign's own narrative only.
+
+**Departing from a published campaign book is not supersession.** That book is campaign material; leaving the script is the campaign going differently, which is the normal case and needs no mechanism. Supersession is reserved for canon because canon reaches further — a later campaign in the same setting inherits it.
+
+Finding the collision is the GM's job more often than not. A canon fact is an ordinary fact, so a table fact colliding with one is a particular case of the impact detection a **Ticket** already performs — **but only against canon already recorded.** The common case is a campaign colliding with canon nobody entered, which no system can catch. The GM notices, then records it, often because something bumped into it.
+
+The `supersedes` relationship works like any other, but there's no in-fiction reason it would ever be player-visible — it connects two facts about the story's own authorship, not something a character could notice. Whether the players later discuss their table's version having gone differently is a conversation the humans have themselves.
 
 **Off-screen event** *[model]* — Something happening elsewhere while the party is not there. A `fact` with `visibility: gm` and no party participants. Recorded when its effects will reach them.
 
@@ -280,7 +307,7 @@ The ordering is the point: confirm what happened — or what is planned — then
 
 ## Part 4 — Process
 
-**Release 1 / Release 2** *[process]* — R1 is the GM's interface, R2 the players'. See [[Roadmap]].
+**Release 1 / Release 2** *[process]* — R1 is everything done **between sessions**; R2 is the surfaces used **at the table**. Both serve the GM and the players. See [[Release-Plan]].
 
 **Release candidate** *[process]* — A group of epics that belong together. Not a delivery gate; increments ship continuously inside one.
 
