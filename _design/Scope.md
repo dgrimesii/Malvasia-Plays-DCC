@@ -76,6 +76,14 @@ Refined by [[Claims-and-Resolution]]: the players see a claim's resolution as `u
 
 **Resolution machinery of any kind** — including for the exploration and social pillars. Some systems resolve those with skill checks, reaction rolls, or NPC and faction attitude tracks. Those are resolution, and they are out. The nearest miss is worth naming: an attitude track holds a *value*, while the store holds the accumulated facts that justify it and the history of how it moved. A GM with the track and no record has a number they cannot explain. See [[Premise-and-Pillars]].
 
+### World building
+
+**A well-served adjacent category, and deliberately not this one.** World Anvil and its peers exist to hold a setting: cosmology, geography, timelines, pantheons, languages, the full documented world.
+
+Storyteller does not compete with them and does not hold a world. What it holds is the subset a GM has pulled in **because the campaign is approaching it** — see [[Canon]]. A homebrew GM builds their world wherever they like; a GM running a published setting selects from a corpus someone else wrote. Same act, different-sized source, and the tool's relationship to both is identical: **it never holds the corpus.**
+
+The niche is the gap those tools leave open. **They hold the world; none of them tracks what this table did to it** — what the party learned, what they latched onto, what is still unresolved, who lied to them. See [[Premise-and-Pillars]] §The niche.
+
 ### Combat is excluded from prep and resolution, not from capture
 
 Worth stating explicitly, because the exclusions above invite the wrong inference.
@@ -95,6 +103,8 @@ Only where they carry narrative weight.
 *"Hilda's persuasion modifier is +3"* is not.
 
 **The use of a capability at a significant moment is narrative. The capability's numbers are not.**
+
+The practical rules for telling one from the other inside a mixed document — a published adventure, a GM's floor plan — are in [[Extraction-Rules]]. In short: a number describing something that occurred is narrative; a number that configures play is not; and a number's *implied* significance is the GM's to state, never the parser's to derive.
 
 ### Descriptive knowledge of abilities is useful
 
