@@ -55,6 +55,8 @@ Per [[Settings-and-Campaigns]]: entities belong to the setting and are durable a
 
 Both tiers exist from the start holding exactly one of each, and the setting is invisible until a second campaign is created. It is thin structure, not a feature.
 
+**Canon lands at the setting tier** — per [[Canon]], because material authored independently of any one campaign is what belongs to the world rather than to a story told in it. Campaign material, including a published campaign book, belongs to the campaign it was written for.
+
 ---
 
 ## Facts are objects, not frontmatter
@@ -115,6 +117,14 @@ These are GM prep and therefore always `gm` — the `pending` case does not aris
 This is not tidiness. The strongest inference signal available — *this detail was recorded in session 3, the concept it matches was invented in session 20, so the connection cannot have been designed* — reads **record time exclusively.** Omit it and the signal is not merely unbuilt but permanently impossible.
 
 Fiction time is also **optionally absent.** A `speculative` entity from a regional pass may have no fiction time and no place yet, per [[Planning-Loop]], and the store must hold that without treating it as an incomplete record. A `pending` event may likewise have no date — *with or without a specific point in time* is the requirement.
+
+### There is no third clock
+
+[[Settings-and-Campaigns]] wants a *setting-time position* so a later campaign can be seeded as a prequel or a companion. **That is fiction time, not a third axis.** Fiction time already means *when this happened in the world*, and a setting's world is the world. Two documents were drifting toward separate concepts; they are one.
+
+**The calendar is the GM's, or there isn't one.** A published setting usually supplies a shared reckoning, so a position in it is meaningful. A homebrew setting often does not — and imposing one would be the same mistake as fixed place tiers. So fiction time holds whatever scheme the GM has, and where there is none it holds relative ordering or nothing at all.
+
+What is genuinely deferred is narrower than it looked: **can fiction times be compared across two campaigns.** That needs a shared calendar or an explicit offset, it only matters once a second campaign exists, and it is **not unrecoverable** — fiction time is being captured either way, so a calendar can be layered on later without re-reading anything.
 
 ---
 
@@ -323,3 +333,4 @@ Conversion is an implementation task, scoped by Epic 13.
 10. **Are player-facing and GM-facing quests the same object** with a visibility flag, or genuinely different? Note the two state machines meet at exactly one point per [[Glossary]], which suggests one object.
 11. **How do event state and claim resolution stay reconcilable?** A `pending` event that never happens resolves through its announcing claim going `false`. Whether that is automatic, GM-confirmed, or raised as a **Ticket** is undecided — but it must not be two facts kept in sync by hand. See [[Off-Screen-Events]] §Open.
 12. **Person versus role.** Flagged as an open question by Epic 13 and not yet addressed here: whether *the Warden* is an entity, a role an entity holds, or both.
+13. ~~Is setting-time a third clock?~~ **No** — it is fiction time. See §There is no third clock. What remains deferred is whether fiction times are comparable across two campaigns, which needs a shared calendar or an offset and only matters at the second campaign.
