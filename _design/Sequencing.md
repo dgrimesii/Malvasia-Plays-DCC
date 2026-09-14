@@ -7,9 +7,13 @@ tags: [product, release, sequencing, backlog, epics]
 
 # Sequencing
 
-The working plan for what gets built in what order. Supersedes the slice table in [[Release-Plan]], which was written before the strategic decisions in [[Knowledge-Assets]], [[Shared-Core]], [[Visibility-Model]], and [[Identity-and-Reconciliation]].
+**Ordering rationale and the model invariants.** Epic allocation to release candidates lives in [[Roadmap]]; the release axis and its reasoning live in [[Release-Plan]]. This document explains *why* the order is what it is, and holds the invariants that cut across every epic.
 
-Releases are unchanged: **R1 is the GM interface, R2 is the player interface.**
+~~The working plan for what gets built in what order. Supersedes the slice table in [[Release-Plan]], which was written before the strategic decisions in [[Knowledge-Assets]], [[Shared-Core]], [[Visibility-Model]], and [[Identity-and-Reconciliation]].~~
+
+~~Releases are unchanged: **R1 is the GM interface, R2 is the player interface.**~~
+
+**Both superseded.** The axis is now **between sessions versus at the table**, not GM versus player — [[Release-Plan]] records the three seams that gave the audience split away, and [[Roadmap]] carries the allocation that follows from it. The old reasoning was not wrong about ordering; it was wrong about what the two releases were dividing, and the allocation table below inherited that error twice over before it was caught.
 
 ---
 
@@ -57,39 +61,25 @@ Not features. Gates, because [[Shippable-Increment]] makes testable and demoable
 
 | # | Item | Needed before |
 |---|---|---|
-| P1 | **Glossary** — written for a reader who knows nothing, marking which terms are system-specific | Writing any epic |
-| P2 | **Test harness** — run any increment against a fixture, print output | The first increment |
-| P3 | **Fixture corpus** — synthetic campaign, plus adversarial cases | The first increment that writes campaign data |
+| P1 | **Glossary** — written for a reader who knows nothing, marking which terms are system-specific | Writing any epic — **done** |
+| P2 | **Test harness** — run any increment against a fixture, print output, *and render what it wrote as readable text* | The first increment |
+| P3 | **Fixture corpus** — synthetic campaign, adversarial cases, legacy-shaped content, and entities across a range of investment degrees | The first increment that writes campaign data |
 | P4 | **Challenger protocol** — the question set and the role separation rules | The first review |
-| P5 | **Golden corpus** — judged output for judgment-bearing capabilities | The first inference increment |
+| P5 | **Golden corpus** — judged output for judgment-bearing capabilities | RC 1c |
 
-P1 through P4 are small and front-loaded. P5 arrives later, with slice 1c.
+P2 through P4 are small and front-loaded. P5 arrives later, with RC 1c.
+
+**P2 grew after this was written.** Once the store stopped being files, demo-by-reading-files went with it, so an inspection path became a harness deliverable rather than a property of the storage — see [[Store-and-Access]]. [[Test-Strategy]] specifies all four in full.
 
 ---
 
 ## Epics
 
-| # | Epic | Release | Slice |
-|---|---|---|---|
-| 1 | Capture what happened in a session | R1 | 1a |
-| 2 | Find anything, fast, at the table | R1 | 1a |
-| 3 | Know the next session is covered | R1 | 1a |
-| 4 | Author and connect campaign material | R1 | 1b |
-| 5 | Bring in outside material and integrate it | R1 | 1b |
-| 13 | Get started — import and first run | R1 | 1b |
-| 11 | Control what the party knows | R1 | 1b |
-| 17 | **Recognise that two records are the same thing** | R1 | 1b |
-| 6 | Surface what could not have been noticed | R1 | 1c |
-| 7 | Run a thread across a campaign | R1 | 1c |
-| 8 | Feel the world moving without you | R1 | 1c |
-| 14 | Pace the campaign | R1 | 1c |
-| 12 | Keep the record trustworthy | R1 | 1d |
-| 9 | Players consult the record of their own adventure | R2 | — |
-| 10 | Players contribute to the record | R2 | — |
-| 15 | See what the party knows | R2 | — |
-| 16 | Player attention as a prep signal | R2 | — |
+**The allocation table that stood here is retired.** [[Roadmap]] owns epic allocation, and a second copy drifted from it in five places rather than one: Epic 13 moved to 1a by [[Migration]]; Epics 9, 10, 15 and 16 moved into R1 under the re-axis; Epic 2 split by tier rather than sitting whole in 1a; Epic 1 S11 moved to R2; and Epic 16 landed in 1c.
 
-### Changes from the earlier map
+That is the case for not keeping two tables. It is also why the drift went unnoticed — both looked authoritative, and neither said which one to believe.
+
+### Why the allocation is what it is
 
 **Epic 17 is new.** [[Identity-and-Reconciliation]] found the same operation needed for arc merges, for repair after a bad batch, and for names. Building it three times separately is the expensive outcome, and burying it inside Epic 12 would hide it from the two epics that need it first.
 
@@ -128,16 +118,18 @@ P1 Glossary  →  P2 Harness  →  P3 Fixtures  →  P4 Challenger protocol
         ↓
   Template correction  (immediate, no code)
         ↓
-  1a  Capture · Retrieval · Readiness        ← first useful slice
+  1a  Capture · Retrieval · Readiness · Conversion     ← first useful slice
         ↓
-  1b  Authoring · Integration · Visibility · Reconciliation · Import
+  1b  Authoring · Integration · Visibility · Reconciliation · The party's read
         ↓
-  1c  Inference · Arcs · Off-screen and canon · Pacing      (+ P5)
+  1c  Inference · Arcs · Off-screen and canon · Pacing · Attention   (+ P5)
         ↓
   1d  Correction and rollback
         ↓
-  R2  Player surface
+  R2  At the table
 ```
+
+**Before 1a**, three enabling items that are not epics: the deployed environments, P2, and P3. See [[Readiness-Checklist]].
 
 Within each slice, increments ship individually per [[Shippable-Increment]] — functional, non-breaking, testable, demoable, and not necessarily useful.
 
@@ -147,21 +139,24 @@ Within each slice, increments ship individually per [[Shippable-Increment]] — 
 
 | Blocked | Decision needed |
 |---|---|
-| Slice 1c entirely | Where is the line between surfacing and authoring? *(§G3)* |
-| Epics 4, 5, 7, 17 in detail | Is the graph model adopted? *(§G2)* — [[Shared-Core]] is new evidence in favour |
+| ~~RC 1c entirely~~ | ~~Where is the line between surfacing and authoring?~~ **Answered: surfacing is authoring**, materialised through intake; generation is separately permitted forward-only |
+| ~~Epics 4, 5, 7, 17 in detail~~ | ~~Is the graph model adopted?~~ **Answered: yes** — a graph domain model on a relational store, with a real database from RC 1a |
+| ~~Epic 2 acceptance~~ | ~~Does retrieval work with no connectivity?~~ **Answered: no** — web-first from day one at a registered domain |
 | Epic 14 | Does the campaign have a known length? |
 | Epic 8 | How much canon must be recorded before Floor 6? |
-| Epic 12 | Are tombstones preserved on deletion? |
-| Epic 2 acceptance | Does retrieval work with no connectivity? |
+| Epic 12 | Are tombstones preserved on deletion? — decide during 1b |
+| Epics 3 and 6 | What is the attention budget, as a number? |
+| RC 1b | Does anything reach players automatically? Now an R1 question, since players read the record in R1 |
 
-Slices 1a and 1b can be written and started without any of these, except that Epic 2's acceptance criteria need the connectivity answer — the smallest question on the list with the earliest need.
+RC 1a is written and reconciled. The three answered questions were the ones with the earliest need; what remains gates 1c and beyond. [[Roadmap]] §Open decisions is the live list.
 
 ---
 
 ## Next actions
 
-1. Correct the session template. No dependencies, immediate value, closing deadline.
-2. Answer the connectivity question. One line, unblocks Epic 2's criteria.
-3. Write the glossary from the terms Epics 1–3 actually use.
-4. Write Epics 1–3 in full, with stories and acceptance criteria.
+1. ~~Correct the session template.~~ **Done** — the templates carry the model invariants, so sessions recorded before the tool exists need no re-encoding.
+2. ~~Answer the connectivity question.~~ **Done** — no offline mode.
+3. ~~Write the glossary from the terms Epics 1–3 actually use.~~ **Done** — [[Glossary]] is written and maintained.
+4. ~~Write Epics 1–3 in full.~~ **Done**, and Epic 13 with them. RC 1a is written and reconciled to the model.
 5. Write the remaining epics at epic level, with their blocking decisions as entry criteria for elaboration.
+6. Clear [[Readiness-Checklist]] — the corpus corrections, the four open decisions, the hand conversion pass, and the infrastructure. Nothing in RC 1a starts before P2 and P3 exist.

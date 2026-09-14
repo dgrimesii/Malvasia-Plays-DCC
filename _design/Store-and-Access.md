@@ -75,11 +75,15 @@ Files delivered that property for free, which made it easy to conflate the two. 
 
 **This does not block anything, but it needs replacing.** An increment that writes to a database with no way to look at what it wrote cannot be accepted. Some inspection path — a dump, a rendered view, an export — is now part of the harness (P2) rather than a property of the storage.
 
+**Replaced.** [[Test-Strategy]] makes rendering store contents as readable text a job of P2, and [[Shippable-Increment]]'s demo section now rests on the harness rather than on the storage. The inspection path and the export required by [[Knowledge-Assets]] are the same mechanism and are not built twice.
+
 ### The cutover
 
 [[Shippable-Increment]] assumes the GM keeps working partly in markdown for a long stretch, and that dual-running is free because both paths write the same thing. Once the store moves, they diverge.
 
 So there is a **cutover moment**, and it should be chosen rather than arrived at. Before it, the templates are authoritative. After it, the tool is, and the templates become an import format.
+
+**It is also the moment production becomes irreplaceable**, holding the only copy of months of converted work. So it is the deadline for the restore drill in [[Backup-and-Durability]], and the date is still unchosen.
 
 ---
 
@@ -99,7 +103,8 @@ That is a good outcome. It means the template correction was not interim busywor
 |---|---|
 | *"The repo is the database"* — [[Interface-User-Stories]] | **Superseded.** True for the interim; not the destination. |
 | Portability — [[Knowledge-Assets]] | **Stands**, as a property rather than a format. |
-| Demo by reading files — [[Shippable-Increment]] | **Needs replacing** with an inspection path in the harness. |
+| Demo by reading files — [[Shippable-Increment]] | ~~**Needs replacing** with an inspection path in the harness.~~ **Done** — the demo section now rests on P2. See [[Test-Strategy]]. |
+| Repo as export target — [[Migration]] | **Superseded.** The repo is frozen conversion input; durability moved to [[Backup-and-Durability]]. The export capability itself is unchanged. |
 | Dual-running is free — [[Shippable-Increment]], [[First-User]] | **Bounded** by the cutover. |
 | Chronicle mapping — [[Shared-Core]] | **Unaffected**, and arguably easier. Chronicle is already a structured store rather than files. |
 
