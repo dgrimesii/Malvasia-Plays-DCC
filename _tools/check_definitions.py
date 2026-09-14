@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 GLOSSARY = "_design/Glossary.md"
-SEARCH_DIRS = ["_design", "_backlog"]
+SEARCH_DIRS = ["_design", "_backlog", "_delivery"]
 
 # A glossary entry: **Term** *[marking]* -- ...
 ENTRY = re.compile(r"^\*\*(.+?)\*\*\s*(?:,\s*[^*]+)?\*\[")

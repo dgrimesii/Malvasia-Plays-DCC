@@ -211,9 +211,12 @@ Cheap to hold now. Awkward to reverse once anything has been linked or bookmarke
 
 ### Reserve more than two
 
-- **`demo.`** — a permanent home for the synthetic campaign. Worth having given demoable is a shipping gate in [[Shippable-Increment]], and the cleanest way to give a reviewer something to open rather than documents to read.
-- **`fixture.`** — the test corpus from [[Shippable-Increment]], which never runs against the real record.
-- **`dev.`**, **`test.`** — for the same reason.
+- **`test.`** — **built.** Production-class, serving the synthetic campaign. It is the deployed environment two R1 stories are accepted against, and the URL a reviewer is handed.
+- **`demo.`**, **`fixture.`**, **`dev.`** — reserved, not built.
+
+~~**`demo.`** — a permanent home for the synthetic campaign… the cleanest way to give a reviewer something to open rather than documents to read. **`fixture.`** — the test corpus from [[Shippable-Increment]], which never runs against the real record. **`dev.`**, **`test.`** — for the same reason.~~
+
+**Superseded, and the reasoning is worth keeping.** The reviewer requirement is real and unchanged — a URL beats a description. What did not survive is the *second deployment*: `demo.` and `test.` were always going to serve the same fixture campaign, so there was never any data separation between them to preserve, and the name suggested an audience that does not exist. One environment does both jobs. See [[Environments]].
 
 Reserving costs nothing: registering the parent bought the entire namespace beneath it. Subdomains are DNS records created in Cloudflare afterward, with no registrar step and no per-name cost. "Reserve" here means only that these names are spoken for, so nothing else claims them later.
 
@@ -252,4 +255,4 @@ This divergence is deliberate, not an oversight — weighed openly here, with th
 
 **On addressing:** campaigns on paths from the first URL that exists, since retrofitting that is a link-breaking change. `warpandweft.ink` is registered and DNS sits with Cloudflare, so the first deployment can take its address immediately.
 
-**One decision to revisit:** [[Backlog-Readiness]] §G2 asks whether the graph model is adopted. Chronicle independently arrived at an entity-and-relationship model with a graph view, from a different game system and a different authoring role — and recursive place containment (see **Place** in [[Glossary]]) wants arbitrary depth, which is trivial in a graph and awkward otherwise. Two independent arguments in favour, worth weighing when that decision is made.
+~~**One decision to revisit:** [[Backlog-Readiness]] §G2 asks whether the graph model is adopted.~~ **Answered: yes** — a graph domain model on a relational store, with a real database from RC 1a. The two arguments recorded here were part of what carried it: Chronicle independently arrived at an entity-and-relationship model with a graph view, from a different game system and a different authoring role — and recursive place containment (see **Place** in [[Glossary]]) wants arbitrary depth, which is trivial in a graph and awkward otherwise. Both now bind the platform choice in [[Hosting]].

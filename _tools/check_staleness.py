@@ -9,6 +9,9 @@ Crude by design -- it uses commit dates, so it has false positives (a
 typo fix in B flags A) and no false negatives that matter. A false
 positive costs a glance; a missed staleness costs a wrong implementation.
 
+Note: needs a full clone. A shallow clone gives every file the same
+commit date, so this reports nothing and looks clean.
+
 Usage:  python3 _tools/check_staleness.py [--days N]
         --days N   only flag gaps wider than N days (default 7)
 
@@ -24,7 +27,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-SEARCH_DIRS = ["_design", "_backlog"]
+SEARCH_DIRS = ["_design", "_backlog", "_delivery"]
 FENCE = re.compile(r"^\s*```")
 INLINE_CODE = re.compile(r"`[^`]*`")
 WIKILINK = re.compile(r"\[\[([^\]]+)\]\]")
