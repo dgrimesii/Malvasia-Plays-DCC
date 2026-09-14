@@ -82,12 +82,17 @@ The increment can be shown and judged. **The demo path is part of the story, not
 
 Acceptable forms, in ascending cost:
 
-- Reading the file the increment produced
-- A diff against what existed before
-- A script that runs it against a fixture and prints the result
-- A rendered view, where one happens to exist
+- The harness rendering what the increment wrote, as readable text
+- A diff of that rendering against what existed before
+- A script that runs the increment against a fixture and prints the result
+- A rendered view in the application, where one happens to exist
+- The deployed test environment, where the assertion is about behaviour over the network
 
-Cheap here because of a property already settled in [[Interface-User-Stories]]: **the repo is the database.** Most output lands as files that can simply be read.
+**This rests on the harness, not on the storage.** [[Store-and-Access]] flagged the gap: an increment that writes to a database with no way to look at what it wrote cannot be accepted, so an inspection path is part of P2. That path is the same mechanism as the export required by [[Knowledge-Assets]] and Epic 13 S2 — it should not be built twice. See [[Test-Strategy]].
+
+~~Cheap here because of a property already settled in [[Interface-User-Stories]]: **the repo is the database.** Most output lands as files that can simply be read.~~
+
+**Superseded.** That was true, and cheap, while the store was files. [[Store-and-Access]] moved the store to a database for reasons in the model rather than in delivery, which took the free demo path with it. The cost moved rather than disappearing: it is now a deliverable in the harness instead of a property of the storage.
 
 ### Test and demo are doing different jobs
 
@@ -100,7 +105,7 @@ Worth keeping distinct, because several capabilities in this design can only be 
 
 [[Open-Requirements]] §3 asks what happens when a proposal is a bad reading — not a hallucinated fact but a wrong interpretation. No test catches that. The demo is where it gets caught, and the GM is the instrument.
 
-So for the inference and proposal epics, **the demo is the acceptance mechanism**, and the test only guards the floor beneath it.
+So for the inference and proposal epics, **the demo is the acceptance mechanism**, and the test only guards the floor beneath it. [[Test-Strategy]] adds the consequence for anything using a language model: replayed responses in CI prove the pipeline, not the output, so the demo is not optional there.
 
 ---
 
@@ -124,7 +129,11 @@ Related, and easy to miss: the four R1 obligations in [[Release-Plan]] — visib
 
 Because increments need not be useful, the GM will be working partly in markdown and partly in the tool for a long stretch. That is sustainable here, but it needs one rule stated:
 
-**The repo is authoritative throughout.** The tool reads and writes it; it is not a separate store that must be reconciled. Any increment that would make the tool the sole home of some content needs to say so explicitly, because that is the point where dual-running stops being free.
+**The templates are authoritative until cutover; the tool is authoritative after it.** Dual-running is free only while both paths write the same thing, and [[Store-and-Access]] establishes that they diverge once the store moves. So the cutover is a chosen moment rather than a drift, and after it the templates remain correct as the import contract rather than as a second store.
+
+~~**The repo is authoritative throughout.** The tool reads and writes it; it is not a separate store that must be reconciled. Any increment that would make the tool the sole home of some content needs to say so explicitly, because that is the point where dual-running stops being free.~~
+
+**Superseded**, and it is the same error as the demo path above: both were properties of the store being files. The rule it was protecting survives — an increment that makes the tool the sole home of some content must say so — but that point is now the cutover itself, named once, rather than something each increment declares.
 
 ---
 

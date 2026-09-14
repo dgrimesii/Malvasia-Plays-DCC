@@ -26,17 +26,21 @@ The assumption creates a choice that is worth making deliberately, because the d
 
 ---
 
-## The repo becomes an export target
+## The repo becomes a frozen source
 
-Not discarded — inverted.
+Not discarded, and not a projection either.
 
-[[Knowledge-Assets]] requires that the assets be readable and exportable without Storyteller. Writing generated markdown back to the repo satisfies that directly, and preserves three things worth keeping:
+After cutover the repo is **read by conversion and written by nothing.** Conversion must be repeatable from source — run it, inspect the output, fix it, run it again from scratch — and that only holds while an untouched original exists. If an interpretive call turns out wrong six months later, the original is the only thing that makes a re-run possible.
 
-- The GM can read, grep, and diff the campaign without the tool running
-- The demo and inspection surface that [[Shippable-Increment]] depends on
-- A stable artifact for the Chronicle mapping in [[Shared-Core]]
+So it is kept, frozen. It is not the backup; it is the source. Durability is a separate mechanism — see [[Backup-and-Durability]].
 
-**The repo stops being the store and becomes a projection of it.** That keeps the property that mattered without the constraint that no longer fits.
+~~**The repo becomes an export target.** Writing generated markdown back to the repo satisfies [[Knowledge-Assets]] directly, and preserves three things worth keeping: the GM can read, grep, and diff the campaign without the tool running; the demo and inspection surface that [[Shippable-Increment]] depends on; a stable artifact for the Chronicle mapping in [[Shared-Core]]. The repo stops being the store and becomes a projection of it.~~
+
+**Superseded, and worth understanding why, because the failure was structural rather than factual.** One mechanism was carrying four jobs, and three of them found better owners: inspection went to the harness under [[Store-and-Access]], the Chronicle mapping never needed a generated artifact since [[Strategy-Multi-Campaign-and-Convergence]] makes it a document rather than code, and read-grep-diff was a convenience of files-as-store that the application now provides.
+
+What broke the fourth is that a registered domain and a hosted application turn a continuously mirrored repo into a second copy of every campaign secret — under different access control, editable, and looking authoritative. That is drift, which `COLLABORATION.md` names as the largest risk here. It also required a credential pointing out of production into a repo the build context reads.
+
+**The commitment it was standing in for survives unchanged.** [[Knowledge-Assets]] still requires the assets be readable and exportable without Storyteller, and Epic 13 S2's round-trip proof still needs an export path. Only the destination moved. See [[Backup-and-Durability]].
 
 ---
 
@@ -82,6 +86,8 @@ The campaign record is live and irreplaceable, so this is where the non-breaking
 
 **Round-trip proof.** Export the converted store back to markdown and compare it against the source. **This makes "nothing was lost" a test rather than a hope**, and it is the strongest single assertion available for this work.
 
+**Conversion runs in production only.** It reads the frozen repo and writes the live store, so it is invoked deliberately rather than deployed everywhere — see [[Environments]]. Exercising it against legacy-shaped fixture content is how it gets tested before it touches the real record.
+
 ---
 
 ## What to do now
@@ -94,7 +100,7 @@ Four things, all available before any code exists.
 
 3. **Do not build RC 1a on files.**
 
-4. **Put legacy-shaped content in the fixture corpus (P3)**, so conversion is testable long before it is needed, and so the awkward cases are exercised deliberately rather than discovered on the live record.
+4. **Put legacy-shaped content in the fixture corpus (P3)**, so conversion is testable long before it is needed, and so the awkward cases are exercised deliberately rather than discovered on the live record. The fixture is synthetic — it mirrors the legacy files' shape and defects, never their content. [[Test-Strategy]] says why.
 
 ---
 
