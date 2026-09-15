@@ -74,13 +74,13 @@ Hard rules, not preferences.
 
 - **[[Constraint-Serves-The-Table]]** — the tool serves the table, never joins it. Pull-only surfaces; a write must fit an existing pause; a captured detail is worth less than the moment it costs.
 - **[[Constraint-Manner-and-Intent]]** — the AI never generates manner, intent, or emotional state. Those come from the GM or from player notes. Scoped against generation by [[Generative-Projection]].
-- **[[First-User]]** — one user, who is the builder. No accounts, no sharing, no permissions machinery.
+- **[[First-User]]** — one user, who is the builder. ~~No accounts~~, no sharing, no permissions machinery. Account-level access is now required — see [[Two-Observer-Model]].
 
 ## Store and operations
 
 - **[[Store-and-Access]]** — where the record lives.
 - **[[Migration]]** — moving from flat files to the store without losing the campaign record.
-- **[[Hosting-Implications]]** — what running this actually requires.
+- **[[Hosting-Implications]]** — what running this actually requires. §1 and §2 superseded; §3 and §4 stand.
 - **[[Multi-Campaign-Hosting]]** — what changes when there is more than one campaign.
 - **[[Access-Recovery]]** — getting back in when something breaks.
 - **[[Rollback-and-Repair]]** — undoing bad data. Undecided; possibly overkill. Note that tombstones are inference substrate as well as repair substrate.
@@ -91,6 +91,7 @@ Where this goes beyond one campaign.
 
 - **[[Strategy-Multi-Campaign-and-Convergence]]** — multi-campaign optionality, and the deliberate divergence from Chronicle. Which near-term choices are cheap to keep open and which are expensive retrofits.
 - **[[Shared-Core]]** — what Storyteller and Chronicle would actually have in common, and where the boundary between them falls.
+- **[[Two-Observer-Model]]** — one campaign recorded by both tools at once: session as the shared anchor, claims against facts, and what the platform core must hold from day one.
 
 ## Delivery
 

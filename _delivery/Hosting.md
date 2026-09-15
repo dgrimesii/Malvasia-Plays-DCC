@@ -40,11 +40,17 @@ Each derived from the corpus, with its source. These bound the platform choice.
 | C8 | **Outbound model calls for extraction**, with per-environment secrets | [[Session-Capture]]; [[Inference-and-Candidate-Relationships]] |
 | C9 | **Export to readable text is a first-class output**, not a reporting afterthought | [[Knowledge-Assets]]; Epic 13 S2 |
 | C10 | **Retrieval latency is a property of the store.** R2's bar cannot be met by a fast view over a slow one | [[Release-Plan]] §3 |
-| C11 | **The record is not publicly readable.** A private deployment or one credential | [[Hosting-Implications]] §3 |
+| C11 | **Account-level access.** One account per person, a password hash, a login. ~~A private deployment or one credential~~ | [[Two-Observer-Model]]; raised from [[Hosting-Implications]] §3 |
 | C12 | **An off-host durable copy exists** | [[Backup-and-Durability]] |
 | C13 | **Three environments, affordable and operable by one person** | [[First-User]]; [[Environments]] |
+| C14 | **The core is the platform's, not one tool's.** Entity, Fact, Relationship, Event, Session are shared; each tool's context attaches by reference | [[Two-Observer-Model]]; [[Shared-Core]] |
+| C15 | **Identifiers are opaque, non-sequential, type-free, unique within a setting**, and allocated by the store | [[Information-Architecture]]; [[Identity-and-Reconciliation]]; [[Visibility-Model]] |
+| C16 | **The four unrecoverable requirements are enforced at the write boundary**, by the store rather than by an application, for every writer | [[Release-Plan]] §4 |
+| C17 | **No unfiltered read path is exposed to any tool.** C5 extended across a tool boundary | [[Visibility-Model]]; [[Two-Observer-Model]] |
+| C18 | **System-specific payload is opaque to the core** — stored, never interpreted | [[Shared-Core]] |
+| C19 | **Secrets and outbound model calls are platform services**, serving more than one surface. Extends C8 | [[Two-Observer-Model]] |
 
-**What is deliberately absent:** accounts, signup, authentication beyond C11, sharing, billing, campaign switching. [[Multi-Campaign-Hosting]] is explicit that stage 4 arriving early "is how a working tool becomes an unfinished service."
+**What is deliberately absent:** signup, invitations, an administration interface, sharing, billing, campaign switching. ~~Accounts~~ are now in scope at the minimum described in C11 — one account per person and nothing more. [[Multi-Campaign-Hosting]] is explicit that stage 4 arriving early "is how a working tool becomes an unfinished service."
 
 ---
 
@@ -62,6 +68,8 @@ C3 asks for a relational store carrying a graph model, and the choice within tha
 - The typed comparable attributes required by Epic 1 S15 sit alongside prose and will change shape as the model settles. A JSON column avoids a migration per attribute type while the shape is still moving.
 - **C9 and C12** get a path independent of the application: a database dump is an export the tool does not have to be running to produce.
 - Migration tooling is mature, which matters more here than usual — the store is the asset, and its history of changes is part of what protects it.
+
+**Chronicle reached the same engine independently.** Its v5 milestone specified PostgreSQL with JSONB in April 2026, on its own reasoning about data volume. Two decisions converging is worth noting here because the store is the commitment that outlives everything built on it — see [[Two-Observer-Model]].
 
 ### Why not Cloudflare Workers and D1, despite DNS already being there
 
@@ -84,6 +92,7 @@ Ordered. Everything here precedes the first issue except where noted.
 ### DNS and TLS
 - `test.warpandweft.ink` → test service
 - `storyteller.warpandweft.ink` → production service
+- `chronicle.warpandweft.ink` reserved — products take subdomains, campaigns take paths, per C2
 - Confirm `warpandweft.ink` apex behaviour; a landing page is not needed yet but the record should not dangle
 - `demo.` and `fixture.` stay reserved and unpointed
 - Certificates for both live names
@@ -95,7 +104,7 @@ Ordered. Everything here precedes the first issue except where noted.
 - Object storage bucket for backups, per [[Backup-and-Durability]]
 
 ### Secrets
-- Per-environment store for the model API key under C8
+- Per-environment store for the model API key under C8, sized for more than one consuming surface under C19
 - No production credential exists in the test environment — this is rule 1 in [[Environments]] and it is enforced here, by absence
 
 ### Pipeline
@@ -113,4 +122,5 @@ Ordered. Everything here precedes the first issue except where noted.
 
 1. **Where does the conversion job run?** It is production-only per [[Environments]], reads the frozen campaign repository, and is invoked deliberately rather than on a schedule. Whether that is a one-off task, a protected endpoint, or a local run against the production database is undecided and affects how the credential is held.
 2. **Does the apex get a landing page in R1?** [[Strategy-Multi-Campaign-and-Convergence]] describes one. Nothing requires it, and it is the sort of thing that absorbs a weekend.
-3. **What is the cost ceiling?** Three environments with two managed database instances is small but not free, and no figure has been stated anywhere.
+3. **What is the cost ceiling?** Three environments with two managed database instances is small but not free, and no figure has been stated anywhere. Two managed instances is the prod/test split required by rule 1 in [[Environments]], not one per campaign — campaigns share a store under C6.
+4. **When does Chronicle's second write path arrive** relative to the cutover in [[Store-and-Access]]? A second writer is a cutover-class event and the date is unchosen.

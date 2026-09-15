@@ -19,7 +19,15 @@ What hosting does is **convert three deferred questions into requirements** — 
 
 ---
 
-## 1. Offline retrieval stops being optional
+## ~~1. Offline retrieval stops being optional~~ — superseded
+
+**Superseded. Resolved the other way.** [[Roadmap]] §Resolved records the answer as **no**: web-first from day one at a registered domain, and the table where this campaign is played has a reliable connection. Epic 2's *On connectivity* note carries the full reversal, and Epic 1 S11 was amended to require that a failed save is stated immediately and the text retained, rather than that it survive offline.
+
+What the reasoning below got wrong was its premise, not its logic. It was written assuming the venue's connection was an uncontrolled variable. It is not — it was confirmed, for this table specifically. The asymmetry it identifies still holds and is worth keeping: if offline is ever built, retrieval is the half that needs it, because capture failing offline is recoverable and retrieval failing offline is not.
+
+**The assumption does not transfer to another table.** Chronicle serves a different venue; see [[Two-Observer-Model]].
+
+The original reasoning follows.
 
 The largest change, and it lands on Epic 2.
 
@@ -33,7 +41,9 @@ So the open connectivity decision is effectively answered by the hosting decisio
 
 ---
 
-## 2. Mid-session capture must survive a dropped connection
+## ~~2. Mid-session capture must survive a dropped connection~~ — superseded
+
+**Superseded with (1), and by the same resolution.** S11's assertion is now that a failed save is stated immediately and the text retained, which addresses the same loss without an offline client. Reasoning kept below.
 
 Lands on Epic 1, story S11.
 
@@ -93,9 +103,11 @@ Worth remembering when weighing when to host, not a reason on its own.
 
 | Where | Change |
 |---|---|
-| Epic 1, S11 | Assertion gains: fragment survives with no network and syncs later |
-| Epic 2 | Offline retrieval becomes a story rather than an open question |
-| [[Sequencing]] invariants | Add: the record is not publicly readable |
-| Standing constraint | The store stays directly readable by the GM, hosted or not |
+| ~~Epic 1, S11~~ | ~~Assertion gains: fragment survives with no network and syncs later~~ **Superseded** — S11 requires a failed save to be stated immediately and the text retained |
+| ~~Epic 2~~ | ~~Offline retrieval becomes a story rather than an open question~~ **Superseded** — resolved as no; see Epic 2 *On connectivity* |
+| [[Sequencing]] invariants | Add: the record is not publicly readable. **Raised since** to account-level access — see [[Two-Observer-Model]] and `C11` in [[Hosting]] |
+| ~~Standing constraint~~ | ~~The store stays directly readable by the GM, hosted or not~~ **Superseded** by [[Store-and-Access]] — the property is export and readability without the tool, not a directly readable store |
 
-The connectivity question in [[Backlog-Readiness]] is resolved by this decision rather than needing a separate answer.
+~~The connectivity question in [[Backlog-Readiness]] is resolved by this decision rather than needing a separate answer.~~ **Resolved, the other way** — see [[Roadmap]] §Resolved.
+
+**§3 and §4 stand.** §3's access boundary is the one part of this document still current, and it has since been raised from a single credential to account-level access. §4's warning against the store moving somewhere unreadable was answered rather than ignored: [[Store-and-Access]] moved the store off the repository deliberately and kept the portability property that §4 was protecting.

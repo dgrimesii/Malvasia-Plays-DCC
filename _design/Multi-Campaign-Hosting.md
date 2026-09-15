@@ -57,7 +57,9 @@ Two shapes, with a real trade-off.
 
 **Hard isolation** — a separate store per campaign. Leakage becomes structurally difficult rather than a matter of discipline; cross-campaign features become expensive.
 
-**Hard isolation is the better fit**, for reasons already settled elsewhere: cross-campaign search and content reuse are explicitly deferred in [[Strategy-Multi-Campaign-and-Convergence]], identifiers are already unique within a campaign rather than globally, and export is required per campaign anyway under [[Knowledge-Assets]].
+**Hard isolation is the better fit**, for reasons already settled elsewhere: cross-campaign search and content reuse are explicitly deferred in [[Strategy-Multi-Campaign-and-Convergence]], identifiers are scoped rather than global, and export is required per campaign anyway under [[Knowledge-Assets]].
+
+**Correction.** This document originally said identifiers are unique *within a campaign*. [[Information-Architecture]] scopes them to the **setting**, because entities are durable across campaigns and belong to the setting while facts and visibility belong to the campaign. The later document is right and this one was wrong. The isolation argument is unaffected — a setting is still a boundary, not a global namespace — but the distinction matters for a shared entity inventory, where two tools address the same entity across campaign scope. See [[Two-Observer-Model]].
 
 Whichever shape, one rule matters more than the choice: **scope should be structural, not remembered.** A query that can be written without a campaign scope will eventually be written without one, at three in the morning, and nothing will look wrong.
 
@@ -120,7 +122,7 @@ Nothing new for Release 1. Everything below is already committed for other reaso
 | Already committed | Also serves |
 |---|---|
 | Campaign container, carrying configuration | Scoping, per-campaign settings |
-| Identifiers unique within a campaign, non-sequential | Isolation, leak resistance |
+| ~~Identifiers unique within a campaign~~ unique within a **setting**, non-sequential, opaque, type-free | Isolation, leak resistance, and a shared entity inventory — see the correction above |
 | Person holds a role per campaign | Cross-campaign identity |
 | Record-keeping as an attribute separate from role | The scribe case |
 | Visibility as a property of facts and edges | Knowledge domain, kept separate from entitlement |
