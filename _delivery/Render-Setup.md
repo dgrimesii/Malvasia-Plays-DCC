@@ -15,11 +15,13 @@ Render's interface changes. Where a label below does not match the dashboard, th
 
 ---
 
-## Before you start — one blocking decision
+## Before you start — ~~one blocking decision~~ settled
 
-**Where the application code lives.** See [[Hosting]] §Open questions. Render copies whatever repository a service is connected to. If that is `Malvasia-Plays-DCC`, the test deployment holds the campaign folders, including the GM notes — which breaks rule 2 in [[Environments]]: the campaign source is not fetchable from test.
+**The code lives in `Malvasia-Plays-DCC`, under `app/`.** Settled by the GM; see [[Hosting]] §Open questions 5. Render deploys from this repository with its Root Directory set to `app/`, which keeps the campaign folders out of every deployment.
 
-Parts 1–3 and 5 do not depend on the answer. **Part 4 does. Do not connect GitHub until this is decided.**
+~~**Where the application code lives.** See [[Hosting]] §Open questions. Render copies whatever repository a service is connected to. If that is `Malvasia-Plays-DCC`, the test deployment holds the campaign folders, including the GM notes — which breaks rule 2 in [[Environments]]: the campaign source is not fetchable from test.~~ *Superseded: the Root Directory setting means Render does not carry the whole repository.*
+
+~~Parts 1–3 and 5 do not depend on the answer. **Part 4 does. Do not connect GitHub until this is decided.**~~ All parts can proceed.
 
 ---
 
@@ -57,11 +59,11 @@ One group per environment, each scoped so the other environment cannot link it.
 
 ---
 
-## Part 4 — GitHub (after the code-repo decision)
+## Part 4 — GitHub
 
 1. Account Settings → Account Security → Git Deployment Credentials → **Add credential → GitHub**.
-2. On GitHub, when installing the Render app, choose **Only select repositories** and pick **only the application code repository**.
-3. **Never grant access to `Malvasia-Plays-DCC`** unless it has been decided that code lives there and the campaign content has been moved out first.
+2. On GitHub, when installing the Render app, choose **Only select repositories** and pick **only `Malvasia-Plays-DCC`**.
+3. ~~**Never grant access to `Malvasia-Plays-DCC`** unless it has been decided that code lives there and the campaign content has been moved out first.~~ *Superseded: code lives there, and Part 6's Root Directory keeps the campaign folders out of the deployment.* Do not grant access to any other repository.
 4. To change this later: `github.com/apps/render/installations/new` → Repository access.
 
 ---
@@ -93,6 +95,9 @@ Recorded here so the build context does not choose them. **Test and production a
 
 | Setting | Value | Why |
 |---|---|---|
+| Repository | `Malvasia-Plays-DCC`, branch `main` | Settled — see Before you start |
+| Root Directory | **`app`** | Files outside it are unavailable at build and run time, so no campaign folder reaches a deployment |
+| Build filters | Include **`app/**`** | A commit touching only campaign notes or the corpus does not redeploy |
 | Region | **Virginia (US East)** | Closest to the table. Every service and database in the same region, or the internal URL cannot be used |
 | Postgres major version | **One version, pinned**, the same in both and in the local dev container | [[Environments]] — same engine, same version |
 | Postgres plan | **The $19 tier (0.5 CPU, 1 GB)** — the same in both | Production-class test. Not the free plan for either |
@@ -138,8 +143,8 @@ Rules from [[Environments]] §Test is not always running:
 - [ ] Project `Storyteller` with `Test` and `Production`
 - [ ] Private network traffic blocked on both; `Production` protected
 - [ ] `storyteller-test` and `storyteller-production` environment groups, scoped, with separate model API keys
-- [ ] Code-repo decision made and recorded in [[Hosting]]
-- [ ] GitHub connected with access to the code repository only
+- [x] Code-repo decision made and recorded in [[Hosting]] — this repository, under `app/`
+- [ ] GitHub connected with access to `Malvasia-Plays-DCC` only
 - [ ] Cloudflare SSL mode Full; no `AAAA` records on `test` or `storyteller`
 - [ ] Walking-skeleton issue written with Part 6 as its settings
 
@@ -149,5 +154,5 @@ When every box is ticked, the walking-skeleton issue can be handed to Claude Cod
 
 ## Open
 
-1. **How does anything reach the production database from outside Render?** The conversion job and the restore drill may both need it. With external access disabled, the options are opening the allow list briefly to one address, or running the task inside Render. Tied to [[Hosting]] §Open questions 1.
+1. **How does anything reach the production database from outside Render?** The conversion job and the restore drill may both need it. The conversion job cannot read the campaign folders from inside a deployment either, because of the Root Directory — so it reads them from GitHub, or runs from the development machine. With external access disabled, the options are opening the allow list briefly to one address, or running the task inside Render. Tied to [[Hosting]] §Open questions 1.
 2. **Does a suspended database stop billing?** Render confirms suspended services are billed only up to suspension; nothing found states it for databases. Part 7 settles it empirically.

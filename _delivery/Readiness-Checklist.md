@@ -9,7 +9,7 @@ tags: [delivery, readiness, checklist, sequencing]
 
 The ordered path from here to handing Claude Code, in VS Code, a GitHub issue it can work without guessing.
 
-**Re-audited 2026-09-16** against the corpus, the four RC 1a epics, and the GitHub repository. The original six corpus corrections are done and struck below; the audit found more. Items marked *proposal* are Claude's suggestions, not decisions.
+**Re-audited 2026-09-16** against the corpus, the four RC 1a epics, and the GitHub repository. The original six corpus corrections are done and struck below; the audit found more. Items marked *proposal* are Claude's suggestions, not decisions. **Updated the same day** with the GM's decisions on repository visibility, Julia's two roles, Floor 1, and where the code lives.
 
 ---
 
@@ -21,22 +21,28 @@ The ordered path from here to handing Claude Code, in VS Code, a GitHub issue it
 | Platform | **Settled** — Render and Cloudflare. See [[Hosting]], [[Render-Setup]] |
 | Original corpus corrections (1.1–1.6) | **All done** |
 | New corpus corrections (1.7–1.15) | Open |
-| Decisions needed before issue 1 | Six open; the repository question is new and blocks the rest of the setup |
-| GitHub | No issues, no labels, no issue template, **no code repository** |
+| Decisions needed before issue 1 | Five open. Where the code lives is **settled**: this repository, under `app/` |
+| GitHub | No issues, no labels, no issue template, no `app/` folder yet |
 | Local development machine | Not yet checked for what Claude Code will need |
 | Prerequisites P2–P4 | Not started. P2 and P3 are enabling issues; P4 needs ratifying |
 
 ---
 
-## Stage 0 — Check first: the campaign repository is public
+## Stage 0 — ~~Check first: the campaign repository is public~~ Settled
 
-GitHub reports `Malvasia-Plays-DCC` as a **public** repository. Its own description reads *"Showrunner eyes only"*, and it holds GM material — including the Floor 1 zone file, which [[Epic-Writing-Standard]] rules out of anything a player reads.
+**Settled by the GM: the repository stays public for now.** *Showrunner eyes only* is guidance, not enforcement. `README.md` already records the reason — public keeps the Claude GitHub connector reliable — and that the `visibility` tagging governs what a future player tool shows, not who can read the files. The audit should have found that note before raising this.
 
-Several documents rest on players not being able to read GM material — rule 1 in [[Environments]], the fixture reasoning in [[Test-Strategy]], and the sourcing rules in [[Epic-Writing-Standard]], which name Julia as both reviewer and player. While the repository is public, those protections are moot: anyone with the link can read everything.
+**Settled with it:** Julia as Product Owner and Julia as a player are treated as **separate personas**. Review of future work is done against fixtures, which keeps the two apart without relying on the repository. **Floor 1 holds no real secrets** — it is the tutorial floor; the only secrets are what might happen in its events. [[Environments]], [[Test-Strategy]], [[Epic-Writing-Standard]] and [[Verification-and-Challenge]] are updated with the superseded reasoning kept.
 
-**If this is unintended:** GitHub → the repository → Settings → General → Danger Zone → Change visibility → Private. Nothing in this project needs it public. What has already been read cannot be unread; there is no further remedy.
+**Superseded** — the finding as first raised, kept per `COLLABORATION.md`:
 
-**If it is intended**, it needs recording as a decision, because three documents currently assume otherwise.
+> GitHub reports `Malvasia-Plays-DCC` as a **public** repository. Its own description reads *"Showrunner eyes only"*, and it holds GM material — including the Floor 1 zone file, which [[Epic-Writing-Standard]] rules out of anything a player reads.
+>
+> Several documents rest on players not being able to read GM material — rule 1 in [[Environments]], the fixture reasoning in [[Test-Strategy]], and the sourcing rules in [[Epic-Writing-Standard]], which name Julia as both reviewer and player. While the repository is public, those protections are moot: anyone with the link can read everything.
+>
+> **If this is unintended:** GitHub → the repository → Settings → General → Danger Zone → Change visibility → Private. Nothing in this project needs it public. What has already been read cannot be unread; there is no further remedy.
+>
+> **If it is intended**, it needs recording as a decision, because three documents currently assume otherwise.
 
 ---
 
@@ -56,6 +62,8 @@ Each is worked in the chat context, with superseded reasoning kept in place per 
 | 1.4 | [[Store-and-Access]] | *Demo by reading files* row and cutover section assumed a repository destination | ~~Open~~ **Done** — row marked replaced; cutover now names the restore-drill deadline |
 | 1.5 | [[Strategy-Multi-Campaign-and-Convergence]] | Subdomain reservations | ~~Open~~ **Done** — `test.` built; `demo.` and `fixture.` reserved, superseded reasoning kept |
 | 1.6 | Epic 2 | S2 cited `demo.warpandweft.ink` | ~~Open~~ **Done** — now cites `test.warpandweft.ink`, with the old citation noted |
+| 1.16 | [[Environments]], [[Test-Strategy]], [[Epic-Writing-Standard]], [[Verification-and-Challenge]] | Rested on Julia being one person who could not see GM material, and on Floor 1 being secret | **Done 2026-09-16** — superseded in place per the Stage 0 decisions |
+| 1.17 | [[Environments]] rule 2, [[Hosting]], [[Render-Setup]] | Assumed the code would need a repository without campaign content in it | **Done 2026-09-16** — single repository, code under `app/`; rule 2 narrowed to what a public repository can still enforce |
 
 ### Open
 
@@ -66,7 +74,7 @@ Each is worked in the chat context, with superseded reasoning kept in place per 
 | 1.9 | Epic 1 | Still written against the old release axis: *"no player reads anything until Release 2"* (Dependencies), and S6 calls itself *"one of the three unrecoverable ones"* where there are now four | Players read in RC 1b under [[Release-Plan]]; correct both in place |
 | 1.10 | [[Open-Requirements]] | Still marks resolved questions **[blocking]** — §1 player identity, §3 surfacing versus authoring, §7 character death, §9 one campaign or many. [[Backlog-Readiness]] §G11 flagged this; it was never fixed | Strike each with its answer and a link |
 | 1.11 | [[Backlog-Readiness]] | Still lists G1 (release boundary), G2 (graph model), G3 (surfacing) and G8 (connectivity) as blocking. All four are answered in [[Roadmap]] §Resolved | Strike with answers, or mark the whole document historical |
-| 1.12 | `CLAUDE.md` | Never points Claude Code at `_delivery/` — so [[Issue-Conventions]], [[Test-Strategy]] and [[Environments]] are outside its reading path. The test-first split and the definition of ready are exactly what it must follow. It also has no section on **how to work an issue**: one issue per session, branch and pull request, a `test` issue never reading the implementation branch, findings filed before code | Add a *Working an issue* section and add `_delivery/` to the reading order. Moves with the code if Stage 2 separates repositories |
+| 1.12 | `CLAUDE.md` | Never points Claude Code at `_delivery/` — so [[Issue-Conventions]], [[Test-Strategy]] and [[Environments]] are outside its reading path. The test-first split and the definition of ready are exactly what it must follow. It also has no section on **how to work an issue**: one issue per session, branch and pull request, a `test` issue never reading the implementation branch, findings filed before code | Add a *Working an issue* section and add `_delivery/` to the reading order. It stays at the repository root, beside `app/` |
 | 1.13 | [[Backup-and-Durability]] | *"Run once before cutover, against the test environment"* does not say whose backup. Restoring production's snapshot anywhere near test breaks rule 1 in [[Environments]] | Say it: restore **test's** backup into a new database. Render restores into a new instance, which fits |
 | 1.14 | Epic 1 S12 | Requires *"the GM can see each proposal as a player would see it"* from the first session, which its own Dependencies section calls a forward dependency on Epic 15 — RC 1b | Either pull a narrow preview slice into RC 1a explicitly, or restate S12. Otherwise S12 cannot be accepted in its own candidate |
 | 1.15 | Epic 3 | Dependencies: *"Where [investment] is set is not yet assigned to an epic — worth confirming it is not orphaned between Epic 1 and Epic 4."* S10 cannot be accepted without an input | Assign recording investment to an epic in RC 1a, or move S10 out of RC 1a |
@@ -82,33 +90,39 @@ After: run `check_links`, `check_staleness --days 0` on a full clone, and `check
 
 ## Stage 2 — Decisions
 
-Six are needed before issue 1. The rest are recorded so they are not discovered.
+Five remain before issue 1. The rest are recorded so they are not discovered.
 
 ### Needed before issue 1
 
 | Decision | Why now | Where it lands |
 |---|---|---|
 | ~~**Container host**~~ | **Settled: Render.** See [[Hosting]] §Host | [[Hosting]] |
-| **Where the application code lives** — and, with it, where the design corpus lives | See below. Blocks connecting GitHub to Render, and decides where Claude Code works | [[Hosting]] §Open questions |
+| ~~**Where the application code lives**~~ | **Settled: this repository, under `app/`.** See below | [[Hosting]] §Open questions |
 | **Framework** | The walking skeleton cannot be built without a language and web framework. [[Hosting]] leaves this to an ADR proposed by Claude Code and ratified by the GM — so it is a `spike` issue before issue 1, not a chat decision | ADR in the source tree |
 | **Who writes the issues** | [[Issue-Conventions]] says what an issue contains but not who creates it. *Proposal:* the chat context drafts them from stories through the GitHub connector; the GM approves and writes each pre-registered expectation | [[Issue-Conventions]] |
 | **Cutover date** | [[Store-and-Access]] asks for it to be chosen rather than arrived at. It is the deadline for the restore drill | [[Backup-and-Durability]] |
 | **Cost ceiling** | Shape settled: two databases, test suspended when idle. No figure exists anywhere | [[Hosting]] |
 | **Recovery expectation** | How much work may be lost, and how long a restore may take | [[Backup-and-Durability]] |
 
-#### The repository question, laid out
+#### The repository question — settled
 
-Render copies the whole connected repository into each deployment. Connecting `Malvasia-Plays-DCC` puts the campaign folders inside test, which breaks rule 2 in [[Environments]]. But Claude Code needs the design corpus, and must be able to write `_feedback/`, in the repository it works in.
+**Settled by the GM: one repository.** Claude Code works in `Malvasia-Plays-DCC` with the corpus beside the code, and Render deploys from the same repository with its **Root Directory** set to `app/`. Render's documentation states that files outside a service's root directory "are not available to the service at build time or at runtime", so the campaign folders never enter a deployment. **Build filters** limited to `app/` keep campaign commits from redeploying test. Settings are in [[Render-Setup]] §Part 6.
 
-| Option | What happens | Cost |
-|---|---|---|
-| **A. New product repository holds code and the product corpus** *(proposal)* | `_design/`, `_backlog/`, `_delivery/`, `_feedback/`, `_tools/`, `COLLABORATION.md`, `CLAUDE.md` move to it. `Malvasia-Plays-DCC` keeps the numbered campaign folders and becomes the frozen conversion source | One move, done once. `_design/` is campaign-agnostic by rule, so it belongs with the product rather than with one campaign |
-| B. New repository for code only; corpus stays | Claude Code works across two sibling clones in a VS Code multi-root workspace | Every session depends on the second clone being present and current. `_feedback/` would be written into the campaign repository |
-| C. Code in `Malvasia-Plays-DCC` | Campaign content moves out first | Moves the thing that is supposed to stay frozen |
+**Superseded** — the analysis as first written, kept per `COLLABORATION.md`. What it missed: it assumed Render always carries the whole repository. The root-directory setting removes that assumption, and with it the case for a second repository.
 
-**Not a submodule.** Pulling the campaign repository into the code repository as a submodule puts it back inside the deployment.
+> Render copies the whole connected repository into each deployment. Connecting `Malvasia-Plays-DCC` puts the campaign folders inside test, which breaks rule 2 in [[Environments]]. But Claude Code needs the design corpus, and must be able to write `_feedback/`, in the repository it works in.
+>
+> | Option | What happens | Cost |
+> |---|---|---|
+> | **A. New product repository holds code and the product corpus** *(proposal)* | `_design/`, `_backlog/`, `_delivery/`, `_feedback/`, `_tools/`, `COLLABORATION.md`, `CLAUDE.md` move to it. `Malvasia-Plays-DCC` keeps the numbered campaign folders and becomes the frozen conversion source | One move, done once. `_design/` is campaign-agnostic by rule, so it belongs with the product rather than with one campaign |
+> | B. New repository for code only; corpus stays | Claude Code works across two sibling clones in a VS Code multi-root workspace | Every session depends on the second clone being present and current. `_feedback/` would be written into the campaign repository |
+> | C. Code in `Malvasia-Plays-DCC` | Campaign content moves out first | Moves the thing that is supposed to stay frozen |
+>
+> **Not a submodule.** Pulling the campaign repository into the code repository as a submodule puts it back inside the deployment.
+>
+> **One sub-question under A:** `_templates/` is both the GM's authoring format and the import contract conversion code implements (`_templates/CONVENTIONS.md`). The conversion code needs the contract; the GM keeps using the templates until cutover. Decide which repository is authoritative for it.
 
-**One sub-question under A:** `_templates/` is both the GM's authoring format and the import contract conversion code implements (`_templates/CONVENTIONS.md`). The conversion code needs the contract; the GM keeps using the templates until cutover. Decide which repository is authoritative for it.
+**What stays open from it:** the import job, like everything under `app/`, cannot see the campaign folders at build or run time. It has to read them another way — from GitHub, since the repository is public, or by running from the development machine against production. That is [[Hosting]] §Open questions 1.
 
 ### Known, not blocking
 
@@ -142,9 +156,9 @@ The question set already exists in [[Verification-and-Challenge]]. What is missi
 
 ## Stage 4 — Repository and GitHub setup
 
-After the repository decision. None of this is code.
+None of this is code.
 
-- [ ] **The code repository exists and is private.** Under option A, the corpus is moved into it with history, and `CLAUDE.md` paths and `_tools/` search directories are checked afterward.
+- [ ] ~~**The code repository exists and is private.** Under option A, the corpus is moved into it with history, and `CLAUDE.md` paths and `_tools/` search directories are checked afterward.~~ **Superseded:** no new repository. The walking-skeleton issue creates `app/` in this one.
 - [ ] **Labels** from [[Issue-Conventions]]: `rc-1a` to `rc-1d`, `unrecoverable`, `blocked-finding`, `blocked-decision`, `chat-context`. *Proposal:* also one label per issue type — `test`, `impl`, `enabling`, `corpus`, `spike` — so the test-first order can be filtered.
 - [ ] **An issue template** carrying the fields in [[Issue-Conventions]] §What an issue contains, so no issue is written without its assertion, demo, exclusions and pre-registered expectation.
 - [ ] **Milestones** per release candidate, if wanted. Optional; labels already carry it.
@@ -219,6 +233,6 @@ Checked against each epic's own open-questions and dependencies sections, not by
 
 ## The shortest honest summary
 
-One check that cannot wait — the repository's visibility. Nine corpus corrections, one of them a contradiction Claude introduced. Six decisions before issue 1, the repository question first. One hand pass over the legacy files. Repository and GitHub setup, Render Parts 1–5, and a check of the development machine. Then a framework spike and three enabling issues, after which Epic 1's test issues can open.
+~~One check that cannot wait — the repository's visibility.~~ Visibility is settled: public, by choice. Nine corpus corrections, one of them a contradiction Claude introduced. Five decisions before issue 1, now that the repository question is settled. One hand pass over the legacy files. Repository and GitHub setup, Render Parts 1–5, and a check of the development machine. Then a framework spike and three enabling issues, after which Epic 1's test issues can open.
 
 ~~Nothing on that list needs a framework chosen to begin, and the first two stages need no infrastructure at all.~~ *Stages 0 through 4 need no framework and no infrastructure; issue 1 needs both.*
