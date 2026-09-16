@@ -91,6 +91,8 @@ So a visible entity's page cannot be rendered by filtering nodes alone. Every ed
 
 This is the concrete form of the requirement in [[Interface-Direction]] that the player surface is a filter over one store. The filter operates at three levels, not one.
 
+**Worth keeping as the reference example:** a legend can reveal that an ancient city existed without revealing which region it stood in. The city materializes through the legend; the `located in` edge to its region is a separate, unrevealed relationship, and the region stays unmaterialized along with it. Existence and connection are independent exactly as above — the city's existence doesn't pull its geography along.
+
 ---
 
 ## Leakage: absence has a shape
@@ -121,6 +123,14 @@ It also fits [[Facts-and-Revelation]] cleanly. An utterance is a fact with its o
 
 ---
 
+## Revealed does not require having been used at the table
+
+A fact can be marked revealed because it's ambient knowledge a character living in the setting would plausibly have — folklore, geography, reputation — whether or not it was ever narrated in a specific session. Not a new mechanism: ordinary per-fact revelation, exercised during planning rather than triggered by a session.
+
+**Worth naming because it changes the shape of the risk.** [[Planning-Loop]] already expects a GM to mark a batch of background material revealed before any session touches it. Revealing at table-play time gets a checkpoint for free — the GM notices what the players just heard. Revealing in bulk during planning removes that checkpoint: a fact filed as common knowledge months earlier can turn out to quietly answer a mystery the GM hasn't written yet. The mechanism doesn't change; the review discipline around bulk reveal during planning is worth real thought once this is built.
+
+---
+
 ## Consequences
 
 - **Visibility is an attribute of facts and edges, not only of entities.** The file-level flag in `README.md` is insufficient and should not be built on.
@@ -132,3 +142,4 @@ It also fits [[Facts-and-Revelation]] cleanly. An utterance is a fact with its o
 - **Player-facing identifiers are non-sequential, or not exposed.** Cheap now; a migration once anything references them.
 - **Every player-facing computation runs over the filtered store**, including counts, summaries, graph layout, and search.
 - **Reveal is an action on facts and edges.** Any interface treating it as a per-entity toggle will either over-reveal or become unusable.
+- **Revealed facts need not have been used at the table.** Ambient knowledge set during planning is ordinary per-fact revelation — but bulk-setting it before play removes the natural at-table checkpoint that would otherwise catch a spoiler-adjacent fact.
