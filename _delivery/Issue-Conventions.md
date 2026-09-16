@@ -91,6 +91,8 @@ Pre-registered expectation:   <for demo-accepted work — written before running
 | `blocked-decision` | Waiting on an open decision in `_design/` |
 | `chat-context` | Not for Claude Code |
 
+Status labels (`backlog`, `in-progress`, `in-review`) and the commands to create every label are in [[Issue-Lifecycle]].
+
 **`unrecoverable` earns its own label** because [[Roadmap]] warns these "will look like optional polish under delivery pressure." The four are speaker attribution, two clocks, comparable attributes, and per-fact visibility. An issue carrying that label is never descoped to fit a session.
 
 ---
