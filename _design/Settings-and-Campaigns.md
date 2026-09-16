@@ -123,7 +123,7 @@ It is still a real thing for a GM to plan around, and it is the same question [[
 
 **No separate authoring surface.** Creating setting-level material — entities, and in time facts about them — is a version of the same [[Planning-Loop]] a GM already runs for campaign prep. There is no "author a setting" mode distinct from ordinary planning; scope is the only thing that varies, and that falls out of the tiers already established above.
 
-**Campaign creation offers linking to an existing setting or starting a new one.** A single fork at one screen, not a new subsystem — see §Consequences below.
+~~**Campaign creation offers linking to an existing setting or starting a new one.** A single fork at one screen, not a new subsystem — see §Consequences below.~~ **Corrected 2026-09-16, GM decision:** the link-or-create fork belongs to the release that first lets a GM create a campaign in the tool. RC 1a creates its only campaign by conversion (Epic 13), so there is no creation screen and the setting stays invisible, as §The shape requires. The struck wording contradicted that; it was Claude's error, introduced earlier the same day.
 
 ---
 
@@ -182,12 +182,12 @@ The concrete collision case: GM A plans a future event in Campaign A, touching a
 - A setting tier exists, holding exactly one setting, invisible in the interface.
 - Identifiers are unique within a setting.
 - Visibility is held per fact per campaign, even while there is only one campaign to hold it for.
-- Campaign creation offers linking to an existing setting or creating a new one — a single fork at one screen, even though "new" is the only branch ever taken until a second setting exists.
-- Every entity records which campaign originated it. Facts already carry this (see §What carries, and what does not); entities didn't need it while there was one campaign per setting, but a future Setting Owner (see §Setting ownership) cannot promote a campaign's creation into canon without knowing whose it was, and that attribution can't be reconstructed after the fact.
+- ~~Campaign creation offers linking to an existing setting or creating a new one — a single fork at one screen, even though "new" is the only branch ever taken until a second setting exists.~~ **Deferred** to the release that adds campaign creation — see §Setting creation happens through planning.
+- Every entity records which campaign originated it. Facts already carry this (see §What carries, and what does not); entities didn't need it while there was one campaign per setting, but a future Setting Owner (see §Setting ownership) cannot promote a campaign's creation into canon without knowing whose it was. ~~and that attribution can't be reconstructed after the fact.~~ **Corrected 2026-09-16:** while a setting holds one campaign, origin is derivable — every entity came from that campaign — so this is **not** one of the unrecoverable requirements and carries no `unrecoverable` label. It becomes unrecoverable the moment a second campaign shares a setting, which is its deadline. Recorded from RC 1a anyway, in Epic 13 S11, because it costs nothing now.
 
 **Explicitly not now:** seeding a second campaign, cross-campaign time comparison, cross-campaign queries, promotion into canon, Setting Owner as an enforced role, or any interface acknowledging that settings exist.
 
-**The reasoning is the same as the campaign container's.** Optionality is cheap; capability is expensive. The items above cost almost nothing while there is one campaign, and the visibility field and the entity origin field are both unrecoverable if deferred — neither can be split or backfilled later without guessing, on exactly the axis where guessing wrong is a spoiler or an attribution dispute.
+**The reasoning is the same as the campaign container's.** Optionality is cheap; capability is expensive. The items above cost almost nothing while there is one campaign, and the visibility field is unrecoverable if deferred — it cannot be split later without guessing, on exactly the axis where guessing wrong is a spoiler. ~~and the visibility field and the entity origin field are both unrecoverable if deferred~~ The entity origin field has a later deadline: before any setting holds a second campaign.
 
 ---
 

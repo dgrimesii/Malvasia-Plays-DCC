@@ -99,13 +99,15 @@ Pre-registered expectation:   <for demo-accepted work — written before running
 
 **Not a story.** A deployed application at its real addresses, on the target store, serving nothing.
 
-> `[enabling] Walking skeleton — deploy to all three environments`
+> `[enabling] Walking skeleton — deploy to test and production, and run locally` *(was: "deploy to all three environments" — dev is local and has no address)*
 >
 > **Assertion:** The application responds at `test.warpandweft.ink` and at `storyteller.warpandweft.ink`, backed by a Postgres instance per environment, with schema migrations applied as a discrete step. Production carries the access boundary; test does not. The test environment holds no credential that can reach the production store.
 >
 > **Demo:** Open both URLs. Show the migration applied in each. Show the test environment failing to reach production data.
 >
 > **Excluded:** Any campaign data, any domain model, any interface.
+>
+> **Settings:** [[Render-Setup]] §Part 6 — region, plans, root directory, build filters, auto-deploy.
 
 It clears [[Shippable-Increment]] exactly — functional, non-breaking, testable, demoable, and **not useful**, which that document explicitly permits.
 
