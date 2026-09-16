@@ -52,11 +52,11 @@ So the harness must render store contents as readable text on demand. This overl
 
 Considered and rejected: using the dossiers and the Floor 1 plan as the fixture, since they are already written and already legacy-shaped.
 
-Four reasons against, and the second is decisive:
+~~Four reasons against, and the second is decisive:~~ Four reasons were given; after the 2026-09-16 decisions two stand, and they are enough:
 
 - [[Shippable-Increment]] rules it out directly — the real record is what the non-breaking rule protects, and it changes weekly, so assertions break for reasons unrelated to the code.
-- **The test environment is the reviewer's URL.** [[Epic-Writing-Standard]] rules the Floor 1 plan out of anything Julia reads. A fixture drawn from real content makes the review artifact a spoiler.
-- The two artifacts do not share a status. Player dossiers are usable in written material because "creation happened in the open, in person"; the Floor 1 plan and any GM intent built on a dossier are not.
+- ~~**The test environment is the reviewer's URL.** [[Epic-Writing-Standard]] rules the Floor 1 plan out of anything Julia reads. A fixture drawn from real content makes the review artifact a spoiler.~~ **Superseded:** Floor 1 holds no real secrets, and Julia's reviewer and player roles are treated as separate personas. The fixture is now what keeps those personas apart, rather than a reason in itself.
+- ~~The two artifacts do not share a status. Player dossiers are usable in written material because "creation happened in the open, in person"; the Floor 1 plan and any GM intent built on a dossier are not.~~ **Superseded** for the same reason. GM intent built on a dossier is still not usable — see [[Epic-Writing-Standard]].
 - The real campaign cannot supply what the fixture is for — see the adversarial cases below, most of which have not happened at the table.
 
 **What it does take from the real material is shape.** Same artifact types, same defect classes, same rough scale, none of the content. The hand conversion pass in [[Readiness-Checklist]] is what tells you which cases are hard, and the fixture should contain those.

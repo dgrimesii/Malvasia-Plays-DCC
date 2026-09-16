@@ -29,7 +29,7 @@ That does not make it worthless. It reliably catches **omission, unstated assump
 Two consequences:
 
 - **Design the challenge structurally**, not attitudinally. Separation of what each side can see does more than instructing anything to be skeptical.
-- **Reserve the one uncorrelated reviewer for what matters.** Julia is a Product Owner and is at the table. She cannot see GM campaign content, but she can review *the tool's requirements and plans*, which is where correlated review is weakest. Use her on the decisions in [[Backlog-Readiness]], not on code.
+- **Reserve the one uncorrelated reviewer for what matters.** Julia is a Product Owner and is at the table. ~~She cannot see GM campaign content, but~~ Her two roles are treated as separate personas (GM decision, 2026-09-16), with review of future work done against fixtures rather than real content; she can review *the tool's requirements and plans*, which is where correlated review is weakest. Use her on the decisions in [[Backlog-Readiness]], not on code.
 
 ---
 

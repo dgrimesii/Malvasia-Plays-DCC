@@ -41,15 +41,19 @@ Test runs the fixture. Dev runs the fixture. Neither ever holds a copy of the re
 
 Epic 13's conversion reads the frozen campaign repository. If it can run in test, rule 1 survives only until someone runs it there to see what happens.
 
-**Enforced by:** conversion is a production-only deployment target, and the campaign source is not fetchable from the test environment.
+**Enforced by:** conversion is a production-only deployment target~~, and the campaign source is not fetchable from the test environment~~.
+
+**Narrowed 2026-09-16.** The repository is public by the GM's decision, so the campaign source is fetchable from anywhere, test included; the struck clause cannot be enforced. What remains structural: the conversion job is never deployed to test, and the Root Directory in [[Render-Setup]] §Part 6 keeps the campaign folders out of every deployment's files. Rule 1 does not depend on the struck clause — test still holds no production credential and no copy of the record.
 
 ---
 
 ## Why test serves the fixture rather than a copy of production
 
-The obvious shortcut — mirror production into test so the data is realistic — breaks three things at once.
+The obvious shortcut — mirror production into test so the data is realistic — ~~breaks three things at once~~ breaks two things, and once broke a third.
 
-**It spoils the campaign.** [[Verification-and-Challenge]] identifies Julia as the one uncorrelated reviewer available, and [[Hosting-Implications]] notes that a URL she can open is a better artifact than documents describing one. She is also a player at the table. [[Epic-Writing-Standard]] rules out the Floor 1 plan and anything the GM intends to do with a dossier. A test environment holding real content cannot be handed to the only reviewer who is worth having.
+~~**It spoils the campaign.** [[Verification-and-Challenge]] identifies Julia as the one uncorrelated reviewer available, and [[Hosting-Implications]] notes that a URL she can open is a better artifact than documents describing one. She is also a player at the table. [[Epic-Writing-Standard]] rules out the Floor 1 plan and anything the GM intends to do with a dossier. A test environment holding real content cannot be handed to the only reviewer who is worth having.~~
+
+**Superseded 2026-09-16 by the GM.** Julia as Product Owner and Julia as a player are treated as separate personas, Floor 1 holds no real secrets, and the repository is public. The spoiler argument no longer carries the weight it did. **The conclusion survives on the other two reasons** — and the fixture is how the two personas stay apart in practice, since review of future work is done against it rather than against real content.
 
 **It makes assertions unstable.** Sessions are played weekly. An acceptance criterion measured against content that changed on Sunday is not a criterion.
 

@@ -17,6 +17,8 @@ How epics and stories are written for this project. Follows from the reviewer ro
 
 Julia is the one uncorrelated reviewer available. She has never run or played a game of this kind. If an epic cannot be understood and critiqued by her, it cannot be reviewed by anyone outside the builder's own head.
 
+**Julia as Product Owner and Julia as a player are treated as separate personas** (GM decision, 2026-09-16). Review artifacts for future work are built from fixtures, which is what keeps the two apart.
+
 ---
 
 ## Why this is worth the cost
@@ -75,13 +77,15 @@ Story voice does not change. Stories stay written as value to the user, not as i
 
 ## What examples may be drawn from
 
-**There is currently almost nothing to spoil.** The only real campaign secret is the Floor 1 plan — its specific rooms and its quest. The NPCs and connections that appear throughout `_design/` are illustrations written to explain a model, not established campaign facts.
+**There is currently almost nothing to spoil.** ~~The only real campaign secret is the Floor 1 plan — its specific rooms and its quest.~~ **Corrected by the GM, 2026-09-16:** Floor 1 is the tutorial floor and holds no real secrets. The only secrets are **what might happen in its events**. The NPCs and connections that appear throughout `_design/` are illustrations written to explain a model, not established campaign facts.
 
 | Source | Usable in epics |
 |---|---|
 | **Player character material** — the dossiers, backgrounds, and choices made during character creation | **Yes.** Creation happened in the open, in person. Everyone at the table already knows it. |
 | **Invented examples** | **Yes**, and the default. |
-| **The Floor 1 plan** — its rooms, its quest | **No.** |
+| ~~**The Floor 1 plan** — its rooms, its quest~~ | ~~**No.**~~ |
+| **Floor 1 places, rooms and quest** | **Yes.** The tutorial floor; nothing there is secret. |
+| **What might happen in an event** — planned outcomes, twists, what the GM has decided will follow | **No.** |
 | **GM plans built on player material** — hooks intended from a background, threads being set up, anything not yet in play | **No.** The dossier is shared; what the GM intends to do with it is not. |
 
 Real character material is genuinely useful for the epics about dossier answers as hooks and about a player reaching for their own character's background — those are hard to illustrate convincingly with invented people.
