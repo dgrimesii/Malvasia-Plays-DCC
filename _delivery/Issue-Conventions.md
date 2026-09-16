@@ -50,8 +50,8 @@ Where a story is large enough that its assertion covers several independent beha
 
 An issue may be started when all of these hold. If one does not, it is not refinement — it is blocked.
 
-1. **It names its story**, by epic and story number, or is typed `enabling`.
-2. **Its acceptance is the story's assertion and demo**, quoted rather than paraphrased. A paraphrase is where scope moves.
+1. **It names its story**, by epic and story number, or is typed `enabling` or `spike`. *(`spike` added 2026-09-16: as first written, no spike could pass this item.)*
+2. **Its acceptance is the story's assertion and demo**, quoted rather than paraphrased. A paraphrase is where scope moves. An `enabling` or `spike` issue has no story, so it carries its own assertion and demo, written in the chat context — see §The first issue.
 3. **Every term it uses resolves** in [[Glossary]]. A missing term means the glossary needs an entry, not that the issue can proceed.
 4. **Its prerequisites exist.** P2 before any increment; P3 before anything that writes campaign data; P5 before inference.
 5. **No blocking finding is open against the design it rests on.** A contradiction stops the build per `_feedback/README.md`.
@@ -88,7 +88,7 @@ Pre-registered expectation:   <for demo-accepted work — written before running
 | `rc-1a` … `rc-1d` | Release candidate, per [[Roadmap]] |
 | `unrecoverable` | Touches one of the four requirements that cannot be added later |
 | `blocked-finding` | Waiting on a finding in `_feedback/` |
-| `blocked-decision` | Waiting on an open decision in `_design/` |
+| `blocked-decision` | Waiting on a decision — an open one in `_design/`, or one the issue itself needs before it meets the definition of ready |
 | `chat-context` | Not for Claude Code |
 
 Status labels (`backlog`, `in-progress`, `in-review`) and the commands to create every label are in [[Issue-Lifecycle]].
