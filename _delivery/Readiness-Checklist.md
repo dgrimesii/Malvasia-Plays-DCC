@@ -20,7 +20,7 @@ The ordered path from here to handing Claude Code, in VS Code, a GitHub issue it
 | Design corpus for RC 1a | Written. Epics 1, 2, 3, 13 marked ready, with story-level holds listed in Stage 7 |
 | Platform | **Settled** — Render and Cloudflare. See [[Hosting]], [[Render-Setup]] |
 | Original corpus corrections (1.1–1.6) | **All done** |
-| New corpus corrections (1.7–1.15) | Eight open; 1.13 done |
+| New corpus corrections (1.7–1.15) | **All done** 2026-09-16 |
 | Decisions needed before issue 1 | **None open.** All settled, with the cutover date deliberately deferred |
 | GitHub | No issues, no labels, no issue template, no `app/` folder yet |
 | Local development machine | Not yet checked for what Claude Code will need |
@@ -65,24 +65,24 @@ Each is worked in the chat context, with superseded reasoning kept in place per 
 | 1.16 | [[Environments]], [[Test-Strategy]], [[Epic-Writing-Standard]], [[Verification-and-Challenge]] | Rested on Julia being one person who could not see GM material, and on Floor 1 being secret | **Done 2026-09-16** — superseded in place per the Stage 0 decisions |
 | 1.17 | [[Environments]] rule 2, [[Hosting]], [[Render-Setup]] | Assumed the code would need a repository without campaign content in it | **Done 2026-09-16** — single repository, code under `app/`; rule 2 narrowed to what a public repository can still enforce |
 
-### Open
+### ~~Open~~ Done 2026-09-16
 
-| # | Document | What is wrong | Proposed fix |
+| # | Document | What is wrong | Proposed fix, and outcome |
 |---|---|---|---|
-| 1.7 | [[Settings-and-Campaigns]] | **Contradicts itself — introduced by Claude on 2026-09-16.** The new "campaign creation offers linking to an existing setting or starting a new one" sits beside "the setting is invisible until a second campaign is created" and "explicitly not now: any interface acknowledging that settings exist" | *Proposal:* the fork belongs to the release that first lets a GM create a campaign in the tool. RC 1a creates its only campaign by conversion (Epic 13), so there is no creation screen and the setting stays invisible. Needs the GM's call |
-| 1.8 | Epic 13 S11 | Does not carry the decision that **every entity records which campaign originated it**, added to the RC 1a backlog in [[Settings-and-Campaigns]] | Add it to S11's assertion and demo. Also decide whether it earns the `unrecoverable` label — it has the same shape as the four, but the four are a settled list |
-| 1.9 | Epic 1 | Still written against the old release axis: *"no player reads anything until Release 2"* (Dependencies), and S6 calls itself *"one of the three unrecoverable ones"* where there are now four | Players read in RC 1b under [[Release-Plan]]; correct both in place |
-| 1.10 | [[Open-Requirements]] | Still marks resolved questions **[blocking]** — §1 player identity, §3 surfacing versus authoring, §7 character death, §9 one campaign or many. [[Backlog-Readiness]] §G11 flagged this; it was never fixed | Strike each with its answer and a link |
-| 1.11 | [[Backlog-Readiness]] | Still lists G1 (release boundary), G2 (graph model), G3 (surfacing) and G8 (connectivity) as blocking. All four are answered in [[Roadmap]] §Resolved | Strike with answers, or mark the whole document historical |
-| 1.12 | `CLAUDE.md` | Never points Claude Code at `_delivery/` — so [[Issue-Conventions]], [[Test-Strategy]] and [[Environments]] are outside its reading path. The test-first split and the definition of ready are exactly what it must follow. It also has no section on **how to work an issue**: one issue per session, branch and pull request, a `test` issue never reading the implementation branch, findings filed before code | Add a *Working an issue* section and add `_delivery/` to the reading order. It stays at the repository root, beside `app/` |
+| 1.7 | [[Settings-and-Campaigns]] | **Contradicts itself — introduced by Claude on 2026-09-16.** The new "campaign creation offers linking to an existing setting or starting a new one" sits beside "the setting is invisible until a second campaign is created" and "explicitly not now: any interface acknowledging that settings exist" | ~~*Proposal:* the fork belongs to the release that first lets a GM create a campaign in the tool. RC 1a creates its only campaign by conversion (Epic 13), so there is no creation screen and the setting stays invisible. Needs the GM's call~~ **Done 2026-09-16** — GM accepted the proposal; the fork waits for campaign creation in the tool |
+| 1.8 | Epic 13 S11 | Does not carry the decision that **every entity records which campaign originated it**, added to the RC 1a backlog in [[Settings-and-Campaigns]] | ~~Add it to S11's assertion and demo. Also decide whether it earns the `unrecoverable` label — it has the same shape as the four, but the four are a settled list~~ **Done 2026-09-16** — added to S11. **No `unrecoverable` label** (GM decision): origin is derivable while a setting holds one campaign; its deadline is a second campaign in a setting |
+| 1.9 | Epic 1 | Still written against the old release axis: *"no player reads anything until Release 2"* (Dependencies), and S6 calls itself *"one of the three unrecoverable ones"* where there are now four | ~~Players read in RC 1b under [[Release-Plan]]; correct both in place~~ **Done 2026-09-16** — the Dependencies note is replaced (see 1.14). **The S6 half was a misread:** "three" means the three unrecoverable stories *in this epic* (S6, S14, S15), as the epic's own value section says, so it was left as written |
+| 1.10 | [[Open-Requirements]] | Still marks resolved questions **[blocking]** — §1 player identity, §3 surfacing versus authoring, §7 character death, §9 one campaign or many. [[Backlog-Readiness]] §G11 flagged this; it was never fixed | ~~Strike each with its answer and a link~~ **Done 2026-09-16** — each struck with its answer |
+| 1.11 | [[Backlog-Readiness]] | Still lists G1 (release boundary), G2 (graph model), G3 (surfacing) and G8 (connectivity) as blocking. All four are answered in [[Roadmap]] §Resolved | ~~Strike with answers, or mark the whole document historical~~ **Done 2026-09-16** — marked historical, with a status table; G1, G2, G3, G8 struck |
+| 1.12 | `CLAUDE.md` | Never points Claude Code at `_delivery/` — so [[Issue-Conventions]], [[Test-Strategy]] and [[Environments]] are outside its reading path. The test-first split and the definition of ready are exactly what it must follow. It also has no section on **how to work an issue**: one issue per session, branch and pull request, a `test` issue never reading the implementation branch, findings filed before code | ~~Add a *Working an issue* section and add `_delivery/` to the reading order. It stays at the repository root, beside `app/`~~ **Done 2026-09-16** — `_delivery/` added to the reading order; *Working an issue* section added |
 | 1.13 | [[Backup-and-Durability]] | *"Run once before cutover, against the test environment"* does not say whose backup. Restoring production's snapshot anywhere near test breaks rule 1 in [[Environments]] | ~~Say it: restore **test's** backup into a new database.~~ **Done 2026-09-16** with the recovery expectation |
-| 1.14 | Epic 1 S12 | Requires *"the GM can see each proposal as a player would see it"* from the first session, which its own Dependencies section calls a forward dependency on Epic 15 — RC 1b | Either pull a narrow preview slice into RC 1a explicitly, or restate S12. Otherwise S12 cannot be accepted in its own candidate |
-| 1.15 | Epic 3 | Dependencies: *"Where [investment] is set is not yet assigned to an epic — worth confirming it is not orphaned between Epic 1 and Epic 4."* S10 cannot be accepted without an input | Assign recording investment to an epic in RC 1a, or move S10 out of RC 1a |
+| 1.14 | Epic 1 S12 | Requires *"the GM can see each proposal as a player would see it"* from the first session, which its own Dependencies section calls a forward dependency on Epic 15 — RC 1b | ~~Either pull a narrow preview slice into RC 1a explicitly, or restate S12. Otherwise S12 cannot be accepted in its own candidate~~ **Done 2026-09-16** — GM decision: a filter toggle over the GM's own review, using the shared player-facing filter; not a rendering of the player view. No dependency on Epic 15 |
+| 1.15 | Epic 3 | Dependencies: *"Where [investment] is set is not yet assigned to an epic — worth confirming it is not orphaned between Epic 1 and Epic 4."* S10 cannot be accepted without an input | ~~Assign recording investment to an epic in RC 1a, or move S10 out of RC 1a~~ **Done 2026-09-16** — GM decision: new Epic 1 S17, investment set optionally during session review; suggestions follow in Epic 6 |
 
-Two smaller ones, fix while there:
+Two smaller ones, fixed with them:
 
-- [[Issue-Conventions]] says the walking skeleton deploys to *"all three environments at their real addresses"*. Dev is local and has no address. Its settings should also point at [[Render-Setup]] §Part 6.
-- [[Glossary]] has no entry for **Setting Owner**. Not needed by any RC 1a issue; needed before anything cites it.
+- [[Issue-Conventions]] says the walking skeleton deploys to *"all three environments at their real addresses"*. Dev is local and has no address. Its settings should also point at [[Render-Setup]] §Part 6. **Done.**
+- [[Glossary]] has no entry for **Setting Owner**. Not needed by any RC 1a issue; needed before anything cites it. **Done**, with a discriminating example.
 
 After: run `check_links`, `check_staleness --days 0` on a full clone, and `check_definitions --min 3`.
 
@@ -208,10 +208,10 @@ Checked against each epic's own open-questions and dependencies sections, not by
 
 | Epic | Stories held, and by what |
 |---|---|
-| **1 — Capture a session** | **S12** — needs a stated line for what counts as invention; and 1.14. **S11** — Release 2, excluded from RC 1a by [[Roadmap]]. **S15** — can start on the four proposed attribute kinds; the set is revisable by design |
+| **1 — Capture a session** | **S12** — needs a stated line for what counts as invention. ~~and 1.14~~ The preview question is settled as a filter toggle. **S17** — new; ready once P2 and P3 exist. **S11** — Release 2, excluded from RC 1a by [[Roadmap]]. **S15** — can start on the four proposed attribute kinds; the set is revisable by design |
 | **2 — Find anything, fast** | **S2** — needs a target number beneath the ten-second failure bar, and issue 1 deployed. **S5, S6** — need an acceptable failure rate for plain-language questions. **S12** — needs P3's mixed known-and-unknown entities, and Epic 13 S3. The table tier is Release 2 and excluded |
-| **3 — Know the next session is covered** | **S1** — readiness as one answer or a list is undecided. **S2** — what makes a direction *live*, and whether the open surface is capped. **S7** — how far ahead coverage should reach. **S10** — 1.15 |
-| **13 — Move the campaign in** | **S6** — the granularity at which prose becomes facts. **S11** — 1.8. **S13** — which origin-date source to use; affects coverage, not correctness. The epic's size depends on 3.1, and it runs against the live record only at cutover |
+| **3 — Know the next session is covered** | **S1** — readiness as one answer or a list is undecided. **S2** — what makes a direction *live*, and whether the open surface is capped. **S7** — how far ahead coverage should reach. ~~**S10** — 1.15~~ **S10** — input now comes from Epic 1 S17 |
+| **13 — Move the campaign in** | **S6** — the granularity at which prose becomes facts. ~~**S11** — 1.8.~~ **S13** — which origin-date source to use; affects coverage, not correctness. The epic's size depends on 3.1, and it runs against the live record only at cutover |
 
 **Everything else in these four epics is ready once P2 and P3 exist** — which is most of Epic 1, and enough of Epics 2 and 3 to start.
 
@@ -233,6 +233,6 @@ Checked against each epic's own open-questions and dependencies sections, not by
 
 ## The shortest honest summary
 
-~~One check that cannot wait — the repository's visibility.~~ Visibility is settled: public, by choice. ~~Nine~~ Eight corpus corrections still open, one of them a contradiction Claude introduced. ~~Five decisions before issue 1.~~ No decisions left before issue 1. One hand pass over the legacy files. Repository and GitHub setup, Render Parts 1–5, and a check of the development machine. Then a framework spike and three enabling issues, after which Epic 1's test issues can open.
+~~One check that cannot wait — the repository's visibility.~~ Visibility is settled: public, by choice. ~~Nine~~ ~~Eight corpus corrections still open, one of them a contradiction Claude introduced.~~ Corpus corrections done. ~~Five decisions before issue 1.~~ No decisions left before issue 1. One hand pass over the legacy files. Repository and GitHub setup, Render Parts 1–5, and a check of the development machine. Then a framework spike and three enabling issues, after which Epic 1's test issues can open.
 
 ~~Nothing on that list needs a framework chosen to begin, and the first two stages need no infrastructure at all.~~ *Stages 0 through 4 need no framework and no infrastructure; issue 1 needs both.*
