@@ -11,6 +11,12 @@ How an epic in `_backlog/` becomes something Claude Code can be told to work.
 
 ---
 
+## Who writes issues
+
+**Settled by the GM, 2026-09-16: Claude, in the desktop chat context, writes issues — and only when prompted.** Nothing is filed on Claude's own initiative, and Claude Code does not open issues for itself. The GM writes the pre-registered expectation.
+
+---
+
 ## The mapping
 
 ```
