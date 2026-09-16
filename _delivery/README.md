@@ -45,6 +45,7 @@ The boundary with the source tree is the same one `CLAUDE.md` already draws. **P
 - **[[Render-Setup]]** — the hand steps that make Render ready for the first deployment.
 - **[[Test-Strategy]]** — the four prerequisites made concrete, and the role separation that makes single-agent testing worth anything.
 - **[[Issue-Conventions]]** — what a GitHub issue contains, how stories map onto issues, and the definition of ready.
+- **[[Issue-Lifecycle]]** — how an issue moves from written to closed: states, the five phases, the plan gate, and the labels.
 - **[[Backup-and-Durability]]** — the requirement left without an owner when the repo stopped being an export target.
 
 ---
