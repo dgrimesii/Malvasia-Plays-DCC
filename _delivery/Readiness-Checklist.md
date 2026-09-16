@@ -23,7 +23,7 @@ The ordered path from here to handing Claude Code, in VS Code, a GitHub issue it
 | New corpus corrections (1.7–1.15) | **All done** 2026-09-16 |
 | Decisions needed before issue 1 | **None open.** All settled, with the cutover date deliberately deferred |
 | GitHub | No issues, no labels, no issue template, no `app/` folder yet |
-| Local development machine | Not yet checked for what Claude Code will need |
+| Local development machine | Claude Code, Git and GitHub already working (other projects). Still to check: a local Postgres runtime and a model API key |
 | Prerequisites P2–P4 | Not started. P2 and P3 are enabling issues; P4 needs ratifying |
 
 ---
@@ -181,8 +181,10 @@ CI itself is created by the walking-skeleton issue, not by hand.
 
 Claude Code works from VS Code on Windows. Before issue 1, confirm:
 
-- [ ] **Git** works from the VS Code terminal — the `D:` drive install is a known source of friction
-- [ ] **GitHub CLI** installed and signed in, so Claude Code can read an issue and open a pull request from the terminal
+**GM, 2026-09-16:** VS Code with Claude Code and GitHub integration is already in use on other projects, so the first two items are taken as done. The rest are specific to this project and still open.
+
+- [x] **Git** works from the VS Code terminal — the `D:` drive install is a known source of friction. *Proven on other projects*
+- [x] **GitHub** reachable from Claude Code, so it can read an issue and open a pull request. *Proven on other projects.* If that integration is the GitHub CLI, nothing more is needed; if it is a connector only, issue 1 finds out when it opens its first pull request
 - [ ] **A container runtime** able to run Postgres locally at the version pinned in [[Render-Setup]] §Part 6 — check it against the `D:` drive setup before assuming it works
 - [ ] **A development model API key** kept only on this machine, for live extraction runs. CI does not need one; it replays recorded responses per [[Test-Strategy]]
 - [ ] **The runtime the framework ADR chooses** — installed after that spike, not before
@@ -233,6 +235,6 @@ Checked against each epic's own open-questions and dependencies sections, not by
 
 ## The shortest honest summary
 
-~~One check that cannot wait — the repository's visibility.~~ Visibility is settled: public, by choice. ~~Nine~~ ~~Eight corpus corrections still open, one of them a contradiction Claude introduced.~~ Corpus corrections done. ~~Five decisions before issue 1.~~ No decisions left before issue 1. One hand pass over the legacy files. Repository and GitHub setup, Render Parts 1–5, and a check of the development machine. Then a framework spike and three enabling issues, after which Epic 1's test issues can open.
+~~One check that cannot wait — the repository's visibility.~~ Visibility is settled: public, by choice. ~~Nine~~ ~~Eight corpus corrections still open, one of them a contradiction Claude introduced.~~ Corpus corrections done. ~~Five decisions before issue 1.~~ No decisions left before issue 1. One hand pass over the legacy files. Repository and GitHub setup, Render Parts 1–5, and a local Postgres runtime and API key on the development machine. Then a framework spike and three enabling issues, after which Epic 1's test issues can open.
 
 ~~Nothing on that list needs a framework chosen to begin, and the first two stages need no infrastructure at all.~~ *Stages 0 through 4 need no framework and no infrastructure; issue 1 needs both.*
