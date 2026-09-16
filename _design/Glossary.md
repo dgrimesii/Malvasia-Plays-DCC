@@ -187,6 +187,8 @@ An open claim is **optionality the GM can spend later**, with information they d
 
 **Setting and Campaign** *[model]* — A **setting** is a world; a **campaign** is a story told in it. Entities belong to the setting and are durable across campaigns. Facts, sessions, reveals, arcs, and visibility belong to a campaign. Both tiers exist from the start holding exactly one of each, and the setting is invisible until a second campaign is created. See [[Settings-and-Campaigns]].
 
+**Setting Owner** *[model]* — The role with final say over what a shared setting itself asserts, above any one campaign's GM. Where several GMs co-own a setting, they hold the role jointly. **Example:** a GM running a campaign in someone else's setting can invent an inn for their own table; only the Setting Owner can make that inn part of the setting every campaign sees. A long-term objective, not built in Release 1. See [[Settings-and-Campaigns]] §Setting ownership.
+
 **Provenance** *[model]* — Who asserted something, from which side of the screen, and when, with a citation where there is an external source. Values include the GM, a player, a published author, or a previous campaign in the same setting.
 
 **Provenance does not determine whether a fact is canon.** That is a separate question — what the authoring was *for* — and one author can supply both kinds. See **Canon**.
