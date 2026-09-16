@@ -44,7 +44,7 @@ Four are needed before the first issue. The rest are recorded so they are not di
 |---|---|---|
 | **Container host** | The last open piece of the platform | [[Hosting]] |
 | **Cutover date** | [[Store-and-Access]] asks for it to be chosen rather than arrived at. It is the deadline for the restore drill | [[Backup-and-Durability]] |
-| **Cost ceiling** | Three environments with two managed database instances. No figure exists anywhere | [[Hosting]] |
+| **Cost ceiling** | Shape settled: two managed database instances, test stopped when idle. No figure exists anywhere | [[Hosting]] |
 | **Recovery expectation** | How much work may be lost, and how long a restore may take | [[Backup-and-Durability]] |
 
 ### Known, not blocking

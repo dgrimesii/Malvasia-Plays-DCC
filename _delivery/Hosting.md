@@ -79,6 +79,14 @@ Against it: D1 is SQLite with size and query ceilings that would be discovered r
 
 Cloudflare keeps DNS and gains object storage for backups under C12, which is the part of it that fits well.
 
+### Two database instances, and test may be stopped — settled
+
+**Settled by the GM:** one managed instance for test, one for production. **The test instance may be stopped when it is not needed**, to save cost.
+
+**Considered and rejected: one instance with logical separation.** A single instance holding test and production as separate databases, each with its own login, was weighed as the cheaper shape. Separate databases — not schemas, and not an environment column on shared tables, which is a performance tool rather than a boundary — would have kept rule 1 in [[Environments]] intact, but its enforcement would have moved from *a credential that does not exist* to *a grant that was not given*, with the instance administrator credential able to reach both. It also gave up rehearsal of engine-level changes (version upgrades, extensions, resizing) through test, since both environments would change together, and it forced the restore drill onto a temporary instance. Two instances keep the missing-secret enforcement exactly as written; stopping test when idle recovers most of the saving.
+
+What stopping test costs is recorded in [[Environments]] §Test is not always running.
+
 ### What is open
 
 The container host is not a strong opinion. Any platform offering a managed Postgres instance, a deployable service, environment-scoped secrets, and a CI trigger satisfies the constraints. Pick on price and on how little operational attention it demands.
@@ -99,7 +107,7 @@ Ordered. Everything here precedes the first issue except where noted.
 
 ### Data
 - Local Postgres for dev, containerised so the version matches the managed one — worth checking against the known `D:` drive path quirks on the dev machine before assuming it is frictionless
-- Managed Postgres instance for test
+- Managed Postgres instance for test — stoppable when idle; check how the provider treats a stopped instance (some bill storage throughout, some restart it automatically after a fixed period)
 - Managed Postgres instance for production
 - Object storage bucket for backups, per [[Backup-and-Durability]]
 
@@ -122,5 +130,5 @@ Ordered. Everything here precedes the first issue except where noted.
 
 1. **Where does the conversion job run?** It is production-only per [[Environments]], reads the frozen campaign repository, and is invoked deliberately rather than on a schedule. Whether that is a one-off task, a protected endpoint, or a local run against the production database is undecided and affects how the credential is held.
 2. **Does the apex get a landing page in R1?** [[Strategy-Multi-Campaign-and-Convergence]] describes one. Nothing requires it, and it is the sort of thing that absorbs a weekend.
-3. **What is the cost ceiling?** Three environments with two managed database instances is small but not free, and no figure has been stated anywhere. Two managed instances is the prod/test split required by rule 1 in [[Environments]], not one per campaign — campaigns share a store under C6.
+3. **What is the cost ceiling?** The shape is settled — two managed instances, test stopped when idle; see §Two database instances. **The figure is still unstated.** Two managed instances is the prod/test split required by rule 1 in [[Environments]], not one per campaign — campaigns share a store under C6.
 4. **When does Chronicle's second write path arrive** relative to the cutover in [[Store-and-Access]]? A second writer is a cutover-class event and the date is unchosen.

@@ -72,6 +72,20 @@ Two R1 acceptance criteria are measured over the network and cannot be met on a 
 
 ---
 
+## Test is not always running
+
+**Settled by the GM:** the test environment may be stopped when it is not needed, to save cost. See [[Hosting]] §Two database instances for why this was chosen over one shared instance.
+
+That is safe because of rule 1: test holds only the fixture, and the fixture is reproducible, so nothing on the test instance is irreplaceable. What it changes:
+
+- **Promotion requires test to be running.** Nothing reaches production without having been verified on test, so starting test is the first step of every promotion, not an optional one. A stopped test environment is never a reason to deploy directly.
+- **Deploy-on-merge meets a stopped target.** Merges while test is stopped must either wait or deploy when it next starts — never skip test and never fail silently. Which of the two is a pipeline decision for the build context.
+- **A reviewer's URL only works while test is up.** Handing Julia a link is one of test's jobs, so a review is a window the environment is started for, and said so when the link is sent.
+- **Latency is measured warm.** Epic 2 S2's retrieval figure taken right after a restart measures the restart. Measure after the environment has settled.
+- **The restore drill in [[Backup-and-Durability]] needs test started** — a deliberate start, not a surprise.
+
+---
+
 ## Promotion
 
 ```
@@ -90,7 +104,7 @@ Production additionally carries the access boundary from [[Hosting-Implications]
 
 **What changed:** the reviewer requirement is real and is unchanged. The *second deployment* was not — `demo.` and `test.` were always going to serve the same fixture campaign, so there was never any data separation between them to preserve. The name suggested an audience that does not exist; there are no prospects to demo to.
 
-Both `demo.` and `fixture.` stay reserved and unbuilt. Nothing else claims them.
+Both `demo.` and `fixture.` stay reserved and unbuilt. Nothing else claims them. **Reconfirmed by the GM:** demo is not needed initially.
 
 **Effect elsewhere:** Epic 2 S2 cites `demo.warpandweft.ink` as the home for the fixture. That citation now names a subdomain that will not exist, and needs correcting to `test.warpandweft.ink` — a wrong citation is the failure mode `COLLABORATION.md` singles out, because it looks sourced.
 
