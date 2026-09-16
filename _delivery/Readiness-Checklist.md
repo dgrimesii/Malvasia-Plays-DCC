@@ -20,8 +20,8 @@ The ordered path from here to handing Claude Code, in VS Code, a GitHub issue it
 | Design corpus for RC 1a | Written. Epics 1, 2, 3, 13 marked ready, with story-level holds listed in Stage 7 |
 | Platform | **Settled** — Render and Cloudflare. See [[Hosting]], [[Render-Setup]] |
 | Original corpus corrections (1.1–1.6) | **All done** |
-| New corpus corrections (1.7–1.15) | Open |
-| Decisions needed before issue 1 | Five open. Where the code lives is **settled**: this repository, under `app/` |
+| New corpus corrections (1.7–1.15) | Eight open; 1.13 done |
+| Decisions needed before issue 1 | **None open.** All settled, with the cutover date deliberately deferred |
 | GitHub | No issues, no labels, no issue template, no `app/` folder yet |
 | Local development machine | Not yet checked for what Claude Code will need |
 | Prerequisites P2–P4 | Not started. P2 and P3 are enabling issues; P4 needs ratifying |
@@ -75,7 +75,7 @@ Each is worked in the chat context, with superseded reasoning kept in place per 
 | 1.10 | [[Open-Requirements]] | Still marks resolved questions **[blocking]** — §1 player identity, §3 surfacing versus authoring, §7 character death, §9 one campaign or many. [[Backlog-Readiness]] §G11 flagged this; it was never fixed | Strike each with its answer and a link |
 | 1.11 | [[Backlog-Readiness]] | Still lists G1 (release boundary), G2 (graph model), G3 (surfacing) and G8 (connectivity) as blocking. All four are answered in [[Roadmap]] §Resolved | Strike with answers, or mark the whole document historical |
 | 1.12 | `CLAUDE.md` | Never points Claude Code at `_delivery/` — so [[Issue-Conventions]], [[Test-Strategy]] and [[Environments]] are outside its reading path. The test-first split and the definition of ready are exactly what it must follow. It also has no section on **how to work an issue**: one issue per session, branch and pull request, a `test` issue never reading the implementation branch, findings filed before code | Add a *Working an issue* section and add `_delivery/` to the reading order. It stays at the repository root, beside `app/` |
-| 1.13 | [[Backup-and-Durability]] | *"Run once before cutover, against the test environment"* does not say whose backup. Restoring production's snapshot anywhere near test breaks rule 1 in [[Environments]] | Say it: restore **test's** backup into a new database. Render restores into a new instance, which fits |
+| 1.13 | [[Backup-and-Durability]] | *"Run once before cutover, against the test environment"* does not say whose backup. Restoring production's snapshot anywhere near test breaks rule 1 in [[Environments]] | ~~Say it: restore **test's** backup into a new database.~~ **Done 2026-09-16** with the recovery expectation |
 | 1.14 | Epic 1 S12 | Requires *"the GM can see each proposal as a player would see it"* from the first session, which its own Dependencies section calls a forward dependency on Epic 15 — RC 1b | Either pull a narrow preview slice into RC 1a explicitly, or restate S12. Otherwise S12 cannot be accepted in its own candidate |
 | 1.15 | Epic 3 | Dependencies: *"Where [investment] is set is not yet assigned to an epic — worth confirming it is not orphaned between Epic 1 and Epic 4."* S10 cannot be accepted without an input | Assign recording investment to an epic in RC 1a, or move S10 out of RC 1a |
 
@@ -90,7 +90,7 @@ After: run `check_links`, `check_staleness --days 0` on a full clone, and `check
 
 ## Stage 2 — Decisions
 
-Five remain before issue 1. The rest are recorded so they are not discovered.
+~~Five remain before issue 1.~~ **None remain before issue 1.** The rest are recorded so they are not discovered.
 
 ### Needed before issue 1
 
@@ -98,11 +98,11 @@ Five remain before issue 1. The rest are recorded so they are not discovered.
 |---|---|---|
 | ~~**Container host**~~ | **Settled: Render.** See [[Hosting]] §Host | [[Hosting]] |
 | ~~**Where the application code lives**~~ | **Settled: this repository, under `app/`.** See below | [[Hosting]] §Open questions |
-| **Framework** | The walking skeleton cannot be built without a language and web framework. [[Hosting]] leaves this to an ADR proposed by Claude Code and ratified by the GM — so it is a `spike` issue before issue 1, not a chat decision | ADR in the source tree |
-| **Who writes the issues** | [[Issue-Conventions]] says what an issue contains but not who creates it. *Proposal:* the chat context drafts them from stories through the GitHub connector; the GM approves and writes each pre-registered expectation | [[Issue-Conventions]] |
-| **Cutover date** | [[Store-and-Access]] asks for it to be chosen rather than arrived at. It is the deadline for the restore drill | [[Backup-and-Durability]] |
-| **Cost ceiling** | Shape settled: two databases, test suspended when idle. No figure exists anywhere | [[Hosting]] |
-| **Recovery expectation** | How much work may be lost, and how long a restore may take | [[Backup-and-Durability]] |
+| ~~**Framework**~~ | **Settled: a `spike` issue** (issue 0). Claude Code proposes an ADR; the GM ratifies it. The walking skeleton cannot be built without a language and web framework | ADR in the source tree |
+| ~~**Who writes the issues**~~ | **Settled: Claude in the desktop chat context writes them, only when prompted.** Nothing is filed on Claude's own initiative | [[Issue-Conventions]] |
+| ~~**Cutover date**~~ | **Deferred by decision: to be projected from progress**, not fixed now. Once a projection exists it becomes the deadline for the restore drill and the Render Pro upgrade | [[Backup-and-Durability]] |
+| ~~**Cost ceiling**~~ | **Settled: no fixed figure.** The GM accepts the Render estimate in [[Hosting]] | [[Hosting]] |
+| ~~**Recovery expectation**~~ | **Settled:** nothing lost normally; at most one week in the worst case; working again before the next session. Raw session notes are kept until the next weekly export | [[Backup-and-Durability]] §Recovery expectation |
 
 #### The repository question — settled
 
@@ -233,6 +233,6 @@ Checked against each epic's own open-questions and dependencies sections, not by
 
 ## The shortest honest summary
 
-~~One check that cannot wait — the repository's visibility.~~ Visibility is settled: public, by choice. Nine corpus corrections, one of them a contradiction Claude introduced. Five decisions before issue 1, now that the repository question is settled. One hand pass over the legacy files. Repository and GitHub setup, Render Parts 1–5, and a check of the development machine. Then a framework spike and three enabling issues, after which Epic 1's test issues can open.
+~~One check that cannot wait — the repository's visibility.~~ Visibility is settled: public, by choice. ~~Nine~~ Eight corpus corrections still open, one of them a contradiction Claude introduced. ~~Five decisions before issue 1.~~ No decisions left before issue 1. One hand pass over the legacy files. Repository and GitHub setup, Render Parts 1–5, and a check of the development machine. Then a framework spike and three enabling issues, after which Epic 1's test issues can open.
 
 ~~Nothing on that list needs a framework chosen to begin, and the first two stages need no infrastructure at all.~~ *Stages 0 through 4 need no framework and no infrastructure; issue 1 needs both.*
