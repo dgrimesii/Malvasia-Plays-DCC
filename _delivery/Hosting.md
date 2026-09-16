@@ -9,7 +9,7 @@ tags: [delivery, hosting, platform, store, infrastructure]
 
 What the platform has to satisfy, and what to run on.
 
-**Status: proposed.** The constraints below are derived from the corpus and are not negotiable. The platform recommendation is a proposal and the GM decides it.
+**Status: platform settled by the GM** — Render for the application and Postgres, Cloudflare for DNS and object storage. The constraints below are derived from the corpus and are not negotiable. Setup steps are in [[Render-Setup]].
 
 ---
 
@@ -87,9 +87,19 @@ Cloudflare keeps DNS and gains object storage for backups under C12, which is th
 
 What stopping test costs is recorded in [[Environments]] §Test is not always running.
 
-### What is open
+### Host — settled: Render
 
-The container host is not a strong opinion. Any platform offering a managed Postgres instance, a deployable service, environment-scoped secrets, and a CI trigger satisfies the constraints. Pick on price and on how little operational attention it demands.
+**Settled by the GM.** Render runs both the application and managed Postgres, in one account, for both environments.
+
+~~**What is open.** The container host is not a strong opinion. Any platform offering a managed Postgres instance, a deployable service, environment-scoped secrets, and a CI trigger satisfies the constraints. Pick on price and on how little operational attention it demands.~~ **Answered.** Chosen on those same grounds:
+
+- **One vendor** for application and database — one bill, one dashboard, operable by one person under C13.
+- **Managed Postgres** with point-in-time restore — 3 days on the Hobby workspace, 7 on Pro. The longer history is carried by the weekly export in [[Backup-and-Durability]], not by the platform.
+- **Projects with environments**, where private network traffic between environments can be blocked and secret groups scoped to one environment — a second wall behind rule 1 in [[Environments]].
+- **Services and databases can be suspended**, which is how test is stopped when idle.
+- **Auto-deploy can wait for CI or be switched off**, which gives deploy-on-merge for test and deliberate promotion for production.
+
+**Alternatives weighed:** Railway (cheapest, but its Postgres is a container to operate rather than a managed service), DigitalOcean (managed, but no way found to pause a database), Fly.io (managed Postgres priced well above this scale), and Neon (best at stopping test automatically, at the cost of a second vendor). Neon is the fallback if a suspended Render database turns out to keep billing — see [[Render-Setup]] §Open.
 
 ---
 
@@ -107,8 +117,8 @@ Ordered. Everything here precedes the first issue except where noted.
 
 ### Data
 - Local Postgres for dev, containerised so the version matches the managed one — worth checking against the known `D:` drive path quirks on the dev machine before assuming it is frictionless
-- Managed Postgres instance for test — stoppable when idle; check how the provider treats a stopped instance (some bill storage throughout, some restart it automatically after a fixed period)
-- Managed Postgres instance for production
+- Render Postgres for test — suspended when idle; settings in [[Render-Setup]] §Part 6
+- Render Postgres for production — same settings
 - Object storage bucket for backups, per [[Backup-and-Durability]]
 
 ### Secrets
@@ -132,3 +142,4 @@ Ordered. Everything here precedes the first issue except where noted.
 2. **Does the apex get a landing page in R1?** [[Strategy-Multi-Campaign-and-Convergence]] describes one. Nothing requires it, and it is the sort of thing that absorbs a weekend.
 3. **What is the cost ceiling?** The shape is settled — two managed instances, test stopped when idle; see §Two database instances. **The figure is still unstated.** Two managed instances is the prod/test split required by rule 1 in [[Environments]], not one per campaign — campaigns share a store under C6.
 4. **When does Chronicle's second write path arrive** relative to the cutover in [[Store-and-Access]]? A second writer is a cutover-class event and the date is unchosen.
+5. **[blocking, before GitHub is connected to Render] Where does the application code live?** Nothing in the corpus says. `CLAUDE.md` sits at the root of the campaign repository, which implies code would go there — but Render copies the whole connected repository into the deployment, which would put the campaign folders inside test and break rule 2 in [[Environments]]. A separate code repository is the cheaper fix; moving the campaign content out is the other.

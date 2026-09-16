@@ -42,7 +42,8 @@ Four are needed before the first issue. The rest are recorded so they are not di
 
 | Decision | Why now | Where it lands |
 |---|---|---|
-| **Container host** | The last open piece of the platform | [[Hosting]] |
+| ~~**Container host**~~ | **Settled: Render.** See [[Hosting]] §Host | [[Hosting]] |
+| **Where the application code lives** | Render copies the connected repository into every deployment; the campaign repository would break rule 2 in [[Environments]] | [[Hosting]] §Open questions |
 | **Cutover date** | [[Store-and-Access]] asks for it to be chosen rather than arrived at. It is the deadline for the restore drill | [[Backup-and-Durability]] |
 | **Cost ceiling** | Shape settled: two managed database instances, test stopped when idle. No figure exists anywhere | [[Hosting]] |
 | **Recovery expectation** | How much work may be lost, and how long a restore may take | [[Backup-and-Durability]] |
@@ -79,7 +80,7 @@ The question set already exists in [[Verification-and-Challenge]]. What is missi
 
 ## Stage 4 — Infrastructure
 
-The setup list in [[Hosting]] §Setup work, in order: DNS and TLS, databases, secrets, pipeline, access boundary.
+The setup list in [[Hosting]] §Setup work, in order: DNS and TLS, databases, secrets, pipeline, access boundary. The hand steps on Render are in [[Render-Setup]].
 
 Two items are easy to defer and both are load-bearing:
 

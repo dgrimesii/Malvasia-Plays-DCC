@@ -41,7 +41,8 @@ The boundary with the source tree is the same one `CLAUDE.md` already draws. **P
 
 - **[[Readiness-Checklist]]** — the ordered path to the first issue. Start here.
 - **[[Environments]]** — the three environments, what data each holds, and the rules that keep them apart.
-- **[[Hosting]]** — the constraints the platform must satisfy, and the recommendation against them.
+- **[[Hosting]]** — the constraints the platform must satisfy, and the platform chosen against them.
+- **[[Render-Setup]]** — the hand steps that make Render ready for the first deployment.
 - **[[Test-Strategy]]** — the four prerequisites made concrete, and the role separation that makes single-agent testing worth anything.
 - **[[Issue-Conventions]]** — what a GitHub issue contains, how stories map onto issues, and the definition of ready.
 - **[[Backup-and-Durability]]** — the requirement left without an owner when the repo stopped being an export target.
