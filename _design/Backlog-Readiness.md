@@ -7,6 +7,18 @@ tags: [product, backlog, readiness, gaps]
 
 # Backlog Readiness Assessment
 
+> **Historical, 2026-09-16.** This assessment predates the release plan and most of the decisions it asked for. Its blocking gaps are answered as below; read [[Roadmap]] for the current state rather than this document.
+>
+> | Gap | Status |
+> |---|---|
+> | G1 — release boundary | **Answered** — [[Release-Plan]] and [[Roadmap]] |
+> | G2 — graph model | **Answered** — adopted; [[Roadmap]] §Resolved |
+> | G3 — surfacing versus authoring | **Answered** — [[Roadmap]] §Resolved; [[Generative-Projection]] |
+> | G8 — mid-session failure | **Answered** — no offline mode; fail fast and legibly, Epic 2 S3; [[Roadmap]] §Resolved |
+> | G10 — glossary | **Answered** — [[Glossary]] written; P1 done |
+> | G11 — stale open requirements | **Answered** — [[Open-Requirements]] reconciled 2026-09-16 |
+> | G4, G5, G6, G7, G9 | Not re-checked here; G9 (tombstones) is still open in [[Roadmap]] |
+
 Product-management review of `_design/` against one question: **is there enough here to write epics and user stories that a development team could work from?**
 
 Scope of this document is requirements readiness only. Architecture, storage, and technical design remain deliberately downstream — nothing here asks for them.
@@ -46,7 +58,7 @@ Correctly deferred, and **not** gaps: storage format, edge serialization, batchi
 
 Ordered by how much backlog they hold up.
 
-### G1 — No release boundary or value increment sequence
+### ~~G1 — No release boundary or value increment sequence~~ Answered
 
 **Blocks:** every epic's ordering, sizing, and definition of done.
 
@@ -60,7 +72,7 @@ The two surfaces have different economics. The GM surface has a deadline (Floor 
 
 ---
 
-### G2 — The graph model is provisional, and live content contradicts it
+### ~~G2 — The graph model is provisional, and live content contradicts it~~ Answered
 
 **Blocks:** most Organizing stories, all arc-membership stories, all backlink and cross-link stories.
 
@@ -72,7 +84,7 @@ This is not an architecture question. A story such as *"links are maintained in 
 
 ---
 
-### G3 — The line between surfacing and authoring is undecided
+### ~~G3 — The line between surfacing and authoring is undecided~~ Answered
 
 **Blocks:** the entire proposal and inference epic. Possibly the largest single body of stories.
 
@@ -139,7 +151,7 @@ Two related holes:
 
 ---
 
-### G8 — Mid-session failure has no stated expectation
+### ~~G8 — Mid-session failure has no stated expectation~~ Answered
 
 **Blocks:** at-the-table stories for both surfaces.
 

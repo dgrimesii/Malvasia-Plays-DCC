@@ -242,7 +242,7 @@ So a shared substrate would be **entities, typed relationships, and events, as o
 
 **Not planned. No epics. No dates.** Both "one GM running several tables" and "several GMs sharing one setting" are real product shapes, not a maybe — see [[Settings-and-Campaigns]] §Setting ownership for the Setting Owner role and the two governance patterns it splits into. Recorded here for the same reason as Chronicle convergence: so RC 1a–1d choices don't foreclose it.
 
-**The one near-term consequence:** every entity must record its originating campaign from creation. [[Settings-and-Campaigns]] already carries this in its RC 1a backlog.
+**The one near-term consequence:** every entity records its originating campaign. It must be in place before any setting holds a second campaign; it is recorded from RC 1a anyway, in Epic 13 S11, because it costs nothing now. See [[Settings-and-Campaigns]].
 
 ---
 
