@@ -54,7 +54,7 @@ Read, in order:
 2. [`_design/Glossary.md`](_design/Glossary.md) — every domain term the epic uses is defined there
 3. [`_design/Information-Architecture.md`](_design/Information-Architecture.md) — the object model
 4. Whatever the epic's **Assumptions** table cites
-5. [`_delivery/Issue-Conventions.md`](_delivery/Issue-Conventions.md), [`_delivery/Test-Strategy.md`](_delivery/Test-Strategy.md), and [`_delivery/Environments.md`](_delivery/Environments.md) — how work is structured, tested, and deployed
+5. [`_delivery/Issue-Conventions.md`](_delivery/Issue-Conventions.md), [`_delivery/Issue-Lifecycle.md`](_delivery/Issue-Lifecycle.md), [`_delivery/Test-Strategy.md`](_delivery/Test-Strategy.md), and [`_delivery/Environments.md`](_delivery/Environments.md) — how work is structured, tested, and deployed
 
 The assumptions table exists so the reasoning does not have to be reconstructed. Take those as given; they are not the right thing to relitigate mid-build.
 
@@ -64,6 +64,7 @@ The assumptions table exists so the reasoning does not have to be reconstructed.
 
 Issues are written in the chat context, only when the GM asks — see [`_delivery/Issue-Conventions.md`](_delivery/Issue-Conventions.md). **Do not open issues yourself.** Something that needs deciding is a finding, not an issue.
 
+- **Follow the phases in [`_delivery/Issue-Lifecycle.md`](_delivery/Issue-Lifecycle.md)** — read, plan, stop for approval, build, test, hand over. Never close an issue; the GM's merge does.
 - **One issue per session.** Read the issue, then everything its reading order names.
 - **Check the definition of ready first.** If any item fails, stop and say which one. That is a blocked issue, not a refinement.
 - **Work on a branch, and finish with a pull request that references the issue.** Never commit to `main`.
