@@ -205,5 +205,5 @@ Three costs:
 - **Epic 1** records unresolved threads, follow-ups, and resurfacing. Without those, S5 and S6 have no input and S2's open set is thin. S2 additionally depends on Epic 1 S6 for undecided statements and S16 for announced events.
 - **Epic 13** puts the existing campaign in. Readiness over an empty store reports everything as uncovered.
 - **Epic 4** is where a gap gets filled. This epic reports; it does not fix.
-- **Investment must be recordable** for S10 to have an input. Where it is set is not yet assigned to an epic — worth confirming it is not orphaned between Epic 1 and Epic 4.
+- **Investment must be recordable** for S10 to have an input. ~~Where it is set is not yet assigned to an epic — worth confirming it is not orphaned between Epic 1 and Epic 4.~~ **Assigned 2026-09-16: Epic 1 S17**, set optionally during session review. Suggested shifts follow in Epic 6; setting it from an entity's page is Epic 4.
 - **Prerequisite P3.** The fixture needs a realistic spread of covered, empty, and deliberately thin branches, and entities at a range of investment degrees including some with none recorded, or S3, S4 and S10 cannot be exercised.

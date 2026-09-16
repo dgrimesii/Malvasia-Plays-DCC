@@ -40,8 +40,8 @@ Capture for Sessions 1–3 has to be good enough to bootstrap from. The template
 
 ## 1. Access and identity
 
-**[blocking] Do players need individual identity in the system?**
-Note ownership, per-player visibility, and query attribution all assume the system knows who's who.
+~~**[blocking] Do players need individual identity in the system?**~~
+~~Note ownership, per-player visibility, and query attribution all assume the system knows who's who.~~ **Resolved:** attribution, not per-player knowledge — see [[Players-and-Characters]]. One account per person since [[Two-Observer-Model]]; C11 in `_delivery/Hosting.md`.
 
 **Does the GM see player notes?**
 Rich signal versus players writing freely when unobserved.
@@ -68,8 +68,8 @@ Cheaper than writing both, but extraction can hallucinate and manner must never 
 
 ## 3. What the AI may propose
 
-**[blocking] Where is the line between surfacing and authoring?**
-May it propose *content* — a projection, a climax, a story beat — or only *connections* and *gaps*?
+~~**[blocking] Where is the line between surfacing and authoring?**~~
+~~May it propose *content* — a projection, a climax, a story beat — or only *connections* and *gaps*?~~ **Resolved:** surfacing is authoring, materialised through intake; generation is permitted forward only — see [[Roadmap]] §Resolved and [[Generative-Projection]].
 
 **What happens when a proposal is a bad reading?**
 Not a hallucinated fact but a wrong interpretation — "the party seems invested in the Warden" when they aren't. Rejection exists; whether rejection *teaches* anything, or just dismisses one card, is undecided.
@@ -122,7 +122,7 @@ A cheap hedge with an early deadline — if deletion cleans up references, repai
 
 ## 7. Lifecycle events
 
-**[blocking] What happens when a character dies?**
+~~**[blocking] What happens when a character dies?**~~ **Resolved:** death is a state, not a deletion — see [[Players-and-Characters]].
 DCC runs on lethality. Does the dossier become historical? Do their arcs transfer or resolve? Does a new character inherit their relationships? Does the dead character stay in the graph as a node others reference?
 
 **Can arcs merge and split, and what survives?**
@@ -145,7 +145,7 @@ Dead laptop, no connectivity, a bug. Plain markdown helps, but worth answering d
 
 ## 9. Scope boundaries
 
-**Is this one campaign or a system for many?**
+~~**Is this one campaign or a system for many?**~~ **Resolved:** many — a setting holds campaigns, one live at a time for now, with shared settings a long-term objective. See [[Settings-and-Campaigns]].
 
 **Does the GM need to invent new relationship types during play?**
 Closed vocabulary is queryable; open is expressive.
@@ -171,9 +171,9 @@ Surfaced while designing the setting/place model. Genuinely open, not resolved h
 
 ## Suggested order
 
-1. **Is this a multi-user system?** (§1)
+1. ~~**Is this a multi-user system?** (§1)~~ Resolved.
 2. **What does prep week look like?** (§8) — shapes the GM surface more than anything else unanswered.
 3. **How does bad data get found and removed?** (§6)
-4. **Character death** (§7) — will happen, probably sooner than expected.
+4. ~~**Character death** (§7) — will happen, probably sooner than expected.~~ Resolved.
 
 Canon workload (§4) has a Floor 6 deadline. Campaign length (§5) the sooner the better.
