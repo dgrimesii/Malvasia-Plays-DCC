@@ -195,9 +195,9 @@ Four distinct costs if it is absent or weak:
 - **Assertion:** Assistance produces a list of proposed changes that the GM approves, edits, or rejects individually before anything is written. **No manner, intent, or emotional state appears in any proposal.** No field is populated because it exists.
 - **Assertion — identifying the speaker is a primary job, not a bonus.** A proposition with a source attaches to the person who said it and becomes a statement per S6. A proposition with no source is the GM narrating, and becomes an ordinary world fact. **Which of the two a sentence is must itself be editable in the review**, because the notes will not mark it and the parser will misread indirect speech.
 - **Assertion:** Every proposed record **cites the passage of the GM's notes it came from**, so anything invented is visible rather than merely possible.
-- **Assertion — the GM can see each proposal as a player would see it, before accepting.** This is the only check that catches the error that matters: if a statement is mis-parsed as GM narration, it will later appear to the party as plain unattributed truth, and the absence of a speaker is exactly what makes it look true.
+- ~~**Assertion — the GM can see each proposal as a player would see it, before accepting.**~~ **Assertion — the GM can filter the review to only what the party would be allowed to see if the proposal were accepted.** The filter is the same one every player-facing read uses, not a separate implementation. With it on, GM-only material — including whether a statement is true — is hidden, so a statement mis-parsed as GM narration stands out as bare, unattributed fact. This is a check against accidental exposure, **not a rendering of the player view**. It is the only check that catches the error that matters: if a statement is mis-parsed as GM narration, it will later appear to the party as plain unattributed truth, and the absence of a speaker is exactly what makes it look true. By default everything is shown, with what the party knows marked, as in Epic 2 S12; the filter hides the rest on demand. *Reworded 2026-09-16 by GM decision: the earlier wording read as requiring the player view itself, which is Epic 15.*
 - **Assertion:** Rejecting the whole proposal writes nothing.
-- **Demo:** Feed in rough notes containing no emotional description. Every manner field in the proposal is empty. Show a line with a speaker and a line without, proposed differently, and change one into the other. Show the player-facing preview of both. Reject the proposal; nothing is written.
+- **Demo:** Feed in rough notes containing no emotional description. Every manner field in the proposal is empty. Show a line with a speaker and a line without, proposed differently, and change one into the other. ~~Show the player-facing preview of both.~~ Turn the filter on: the attributed line still shows its speaker; the unattributed one shows as a bare fact. Turn it off. Reject the proposal; nothing is written.
 
 **This is stage 1 of intake**, per [[Session-Capture]]. Stage 2 — impact detection over accepted changes — belongs to Epic 6 and must not run here, since inference over unreviewed extraction compounds a misreading into a conclusion. **Neither stage invents content in this epic.**
 
@@ -245,6 +245,18 @@ Four distinct costs if it is absent or weak:
 - **Assertion:** An announced event that never happens does not linger. It is closed by its announcing claim being marked false.
 - **Demo:** Record an announcement of a future event. Show the event marked as known-to-be-coming, the announcement recorded as having happened, and the claim undecided. Mark the claim false; the event is closed rather than left waiting.
 
+### S17 — Record how much the party cares about something
+
+*As the GM, I want to note, when I see it, that the party has come to care more or less about someone or something, so that prep can be aimed at what matters to them.*
+
+- **Outcome:** Investment builds up as a history from the first recorded session, without being required anywhere.
+- **Assertion:** While reviewing a session, the GM can set or change the **degree of investment** on any entity or thread that session touched, on the scale in [[Glossary]]. **Setting one is optional.** Nothing nags about, counts, or flags an entity that has none.
+- **Assertion:** Each setting is recorded as an event with provenance — which session, set by the GM — so a history of rising, declining, or gone quiet can be read off the sequence.
+- **Assertion:** The system never sets or changes a degree, and **in this release it does not suggest one either.**
+- **Demo:** Review a session; set one NPC to Deep and leave another unset. In a second session, lower the first. Show its history in order, and show that nothing marks the unset one as missing.
+
+**Known future requirement, excluded from acceptance:** suggested shifts arrive with Epic 6 (RC 1c) as prompts in this same review — accepting one is the GM setting the degree, with the suggestion recorded as its basis. Setting investment from an entity's own page belongs to Epic 4. *Added 2026-09-16 by GM decision, so that Epic 3 S10 has an input in RC 1a.*
+
 ---
 
 ## Open questions
@@ -264,5 +276,6 @@ Four distinct costs if it is absent or weak:
 
 - **Epic 4** creates and connects entities. Session records reference entities; this epic assumes they can be referenced, not that it creates them. Where a session mentions something with no record yet, the fragment is captured against the session until Epic 4 provides somewhere to put it.
 - **Epic 6** owns stage 2 of intake. This epic stops at accepted changes.
-- **Epic 15** builds the player view proper. S12's player-facing preview is a narrow forward dependency: the GM needs to see a proposal the way a player would in order to catch mis-parsed statements, and that check must exist from the first session even though no player reads anything until Release 2.
+- ~~**Epic 15** builds the player view proper. S12's player-facing preview is a narrow forward dependency: the GM needs to see a proposal the way a player would in order to catch mis-parsed statements, and that check must exist from the first session even though no player reads anything until Release 2.~~ **Superseded 2026-09-16.** S12 now needs only per-fact visibility and the shared player-facing filter, both RC 1a obligations — not Epic 15. Epic 15's full switch to the player view, per [[GM-Player-View-and-Transparency]], is separate and lands in RC 1b, where players also start reading the record per [[Release-Plan]].
+- **Epic 6** raises suggested investment shifts as prompts in the same review, from RC 1c. S17 excludes them from acceptance here.
 - **Prerequisites P2 and P3** — harness and fixtures — must exist before any story here can be accepted, since every assertion above runs against a fixture rather than the live campaign.

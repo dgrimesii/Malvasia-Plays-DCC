@@ -183,10 +183,12 @@ Four costs:
 *As the GM, I want my world and my story to arrive as separate containers at a stable address, so that a second campaign in the same world later is a new record rather than a rebuild.*
 
 - **Outcome:** One setting holding one campaign, with identity and addressing in their final shape.
-- **Assertion:** A setting exists and holds the campaign. **Entity identifiers are unique within the setting**, so a later campaign meeting the same NPC meets the same record. Facts, sessions, reveals, and visibility belong to the campaign. The campaign is addressed by path — `storyteller.warpandweft.ink/malvasia` — never by subdomain. **No interface acknowledges that settings exist.** No seeding, no switcher, no accounts, no second campaign.
-- **Demo:** Show entities resolving to the setting and facts resolving to the campaign, the campaign reachable at its path, and nothing in the GM's view mentioning a setting.
+- **Assertion:** A setting exists and holds the campaign. **Entity identifiers are unique within the setting**, so a later campaign meeting the same NPC meets the same record. Facts, sessions, reveals, and visibility belong to the campaign. **Every entity records the campaign that originated it** — for converted content, this campaign; the same holds for every entity created afterwards, by any epic. The campaign is addressed by path — `storyteller.warpandweft.ink/malvasia` — never by subdomain. **No interface acknowledges that settings exist.** No seeding, no switcher, no accounts, no second campaign.
+- **Demo:** Show entities resolving to the setting and facts resolving to the campaign, each entity naming this campaign as its origin, the campaign reachable at its path, and nothing in the GM's view mentioning a setting.
 
 **Thin structure, not a feature.** Per [[Settings-and-Campaigns]], identity scoped to the setting is what makes inheritance possible at all — a campaign-scoped identifier means a second campaign gets a copied starting position rather than a shared world. Both containers cost almost nothing while there is one of each.
+
+**Origin campaign is not an unrecoverable requirement** (GM decision, 2026-09-16). While a setting holds one campaign it can be derived; it must exist before a setting holds a second. It is here because it costs nothing now.
 
 ### S12 — Tell me what happened
 
