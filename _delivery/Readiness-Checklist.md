@@ -22,7 +22,7 @@ The ordered path from here to handing Claude Code, in VS Code, a GitHub issue it
 | Original corpus corrections (1.1–1.6) | **All done** |
 | New corpus corrections (1.7–1.15) | **All done** 2026-09-16 |
 | Decisions needed before issue 1 | **None open.** All settled, with the cutover date deliberately deferred |
-| GitHub | No issues, no labels, no issue template, no `app/` folder yet |
+| GitHub | No issues, no labels, no issue template, no `app/` folder yet. Issue lifecycle documented in [[Issue-Lifecycle]] (proposal) |
 | Local development machine | Claude Code, Git and GitHub already working (other projects). Still to check: a local Postgres runtime and a model API key |
 | Prerequisites P2–P4 | Not started. P2 and P3 are enabling issues; P4 needs ratifying |
 
@@ -159,7 +159,7 @@ The question set already exists in [[Verification-and-Challenge]]. What is missi
 None of this is code.
 
 - [ ] ~~**The code repository exists and is private.** Under option A, the corpus is moved into it with history, and `CLAUDE.md` paths and `_tools/` search directories are checked afterward.~~ **Superseded:** no new repository. The walking-skeleton issue creates `app/` in this one.
-- [ ] **Labels** from [[Issue-Conventions]]: `rc-1a` to `rc-1d`, `unrecoverable`, `blocked-finding`, `blocked-decision`, `chat-context`. *Proposal:* also one label per issue type — `test`, `impl`, `enabling`, `corpus`, `spike` — so the test-first order can be filtered.
+- [ ] **Labels** — the commands are in [[Issue-Lifecycle]] §Labels. Labels belong to one repository, so Chronicle's are recreated, not shared. From [[Issue-Conventions]]: `rc-1a` to `rc-1d`, `unrecoverable`, `blocked-finding`, `blocked-decision`, `chat-context`. *Proposal:* also one label per issue type — `test`, `impl`, `enabling`, `corpus`, `spike` — so the test-first order can be filtered.
 - [ ] **An issue template** carrying the fields in [[Issue-Conventions]] §What an issue contains, so no issue is written without its assertion, demo, exclusions and pre-registered expectation.
 - [ ] **Milestones** per release candidate, if wanted. Optional; labels already carry it.
 - [ ] **`main` protected**: changes arrive by pull request, and merging waits for CI once CI exists. This is what makes *Auto-deploy after CI checks pass* in [[Render-Setup]] mean something.
