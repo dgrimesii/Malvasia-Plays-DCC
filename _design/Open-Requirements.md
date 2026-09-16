@@ -155,6 +155,20 @@ Export, backup, migration off this system.
 
 ---
 
+## 10. Entity schema
+
+Surfaced while designing the setting/place model. Genuinely open, not resolved here.
+
+**Candidate object types**, placeholders pending confirmation: **Geopolitical entity** (country, region, province, state, ...) and **Settlement** (city, village, camp, ...), connected to each other by the existing `located in` relationship, recursively, with no fixed nesting order assumed between types.
+
+**Government as its own type, not a field.** A place's government — monarchy, senate, mayor-and-council, whatever a homebrew setting invents — is a separate entity connected to the place it governs by a relationship, rather than a field on the place with type-conditional shape.
+
+**[blocking, before Government is built] Office versus officeholder.** Is "Mayor of Absolon" a persistent role, filled by whichever NPC currently holds it via a supersedable relationship — or is the office and its current holder one object? The former is what [[Facts-and-Revelation]]'s supersession already does for anything else that changes — a coup, an election, an assassination becomes a new fact layered over the old one. The latter loses that history at the next succession. Given how central political change is to what this tool supports, the split looks necessary, but it isn't decided.
+
+**Whether revealing a relationship requires its endpoints be materialized first.** Likely already answered by [[Visibility-Model]]'s hidden-relationships principle — not a new question, worth confirming it reads that way once schema work resumes.
+
+---
+
 ## Suggested order
 
 1. **Is this a multi-user system?** (§1)
